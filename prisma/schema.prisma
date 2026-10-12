@@ -48,11 +48,13 @@ model Tool {
 
 model Update {
   id            String   @id @default(cuid())
-  toolId        String
-  tool          Tool     @relation(fields: [toolId], references: [id], onDelete: Cascade)
+  toolId        String?
+  tool          Tool?    @relation(fields: [toolId], references: [id], onDelete: Cascade)
   title         String
   summary3Lines String
   sourceUrl     String?
+  sourceName    String?  // e.g. "NHKニュース", "ITmedia", "日経クロステック"
+  category      String   @default("news") // "news" (AI最新ニュース) or "update" (ツール機能更新)
   publishedAt   DateTime @default(now())
   createdAt     DateTime @default(now())
 }

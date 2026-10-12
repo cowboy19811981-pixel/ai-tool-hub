@@ -62,11 +62,13 @@ export interface ToolItem {
 
 export interface UpdateItem {
   id: string;
-  toolId: string;
+  toolId?: string | null;
   toolName?: string;
   title: string;
   summary3Lines: string;
   sourceUrl?: string | null;
+  sourceName?: string | null;
+  category?: string; // "news" (AI最新ニュース) or "update" (機能更新)
   publishedAt: string;
 }
 

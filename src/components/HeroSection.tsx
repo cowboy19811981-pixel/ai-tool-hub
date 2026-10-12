@@ -69,12 +69,21 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
             <span className="truncate font-medium text-slate-100">
               {currentUpdate.title}
             </span>
-            <button
-              onClick={() => onSelectTool(currentUpdate.toolId)}
-              className="text-cyan-400 hover:text-cyan-300 font-semibold underline shrink-0 ml-1 inline-flex items-center gap-0.5 text-xs"
-            >
-              詳細 <ArrowRight className="w-3 h-3" />
-            </button>
+            {currentUpdate.toolId ? (
+              <button
+                onClick={() => onSelectTool(currentUpdate.toolId!)}
+                className="text-cyan-400 hover:text-cyan-300 font-semibold underline shrink-0 ml-1 inline-flex items-center gap-0.5 text-xs"
+              >
+                詳細 <ArrowRight className="w-3 h-3" />
+              </button>
+            ) : (
+              <a
+                href="#news-section"
+                className="text-cyan-400 hover:text-cyan-300 font-semibold underline shrink-0 ml-1 inline-flex items-center gap-0.5 text-xs"
+              >
+                ニュース一覧 <ArrowRight className="w-3 h-3" />
+              </a>
+            )}
           </div>
         )}
 

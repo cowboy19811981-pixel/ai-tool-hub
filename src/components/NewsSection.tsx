@@ -9,7 +9,10 @@ import {
   Newspaper, 
   ArrowRight,
   CheckCircle2,
-  Calendar
+  Calendar,
+  Globe2,
+  Wrench,
+  Layers
 } from "lucide-react";
 import { UpdateItem } from "@/types";
 
@@ -24,6 +27,7 @@ export const NewsSection: React.FC<NewsSectionProps> = ({
 }) => {
   const [isUpdating, setIsUpdating] = useState(false);
   const [currentUpdates, setCurrentUpdates] = useState<UpdateItem[]>(updates);
+  const [filter, setFilter] = useState<"all" | "news" | "update">("all");
   const [message, setMessage] = useState<string | null>(null);
 
   const handleManualUpdate = async () => {
@@ -32,9 +36,9 @@ export const NewsSection: React.FC<NewsSectionProps> = ({
     try {
       const res = await fetch("/api/cron/update");
       const data = await res.json();
-      if (res.ok && data.update) {
-        setCurrentUpdates((prev) => [data.update, ...prev]);
-        setMessage("最新のAIアップデートニュースを取得・要約しました！");
+      if (res.ok && data.updates) {
+        setCurrentUpdates(data.updates);
+        setMessage(data.message || "最新のリアルタイムAIニュースを取得しました！");
       } else {
         setMessage(data.message || "更新が完了しました。");
       }
@@ -42,7 +46,7 @@ export const NewsSection: React.FC<NewsSectionProps> = ({
       setMessage("通信エラーが発生しました。");
     } finally {
       setIsUpdating(false);
-      setTimeout(() => setMessage(null), 4000);
+      setTimeout(() => setMessage(null), 5000);
     }
   };
 
@@ -55,21 +59,30 @@ export const NewsSection: React.FC<NewsSectionProps> = ({
     }
   };
 
+  const filteredUpdates = currentUpdates.filter((item) => {
+    if (filter === "news") return item.category === "news" || !item.toolId;
+    if (filter === "update") return item.category === "update" || Boolean(item.toolId);
+    return true;
+  });
+
   return (
     <section id="news-section" className="py-12 border-t border-slate-800/80 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8">
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-6">
           <div>
             <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-cyan-500/10 text-cyan-400 text-xs sm:text-sm font-bold mb-2 border border-cyan-500/20">
               <Clock className="w-4 h-4 text-cyan-400" />
-              <span>12-HOUR AUTOMATED TIMELINE</span>
+              <span>12-HOUR LIVE TIMELINE & RSS</span>
             </div>
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
-              最新AIニュース＆アップデート速報
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight flex items-center gap-2.5">
+              <span>リアルタイムAIニュース＆速報</span>
+              <span className="text-xs px-2.5 py-0.5 rounded-full bg-emerald-500/15 text-emerald-400 border border-emerald-500/30">
+                LIVE
+              </span>
             </h2>
             <p className="text-slate-300 text-sm sm:text-base mt-1">
-              各AIの公式リリース情報を12時間ごとに自動収集。Geminiが初心者向けに3行要約してお届けします。
+              Google Newsや各社公式の生きた最新AIニュースを自動収集。Geminiが初心者向けに3行要約してお届けします。
             </p>
           </div>
 
@@ -77,27 +90,64 @@ export const NewsSection: React.FC<NewsSectionProps> = ({
           <button
             onClick={handleManualUpdate}
             disabled={isUpdating}
-            className="self-start sm:self-auto px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold bg-slate-800 hover:bg-slate-700 text-slate-200 hover:text-white border border-slate-700 flex items-center gap-2 transition-all shadow-md disabled:opacity-50"
+            className="self-start sm:self-auto px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold bg-cyan-600/20 hover:bg-cyan-600/30 text-cyan-200 hover:text-white border border-cyan-500/40 flex items-center gap-2 transition-all shadow-md disabled:opacity-50"
           >
             <RefreshCw className={`w-4 h-4 text-cyan-400 ${isUpdating ? "animate-spin" : ""}`} />
-            <span>{isUpdating ? "最新情報を取得中..." : "最新情報を取得・再要約"}</span>
+            <span>{isUpdating ? "Webからニュース取得中..." : "最新ニュースを即時取得・要約"}</span>
+          </button>
+        </div>
+
+        {/* Filter Tabs */}
+        <div className="flex items-center gap-2 mb-6 overflow-x-auto pb-2">
+          <button
+            onClick={() => setFilter("all")}
+            className={`px-3.5 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5 ${
+              filter === "all"
+                ? "bg-cyan-500 text-slate-950 shadow-md shadow-cyan-500/20"
+                : "bg-slate-800/80 text-slate-300 hover:bg-slate-700 hover:text-white border border-slate-700/60"
+            }`}
+          >
+            <Layers className="w-3.5 h-3.5" />
+            <span>すべて ({currentUpdates.length})</span>
+          </button>
+          <button
+            onClick={() => setFilter("news")}
+            className={`px-3.5 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5 ${
+              filter === "news"
+                ? "bg-cyan-500 text-slate-950 shadow-md shadow-cyan-500/20"
+                : "bg-slate-800/80 text-slate-300 hover:bg-slate-700 hover:text-white border border-slate-700/60"
+            }`}
+          >
+            <Globe2 className="w-3.5 h-3.5 text-blue-400" />
+            <span>⚡ AI業界ニュース</span>
+          </button>
+          <button
+            onClick={() => setFilter("update")}
+            className={`px-3.5 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5 ${
+              filter === "update"
+                ? "bg-cyan-500 text-slate-950 shadow-md shadow-cyan-500/20"
+                : "bg-slate-800/80 text-slate-300 hover:bg-slate-700 hover:text-white border border-slate-700/60"
+            }`}
+          >
+            <Wrench className="w-3.5 h-3.5 text-purple-400" />
+            <span>🛠 ツール機能アップデート</span>
           </button>
         </div>
 
         {/* Status Message */}
         {message && (
           <div className="mb-6 p-4 rounded-xl bg-cyan-500/15 border border-cyan-500/30 text-cyan-200 text-sm font-semibold flex items-center gap-2 animate-in fade-in">
-            <CheckCircle2 className="w-5 h-5 text-cyan-400" />
+            <CheckCircle2 className="w-5 h-5 text-cyan-400 shrink-0" />
             <span>{message}</span>
           </div>
         )}
 
         {/* News Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {currentUpdates.map((item) => (
+          {filteredUpdates.map((item) => (
             <div
               key={item.id}
-              className="glass-panel rounded-2xl p-6 border border-slate-800 flex flex-col justify-between card-hover-glow bg-slate-900/60"
+              className="glass-panel rounded-2xl p-6 border border-slate-800 flex flex-col justify-between card-hover-glow bg-slate-900/60 transition-all duration-300 hover:border-cyan-500/30"
             >
               <div>
                 {/* Meta Badge */}
@@ -106,16 +156,31 @@ export const NewsSection: React.FC<NewsSectionProps> = ({
                     <Calendar className="w-3.5 h-3.5 text-slate-400" />
                     <span>{formatDate(item.publishedAt)}</span>
                   </span>
-                  <button
-                    onClick={() => onSelectToolById(item.toolId)}
-                    className="px-2.5 py-0.5 rounded-md text-xs font-bold bg-cyan-500/15 text-cyan-300 border border-cyan-500/30 hover:bg-cyan-500/25 transition-colors"
-                  >
-                    対象: {item.toolId.toUpperCase()}
-                  </button>
+
+                  <div className="flex items-center gap-1.5">
+                    {item.sourceName && (
+                      <span className="px-2 py-0.5 rounded text-[11px] font-semibold bg-slate-800 text-slate-300 border border-slate-700">
+                        {item.sourceName}
+                      </span>
+                    )}
+
+                    {item.toolId ? (
+                      <button
+                        onClick={() => onSelectToolById(item.toolId!)}
+                        className="px-2.5 py-0.5 rounded-md text-xs font-bold bg-cyan-500/15 text-cyan-300 border border-cyan-500/30 hover:bg-cyan-500/25 transition-colors"
+                      >
+                        対象: {item.toolId.toUpperCase()}
+                      </button>
+                    ) : (
+                      <span className="px-2 py-0.5 rounded-md text-[11px] font-bold bg-blue-500/15 text-blue-300 border border-blue-500/30">
+                        AI業界速報
+                      </span>
+                    )}
+                  </div>
                 </div>
 
                 {/* News Title */}
-                <h3 className="font-extrabold text-base sm:text-lg text-white mb-4 leading-snug">
+                <h3 className="font-extrabold text-base sm:text-lg text-white mb-4 leading-snug line-clamp-2">
                   {item.title}
                 </h3>
 
@@ -138,20 +203,24 @@ export const NewsSection: React.FC<NewsSectionProps> = ({
                     rel="noopener noreferrer"
                     className="text-slate-400 hover:text-cyan-300 font-semibold flex items-center gap-1 transition-colors"
                   >
-                    <span>公式ソース</span>
+                    <span>{item.sourceName ? `${item.sourceName}で読む` : "元記事を見る"}</span>
                     <ExternalLink className="w-3.5 h-3.5" />
                   </a>
                 ) : (
                   <span />
                 )}
 
-                <button
-                  onClick={() => onSelectToolById(item.toolId)}
-                  className="px-3.5 py-1.5 rounded-lg font-bold bg-cyan-600/20 hover:bg-cyan-600/30 text-cyan-300 border border-cyan-500/30 flex items-center gap-1 transition-all"
-                >
-                  <span>このAIの詳細へ</span>
-                  <ArrowRight className="w-3.5 h-3.5" />
-                </button>
+                {item.toolId ? (
+                  <button
+                    onClick={() => onSelectToolById(item.toolId!)}
+                    className="px-3.5 py-1.5 rounded-lg font-bold bg-cyan-600/20 hover:bg-cyan-600/30 text-cyan-300 border border-cyan-500/30 flex items-center gap-1 transition-all"
+                  >
+                    <span>このAIの詳細へ</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </button>
+                ) : (
+                  <span className="text-slate-500 text-xs">AI総合ニュース</span>
+                )}
               </div>
             </div>
           ))}
