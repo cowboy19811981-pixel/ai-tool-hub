@@ -7,27 +7,19 @@ export const imageTools: ToolSeedItem[] = [
     category: "image",
     categoryLabel: "画像生成・編集",
     badge: "芸術・画質No.1",
-    version: "v7 (Alpha) / v6.1 / Niji v6",
+    version: "v6.1 / Niji v6",
     versionFeatures: {
-      evolution: "v7アルファおよびv6.1によりフォトリアリズム、光と影の物理描写、精密な手足描画が極限へ到達。アニメ特化Niji v6とWeb版生成エディタを完備。",
+      evolution: "v6.1によりフォトリアリズム、光と影の物理描写、精密な手足描画が向上。アニメ特化Niji v6とWeb版生成エディタ（外部画像インペイント対応）を完備。",
       strengths: ["現実と見紛う映画クオリティの写実性", "圧倒的な美術的センス・構図力", "アニメ特化Nijiモデルの最高峰の絵柄", "Web版生成エディタでのインペイント・拡張"],
       weaknesses: ["無料プランが現在完全廃止", "DiscordまたはWebでの操作が必要"],
       architecture: "Proprietary Latent Diffusion Transformer",
       versionsList: [
         {
-          name: "Midjourney v7 (次世代先行)",
-          speed: "標準",
-          intelligence: "最高峰",
-          bestFor: "極限のフォトリアリズム、微細な陰影、複雑な群衆・背景整合性",
-          planAvailability: "有料サブスク全プラン ($10〜)",
-          description: "解像度とプロンプト理解力が大幅に進化した最新フロンティアモデル。"
-        },
-        {
           name: "Midjourney v6.1 (実写・アート)",
           speed: "高速",
           intelligence: "最高峰",
           bestFor: "映画的ライティング、皮膚・毛髪の質感、美術絵画",
-          planAvailability: "有料サブスク全プラン",
+          planAvailability: "有料サブスク全プラン ($10〜)",
           description: "写実性と光の表現において業界基準。安定した芸術的クオリティを提供。"
         },
         {
@@ -36,13 +28,13 @@ export const imageTools: ToolSeedItem[] = [
           intelligence: "最高峰",
           bestFor: "日本のアニメ調、イラスト、キャラクターデザイン、同人誌表紙",
           planAvailability: "有料サブスク全プラン",
-          description: "日本のイラストレーターの繊細なタッチを完璧に再現するアニメ特化モデル。"
+          description: "日本のイラストレーターの繊細なタッチを忠実に再現するアニメ特化モデル。"
         }
       ]
     },
     estimatedUsers: "1,600万人以上 / クリエイター支持率最高峰",
-    siteRegisteredCount: 1720,
-    votesCount: 2280,
+    siteRegisteredCount: 0,
+    votesCount: 0,
     rankScore: 98.2,
     categoryRank: 1,
     overallRank: 3,
@@ -82,7 +74,7 @@ export const imageTools: ToolSeedItem[] = [
     category: "image",
     categoryLabel: "画像生成・編集",
     badge: "現代の業界新標準",
-    version: "FLUX.1.1 [pro] / FLUX.1 [dev] / FLUX.2",
+    version: "FLUX.1.1 [pro] / FLUX.1 [dev] / FLUX.1 [schnell]",
     versionFeatures: {
       evolution: "Stable Diffusionの原作者陣（Black Forest Labs）が開発。FLUX.1.1 [pro]による6倍高速化と指・文字描写の完全制御を実現。",
       strengths: ["人間の指・手足の描写が圧倒的に破綻しない", "看板やTシャツの文字を指示通りに完璧に描画", "自然言語の指示への忠実度", "オープンウェイト（[dev]版）提供"],
@@ -116,8 +108,8 @@ export const imageTools: ToolSeedItem[] = [
       ]
     },
     estimatedUsers: "数百万人急増 / オープン系覇権",
-    siteRegisteredCount: 1450,
-    votesCount: 1980,
+    siteRegisteredCount: 0,
+    votesCount: 0,
     rankScore: 97.0,
     categoryRank: 2,
     overallRank: 6,
@@ -183,8 +175,8 @@ export const imageTools: ToolSeedItem[] = [
       ]
     },
     estimatedUsers: "数千万人 (オープンソースコミュニティ最大手)",
-    siteRegisteredCount: 1380,
-    votesCount: 1870,
+    siteRegisteredCount: 0,
+    votesCount: 0,
     rankScore: 95.9,
     categoryRank: 3,
     overallRank: 8,
@@ -232,8 +224,8 @@ export const imageTools: ToolSeedItem[] = [
       architecture: "OpenAI Auto-captioning Diffusion Architecture"
     },
     estimatedUsers: "1億人以上 (ChatGPT内蔵)",
-    siteRegisteredCount: 1510,
-    votesCount: 2010,
+    siteRegisteredCount: 0,
+    votesCount: 0,
     rankScore: 96.2,
     categoryRank: 4,
     overallRank: 7,
@@ -281,8 +273,8 @@ export const imageTools: ToolSeedItem[] = [
       architecture: "Adobe Proprietary Commercial Safe Engine"
     },
     estimatedUsers: "数千万人 (Creative Cloudユーザー)",
-    siteRegisteredCount: 1120,
-    votesCount: 1490,
+    siteRegisteredCount: 0,
+    votesCount: 0,
     rankScore: 92.8,
     categoryRank: 5,
     overallRank: 10,
@@ -330,8 +322,8 @@ export const imageTools: ToolSeedItem[] = [
       architecture: "Recraft Vector & Raster Generative Model"
     },
     estimatedUsers: "300万人以上 / UI/UXデザイナーに大人気",
-    siteRegisteredCount: 940,
-    votesCount: 1280,
+    siteRegisteredCount: 0,
+    votesCount: 0,
     rankScore: 91.5,
     categoryRank: 6,
     overallRank: 13,
@@ -379,8 +371,8 @@ export const imageTools: ToolSeedItem[] = [
       architecture: "Leonardo Proprietary Finetuned Diffusion"
     },
     estimatedUsers: "1,900万人以上",
-    siteRegisteredCount: 1190,
-    votesCount: 1530,
+    siteRegisteredCount: 0,
+    votesCount: 0,
     rankScore: 93.4,
     categoryRank: 7,
     overallRank: 9,
@@ -428,8 +420,8 @@ export const imageTools: ToolSeedItem[] = [
       architecture: "Ideogram Deep Co-Design Diffusion"
     },
     estimatedUsers: "800万人以上",
-    siteRegisteredCount: 880,
-    votesCount: 1140,
+    siteRegisteredCount: 0,
+    votesCount: 0,
     rankScore: 89.9,
     categoryRank: 8,
     overallRank: 15,
@@ -477,8 +469,8 @@ export const imageTools: ToolSeedItem[] = [
       architecture: "Canva Multi-Engine Design Pipeline"
     },
     estimatedUsers: "1億7,000万人 (Canvaグローバル)",
-    siteRegisteredCount: 1350,
-    votesCount: 1720,
+    siteRegisteredCount: 0,
+    votesCount: 0,
     rankScore: 94.1,
     categoryRank: 9,
     overallRank: 11,
@@ -526,8 +518,8 @@ export const imageTools: ToolSeedItem[] = [
       architecture: "Deep Hallucinative Upscaling Engine"
     },
     estimatedUsers: "数十万人 (ハイエンドフォトグラファー・スタジオ)",
-    siteRegisteredCount: 490,
-    votesCount: 620,
+    siteRegisteredCount: 0,
+    votesCount: 0,
     rankScore: 86.5,
     categoryRank: 10,
     overallRank: 25,

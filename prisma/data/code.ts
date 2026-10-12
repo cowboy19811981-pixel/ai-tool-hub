@@ -7,10 +7,10 @@ export const codeTools: ToolSeedItem[] = [
     category: "code",
     categoryLabel: "コード・開発",
     badge: "エンジニア界の絶対覇権",
-    version: "Agent / Composer (Claude 3.7 Sonnet & Gemini 2.0 Flash)",
+    version: "Agent / Composer (Claude 3.7 Sonnet & Gemini 3.8 Flash & GPT-6)",
     versionFeatures: {
       evolution: "VS Codeを完全フォークして設計。自律Agent機能によりプロジェクト全体の複数ファイルを同時に修正・作成し、ターミナルコマンドやテスト実行まで自律代行。",
-      strengths: ["リポジトリ全体のコードベースを完全把握（@codebase）", "複数ファイルを跨ぐ一括編集・リファクタリング（Composer）", "Claude 3.7 Sonnet & Gemini 2.0 Flashの超高速推論フル活用", "VS Codeの拡張機能・設定がワンクリックで完全移行"],
+      strengths: ["リポジトリ全体のコードベースを完全把握（@codebase）", "複数ファイルを跨ぐ一括編集・リファクタリング（Composer）", "Claude 3.7 Sonnet & Gemini 3.8 Flashの超高速推論フル活用", "VS Codeの拡張機能・設定がワンクリックで完全移行"],
       weaknesses: ["無料版の高速リクエスト制限がすぐに尽きる（Pro課金ほぼ前提）"],
       architecture: "Anysphere Custom Electron IDE + Fast Context Indexing",
       versionsList: [
@@ -23,12 +23,12 @@ export const codeTools: ToolSeedItem[] = [
           description: "Cursor利用者の大半が常時使用する最高峰モデル。思考モード併用で複雑なリファクタリングもミスゼロ。"
         },
         {
-          name: "Gemini 2.0 Flash (超爆速補完)",
+          name: "Gemini 3.8 Flash (超爆速補完)",
           speed: "超高速",
           intelligence: "高度",
           bestFor: "巨大リポジトリ全域検索、リアルタイムインライン補完、長大ログ解析",
           planAvailability: "Pro / API連携",
-          description: "Googleの最新爆速知能。数万行のコードベースを一瞬でスキャンしてミリ秒で最適な提案を返します。"
+          description: "Googleの最新主力爆速知能。数万行のコードベースを一瞬でスキャンしてミリ秒で最適な提案を返します。"
         },
         {
           name: "o3-mini (High Reasoning)",
@@ -41,8 +41,8 @@ export const codeTools: ToolSeedItem[] = [
       ]
     },
     estimatedUsers: "数百万エンジニア / IT業界で乗り換えラッシュ",
-    siteRegisteredCount: 1890,
-    votesCount: 2420,
+    siteRegisteredCount: 0,
+    votesCount: 0,
     rankScore: 99.5,
     categoryRank: 1,
     overallRank: 1,
@@ -55,7 +55,7 @@ export const codeTools: ToolSeedItem[] = [
     paidPlanDetails: {
       planName: "Cursor Pro",
       price: "$20 / 月",
-      unlockedFeatures: ["Claude 3.7 Sonnet / Gemini 2.0 Flashの高速リクエスト月500回", "低速リクエスト無制限", "Composerマルチファイル一括編集無制限", "最新Agent自律機能"],
+      unlockedFeatures: ["Claude 3.7 Sonnet / Gemini 3.8 Flashの高速リクエスト月500回", "低速リクエスト無制限", "Composerマルチファイル一括編集無制限", "最新Agent自律機能"],
       recommendedFor: "日常的にコードを書くすべてのプログラマー、Web開発者、個人開発者（課金必須の神器）"
     },
     paidWorthRating: 5,
@@ -65,7 +65,7 @@ export const codeTools: ToolSeedItem[] = [
     hasApi: false,
     hasApp: true,
     summary: "プログラミングの常識を覆したAIエディタ。アプリ全体の複数ファイルを一瞬で書き換えるエンジニアの神器。",
-    description: "いま世界のエンジニアがVS Codeから大挙して移行している最注目IDE。チャットで『この画面にダークモード追加して』と言うだけで、CSS、コンポーネント、状態管理の全ファイルをAIが自律探索して同時に正しく書き換えてくれます。Claude 3.7 SonnetやGemini 2.0 Flashを標準統合。",
+    description: "いま世界のエンジニアがVS Codeから大挙して移行している最注目IDE。チャットで『この画面にダークモード追加して』と言うだけで、CSS、コンポーネント、状態管理の全ファイルをAIが自律探索して同時に正しく書き換えてくれます。Claude 3.7 SonnetやGemini 3.8 Flashを標準統合。",
     pros: ["複数ファイルの一括修正が驚異的な精度で決まる", "VS Codeのプラグインやショートカットがそのまま使える", "開発速度が2倍〜3倍に跳ね上がる実感がある"],
     cons: ["Proプラン（月20ドル）に入らないと真価を発揮しにくい"],
     specs: {
@@ -82,16 +82,16 @@ export const codeTools: ToolSeedItem[] = [
     category: "code",
     categoryLabel: "コード・開発",
     badge: "全エンジニア標準装備",
-    version: "Copilot Workspace / Claude 3.7 & GPT-5切替対応",
+    version: "Copilot Workspace / Claude 3.7 & o3-mini & GPT-4o切替対応",
     versionFeatures: {
-      evolution: "GitHubリポジトリの全IssueやPRと直結。モデル選択機能によりClaude 3.7 Sonnet、GPT-5、o3-miniなどを自由に切り替えて補完・チャットが可能に。",
+      evolution: "GitHubリポジトリの全IssueやPRと直結。モデル選択機能によりClaude 3.7 Sonnet、o3-mini、GPT-4oなどを自由に切り替えて補完・チャットが可能に。",
       strengths: ["VS Code, JetBrains, Visual Studio等あらゆるエディタに対応", "GitHub上のIssueから直接仕様書・コードを自動起草", "個人向け無料プランが新設され手軽に利用可能", "企業のセキュリティ基準（コード非学習保証）"],
       weaknesses: ["Composerのような複数ファイルの一括自律書き換え速度はCursorに一歩及ばない"],
       architecture: "GitHub Multi-Model Cloud Agent"
     },
     estimatedUsers: "1,500万人以上 / 企業導入実績世界No.1",
-    siteRegisteredCount: 1650,
-    votesCount: 2180,
+    siteRegisteredCount: 0,
+    votesCount: 0,
     rankScore: 97.4,
     categoryRank: 2,
     overallRank: 4,
@@ -104,7 +104,7 @@ export const codeTools: ToolSeedItem[] = [
     paidPlanDetails: {
       planName: "GitHub Copilot Individual",
       price: "$10 / 月 (年払い $100)",
-      unlockedFeatures: ["コード補完・チャット完全無制限", "Claude 3.7 Sonnet / GPT-5 / o3-miniモデルの自由切替", "GitHub CLIでのAIコマンド支援"],
+      unlockedFeatures: ["コード補完・チャット完全無制限", "Claude 3.7 Sonnet / o3-mini / GPT-4oモデルの自由切替", "GitHub CLIでのAIコマンド支援"],
       recommendedFor: "VS CodeやIntelliJを愛用するプログラマー、月10ドルでコスパ良く無制限補完を使いたい人"
     },
     paidWorthRating: 5,
@@ -139,8 +139,8 @@ export const codeTools: ToolSeedItem[] = [
       architecture: "Autonomous ReAct Agent Loop with MCP Protocol"
     },
     estimatedUsers: "50万人以上急増 / ギーク・上級者に大絶賛",
-    siteRegisteredCount: 1280,
-    votesCount: 1690,
+    siteRegisteredCount: 0,
+    votesCount: 0,
     rankScore: 95.1,
     categoryRank: 3,
     overallRank: 7,
@@ -188,8 +188,8 @@ export const codeTools: ToolSeedItem[] = [
       architecture: "Vercel Generative UI Synthesis Engine"
     },
     estimatedUsers: "300万人以上 / Webデザイナー・フロント開発必携",
-    siteRegisteredCount: 1420,
-    votesCount: 1890,
+    siteRegisteredCount: 0,
+    votesCount: 0,
     rankScore: 96.3,
     categoryRank: 4,
     overallRank: 5,
@@ -237,8 +237,8 @@ export const codeTools: ToolSeedItem[] = [
       architecture: "StackBlitz WebContainers In-Browser Node Runtime"
     },
     estimatedUsers: "200万人以上急成長 / プロトタイピングの覇者",
-    siteRegisteredCount: 1350,
-    votesCount: 1780,
+    siteRegisteredCount: 0,
+    votesCount: 0,
     rankScore: 94.6,
     categoryRank: 5,
     overallRank: 8,
@@ -286,8 +286,8 @@ export const codeTools: ToolSeedItem[] = [
       architecture: "Codeium Proprietary Real-time Cascade Engine"
     },
     estimatedUsers: "100万人急増 / Cursorから乗り換えるエンジニア多数",
-    siteRegisteredCount: 1190,
-    votesCount: 1540,
+    siteRegisteredCount: 0,
+    votesCount: 0,
     rankScore: 93.8,
     categoryRank: 6,
     overallRank: 9,
@@ -335,8 +335,8 @@ export const codeTools: ToolSeedItem[] = [
       architecture: "Replit Cloud Container + Autonomous Agent Orchestrator"
     },
     estimatedUsers: "2,500万人以上",
-    siteRegisteredCount: 1110,
-    votesCount: 1420,
+    siteRegisteredCount: 0,
+    votesCount: 0,
     rankScore: 92.0,
     categoryRank: 7,
     overallRank: 12,
@@ -384,8 +384,8 @@ export const codeTools: ToolSeedItem[] = [
       architecture: "In-house High-Throughput Generative Code Engine"
     },
     estimatedUsers: "100万人以上の開発者",
-    siteRegisteredCount: 980,
-    votesCount: 1290,
+    siteRegisteredCount: 0,
+    votesCount: 0,
     rankScore: 91.0,
     categoryRank: 8,
     overallRank: 14,
@@ -433,8 +433,8 @@ export const codeTools: ToolSeedItem[] = [
       architecture: "Tabnine Secure Local & Private Cloud LLM"
     },
     estimatedUsers: "100万社以上の開発者（Fortune 500多数）",
-    siteRegisteredCount: 690,
-    votesCount: 880,
+    siteRegisteredCount: 0,
+    votesCount: 0,
     rankScore: 88.0,
     categoryRank: 9,
     overallRank: 21,
@@ -482,8 +482,8 @@ export const codeTools: ToolSeedItem[] = [
       architecture: "Cognition Autonomous Cognitive Architecture"
     },
     estimatedUsers: "招待制・数千社（世界トップテック企業）",
-    siteRegisteredCount: 790,
-    votesCount: 1040,
+    siteRegisteredCount: 0,
+    votesCount: 0,
     rankScore: 90.0,
     categoryRank: 10,
     overallRank: 17,

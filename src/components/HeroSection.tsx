@@ -59,12 +59,12 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
       <div className="aurora-glow top-12 right-1/4 w-96 h-96 bg-violet-600 rounded-full animate-pulse-slow pointer-events-none delay-1000" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* News Flash Ticker (12時間毎自動更新) */}
+        {/* News Flash Ticker (公式発表直結) */}
         {currentUpdate && (
           <div className="mb-8 inline-flex items-center gap-2 px-3 sm:px-4 py-2 rounded-full glass-panel border border-cyan-500/30 text-xs sm:text-sm text-slate-200 max-w-full overflow-hidden shadow-lg shadow-cyan-500/10">
-            <span className="flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-cyan-500/20 text-cyan-400 font-bold text-[11px] shrink-0 uppercase tracking-wider">
-              <Clock className="w-3 h-3 animate-spin" />
-              12H LIVE UPDATE
+            <span className="flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-cyan-500/20 text-cyan-400 font-bold text-[11px] shrink-0 uppercase tracking-wider border border-cyan-500/30">
+              <Clock className="w-3 h-3 text-cyan-400" />
+              <span>{currentUpdate.sourceName || "公式速報"}</span>
             </span>
             <span className="truncate font-medium text-slate-100">
               {currentUpdate.title}

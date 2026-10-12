@@ -6,29 +6,29 @@ export const generalTools: ToolSeedItem[] = [
     name: "ChatGPT",
     category: "general",
     categoryLabel: "総合（汎用LLM）",
-    badge: "絶対王者",
-    version: "o3-mini / o1 / GPT-4o / GPT-4o mini",
+    badge: "GPT-6 Astra推論",
+    version: "GPT-6 Astra / o3 / GPT-4o",
     versionFeatures: {
-      evolution: "最新の深層推論モデルo3-miniおよびo1シリーズ、マルチモーダルGPT-4oを統合。数学・コーディング・論理パズルで業界最高峰の正答率を実現。",
-      strengths: ["超高速マルチモーダル対話(GPT-4o)", "最高峰の推論力(o3-mini / o1)", "高度な音声会話モード", "業界最大のエコシステム"],
+      evolution: "次世代フロンティア知能「GPT-6 Astra」および深層推論モデル「o3」シリーズ、マルチモーダルGPT-4oを統合。複雑なタスクの自律遂行と最高峰の論理推論を実現。",
+      strengths: ["次世代フロンティア自律知能(GPT-6 Astra)", "最高峰の推論力(o3 / o1)", "超低遅延リアルタイム音声会話", "業界最大のエコシステム"],
       weaknesses: ["高度な推論機能の利用枠が無料版では制限あり"],
-      architecture: "OpenAI o-Series Reasoning Engine & GPT-4o Multimodal Architecture",
+      architecture: "OpenAI GPT-6 Astra Architecture & o-Series Reasoning Engine",
       versionsList: [
         {
-          name: "o1 (Full Reasoning)",
-          speed: "じっくり推論",
+          name: "GPT-6 Astra",
+          speed: "超高速",
           intelligence: "最高峰",
-          bestFor: "フロンティア級数学・難関コーディング・科学的ブレイクスルー検証",
+          bestFor: "自律エージェント遂行、超高度な複合課題解決、全感覚マルチモーダル対話",
           planAvailability: "Plus / Pro限定",
-          description: "思考プロセスを展開しながら難問を多段階で解き明かすOpenAIの最高峰推論モデル。"
+          description: "OpenAIが発表した次世代基盤モデル。深い世界理解と自律的な計画遂行能力を備える。"
         },
         {
-          name: "o3-mini (Fast Reasoning)",
-          speed: "高速",
+          name: "o3 (Full Reasoning)",
+          speed: "じっくり推論",
           intelligence: "最高峰",
-          bestFor: "競技プログラミング、数学、高難度タスクの高速処理",
-          planAvailability: "無料 / Plus / API",
-          description: "最新のo3アーキテクチャを採用し、驚異的なレスポンス速度と高い推論力を両立させた主力モデル。"
+          bestFor: "フロンティア級数学・難関システム設計・科学的仮説検証",
+          planAvailability: "Plus / Pro限定",
+          description: "思考プロセスを展開しながら難問を多段階で解き明かす最高峰推論モデル。"
         },
         {
           name: "GPT-4o (Omni)",
@@ -41,8 +41,8 @@ export const generalTools: ToolSeedItem[] = [
       ]
     },
     estimatedUsers: "2億人以上 / 世界No.1",
-    siteRegisteredCount: 1845,
-    votesCount: 2340,
+    siteRegisteredCount: 0,
+    votesCount: 0,
     rankScore: 99.4,
     categoryRank: 1,
     overallRank: 1,
@@ -116,8 +116,8 @@ export const generalTools: ToolSeedItem[] = [
       ]
     },
     estimatedUsers: "数千万人 / 実務層シェア急拡大",
-    siteRegisteredCount: 1620,
-    votesCount: 2150,
+    siteRegisteredCount: 0,
+    votesCount: 0,
     rankScore: 98.7,
     categoryRank: 2,
     overallRank: 2,
@@ -156,16 +156,16 @@ export const generalTools: ToolSeedItem[] = [
     name: "Gemini",
     category: "general",
     categoryLabel: "総合（汎用LLM）",
-    badge: "2.0 Flash爆速推論",
-    version: "Gemini 2.0 Flash / Gemini 1.5 Pro",
+    badge: "Gemini 3.8 / Pro 4",
+    version: "Gemini 3.8 Flash / Gemini Pro 4",
     versionFeatures: {
-      evolution: "Google DeepMindの次世代Gemini 2.0 Flashにより、思考速度を凌駕する低遅延推論と、最大200万トークンの巨大コンテキスト・ネイティブ音声対話力を獲得。",
-      strengths: ["超低遅延・高スループット推論(2.0 Flash)", "200万トークンの長大コンテキスト（動画・音声・PDF丸ごと）", "Google Workspace / Android / Searchの深層連携", "無料枠が極めて潤沢"],
-      weaknesses: ["高度なクリエイティブ文芸表現での語彙の硬さ"],
-      architecture: "Google DeepMind Gemini 2.0 Native Multimodal Architecture",
+      evolution: "Google DeepMindの最新主力「Gemini 3.8 Flash」と、エンタープライズ実務で導入が進む「Gemini Pro 4」を統合。数百万トークンの長大コンテキストとGoogleエコシステム連携を両立。",
+      strengths: ["最新3.8世代の低遅延爆速推論", "企業導入が進むGemini Pro 4の圧倒的論理力", "巨大コンテキストによる書籍・長尺動画の一括処理", "無料枠が極めて潤沢"],
+      weaknesses: ["文芸的なクリエイティブ表現での語彙の硬さ"],
+      architecture: "Google DeepMind Gemini 3.8 / Pro 4 Native Multimodal Architecture",
       versionsList: [
         {
-          name: "Gemini 2.0 Flash",
+          name: "Gemini 3.8 Flash",
           speed: "超高速",
           intelligence: "高度",
           bestFor: "リアルタイム対話、大容量ドキュメント・動画分析、高速API呼び出し",
@@ -173,40 +173,40 @@ export const generalTools: ToolSeedItem[] = [
           description: "Googleの最新主力高速モデル。次世代マルチモーダル処理と低レイテンシ推論を兼ね備える。"
         },
         {
-          name: "Gemini 1.5 Pro",
+          name: "Gemini Pro 4",
           speed: "高速",
           intelligence: "最高峰",
-          bestFor: "超複雑な科学的推論、マルチモーダル深層解析、長編書籍・コードベース分析",
-          planAvailability: "Gemini Advanced (有料) / API",
-          description: "Google DeepMindの最高峰知能モデル。最大200万トークン対応で、長大な映像や膨大なPDFを一括解析。"
+          bestFor: "企業エンタープライズ業務、超複雑な科学的推論、マルチモーダル深層解析",
+          planAvailability: "Gemini Advanced (有料) / Enterprise API",
+          description: "Google DeepMindの次世代最高峰知能モデル。ビジネス実務や企業システムで活用が急拡大中。"
         },
         {
-          name: "Gemini 2.0 Flash Thinking",
-          speed: "標準",
-          intelligence: "最高峰",
-          bestFor: "数学、プログラミング、複雑な論理パズル",
-          planAvailability: "Google AI Studio / 実験プレビュー",
-          description: "思考プロセスを出力しながら論理的整合性を検証する推論特化型モデル。"
+          name: "Gemini 3.5 Flash",
+          speed: "超高速",
+          intelligence: "高度",
+          bestFor: "日常チャット、高速ドキュメント要約、安定稼働API",
+          planAvailability: "無料 / API",
+          description: "安定した高スループットと低コストを両立した実力派モデル。"
         }
       ]
     },
     estimatedUsers: "1億人以上 / Googleエコシステム統合",
-    siteRegisteredCount: 1420,
-    votesCount: 1980,
+    siteRegisteredCount: 0,
+    votesCount: 0,
     rankScore: 97.2,
     categoryRank: 3,
     overallRank: 3,
     pricingType: "フリーミアム",
     pricingMonthly: "無料 / Advanced 月額2,900円 (Google One 2TB付き)",
     freePlanDetails: {
-      limits: "Gemini 2.0 Flashがほぼ無制限に超高速推論で利用可能。",
-      allowedFeatures: ["2.0 Flash使い放題", "YouTube動画やWebのリアルタイム要約", "Imagen 3による高精細画像生成", "Googleアプリ連携"]
+      limits: "Gemini 3.8 Flashがほぼ無制限に超高速推論で利用可能。",
+      allowedFeatures: ["3.8 Flash使い放題", "YouTube動画やWebのリアルタイム要約", "Imagen 3による高精細画像生成", "Googleアプリ連携"]
     },
     paidPlanDetails: {
       planName: "Gemini Advanced",
       price: "月額 2,900円",
-      unlockedFeatures: ["Gemini 1.5 Pro（最大200万トークン）優先利用", "Google One 2TBクラウドストレージ付属", "Gmail・Docs・Sheets内での直接Gemini利用", "Gems（カスタムAI）の作成"],
-      recommendedFor: "Googleサービスを日常的に使っている人、長尺動画や巨大PDFを丸ごと分析したい人"
+      unlockedFeatures: ["Gemini Pro 4（企業級最高峰知能）優先利用", "Google One 2TBクラウドストレージ付属", "Gmail・Docs・Sheets内での直接Gemini利用", "Gems（カスタムAI）の作成"],
+      recommendedFor: "Googleサービスを日常的に使っている人、最先端Pro 4の推論力をビジネスで駆使したい人"
     },
     paidWorthRating: 5,
     hasFreeTier: true,
@@ -214,15 +214,15 @@ export const generalTools: ToolSeedItem[] = [
     commercialUse: true,
     hasApi: true,
     hasApp: true,
-    summary: "Googleの全技術が結集。爆速Gemini 2.0 Flashと本数百冊分・長編動画を一撃で読む200万コンテキスト。",
-    description: "Google DeepMindが開発した最先端マルチモーダルAI。YouTube動画のURLを渡すだけで内容を完全要約したり、巨大なPDFや動画ファイルを丸ごと読み込ませて質問できます。最新Gemini 2.0 Flashによる思考速度を超えるレスポンスと、Google Workspaceとの密接な連携が強み。",
-    pros: ["Gemini 2.0 Flashの無料枠が非常に潤沢で爆速", "YouTubeやGoogleドライブとのシームレス連携", "長編動画や巨大コードベースを直接理解できる唯一無二の能力"],
+    summary: "Googleの最新技術が集結。爆速Gemini 3.8 Flashと企業導入が進むGemini Pro 4を搭載。",
+    description: "Google DeepMindが開発した最先端マルチモーダルAI。主力高速モデルGemini 3.8 Flashによる思考速度を超えるレスポンスと、企業向けに導入が進むGemini Pro 4による圧倒的な論理推論を提供します。YouTube動画の要約や長尺ドキュメントの一括解析、Google Workspace連携が強み。",
+    pros: ["Gemini 3.8 Flashの無料枠が非常に潤沢で爆速", "エンタープライズ対応のGemini Pro 4による高精度推論", "長編動画や巨大コードベースを直接理解できる唯一無二の能力"],
     cons: ["文芸的なクリエイティブ表現ではClaudeに分がある場合がある"],
     specs: {
       contextWindow: "100万〜200万トークン (本数千ページ・数時間の動画相当)",
       multimodal: "テキスト・音声・画像・動画・ファイル",
       company: "Google",
-      releaseYear: "2023 (最新版2025)"
+      releaseYear: "2026 (最新版 Gemini 3.8 / Pro 4)"
     },
     officialUrl: "https://gemini.google.com"
   },
@@ -231,17 +231,17 @@ export const generalTools: ToolSeedItem[] = [
     name: "Perplexity",
     category: "general",
     categoryLabel: "総合（汎用LLM）",
-    badge: "検索の未来",
-    version: "Sonar / Pro Search (Claude 3.7 & o3-mini & Gemini 2.0 Flash統合)",
+    badge: "次世代検索",
+    version: "Sonar / Pro Search (GPT-6 & Claude 3.7 & Gemini 3.8統合)",
     versionFeatures: {
       evolution: "Web全体を瞬時にスクレイピング・ファクトチェックし、学術論文から最新ニュースまで出典番号付きで回答。",
-      strengths: ["完全な出典リンク明記でハルシネーション抑制", "Pro Searchによる段階的深掘りリサーチ", "Claude 3.7 / o3-mini / Gemini 2.0 Flashモデルの自由選択", "Pages機能によるレポート自動作成"],
+      strengths: ["完全な出典リンク明記でハルシネーション抑制", "Pro Searchによる段階的深掘りリサーチ", "GPT-6 / Claude 3.7 / Gemini 3.8モデルの自由選択", "Pages機能によるレポート自動作成"],
       weaknesses: ["創作小説や自由対話には特化していない"],
       architecture: "Perplexity Deep Research Engine & Sonar Model"
     },
     estimatedUsers: "2,000万人以上 / 急成長AI検索",
-    siteRegisteredCount: 1380,
-    votesCount: 1890,
+    siteRegisteredCount: 0,
+    votesCount: 0,
     rankScore: 96.8,
     categoryRank: 4,
     overallRank: 4,
@@ -289,8 +289,8 @@ export const generalTools: ToolSeedItem[] = [
       architecture: "DeepSeek Multi-head Latent Attention (MLA) & MoE"
     },
     estimatedUsers: "数千万人急増 / 世界アプリランキング1位獲得",
-    siteRegisteredCount: 1510,
-    votesCount: 2050,
+    siteRegisteredCount: 0,
+    votesCount: 0,
     rankScore: 97.5,
     categoryRank: 5,
     overallRank: 5,
@@ -338,8 +338,8 @@ export const generalTools: ToolSeedItem[] = [
       architecture: "OpenAI GPT-4o on Azure AI Infrastructure"
     },
     estimatedUsers: "数千万人以上 / 法人導入シェア最大",
-    siteRegisteredCount: 980,
-    votesCount: 1320,
+    siteRegisteredCount: 0,
+    votesCount: 0,
     rankScore: 92.4,
     categoryRank: 6,
     overallRank: 8,
@@ -387,8 +387,8 @@ export const generalTools: ToolSeedItem[] = [
       architecture: "xAI Frontier Cluster Architecture"
     },
     estimatedUsers: "数千万人 (Xプレミアムユーザー層)",
-    siteRegisteredCount: 820,
-    votesCount: 1100,
+    siteRegisteredCount: 0,
+    votesCount: 0,
     rankScore: 90.2,
     categoryRank: 7,
     overallRank: 10,
@@ -436,8 +436,8 @@ export const generalTools: ToolSeedItem[] = [
       architecture: "Mistral MoE (Mixture of Experts) Architecture"
     },
     estimatedUsers: "数百万人 / 開発者・欧州圏急増",
-    siteRegisteredCount: 780,
-    votesCount: 950,
+    siteRegisteredCount: 0,
+    votesCount: 0,
     rankScore: 89.5,
     categoryRank: 8,
     overallRank: 12,
@@ -485,8 +485,8 @@ export const generalTools: ToolSeedItem[] = [
       architecture: "Quora Unified Model Aggregation API"
     },
     estimatedUsers: "1,200万人以上 / 定番AIポータル",
-    siteRegisteredCount: 860,
-    votesCount: 1120,
+    siteRegisteredCount: 0,
+    votesCount: 0,
     rankScore: 89.8,
     categoryRank: 9,
     overallRank: 11,
@@ -534,8 +534,8 @@ export const generalTools: ToolSeedItem[] = [
       architecture: "Parallel Autonomous Agent Swarm"
     },
     estimatedUsers: "数百万人 / 急成長中の次世代検索",
-    siteRegisteredCount: 710,
-    votesCount: 890,
+    siteRegisteredCount: 0,
+    votesCount: 0,
     rankScore: 88.3,
     categoryRank: 10,
     overallRank: 15,

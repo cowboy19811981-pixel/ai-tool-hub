@@ -59,12 +59,15 @@ export async function fetchOfficialAINews(itemsPerFeed = 2): Promise<OfficialNew
 
   for (const feed of OFFICIAL_AI_FEEDS) {
     try {
+      const controller = new AbortController();
+      const timer = setTimeout(() => controller.abort(), 6000);
       const res = await fetch(feed.url, {
+        signal: controller.signal,
         headers: {
-          "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AI-Compass-Portal-Official-Sync/1.0",
+          "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36",
         },
-        next: { revalidate: 0 },
       });
+      clearTimeout(timer);
 
       if (!res.ok) {
         console.warn(`[OfficialNews] ${feed.sourceName} returned status ${res.status}`);
@@ -153,7 +156,7 @@ export async function fetchOfficialAINews(itemsPerFeed = 2): Promise<OfficialNew
 export async function summarizeOfficialRelease(
   item: OfficialNewsItem,
   apiKey?: string,
-  modelName = "gemini-2.0-flash"
+  modelName = process.env.GEMINI_MODEL || "gemini-3.5-flash"
 ): Promise<string> {
   if (apiKey && apiKey.trim() !== "") {
     try {
@@ -168,8 +171,15 @@ export async function summarizeOfficialRelease(
 【公式タイトル】: ${item.title}
 【概要抜粋】: ${item.snippet || "なし"}
 `;
-      const res = await model.generateContent(prompt);
-      const text = res.response.text().trim();
+      // 6秒タイムアウト付きでGemini要約を呼び出し
+      const timeoutPromise = new Promise<null>((_, reject) =>
+        setTimeout(() => reject(new Error("Gemini timeout")), 6000)
+      );
+      const res: any = await Promise.race([
+        model.generateContent(prompt),
+        timeoutPromise,
+      ]);
+      const text = res?.response?.text()?.trim();
       if (text && text.includes("・")) {
         return text;
       }
@@ -178,10 +188,11 @@ export async function summarizeOfficialRelease(
     }
   }
 
-  // フォールバック要約（公式発表の事実に基づくクリーンな要約）
-  return `・${item.sourceName}による公式発表「${item.title}」が公開されました。
-・機能改善や新技術の導入について、開発元公式より詳細がアナウンスされています。
-・一次情報の詳細は公式リンク（${item.sourceName}）にて確認できます。`;
+  // フォールバック要約（公式発表の抜粋を用いた具体的で確実な要約）
+  const cleanSnippet = item.snippet ? item.snippet.replace(/\s+/g, " ").slice(0, 100) : "";
+  return `・${item.sourceName}より最新の公式アナウンスが公開されました。
+${cleanSnippet ? `・公式概要: ${cleanSnippet}…` : "・最新の機能改善・モデル仕様が公式アップデートされています。"}
+・公式発表の詳細全文は添付の一次情報リンクよりご確認いただけます。`;
 }
 
 /**
@@ -192,7 +203,7 @@ export async function syncLiveAINews(
   limit = 6
 ): Promise<{ addedCount: number; newItems: any[] }> {
   const apiKey = process.env.GEMINI_API_KEY;
-  const modelName = process.env.GEMINI_MODEL || "gemini-2.0-flash";
+  const modelName = process.env.GEMINI_MODEL || "gemini-3.5-flash";
 
   const rawItems = await fetchOfficialAINews(2);
   const newItems: any[] = [];

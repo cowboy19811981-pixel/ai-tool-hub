@@ -31,7 +31,7 @@ export async function POST(req: NextRequest) {
     });
 
     const apiKey = process.env.GEMINI_API_KEY;
-    const modelName = process.env.GEMINI_MODEL || "gemini-2.0-flash";
+    const modelName = process.env.GEMINI_MODEL || "gemini-3.8-flash";
 
     // 1. Gemini API呼び出し (キーがある場合)
     if (apiKey && apiKey.trim() !== "") {

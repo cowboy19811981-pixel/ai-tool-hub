@@ -9,7 +9,8 @@
     "lint": "next lint",
     "db:push": "prisma db push",
     "db:seed": "tsx prisma/seed.ts",
-    "cron:update": "tsx scripts/fetch-updates.ts"
+    "cron:update": "tsx scripts/fetch-updates.ts",
+    "sync:official": "tsx scripts/sync-official-specs.ts"
   },
   "prisma": {
     "seed": "tsx prisma/seed.ts"

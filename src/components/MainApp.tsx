@@ -155,6 +155,7 @@ export const MainApp: React.FC<MainAppProps> = ({
           onVote={handleVote}
           onSelectTool={(tool) => setSelectedTool(tool)}
           searchQuery={searchQuery}
+          onSyncTools={(newTools) => setTools(newTools)}
         />
 
         {/* Output Comparison Benchmark Showcase */}

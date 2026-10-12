@@ -139,22 +139,15 @@ async function main() {
     });
   }
 
-  // 4. 最新アップデートニュース
-  console.log(`📰 Seeding ${updatesData.length} updates...`);
-  // 既存のUpdateをクリーンアップしてから投入
+  // 4. 公式最新ニュースの直接同期（各社公式サイト一次情報）
+  console.log("📰 Fetching real official live AI news from official feeds...");
   await prisma.update.deleteMany();
-  for (const update of updatesData) {
-    await prisma.update.create({
-      data: {
-        toolId: update.toolId,
-        title: update.title,
-        summary3Lines: update.summary3Lines,
-        sourceUrl: update.sourceUrl,
-        sourceName: update.sourceName || "公式発表",
-        category: update.category || (update.toolId ? "update" : "news"),
-        publishedAt: update.publishedAt,
-      },
-    });
+  try {
+    const { syncLiveAINews } = await import("../src/lib/news-fetcher");
+    const newsResult = await syncLiveAINews(prisma, 6);
+    console.log(`✅ Synced ${newsResult.addedCount} official live AI news items directly from primary sources!`);
+  } catch (err) {
+    console.warn("⚠️ Failed to sync live news during seed (will sync on cron):", err);
   }
 
   console.log("✅ Database seed completed successfully!");
