@@ -1,0 +1,79 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Tool {
+  id                  String   @id
+  name                String
+  category            String   // general, writing, image, video, audio, code
+  categoryLabel       String   // 総合, 文書・リサーチ, 画像生成, 映像・動画, 音楽・音声, コード・開発
+  badge               String?  // 注目, 定番, 神ツール, 急上昇
+  version             String
+  versionFeatures     String   // JSON string of version characteristics
+  estimatedUsers      String   // e.g. "2億人以上", "1,600万人以上"
+  siteRegisteredCount Int      @default(0)
+  votesCount          Int      @default(0)
+  rankScore           Float    @default(0)
+  categoryRank        Int      @default(1)
+  overallRank         Int      @default(1)
+  pricingType         String   // 無料, フリーミアム, 有料, 従量課金
+  pricingMonthly      String   // e.g. "無料 / 月$20 (約3,000円)"
+  freePlanDetails     String   // JSON string
+  paidPlanDetails     String   // JSON string
+  paidWorthRating     Int      @default(4) // 1 - 5
+  hasFreeTier         Boolean  @default(true)
+  supportsJapanese    Boolean  @default(true)
+  commercialUse       Boolean  @default(true)
+  hasApi              Boolean  @default(true)
+  hasApp              Boolean  @default(true)
+  summary             String
+  description         String
+  pros                String   // JSON string array
+  cons                String   // JSON string array
+  specs               String   // JSON string object
+  officialUrl         String
+  affiliateUrl        String?
+  lastUpdated         DateTime @default(now())
+  createdAt           DateTime @default(now())
+  updatedAt           DateTime @updatedAt
+
+  updates             Update[]
+  prompts             Prompt[]
+}
+
+model Update {
+  id            String   @id @default(cuid())
+  toolId        String
+  tool          Tool     @relation(fields: [toolId], references: [id], onDelete: Cascade)
+  title         String
+  summary3Lines String
+  sourceUrl     String?
+  publishedAt   DateTime @default(now())
+  createdAt     DateTime @default(now())
+}
+
+model Prompt {
+  id               String   @id @default(cuid())
+  toolId           String
+  tool             Tool     @relation(fields: [toolId], references: [id], onDelete: Cascade)
+  category         String
+  title            String
+  promptText       String
+  bestPracticeTips String?
+  copiedCount      Int      @default(0)
+  createdAt        DateTime @default(now())
+}
+
+model GalleryItem {
+  id          String   @id @default(cuid())
+  theme       String
+  category    String
+  inputPrompt String
+  comparisons String   // JSON string
+  createdAt   DateTime @default(now())
+}
