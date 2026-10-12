@@ -12,7 +12,8 @@ import {
   X,
   TrendingUp,
   SlidersHorizontal,
-  Layers
+  Layers,
+  Clock
 } from "lucide-react";
 
 interface HeaderProps {
