@@ -20,7 +20,9 @@ import {
   Info,
   Cpu,
   Globe,
-  RefreshCw
+  RefreshCw,
+  LayoutGrid,
+  Table
 } from "lucide-react";
 import { ToolItem } from "@/types";
 
@@ -49,6 +51,7 @@ export const CatalogSection: React.FC<CatalogSectionProps> = ({
 }) => {
   const [selectedCategory, setSelectedCategory] = useState<string>("all");
   const [sortBy, setSortBy] = useState<"rank" | "users" | "updated" | "worth">("rank");
+  const [viewMode, setViewMode] = useState<"grid" | "table">("grid");
   const [isSyncingOfficial, setIsSyncingOfficial] = useState(false);
   const [syncMessage, setSyncMessage] = useState<string | null>(null);
 
@@ -297,14 +300,42 @@ export const CatalogSection: React.FC<CatalogSectionProps> = ({
           )}
         </div>
 
-        {/* Tools Count Indicator */}
-        <div className="flex items-center justify-between text-sm text-slate-300 mb-4 px-1 font-medium">
-          <span>表示中: <strong className="text-white font-extrabold text-base">{filteredTools.length}</strong> 件のAIサービス</span>
-          <span className="text-cyan-400">※最大3ツールを選択して画面下部で横並び比較可能</span>
+        {/* Tools Count Indicator & View Mode Toggle */}
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-sm text-slate-300 mb-4 px-1 font-medium">
+          <div className="flex items-center gap-2">
+            <span>表示中: <strong className="text-white font-extrabold text-base">{filteredTools.length}</strong> 件のAIサービス</span>
+            <span className="hidden sm:inline text-xs text-slate-400">（最大3件を選択して比較ドックで並列比較可能）</span>
+          </div>
+
+          <div className="flex items-center gap-1.5 self-end sm:self-auto bg-slate-900/90 p-1 rounded-xl border border-slate-800">
+            <button
+              onClick={() => setViewMode("grid")}
+              className={`px-3 py-1.5 rounded-lg text-xs font-bold flex items-center gap-1.5 transition-all ${
+                viewMode === "grid"
+                  ? "bg-cyan-500 text-slate-950 shadow-md shadow-cyan-500/20"
+                  : "text-slate-400 hover:text-white"
+              }`}
+            >
+              <LayoutGrid className="w-3.5 h-3.5" />
+              <span>カード表示</span>
+            </button>
+            <button
+              onClick={() => setViewMode("table")}
+              className={`px-3 py-1.5 rounded-lg text-xs font-bold flex items-center gap-1.5 transition-all ${
+                viewMode === "table"
+                  ? "bg-cyan-500 text-slate-950 shadow-md shadow-cyan-500/20"
+                  : "text-slate-400 hover:text-white"
+              }`}
+            >
+              <Table className="w-3.5 h-3.5" />
+              <span>比較リスト表示</span>
+            </button>
+          </div>
         </div>
 
-        {/* Tools Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* Tools Display: Grid or Table Mode */}
+        {viewMode === "grid" ? (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredTools.map((tool) => {
             const isSaved = savedToolIds.includes(tool.id);
             const isCompared = compareToolIds.includes(tool.id);
@@ -494,6 +525,152 @@ export const CatalogSection: React.FC<CatalogSectionProps> = ({
             );
           })}
         </div>
+        ) : (
+          /* Table Comparison Mode */
+          <div className="rounded-2xl border border-slate-800 overflow-hidden bg-slate-900/80 shadow-xl">
+            <div className="overflow-x-auto">
+              <table className="w-full text-left border-collapse text-xs sm:text-sm">
+                <thead>
+                  <tr className="bg-slate-950/90 text-slate-400 font-bold border-b border-slate-800">
+                    <th className="py-3.5 px-4 w-16 text-center">順位</th>
+                    <th className="py-3.5 px-4 min-w-[200px]">AIツール名 / 特長</th>
+                    <th className="py-3.5 px-3 min-w-[100px]">カテゴリ</th>
+                    <th className="py-3.5 px-3 min-w-[140px]">現行バージョン</th>
+                    <th className="py-3.5 px-3 min-w-[160px]">月額料金</th>
+                    <th className="py-3.5 px-3 text-center">無料枠</th>
+                    <th className="py-3.5 px-3 text-center">日本語</th>
+                    <th className="py-3.5 px-3 text-center">商用利用</th>
+                    <th className="py-3.5 px-4 text-right min-w-[180px]">操作・比較</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-slate-800/80">
+                  {filteredTools.map((tool) => {
+                    const isSaved = savedToolIds.includes(tool.id);
+                    const isCompared = compareToolIds.includes(tool.id);
+
+                    return (
+                      <tr
+                        key={tool.id}
+                        className={`hover:bg-slate-800/50 transition-colors ${
+                          isCompared ? "bg-cyan-950/20" : ""
+                        }`}
+                      >
+                        <td className="py-3.5 px-4 text-center font-bold font-mono">
+                          <span
+                            className={`inline-block px-2 py-0.5 rounded text-xs ${
+                              tool.categoryRank === 1
+                                ? "bg-amber-400/20 text-amber-300 font-black"
+                                : tool.categoryRank === 2
+                                ? "bg-slate-300/20 text-slate-100 font-bold"
+                                : tool.categoryRank === 3
+                                ? "bg-amber-700/20 text-amber-500 font-bold"
+                                : "text-slate-400"
+                            }`}
+                          >
+                            {tool.categoryRank}位
+                          </span>
+                        </td>
+
+                        <td className="py-3.5 px-4">
+                          <div className="flex items-center gap-2">
+                            <span
+                              onClick={() => onSelectTool(tool)}
+                              className="font-bold text-white hover:text-cyan-400 transition-colors cursor-pointer text-sm sm:text-base"
+                            >
+                              {tool.name}
+                            </span>
+                            {tool.badge && (
+                              <span className="px-1.5 py-0.2 rounded text-[10px] font-bold bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">
+                                {tool.badge}
+                              </span>
+                            )}
+                          </div>
+                          <p className="text-[11px] text-slate-400 line-clamp-1 mt-0.5">
+                            {tool.summary}
+                          </p>
+                        </td>
+
+                        <td className="py-3.5 px-3">
+                          <span className="px-2 py-0.5 rounded text-xs bg-slate-800 text-slate-300">
+                            {tool.categoryLabel}
+                          </span>
+                        </td>
+
+                        <td className="py-3.5 px-3 font-mono font-semibold text-cyan-300">
+                          {tool.version}
+                        </td>
+
+                        <td className="py-3.5 px-3 text-slate-200 font-medium">
+                          {tool.pricingMonthly}
+                        </td>
+
+                        <td className="py-3.5 px-3 text-center font-bold">
+                          {tool.hasFreeTier ? (
+                            <span className="text-emerald-400">あり</span>
+                          ) : (
+                            <span className="text-slate-500">なし</span>
+                          )}
+                        </td>
+
+                        <td className="py-3.5 px-3 text-center font-bold">
+                          {tool.supportsJapanese ? (
+                            <span className="text-emerald-400">対応</span>
+                          ) : (
+                            <span className="text-slate-500">英語のみ</span>
+                          )}
+                        </td>
+
+                        <td className="py-3.5 px-3 text-center font-bold">
+                          {tool.commercialUse ? (
+                            <span className="text-emerald-400">OK</span>
+                          ) : (
+                            <span className="text-amber-400">要確認</span>
+                          )}
+                        </td>
+
+                        <td className="py-3.5 px-4 text-right">
+                          <div className="flex items-center justify-end gap-1.5">
+                            <button
+                              onClick={() => onToggleCompare(tool.id)}
+                              className={`p-1.5 rounded-lg text-xs font-bold transition-all ${
+                                isCompared
+                                  ? "bg-cyan-500 text-slate-950"
+                                  : "bg-slate-800 text-slate-300 hover:text-white hover:bg-slate-700"
+                              }`}
+                              title={isCompared ? "比較解除" : "比較に追加"}
+                            >
+                              <Plus className="w-3.5 h-3.5" />
+                            </button>
+
+                            <button
+                              onClick={() => onToggleSave(tool.id)}
+                              className={`p-1.5 rounded-lg text-xs transition-all ${
+                                isSaved
+                                  ? "bg-cyan-500/20 text-cyan-400 border border-cyan-500/30"
+                                  : "bg-slate-800 text-slate-400 hover:text-white"
+                              }`}
+                              title={isSaved ? "保存済み" : "保存する"}
+                            >
+                              <Bookmark className={`w-3.5 h-3.5 ${isSaved ? "fill-cyan-400" : ""}`} />
+                            </button>
+
+                            <button
+                              onClick={() => onSelectTool(tool)}
+                              className="px-2.5 py-1.5 rounded-lg text-xs font-bold bg-cyan-600/20 hover:bg-cyan-600/30 text-cyan-300 border border-cyan-500/30 flex items-center gap-1"
+                            >
+                              <span>詳細</span>
+                              <ChevronRight className="w-4 h-4" />
+                            </button>
+                          </div>
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        )}
 
         {/* Empty Result */}
         {filteredTools.length === 0 && (

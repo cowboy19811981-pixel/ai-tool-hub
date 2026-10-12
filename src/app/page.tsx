@@ -14,10 +14,10 @@ export default async function HomePage() {
     ],
   });
 
-  // DBから最新ニュース取得 (直近12件)
+  // DBから最新ニュース取得 (直近30件)
   const dbUpdates = await prisma.update.findMany({
     orderBy: { publishedAt: "desc" },
-    take: 12,
+    take: 30,
   });
 
   // DBからプロンプト取得

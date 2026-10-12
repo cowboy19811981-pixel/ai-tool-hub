@@ -8,7 +8,7 @@ export interface OfficialFeedConfig {
   officialDomain: string;
 }
 
-// AI開発元の公式一次情報フィード一覧（ゴシップ・二次メディアを完全排除）
+// AI開発元の公式一次情報フィード一覧（公式一次ソース＋高鮮度AI速報）
 export const OFFICIAL_AI_FEEDS: OfficialFeedConfig[] = [
   {
     sourceName: "OpenAI 公式発表",
@@ -23,10 +23,16 @@ export const OFFICIAL_AI_FEEDS: OfficialFeedConfig[] = [
     officialDomain: "blog.google",
   },
   {
-    sourceName: "Hugging Face 公式ブログ",
-    url: "https://huggingface.co/blog/feed.xml",
-    defaultToolId: null,
-    officialDomain: "huggingface.co",
+    sourceName: "Anthropic 公式ブログ",
+    url: "https://www.anthropic.com/feed.xml",
+    defaultToolId: "claude",
+    officialDomain: "anthropic.com",
+  },
+  {
+    sourceName: "Microsoft AI 公式",
+    url: "https://blogs.microsoft.com/ai/feed/",
+    defaultToolId: "copilot",
+    officialDomain: "microsoft.com",
   },
   {
     sourceName: "GitHub Copilot 公式リリース",
@@ -35,10 +41,22 @@ export const OFFICIAL_AI_FEEDS: OfficialFeedConfig[] = [
     officialDomain: "github.blog",
   },
   {
-    sourceName: "AWS Machine Learning & AI 公式",
+    sourceName: "Hugging Face 公式ブログ",
+    url: "https://huggingface.co/blog/feed.xml",
+    defaultToolId: null,
+    officialDomain: "huggingface.co",
+  },
+  {
+    sourceName: "AWS AI 公式",
     url: "https://aws.amazon.com/blogs/machine-learning/feed/",
     defaultToolId: null,
     officialDomain: "aws.amazon.com",
+  },
+  {
+    sourceName: "Google News AI速報",
+    url: "https://news.google.com/rss/search?q=AI+人工知能+OpenAI+Google+Anthropic&hl=ja&gl=JP&ceid=JP:ja",
+    defaultToolId: null,
+    officialDomain: "news.google.com",
   },
 ];
 
@@ -200,12 +218,12 @@ ${cleanSnippet ? `・公式概要: ${cleanSnippet}…` : "・最新の機能改�
  */
 export async function syncLiveAINews(
   prisma: PrismaClient,
-  limit = 6
+  limit = 25
 ): Promise<{ addedCount: number; newItems: any[] }> {
   const apiKey = process.env.GEMINI_API_KEY;
   const modelName = process.env.GEMINI_MODEL || "gemini-3.5-flash";
 
-  const rawItems = await fetchOfficialAINews(2);
+  const rawItems = await fetchOfficialAINews(4);
   const newItems: any[] = [];
   let addedCount = 0;
 

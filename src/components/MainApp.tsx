@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import { Header } from "./Header";
+import { QuickNavBar } from "./QuickNavBar";
 import { HeroSection } from "./HeroSection";
 import { CatalogSection } from "./CatalogSection";
 import { NewsSection } from "./NewsSection";
@@ -126,6 +127,13 @@ export const MainApp: React.FC<MainAppProps> = ({
         onOpenMyStack={() => setIsMyStackOpen(true)}
         onOpenQuiz={() => setIsQuizOpen(true)}
         onOpenFreeInput={() => setIsFreeInputOpen(true)}
+      />
+
+      {/* Sticky Quick Anchor Bar */}
+      <QuickNavBar
+        onOpenQuiz={() => setIsQuizOpen(true)}
+        newsCount={updates.length}
+        toolsCount={tools.length}
       />
 
       <main className="flex-1">

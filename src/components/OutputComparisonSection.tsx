@@ -20,7 +20,7 @@ export const OutputComparisonSection: React.FC<OutputComparisonSectionProps> = (
   if (!currentGallery) return null;
 
   return (
-    <section className="py-12 border-t border-slate-800/80 relative">
+    <section id="output-comparison-section" className="py-12 border-t border-slate-800/80 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-8">
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-indigo-500/10 text-indigo-400 text-xs font-bold mb-2 border border-indigo-500/20">
