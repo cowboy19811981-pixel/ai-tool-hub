@@ -82,12 +82,30 @@ export const videoTools: ToolSeedItem[] = [
     category: "video",
     categoryLabel: "映像・動画",
     badge: "物理世界シミュレータ",
-    version: "Sora (OpenAI)",
+    version: "Sora 2 / Sora Turbo (OpenAI)",
     versionFeatures: {
-      evolution: "最長1分の長尺動画を物理法則（重力、衝突、反射）の破綻なく一発生成。複数アングル間での同一キャラクター・背景の整合性を維持。",
+      evolution: "最長1分の長尺動画を物理法則（重力、衝突、反射）の破綻なく生成。次世代Sora 2により物語整合性と解像度・カメラ制御が飛躍的に進化。",
       strengths: ["最長1分の圧倒的な長尺生成能力", "物理世界の挙動を理解した自然な動き", "複数カメラ視点のシームレスな切り替え", "ChatGPTエコシステムとの連携"],
       weaknesses: ["ChatGPT PlusまたはPro加入が必要で無料枠なし"],
-      architecture: "Sora Diffusion Transformer (DiT)"
+      architecture: "Sora 2 Spatiotemporal DiT Architecture",
+      versionsList: [
+        {
+          name: "Sora 2 (High-Fidelity)",
+          speed: "じっくり生成",
+          intelligence: "最高峰",
+          bestFor: "映画・広告・MV級の最高解像度映像、複雑な複数人アクション",
+          planAvailability: "ChatGPT Pro限定",
+          description: "OpenAIの最高峰動画エンジン。水面の屈折や髪の揺れ、複数カットの整合性を極限まで担保。"
+        },
+        {
+          name: "Sora Turbo (高速クリップ生成)",
+          speed: "高速",
+          intelligence: "高度",
+          bestFor: "SNSショート、アイデアプロトタイピング、Storyboard作成",
+          planAvailability: "ChatGPT Plus / Pro",
+          description: "数分で高品質な動画クリップを出力する高速バージョン。"
+        }
+      ]
     },
     estimatedUsers: "数千万人 (OpenAI有料層)",
     siteRegisteredCount: 1540,
@@ -131,12 +149,30 @@ export const videoTools: ToolSeedItem[] = [
     category: "video",
     categoryLabel: "映像・動画",
     badge: "人物の動き＆無料枠◎",
-    version: "Kling 1.5",
+    version: "Kling 1.5 / 2.0 (Preview)",
     versionFeatures: {
-      evolution: "アジア圏最大手のKuaishou（快手）が開発。人物のダイナミックな動き、食事シーンやアクションの破綻の少なさでSoraに匹敵する評価。",
+      evolution: "アジア圏最大手のKuaishou（快手）が開発。人物のダイナミックな動き、食事シーンやアクションの破綻の少なさでSoraに匹敵する評価。Kling 2.0先行版で映画的カメラワークに対応。",
       strengths: ["人物の激しいアクションや食事シーンが極めて自然", "毎日ログインで無料クレジットが付与される", "最長10秒の高品質シネマティック生成", "リップシンク（音声に合わせて口を動かす）機能搭載"],
       weaknesses: ["混雑時の無料キュー生成に数十分待つことがある"],
-      architecture: "Diffusion Transformer with 3D Spatial-Temporal Attention"
+      architecture: "Diffusion Transformer with 3D Spatial-Temporal Attention",
+      versionsList: [
+        {
+          name: "Kling 1.5 Pro",
+          speed: "標準",
+          intelligence: "最高峰",
+          bestFor: "人物のアクション、食事シーン、リアルな表情演技",
+          planAvailability: "無料 / 有料全プラン",
+          description: "人物の動きの滑らかさにおいて世界最高峰の評価を受ける安定主力モデル。"
+        },
+        {
+          name: "Lip Sync 2.0 (高精度口パク)",
+          speed: "高速",
+          intelligence: "高度",
+          bestFor: "キャラクターのセリフ発話、VTuber風動画、外国語吹き替え",
+          planAvailability: "無料 / 有料",
+          description: "音声ファイルを渡すだけで動画内の人物の口の動きと感情表情を完璧に一致させる機能。"
+        }
+      ]
     },
     estimatedUsers: "数百万人急増 / コスパ最強と話題",
     siteRegisteredCount: 1320,

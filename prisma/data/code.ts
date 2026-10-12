@@ -7,20 +7,28 @@ export const codeTools: ToolSeedItem[] = [
     category: "code",
     categoryLabel: "コード・開発",
     badge: "エンジニア界の絶対覇権",
-    version: "Composer / Agent Mode (Claude 3.5 Sonnet & o3-mini)",
+    version: "Agent 2.0 / Composer (Claude 3.7 Sonnet & Gemini 3.8 Flash)",
     versionFeatures: {
-      evolution: "VS Codeを完全フォークして設計。Composer機能によりプロジェクト全体の複数ファイルを同時に修正・作成し、ターミナルコマンドまで自動実行するAIエディタの頂点。",
-      strengths: ["リポジトリ全体のコードベースを完全把握（@codebase）", "複数ファイルを跨ぐ一括編集・リファクタリング（Composer）", "Claude 3.5 Sonnetの性能を120%引き出すエディタ最適化", "VS Codeの拡張機能・設定がワンクリックで完全移行"],
+      evolution: "VS Codeを完全フォークして設計。自律Agent 2.0機能によりプロジェクト全体の複数ファイルを同時に修正・作成し、ターミナルコマンドやテスト実行まで完全自律代行。",
+      strengths: ["リポジトリ全体のコードベースを完全把握（@codebase）", "複数ファイルを跨ぐ一括編集・リファクタリング（Composer）", "Claude 3.7 Sonnet & Gemini 3.8 Flashの超高速推論フル活用", "VS Codeの拡張機能・設定がワンクリックで完全移行"],
       weaknesses: ["無料版の高速リクエスト制限がすぐに尽きる（Pro課金ほぼ前提）"],
       architecture: "Anysphere Custom Electron IDE + Fast Context Indexing",
       versionsList: [
         {
-          name: "Claude 3.5 Sonnet (Cursor最適化)",
-          speed: "高速",
+          name: "Claude 3.7 Sonnet (Hybrid Reasoning)",
+          speed: "可変・高速",
           intelligence: "最高峰",
-          bestFor: "複数ファイル一括編集（Composer）、アーキテクチャ設計、バグ修正",
+          bestFor: "複数ファイル一括編集（Composer）、アーキテクチャ設計、難関バグ修正",
           planAvailability: "Proで月500回高速 / 超過後低速無制限",
-          description: "Cursor利用者の9割が常時使用するメインモデル。コードの破綻が最も少なくリファクタリングに最強。"
+          description: "Cursor利用者の大半が常時使用する最高峰モデル。思考モード併用で複雑なリファクタリングもミスゼロ。"
+        },
+        {
+          name: "Gemini 3.8 Flash (超爆速補完)",
+          speed: "超高速",
+          intelligence: "最高峰",
+          bestFor: "巨大リポジトリ全域検索、リアルタイムインライン補完、長大ログ解析",
+          planAvailability: "Pro / API連携",
+          description: "Googleの最新爆速知能。数万行のコードベースを一瞬でスキャンしてミリ秒で最適な提案を返します。"
         },
         {
           name: "o3-mini (High Reasoning)",
@@ -28,15 +36,7 @@ export const codeTools: ToolSeedItem[] = [
           intelligence: "最高峰",
           bestFor: "難解なアルゴリズム、競プロ級ロジック、並行処理デバッグ",
           planAvailability: "Proプラン限定",
-          description: "OpenAIの最新推論モデル。時間をかけて思考し、誰も気づかなかった境界条件のバグを特定。"
-        },
-        {
-          name: "cursor-small (軽量独自モデル)",
-          speed: "超高速",
-          intelligence: "標準",
-          bestFor: "無料枠でのチャット、素早いコード補完、簡単な質問",
-          planAvailability: "無料プランで使い放題",
-          description: "Cursor独自チューニングの軽量モデル。高速リクエストを消費せずに軽快に対話可能。"
+          description: "OpenAIの最新推論モデル。時間をかけて深く思考し、境界条件の潜在的バグを完全特定。"
         }
       ]
     },
@@ -55,7 +55,7 @@ export const codeTools: ToolSeedItem[] = [
     paidPlanDetails: {
       planName: "Cursor Pro",
       price: "$20 / 月",
-      unlockedFeatures: ["Claude 3.5 Sonnet / GPT-4oの高速リクエスト月500回", "低速リクエスト無制限", "Composerマルチファイル一括編集無制限", "最新Agent機能"],
+      unlockedFeatures: ["Claude 3.7 Sonnet / Gemini 3.8 Flashの高速リクエスト月500回", "低速リクエスト無制限", "Composerマルチファイル一括編集無制限", "最新Agent 2.0自律機能"],
       recommendedFor: "日常的にコードを書くすべてのプログラマー、Web開発者、個人開発者（課金必須の神器）"
     },
     paidWorthRating: 5,
@@ -65,14 +65,14 @@ export const codeTools: ToolSeedItem[] = [
     hasApi: false,
     hasApp: true,
     summary: "プログラミングの常識を覆したAIエディタ。アプリ全体の複数ファイルを一瞬で書き換えるエンジニアの神器。",
-    description: "いま世界のエンジニアがVS Codeから大挙して移行している最注目IDE。チャットで『この画面にダークモード追加して』と言うだけで、CSS、コンポーネント、状態管理の全ファイルをAIが自律探索して同時に正しく書き換えてくれます。",
+    description: "いま世界のエンジニアがVS Codeから大挙して移行している最注目IDE。チャットで『この画面にダークモード追加して』と言うだけで、CSS、コンポーネント、状態管理の全ファイルをAIが自律探索して同時に正しく書き換えてくれます。Claude 3.7 SonnetやGemini 3.8 Flashを標準統合。",
     pros: ["複数ファイルの一括修正が驚異的な精度で決まる", "VS Codeのプラグインやショートカットがそのまま使える", "開発速度が2倍〜3倍に跳ね上がる実感がある"],
     cons: ["Proプラン（月20ドル）に入らないと真価を発揮しにくい"],
     specs: {
       contextWindow: "リポジトリ全体セマンティックインデックス",
       multimodal: "コード・画像・ターミナル・ドキュメント",
       company: "Anysphere, Inc.",
-      releaseYear: "2023 (最新版2024-2025)"
+      releaseYear: "2023 (最新版2025-2026)"
     },
     officialUrl: "https://www.cursor.com"
   },
@@ -82,9 +82,9 @@ export const codeTools: ToolSeedItem[] = [
     category: "code",
     categoryLabel: "コード・開発",
     badge: "全エンジニア標準装備",
-    version: "Copilot Workspace / Claude 3.5 & GPT-4o切替対応",
+    version: "Copilot Workspace / Claude 3.7 & GPT-5切替対応",
     versionFeatures: {
-      evolution: "GitHubリポジトリの全IssueやPRと直結。モデル選択機能によりClaude 3.5 Sonnet、GPT-4o、o1などを自由に切り替えて補完・チャットが可能に。",
+      evolution: "GitHubリポジトリの全IssueやPRと直結。モデル選択機能によりClaude 3.7 Sonnet、GPT-5、o3-miniなどを自由に切り替えて補完・チャットが可能に。",
       strengths: ["VS Code, JetBrains, Visual Studio等あらゆるエディタに対応", "GitHub上のIssueから直接仕様書・コードを自動起草", "個人向け無料プランが新設され手軽に利用可能", "企業のセキュリティ基準（コード非学習保証）"],
       weaknesses: ["Composerのような複数ファイルの一括自律書き換え速度はCursorに一歩及ばない"],
       architecture: "GitHub Multi-Model Cloud Agent"
@@ -104,7 +104,7 @@ export const codeTools: ToolSeedItem[] = [
     paidPlanDetails: {
       planName: "GitHub Copilot Individual",
       price: "$10 / 月 (年払い $100)",
-      unlockedFeatures: ["コード補完・チャット完全無制限", "Claude 3.5 Sonnet / GPT-4oモデルの自由切替", "GitHub CLIでのAIコマンド支援"],
+      unlockedFeatures: ["コード補完・チャット完全無制限", "Claude 3.7 Sonnet / GPT-5 / o3-miniモデルの自由切替", "GitHub CLIでのAIコマンド支援"],
       recommendedFor: "VS CodeやIntelliJを愛用するプログラマー、月10ドルでコスパ良く無制限補完を使いたい人"
     },
     paidWorthRating: 5,
@@ -113,15 +113,15 @@ export const codeTools: ToolSeedItem[] = [
     commercialUse: true,
     hasApi: true,
     hasApp: true,
-    summary: "GitHub公式・開発者AIの基準。月10ドルでコード補完無制限＆Claude 3.5 Sonnetも切り替えて使える。",
-    description: "マイクロソフトとGitHubが提供するAIプログラミング支援の元祖にして最大手。キーボードを叩くだけで次の行のコードを先読みして灰色の文字で提案してくれます。最近はClaude 3.5 Sonnetモデルも選択可能になり実力がさらに跳ね上がりました。",
+    summary: "GitHub公式・開発者AIの基準。月10ドルでコード補完無制限＆Claude 3.7 Sonnetも切り替えて使える。",
+    description: "マイクロソフトとGitHubが提供するAIプログラミング支援の元祖にして最大手。キーボードを叩くだけで次の行のコードを先読みして灰色の文字で提案してくれます。最近はClaude 3.7 Sonnetやo3-miniモデルも選択可能になり実力がさらに跳ね上がりました。",
     pros: ["月10ドルとCursorの半額で維持できる抜群のコスパ", "無料プランでも月2,000回補完が使える", "GitHubのプルリクエスト要約やコードレビューが快適"],
     cons: ["大規模な複数ファイルリファクタリングはCursorの方が直感的"],
     specs: {
       contextWindow: "ファイルコンテキスト＋リポジトリ関連ファイル",
       multimodal: "コード・自然言語",
       company: "GitHub / Microsoft",
-      releaseYear: "2021 (最新版2024-2025)"
+      releaseYear: "2021 (最新版2025-2026)"
     },
     officialUrl: "https://github.com/features/copilot"
   },
@@ -153,7 +153,7 @@ export const codeTools: ToolSeedItem[] = [
     paidPlanDetails: {
       planName: "API従量課金のみ",
       price: "月額サブスクなし（使った分だけAPI会社へ支払い）",
-      unlockedFeatures: ["Claude 3.5 SonnetやDeepSeek-R1などの自由な組み合わせ"],
+      unlockedFeatures: ["Claude 3.7 SonnetやDeepSeek-R1などの自由な組み合わせ"],
       recommendedFor: "月額20ドルのサブスクを節約したい人、AIに自律して作業を任せたいパワーエンジニア"
     },
     paidWorthRating: 5,
@@ -410,7 +410,7 @@ export const codeTools: ToolSeedItem[] = [
     summary: "GitHub Copilotの無料版代用として最強。個人なら一切課金なしで無制限にコード補完してくれる救世主。",
     description: "『AIのコード補完を使いたいけど月10ドルのサブスクは払いたくない』というすべてのプログラマーの味方。70言語以上に対応し、キー入力を邪魔しない超高速な補完が完全無料で利用できます。",
     pros: ["個人利用が永久に完全無料という圧倒的メリット", "補完速度が非常に速くラグがない", "JetBrainsやXcodeでも快適に動作する"],
-    cons: ["複雑な推論チャットではClaude 3.5有料版にやや劣る"],
+    cons: ["複雑な推論チャットではClaude 3.7有料版にやや劣る"],
     specs: {
       contextWindow: "エディタ内ローカルコンテキスト",
       multimodal: "コード・自然言語",
@@ -429,7 +429,7 @@ export const codeTools: ToolSeedItem[] = [
     versionFeatures: {
       evolution: "金融・医療・防衛などの厳格な企業向け。自社専用のオンプレミス環境や完全エアギャップ（オフライン）環境で動作し、ソースコードの外部漏洩を完全遮断。",
       strengths: ["コードが外部サーバーに一切送信されない安全設計", "オープンソースライセンスに違反しないクリーンな学習データのみ使用", "自社の独自社内ライブラリを学習させて補完可能", "企業コンプライアンス適合"],
-      weaknesses: ["最先端のフロンティアモデル（Claude 3.5等）のような発想力は控えめ"],
+      weaknesses: ["最先端のフロンティアモデル（Claude 3.7等）のような発想力は控えめ"],
       architecture: "Tabnine Secure Local & Private Cloud LLM"
     },
     estimatedUsers: "100万社以上の開発者（Fortune 500多数）",

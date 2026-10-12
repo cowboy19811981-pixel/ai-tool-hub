@@ -78,7 +78,7 @@ export const galleriesData: GalleryItemSeed[] = [
         prosVsCons: "長所: デザインの美しさが最初から100点満点。短所: 複雑な状態永続化ロジックは手動補完が必要。"
       },
       {
-        toolName: "Cursor (Claude 3.5 Sonnet)",
+        toolName: "Cursor (Claude 3.7 Sonnet)",
         outputSummary: "既存プロジェクトのディレクトリ構造を理解し、状態管理ストア、型定義、UIコンポーネントを3ファイルに分割して一括配置。",
         visualStyle: "保守性の高い実戦向けTypeScript設計",
         prosVsCons: "長所: そのまま商用プロジェクトに組み込める完全なアーキテクチャ。短所: エディタが必要。"

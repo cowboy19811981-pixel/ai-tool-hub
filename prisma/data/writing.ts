@@ -56,14 +56,32 @@ export const writingTools: ToolSeedItem[] = [
     category: "writing",
     categoryLabel: "文書・リサーチ",
     badge: "完全無料・神ツール",
-    version: "Gemini 1.5 Pro駆動 / Audio Overview",
+    version: "Gemini 3.8 Flash & 3.0 Pro駆動 / Audio Overview",
     versionFeatures: {
-      evolution: "アップロードしたPDF、WebURL、テキストだけを厳密な根拠として回答。さらに資料を英語/日本語の2人のポッドキャスト対話音声に自動変換する驚異の機能を搭載。",
-      strengths: ["ハルシネーション（嘘）が原理的に皆無", "資料の引用元箇所を即座にハイライト表示", "完全無料で制限なし", "音声対話ポッドキャスト自動生成"],
+      evolution: "Gemini 3.8 Flashの超高速推論と巨大コンテキストにより、数十冊のPDFやWebサイトを一瞬で読解。さらに2人のパーソナリティによる音声解説（Audio Overview）や対話型ガイドを標準搭載。",
+      strengths: ["ハルシネーション（嘘）が原理的に皆無", "資料の引用元箇所を即座にハイライト表示", "完全無料で制限なし", "音声対話ポッドキャスト自動生成", "Gemini 3.8 Flashによる爆速回答"],
       weaknesses: ["投入した資料以外の一般的な雑談・創作には向かない"],
-      architecture: "Google Gemini 1.5 Pro Grounded RAG"
+      architecture: "Google Gemini 3.8 Flash & 3.0 Pro Grounded RAG",
+      versionsList: [
+        {
+          name: "Gemini 3.8 Flash Engine",
+          speed: "超高速",
+          intelligence: "最高峰",
+          bestFor: "数十冊のPDF・Webサイトからの即時引用回答・要約",
+          planAvailability: "完全無料",
+          description: "ミリ秒単位で資料内の根拠ページを特定して回答する最新のメインエンジン。"
+        },
+        {
+          name: "Audio Overview (会話型音声化)",
+          speed: "高速",
+          intelligence: "高度",
+          bestFor: "通勤・作業中の資料インプット、ポッドキャスト風学習",
+          planAvailability: "完全無料",
+          description: "登録した難解な論文や資料を2人のAIアナウンサーが楽しく解説してくれる音声化機能。"
+        }
+      ]
     },
-    estimatedUsers: "1,000万人突破 / 学生・研究者に熱狂的人気",
+    estimatedUsers: "1,200万人突破 / 学生・研究者に熱狂的人気",
     siteRegisteredCount: 1390,
     votesCount: 1910,
     rankScore: 96.5,
@@ -88,14 +106,14 @@ export const writingTools: ToolSeedItem[] = [
     hasApi: false,
     hasApp: false,
     summary: "Googleが作った奇跡の無料ツール。PDFや本を渡すだけで、絶対に嘘をつかずに完璧に教えてくれる。",
-    description: "Gemini 1.5 Proの長文理解力をフル活用したリサーチ特化ノート。ユーザーが渡した資料のみに基づいて回答するため、AI特有の『もっともらしい嘘』がありません。資料を2人のラジオパーソナリティが解説する音声化機能も圧巻。",
+    description: "Gemini 3.8 Flashの長文理解力と超高速推論をフル活用したリサーチ特化ノート。ユーザーが渡した資料のみに基づいて回答するため、AI特有の『もっともらしい嘘』がありません。資料を2人のラジオパーソナリティが解説する音声化機能も圧巻。",
     pros: ["回答の根拠となった資料のページ・行が瞬時に確認できる", "完全無料で制限なく使える", "長大な論文や決算書が1分で理解できる"],
     cons: ["専用スマホアプリがまだない（ブラウザ利用）"],
     specs: {
       contextWindow: "各ソース50万語、最大50ソース同時投入可能",
-      multimodal: "PDF・テキスト・Google Docs・ウェブURL",
+      multimodal: "PDF・テキスト・Google Docs・ウェブURL・音声",
       company: "Google",
-      releaseYear: "2023 (最新版2024-2025)"
+      releaseYear: "2023 (最新版2025-2026)"
     },
     officialUrl: "https://notebooklm.google.com"
   },

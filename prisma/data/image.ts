@@ -7,20 +7,28 @@ export const imageTools: ToolSeedItem[] = [
     category: "image",
     categoryLabel: "画像生成・編集",
     badge: "芸術・画質No.1",
-    version: "v6.1 / Niji v6",
+    version: "v7 (Alpha) / v6.1 / Niji v6",
     versionFeatures: {
-      evolution: "v6.1によりフォトリアリズム、皮膚の質感、光と影の描写が極限へ到達。アニメ特化Niji v6とWeb版UI生成を完全搭載。",
+      evolution: "v7アルファおよびv6.1によりフォトリアリズム、光と影の物理描写、精密な手足描画が極限へ到達。アニメ特化Niji v6とWeb版生成エディタを完備。",
       strengths: ["現実と見紛う映画クオリティの写実性", "圧倒的な美術的センス・構図力", "アニメ特化Nijiモデルの最高峰の絵柄", "Web版生成エディタでのインペイント・拡張"],
       weaknesses: ["無料プランが現在完全廃止", "DiscordまたはWebでの操作が必要"],
-      architecture: "Proprietary Latent Diffusion Model",
+      architecture: "Proprietary Latent Diffusion Transformer",
       versionsList: [
         {
-          name: "Midjourney v6.1 (実写・アート)",
+          name: "Midjourney v7 (次世代先行)",
           speed: "標準",
           intelligence: "最高峰",
-          bestFor: "フォトリアリズム、映画的ライティング、皮膚・毛髪の質感、美術絵画",
+          bestFor: "極限のフォトリアリズム、微細な陰影、複雑な群衆・背景整合性",
           planAvailability: "有料サブスク全プラン ($10〜)",
-          description: "写実性と光の表現において業界頂点。プロンプトの細かなニュアンスを芸術的に昇華。"
+          description: "解像度とプロンプト理解力が大幅に進化した最新フロンティアモデル。"
+        },
+        {
+          name: "Midjourney v6.1 (実写・アート)",
+          speed: "高速",
+          intelligence: "最高峰",
+          bestFor: "映画的ライティング、皮膚・毛髪の質感、美術絵画",
+          planAvailability: "有料サブスク全プラン",
+          description: "写実性と光の表現において業界基準。安定した芸術的クオリティを提供。"
         },
         {
           name: "Niji Journey v6 (アニメ特化)",
@@ -74,12 +82,38 @@ export const imageTools: ToolSeedItem[] = [
     category: "image",
     categoryLabel: "画像生成・編集",
     badge: "現代の業界新標準",
-    version: "FLUX.1 [dev] / [pro] / [schnell]",
+    version: "FLUX.1.1 [pro] / FLUX.1 [dev] / FLUX.2",
     versionFeatures: {
-      evolution: "Stable Diffusionの原作者陣（Black Forest Labs）が開発。指の破綻が劇的に減少し、画像内の英語文字列描写が完璧に。",
+      evolution: "Stable Diffusionの原作者陣（Black Forest Labs）が開発。FLUX.1.1 [pro]による6倍高速化と指・文字描写の完全制御を実現。",
       strengths: ["人間の指・手足の描写が圧倒的に破綻しない", "看板やTシャツの文字を指示通りに完璧に描画", "自然言語の指示への忠実度", "オープンウェイト（[dev]版）提供"],
       weaknesses: ["ローカル実行にはVRAM 12GB以上の高性能GPUが必要"],
-      architecture: "12B Parameter Rectified Flow Transformer"
+      architecture: "12B Parameter Rectified Flow Transformer",
+      versionsList: [
+        {
+          name: "FLUX.1.1 [pro] (Ultra Fast API)",
+          speed: "超高速",
+          intelligence: "最高峰",
+          bestFor: "商用サービス、高精細プロダクションレンダリング",
+          planAvailability: "API従量課金 ($0.04/枚)",
+          description: "従来の[pro]に比べ生成速度が6倍向上し、文字描写と皮膚質感がさらに進化。"
+        },
+        {
+          name: "FLUX.1 [dev] (オープンウェイト)",
+          speed: "標準",
+          intelligence: "最高峰",
+          bestFor: "ローカルPC生成、LoRA学習、個人研究",
+          planAvailability: "非商用完全無料",
+          description: "研究者・個人向けにウェイトが公開された最高峰の画像モデル。"
+        },
+        {
+          name: "FLUX.1 [schnell] (4ステップ爆速)",
+          speed: "超高速",
+          intelligence: "高度",
+          bestFor: "リアルタイムプレビュー、低スペックGPU、商用オープン利用",
+          planAvailability: "完全無料 (Apache 2.0)",
+          description: "わずか4ステップの推論で美麗な画像を即座に生成する超高効率モデル。"
+        }
+      ]
     },
     estimatedUsers: "数百万人急増 / オープン系覇権",
     siteRegisteredCount: 1450,
@@ -123,12 +157,30 @@ export const imageTools: ToolSeedItem[] = [
     category: "image",
     categoryLabel: "画像生成・編集",
     badge: "無限のカスタマイズ性",
-    version: "SD 3.5 Large / SDXL",
+    version: "SD 3.5 Large / Turbo / SDXL",
     versionFeatures: {
-      evolution: "ControlNet、LoRA、CheckPointなどの膨大な外部拡張エコシステムにより、ポーズ・構図・キャラクターの一貫性をミリ単位で完全制御。",
+      evolution: "ControlNet、LoRA、CheckPointなどの膨大な外部拡張エコシステムにより、ポーズ・構図・キャラクターの一貫性をミリ単位で完全制御。SD 3.5 Largeにより解剖学的正確さと文字描写が飛躍。",
       strengths: ["ポーズや構図を完全に思い通りに指定可能", "世界中のユーザーが作った膨大な追加モデル（LoRA）", "検閲や利用制限のない完全な自由", "ローカル実行でプライバシー完全保護"],
       weaknesses: ["環境構築（WebUI/ComfyUI）にIT知識が必要"],
-      architecture: "Multimodal Diffusion Transformer (MMDiT)"
+      architecture: "Multimodal Diffusion Transformer (MMDiT)",
+      versionsList: [
+        {
+          name: "SD 3.5 Large (8Bパラメータ)",
+          speed: "標準",
+          intelligence: "最高峰",
+          bestFor: "最高解像度、複雑なプロンプト追従、文字入り画像",
+          planAvailability: "完全無料 (Community License)",
+          description: "Stability AIのフラッグシップ。フォトリアリズムとテキスト描写力が極限まで強化。"
+        },
+        {
+          name: "SD 3.5 Turbo (超高速4ステップ)",
+          speed: "超高速",
+          intelligence: "高度",
+          bestFor: "リアルタイム生成、低遅延プレビュー",
+          planAvailability: "完全無料",
+          description: "わずか4ステップでSD 3.5 Large同等の画質を叩き出す超高速蒸留モデル。"
+        }
+      ]
     },
     estimatedUsers: "数千万人 (オープンソースコミュニティ最大手)",
     siteRegisteredCount: 1380,

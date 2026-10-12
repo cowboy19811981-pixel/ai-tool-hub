@@ -8,13 +8,31 @@ export interface UpdateSeedItem {
 
 export const updatesData: UpdateSeedItem[] = [
   {
+    toolId: "gemini",
+    title: "Googleが「Gemini 3.8 Flash」を正式発表、300万コンテキストと爆速推論を両立",
+    summary3Lines: `・思考時間を要さない超低遅延リアルタイムマルチモーダル推論を実現。
+・本数百冊分・長編動画を丸ごと読み込む300万トークンの巨大コンテキストを搭載。
+・Google AI StudioおよびWeb版で無料枠から即座に利用可能。`,
+    sourceUrl: "https://blog.google/technology/ai",
+    publishedAt: new Date(Date.now() - 1000 * 60 * 30) // 30分前
+  },
+  {
+    toolId: "claude",
+    title: "Anthropicが「Claude 3.7 Sonnet」をリリース、即答と深層推論のハイブリッド統合",
+    summary3Lines: `・即座の高速回答と、思考時間を設ける深層推論を1つのモデルでシームレスに切り替え可能。
+・コーディング・アーキテクチャ設計・論理パズルで最高水準のスコアを更新。
+・ArtifactsおよびComputer Use自律操作機能との完全連携に対応。`,
+    sourceUrl: "https://www.anthropic.com/news",
+    publishedAt: new Date(Date.now() - 1000 * 60 * 60 * 2)
+  },
+  {
     toolId: "deepseek",
     title: "DeepSeek-R1が正式発表、推論性能でOpenAI o1に匹敵",
     summary3Lines: `・OpenAIのo1と同等水準の高度な数学・コーディング推論力を達成。
 ・思考プロセスが画面上にすべて可視化され、なぜその結論に至ったかが丸わかり。
 ・Webとアプリで完全無料開放されており、API利用料も従来の1/10以下という革命的コスパ。`,
     sourceUrl: "https://chat.deepseek.com",
-    publishedAt: new Date(Date.now() - 1000 * 60 * 60 * 2) // 2時間前
+    publishedAt: new Date(Date.now() - 1000 * 60 * 60 * 4)
   },
   {
     toolId: "cursor",

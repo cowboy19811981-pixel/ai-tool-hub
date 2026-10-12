@@ -7,44 +7,36 @@ export const generalTools: ToolSeedItem[] = [
     category: "general",
     categoryLabel: "総合（汎用LLM）",
     badge: "絶対王者",
-    version: "GPT-4o / o1 / o3-mini",
+    version: "GPT-5 / o3 / o3-mini / GPT-4o",
     versionFeatures: {
-      evolution: "GPT-4oによる超高速マルチモーダル対話に加え、推論特化型o1/o3-miniで複雑な数学・論理思考が劇的進化。",
-      strengths: ["超高速レスポンス", "高度な音声会話モード", "深い論理的思考(o1)", "プラグイン/GPTsエコシステム"],
-      weaknesses: ["無料版の利用上限が混雑時に厳格化", "専門的法務などの極小ハルシネーション"],
-      architecture: "GPT-4o (Omni) & o1 CoT Reasoning Engine",
+      evolution: "次世代フロンティアGPT-5および深層推論o3シリーズを統合。自律型エージェント機能（Operator）によりPC作業の完全代行に対応。",
+      strengths: ["超高速マルチモーダル対話", "最高峰の推論力(o3)", "自律型PC操作エージェント", "業界最大のエコシステム"],
+      weaknesses: ["高度機能の利用枠が無料版では制限あり"],
+      architecture: "OpenAI Next-Gen Frontier & o3 Deep Reasoning Engine",
       versionsList: [
+        {
+          name: "o3 (Deep Reasoning)",
+          speed: "じっくり推論",
+          intelligence: "最高峰",
+          bestFor: "フロンティア級数学・難関コーディング・科学的ブレイクスルー検証",
+          planAvailability: "Plus / Pro限定",
+          description: "従来のo1を大幅に超える深層推論モデル。思考過程の多段階検証により複雑な問題でほぼ誤答なし。"
+        },
+        {
+          name: "o3-mini (High Reasoning)",
+          speed: "高速",
+          intelligence: "最高峰",
+          bestFor: "競技プログラミング、数学、高難度タスクの高速処理",
+          planAvailability: "無料 / Plus / API",
+          description: "o3の卓越した思考力を驚異的なレスポンス速度で提供する最新の主力推論モデル。"
+        },
         {
           name: "GPT-4o (Omni)",
           speed: "超高速",
           intelligence: "高度",
-          bestFor: "日常会話、文章作成、Web検索、音声リアルタイム対話",
-          planAvailability: "無料(制限あり) / Plusで無制限級",
-          description: "テキスト・音声・視覚を統合処理する最新主力モデル。ミリ秒単位の爆速応答と極めて滑らかな会話が特徴。"
-        },
-        {
-          name: "o1 (Reasoning)",
-          speed: "じっくり推論",
-          intelligence: "最高峰",
-          bestFor: "難関コーディング、数学、科学論文、複雑な論理設計",
-          planAvailability: "Plus / Pro限定",
-          description: "回答前に自己思考（思考の連鎖）を行い、途中で間違いを自己修正しながら解く最高峰推論モデル。"
-        },
-        {
-          name: "o3-mini (Reasoning)",
-          speed: "高速",
-          intelligence: "最高峰",
-          bestFor: "競技プログラミング、数学、コストパフォーマンス重視の推論",
-          planAvailability: "無料 / Plus / API",
-          description: "o1の圧倒的な論理思考力を軽量・高速化。数学やアルゴリズム問題でo1を凌駕するスコアを記録。"
-        },
-        {
-          name: "GPT-4o mini",
-          speed: "超高速",
-          intelligence: "標準",
-          bestFor: "短文要約、簡単な質問、大量テキスト処理",
-          planAvailability: "無料版で使い放題",
-          description: "日常的な質問や軽いタスクに特化した超軽量モデル。無料ユーザーでも制限なく高速に利用可能。"
+          bestFor: "日常会話、リアルタイム音声感情対話、画像・動画の即時理解",
+          planAvailability: "無料 / Plus",
+          description: "音声・視覚・テキストがネイティブ統合された高速マルチモーダルモデル。"
         }
       ]
     },
@@ -57,13 +49,13 @@ export const generalTools: ToolSeedItem[] = [
     pricingType: "フリーミアム",
     pricingMonthly: "無料 / Plus $20 (約3,000円) / Pro $200",
     freePlanDetails: {
-      limits: "GPT-4oが数時間ごとに数回、以降はGPT-4o miniへ切り替え。画像生成回数に制限。",
-      allowedFeatures: ["Web検索", "GPT-4o mini無制限チャット", "限定的なファイル解析", "限定的なDALL-E 3画像生成"]
+      limits: "o3-miniやGPT-4oが一定回数利用可能。画像生成回数に制限。",
+      allowedFeatures: ["Web検索", "o3-mini推論チャット", "高度な音声モードお試し", "DALL-E 3画像生成"]
     },
     paidPlanDetails: {
       planName: "ChatGPT Plus",
       price: "$20 / 月",
-      unlockedFeatures: ["o1/o3-mini推論モデルの利用", "高度な音声モード（リアルタイム感情対話）", "Canvas共同編集機能", "GPTs作成・優先利用"],
+      unlockedFeatures: ["o3深層推論モデルの利用", "高度な音声モード無制限級", "Operator自律エージェント機能", "Canvas共同編集"],
       recommendedFor: "AIを日常業務・学習でフル活用したいすべての人（課金第一候補）"
     },
     paidWorthRating: 5,
@@ -72,15 +64,15 @@ export const generalTools: ToolSeedItem[] = [
     commercialUse: true,
     hasApi: true,
     hasApp: true,
-    summary: "迷ったらこれ。世界最高水準の対話・思考・音声・マルチモーダルを兼ね備えたAIの業界標準。",
-    description: "OpenAIが誇る最高峰の汎用AI。GPT-4oのマルチモーダル能力に加え、思考時間を設けて深層推論を行うo1/o3-miniモデルを搭載。コーディング、文章作成、アイデアブレスト、日常会話まで隙がありません。",
-    pros: ["業界最大の利用者数と豊富なノウハウ", "高度な音声対話が極めて自然", "o1モデルによる超難問への論理的回答"],
+    summary: "迷ったらこれ。o3推論エンジンと次世代エージェント機能を備えたAI界の絶対王者。",
+    description: "OpenAIのフラッグシップ。最新のo3深層推論モデルにより、数学やコーディング、戦略立案において圧倒的な正答率を誇ります。自然な音声対話や画像理解まで隙がありません。",
+    pros: ["業界最大の利用者数と豊富なノウハウ", "o3モデルによる超難問への論理的回答", "高度な音声対話が極めて自然"],
     cons: ["無料枠では混雑時に制限がかかりやすい", "公式Proプランは月200ドルと高額"],
     specs: {
-      contextWindow: "128kトークン (約10万文字)",
-      multimodal: "テキスト・音声・画像・ファイル",
+      contextWindow: "128k〜200kトークン",
+      multimodal: "テキスト・音声・画像・動画・ファイル",
       company: "OpenAI",
-      releaseYear: "2022 (最新版2024-2025)"
+      releaseYear: "2022 (最新版2025-2026)"
     },
     officialUrl: "https://chatgpt.com"
   },
@@ -89,21 +81,29 @@ export const generalTools: ToolSeedItem[] = [
     name: "Claude",
     category: "general",
     categoryLabel: "総合（汎用LLM）",
-    badge: "日本語・コード最強",
-    version: "Claude 3.5 Sonnet / 3.5 Haiku",
+    badge: "日本語・推論最高峰",
+    version: "Claude 3.7 Sonnet / Claude 3.5 Sonnet",
     versionFeatures: {
-      evolution: "Claude 3.5 Sonnetによりコーディングベンチマーク世界1位を獲得。Artifacts機能でコードやWeb画面を右側にリアルタイム表示可能。",
-      strengths: ["人間味のある自然で美しい日本語", "最高峰のプログラミング・バグ修正力", "長文ドキュメントの文脈把握", "Artifactsプレビュー"],
+      evolution: "Claude 3.7 Sonnetにより、瞬時の即答と深い思考（Hybrid Reasoning）をシームレスに切り替えるハイブリッド知能を確立。",
+      strengths: ["人間味のある自然で美しい日本語", "最高峰のプログラミング・バグ修正力", "ハイブリッド推論モード", "Computer Use（PC自律操作）"],
       weaknesses: ["無料版の利用上限が数往復で達しやすい", "画像生成機能は非搭載"],
-      architecture: "Anthropic Next-Gen Transformer Architecture",
+      architecture: "Anthropic Hybrid Reasoning Transformer",
       versionsList: [
+        {
+          name: "Claude 3.7 Sonnet (Hybrid Reasoning)",
+          speed: "可変・高速",
+          intelligence: "最高峰",
+          bestFor: "最高峰コーディング、深い思考を要する論理設計、自然な日本語執筆",
+          planAvailability: "無料(回数制限) / Proで5倍利用可能",
+          description: "即座の回答と、思考時間を設けて深層推論を行うモードを1つのモデルで兼ね備えたAnthropicの最新最高傑作。"
+        },
         {
           name: "Claude 3.5 Sonnet (v2)",
           speed: "高速",
           intelligence: "最高峰",
-          bestFor: "プログラミング、美しい日本語執筆、複雑な指示理解、Artifacts",
-          planAvailability: "無料(回数制限) / Proで5倍利用可能",
-          description: "Anthropicの最高傑作。全LLMの中で最も自然な日本語文章力と最高峰のコーディング精度を両立。"
+          bestFor: "プログラミング、ドキュメント分析、Artifactsリアルタイム開発",
+          planAvailability: "無料 / Pro",
+          description: "世界中のエンジニアを唸らせた大ヒットモデル。高い信頼性と安定したコード出力を誇る。"
         },
         {
           name: "Claude 3.5 Haiku",
@@ -111,15 +111,7 @@ export const generalTools: ToolSeedItem[] = [
           intelligence: "高度",
           bestFor: "爆速チャット、API処理、短時間での多量ドキュメント処理",
           planAvailability: "無料 / Pro / API",
-          description: "従来の最高峰Opusに迫る知能を、まばたきするような超高速スピードと格安コストで提供する新鋭モデル。"
-        },
-        {
-          name: "Claude 3 Opus",
-          speed: "標準",
-          intelligence: "最高峰",
-          bestFor: "深層的な哲学議論、長編小説執筆、極めて複雑なニュアンス分析",
-          planAvailability: "Pro限定",
-          description: "深い洞察力と豊かな情緒表現に特化。クリエイティブな執筆や複雑な学術的議論で威力を発揮。"
+          description: "従来の最高峰Opusに迫る知能を、まばたきするような超高速スピードと格安コストで提供。"
         }
       ]
     },
@@ -133,7 +125,7 @@ export const generalTools: ToolSeedItem[] = [
     pricingMonthly: "無料 / Pro $20 (約3,000円)",
     freePlanDetails: {
       limits: "数時間ごとに数回〜10回程度のメッセージ上限（混雑時はさらに短縮）。",
-      allowedFeatures: ["Claude 3.5 Sonnetの一部利用", "Artifacts機能", "ファイルアップロード分析"]
+      allowedFeatures: ["Claude 3.7 Sonnetの一部利用", "Artifacts機能", "ファイルアップロード分析"]
     },
     paidPlanDetails: {
       planName: "Claude Pro",
@@ -148,14 +140,14 @@ export const generalTools: ToolSeedItem[] = [
     hasApi: true,
     hasApp: true,
     summary: "自然すぎる日本語と圧倒的コード力。Artifactsによるリアルタイム開発・執筆が革命的。",
-    description: "Anthropic社が開発した最高峰のLLM。倫理的かつ自然な文章生成に定評があり、特にClaude 3.5 Sonnetのプログラミング能力は世界のトップエンジニアから絶賛されています。右側パネルでアプリやWebを直接動かせるArtifactsも大好評。",
+    description: "Anthropic社が開発した最高峰のLLM。倫理的かつ自然な文章生成に定評があり、特にClaude 3.7 Sonnetのプログラミング・思考推論能力は世界のトップエンジニアから絶賛されています。右側パネルでアプリやWebを直接動かせるArtifactsも大好評。",
     pros: ["日本語の言い回しが群を抜いて自然", "コードの精度・アーキテクチャ設計力が最強", "Projects機能で大量の前提資料を記憶可能"],
     cons: ["画像・動画の直接生成はできない", "無料枠の上限到達が早い"],
     specs: {
       contextWindow: "200kトークン (約15万文字)",
       multimodal: "テキスト・画像・PDF・コード",
       company: "Anthropic",
-      releaseYear: "2023 (最新版2024-2025)"
+      releaseYear: "2023 (最新版2025-2026)"
     },
     officialUrl: "https://claude.ai"
   },
@@ -164,37 +156,37 @@ export const generalTools: ToolSeedItem[] = [
     name: "Gemini",
     category: "general",
     categoryLabel: "総合（汎用LLM）",
-    badge: "200万長文・爆速",
-    version: "Gemini 2.0 Flash / 1.5 Pro",
+    badge: "3.8 Flash爆速推論",
+    version: "Gemini 3.8 Flash / Gemini 3.0 Pro",
     versionFeatures: {
-      evolution: "2.0 Flashにより応答速度がミリ秒単位へ超高速化。1.5 Proでは業界最大の200万トークン（本数百冊分・1時間動画丸ごと）を即座に読解。",
-      strengths: ["超高速な応答速度", "200万トークンの圧倒的長文/動画コンテキスト", "Google Workspace (Docs/Gmail/YouTube) 連携", "無料枠が巨大"],
-      weaknesses: ["クリエイティブな小説執筆での語彙の硬さ"],
-      architecture: "Google DeepMind Multimodal Foundation Model",
+      evolution: "Gemini 3.8 Flashにより、人間の思考速度を超えるリアルタイム推論と、300万トークンの巨大コンテキスト・自律エージェント実行力を獲得。",
+      strengths: ["超低遅延・高スループット推論", "300万トークンの長大コンテキスト（動画・音声・PDF丸ごと）", "Google Workspace / Android / Searchの深層連携", "無料枠が極めて潤沢"],
+      weaknesses: ["高度なクリエイティブ文芸表現での語彙の硬さ"],
+      architecture: "Google DeepMind Gemini 3rd Generation Frontier Architecture",
       versionsList: [
         {
-          name: "Gemini 2.0 Flash",
+          name: "Gemini 3.8 Flash",
+          speed: "超高速",
+          intelligence: "最高峰",
+          bestFor: "リアルタイム対話、エージェント自動タスク実行、大容量ドキュメント・動画分析",
+          planAvailability: "無料枠で無制限級利用可能",
+          description: "Googleの最新フラッグシップ高速モデル。前世代Flashから知能指数が飛躍し、Pro並みの推論力をミリ秒単位の爆速レスポンスで提供。"
+        },
+        {
+          name: "Gemini 3.0 Pro",
+          speed: "高速",
+          intelligence: "最高峰",
+          bestFor: "超複雑な科学的推論、マルチモーダル深層解析、数百冊の資料同時分析",
+          planAvailability: "Gemini Advanced (有料) / API",
+          description: "Google DeepMindの最高峰知能モデル。300万トークン対応で、長大な映像や数千ページのコードベースを完全に理解して回答。"
+        },
+        {
+          name: "Gemini 2.5 Flash",
           speed: "超高速",
           intelligence: "高度",
-          bestFor: "爆速リアルタイム対話、YouTube動画要約、マルチモーダル視覚分析",
-          planAvailability: "完全無料で使い放題",
-          description: "Google DeepMindの次世代高速モデル。圧倒的レスポンス速度とリアルタイムストリーミングが魅力。"
-        },
-        {
-          name: "Gemini 1.5 Pro",
-          speed: "標準",
-          intelligence: "最高峰",
-          bestFor: "200万トークンの超長大PDF・本数百冊・1時間動画の一撃読解",
-          planAvailability: "Gemini Advanced (有料) / API無料枠",
-          description: "世界最大のコンテキストウィンドウを誇る怪童モデル。膨大な過去資料や長編映像を完全に記憶して回答。"
-        },
-        {
-          name: "Gemini 1.5 Flash",
-          speed: "超高速",
-          intelligence: "標準",
-          bestFor: "日常の短文処理、格安APIでのシステム組み込み",
+          bestFor: "日常の短文処理、格安・大量APIバッチ処理",
           planAvailability: "完全無料",
-          description: "軽量高コスパモデル。100万トークンを安価・高速に扱える万能ワークホース。"
+          description: "安定した高コスパモデル。日常的な質問や軽量タスクをストレスなく処理。"
         }
       ]
     },
@@ -207,30 +199,30 @@ export const generalTools: ToolSeedItem[] = [
     pricingType: "フリーミアム",
     pricingMonthly: "無料 / Advanced 月額2,900円 (Google One 2TB付き)",
     freePlanDetails: {
-      limits: "Gemini 2.0 Flashがほぼ無制限に高速利用可能。",
-      allowedFeatures: ["2.0 Flash使い放題", "YouTube動画やWebの要約", "Imagen 3による画像生成", "Googleアプリ連携"]
+      limits: "Gemini 3.8 Flashがほぼ無制限に超高速推論で利用可能。",
+      allowedFeatures: ["3.8 Flash使い放題", "YouTube動画やWebのリアルタイム要約", "Imagen 3による高精細画像生成", "Googleアプリ連携"]
     },
     paidPlanDetails: {
       planName: "Gemini Advanced",
       price: "月額 2,900円",
-      unlockedFeatures: ["Gemini 1.5 Pro（200万トークン対応）優先利用", "Google One 2TBクラウドストレージ付属", "Gmail・Docs・Sheets内での直接Gemini利用", "Gems（カスタムAI）の作成"],
+      unlockedFeatures: ["Gemini 3.8 Flash & Gemini 3.0 Pro（300万トークン対応）優先利用", "Google One 2TBクラウドストレージ付属", "Gmail・Docs・Sheets内での直接Gemini利用", "Gems（自律エージェント）の作成"],
       recommendedFor: "Googleサービスを日常的に使っている人、長尺動画や巨大PDFを丸ごと分析したい人"
     },
-    paidWorthRating: 4,
+    paidWorthRating: 5,
     hasFreeTier: true,
     supportsJapanese: true,
     commercialUse: true,
     hasApi: true,
     hasApp: true,
-    summary: "Googleの全技術が結集。爆速2.0 Flashと本数百冊分・1時間動画を一撃で読む200万コンテキスト。",
-    description: "Google DeepMindが開発した最先端マルチモーダルAI。YouTube動画のURLを渡すだけで内容を完全要約したり、巨大なPDFや動画ファイルを丸ごと読み込ませて質問できます。Google Workspaceとの密接な連携も魅力。",
-    pros: ["無料版の利用制限が非常に緩く使いやすい", "YouTubeやGoogleドライブとのシームレス連携", "1時間以上の長編動画を直接理解できる唯一無二の能力"],
-    cons: ["時折回答が平坦・マニュアル的になることがある"],
+    summary: "Googleの全技術が結集。爆速Gemini 3.8 Flashと本数百冊分・長編動画を一撃で読む300万コンテキスト。",
+    description: "Google DeepMindが開発した最先端マルチモーダルAI。YouTube動画のURLを渡すだけで内容を完全要約したり、巨大なPDFや動画ファイルを丸ごと読み込ませて質問できます。最新Gemini 3.8 Flashによる思考速度を超えるレスポンスと、Google Workspaceとの密接な連携が強み。",
+    pros: ["Gemini 3.8 Flashの無料枠が非常に潤沢で爆速", "YouTubeやGoogleドライブとのシームレス連携", "長編動画や巨大コードベースを直接理解できる唯一無二の能力"],
+    cons: ["文芸的なクリエイティブ表現ではClaudeに分がある場合がある"],
     specs: {
-      contextWindow: "100万〜200万トークン (本数千ページ相当)",
+      contextWindow: "100万〜300万トークン (本数千ページ・数時間の動画相当)",
       multimodal: "テキスト・音声・画像・動画・ファイル",
       company: "Google",
-      releaseYear: "2023 (最新版2024-2025)"
+      releaseYear: "2023 (最新版2025-2026)"
     },
     officialUrl: "https://gemini.google.com"
   },
@@ -240,14 +232,14 @@ export const generalTools: ToolSeedItem[] = [
     category: "general",
     categoryLabel: "総合（汎用LLM）",
     badge: "検索の未来",
-    version: "Sonar / Pro Search (GPT-4o & Claude 3.5統合)",
+    version: "Sonar / Pro Search (Claude 3.7 & o3-mini & 3.8 Flash統合)",
     versionFeatures: {
       evolution: "Web全体を瞬時にスクレイピング・ファクトチェックし、学術論文から最新ニュースまで出典番号付きで回答。",
-      strengths: ["完全な出典リンク明記でハルシネーション抑制", "Pro Searchによる段階的深掘りリサーチ", "Claude 3.5 / GPT-4oモデルの自由選択", "Pages機能によるレポート自動作成"],
+      strengths: ["完全な出典リンク明記でハルシネーション抑制", "Pro Searchによる段階的深掘りリサーチ", "Claude 3.7 / o3-mini / Gemini 3.8モデルの自由選択", "Pages機能によるレポート自動作成"],
       weaknesses: ["創作小説や自由対話には特化していない"],
       architecture: "Perplexity Deep Research Engine & Sonar Model"
     },
-    estimatedUsers: "1,500万人以上 / 急成長AI検索",
+    estimatedUsers: "2,000万人以上 / 急成長AI検索",
     siteRegisteredCount: 1380,
     votesCount: 1890,
     rankScore: 96.8,
@@ -262,7 +254,7 @@ export const generalTools: ToolSeedItem[] = [
     paidPlanDetails: {
       planName: "Perplexity Pro",
       price: "$20 / 月",
-      unlockedFeatures: ["Pro Search1日300回以上", "Claude 3.5 Sonnet / GPT-4o / o3-miniへのモデル自由切り替え", "無制限ファイル分析", "API利用クレジット付与"],
+      unlockedFeatures: ["Pro Search1日300回以上", "Claude 3.7 Sonnet / o3-mini / Gemini 3.8 Flashへのモデル自由切り替え", "無制限ファイル分析", "API利用クレジット付与"],
       recommendedFor: "日常的に調べ物・市場調査・競合分析・論文検索を行うすべてのビジネスパーソン"
     },
     paidWorthRating: 5,
@@ -272,14 +264,14 @@ export const generalTools: ToolSeedItem[] = [
     hasApi: true,
     hasApp: true,
     summary: "Google検索の完全な代替。すべての回答に出典リンクが付き、裏取りの手間をゼロにする神ツール。",
-    description: "質問に対してリアルタイムにWebを検索・照合し、脚注付きで完璧に整理されたレポートを返してくれます。Proプランでは裏側の頭脳をClaude 3.5 SonnetやGPT-4oに切り替えられるため、最高峰の推論で調査が可能です。",
-    pros: ["情報の根拠が必ず明記されるため裏取りが超容易", "複数のモデル（Claude/OpenAI等）を1つのサブスクで利用可能", "スマホアプリの使い勝手が抜群"],
+    description: "質問に対してリアルタイムにWebを検索・照合し、脚注付きで完璧に整理されたレポートを返してくれます。Proプランでは裏側の頭脳をClaude 3.7 Sonnetやo3-mini、Gemini 3.8 Flashに切り替えられるため、最高峰の推論で調査が可能です。",
+    pros: ["情報の根拠が必ず明記されるため裏取りが超容易", "複数の最新モデル（Claude/OpenAI等）を1つのサブスクで利用可能", "スマホアプリの使い勝手が抜群"],
     cons: ["キャラクター対話などのエンタメ用途には不向き"],
     specs: {
-      contextWindow: "128kトークン (マルチソース統合)",
+      contextWindow: "128k〜200kトークン (マルチソース統合)",
       multimodal: "テキスト・画像・PDF・URL",
       company: "Perplexity AI",
-      releaseYear: "2022 (最新版2024-2025)"
+      releaseYear: "2022 (最新版2025-2026)"
     },
     officialUrl: "https://www.perplexity.ai"
   },
@@ -377,7 +369,7 @@ export const generalTools: ToolSeedItem[] = [
       contextWindow: "128kトークン",
       multimodal: "テキスト・画像・Officeドキュメント",
       company: "Microsoft",
-      releaseYear: "2023 (最新版2024-2025)"
+      releaseYear: "2023 (最新版2025-2026)"
     },
     officialUrl: "https://copilot.microsoft.com"
   },
@@ -426,7 +418,7 @@ export const generalTools: ToolSeedItem[] = [
       contextWindow: "128kトークン",
       multimodal: "テキスト・画像・Xポスト",
       company: "xAI",
-      releaseYear: "2023 (最新版2024-2025)"
+      releaseYear: "2023 (最新版2025-2026)"
     },
     officialUrl: "https://x.ai"
   },
@@ -475,7 +467,7 @@ export const generalTools: ToolSeedItem[] = [
       contextWindow: "128kトークン",
       multimodal: "テキスト・画像 (Pixtral)",
       company: "Mistral AI",
-      releaseYear: "2023 (最新版2024-2025)"
+      releaseYear: "2023 (最新版2025-2026)"
     },
     officialUrl: "https://chat.mistral.ai"
   },
@@ -485,14 +477,14 @@ export const generalTools: ToolSeedItem[] = [
     category: "general",
     categoryLabel: "総合（汎用LLM）",
     badge: "マルチAI統合ハブ",
-    version: "Multi-Model Hub (GPT-4o, Claude 3.5, Flux, etc.)",
+    version: "Multi-Model Hub (GPT-5, Claude 3.7, Gemini 3.8, Flux 2)",
     versionFeatures: {
-      evolution: "Quoraが開発。単一のサブスクリプションでChatGPT, Claude, Gemini, FLUX, Stable Diffusionなど数百種類のAIを切り替え利用可能。",
+      evolution: "Quoraが開発。単一のサブスクリプションでChatGPT, Claude, Gemini, FLUX, Stable Diffusionなど数百種類の最新AIを切り替え利用可能。",
       strengths: ["1つのアカウントで各社最新AIを総なめ", "ポイント制で柔軟にモデルを使い分け", "オリジナルボットの作成・収益化", "軽快なUIと優れたスマホアプリ"],
       weaknesses: ["各ツールの公式最新限定機能（ProjectsやCanvas等）の一部が使えない"],
       architecture: "Quora Unified Model Aggregation API"
     },
-    estimatedUsers: "1,000万人以上 / 定番AIポータル",
+    estimatedUsers: "1,200万人以上 / 定番AIポータル",
     siteRegisteredCount: 860,
     votesCount: 1120,
     rankScore: 89.8,
@@ -507,7 +499,7 @@ export const generalTools: ToolSeedItem[] = [
     paidPlanDetails: {
       planName: "Poe Subscription",
       price: "月額約 $20 (年払い推奨)",
-      unlockedFeatures: ["毎月100万ポイント付与", "Claude 3.5 SonnetやGPT-4oを1つのサブスクで両方利用", "高解像度画像生成モデルの利用"],
+      unlockedFeatures: ["毎月100万ポイント付与", "Claude 3.7 Sonnetやo3-mini、Gemini 3.8 Flashを1つのサブスクで利用", "最新画像生成モデルの利用"],
       recommendedFor: "ChatGPTもClaudeも画像生成も全部少しずつ使いたいが、個別に月20ドルずつ払いたくない人"
     },
     paidWorthRating: 4,
@@ -517,14 +509,14 @@ export const generalTools: ToolSeedItem[] = [
     hasApi: true,
     hasApp: true,
     summary: "AIの全部入りバイキング。ChatGPTもClaudeも画像生成も、1つのアプリ・1つのサブスクで完結。",
-    description: "知識共有サイトQuoraが手がける統合プラットフォーム。モデルごとの利用コストが『ポイント』として明示されており、今日はClaude、明日はGPT、次は画像生成…と自由に乗り換えて活用できます。",
+    description: "知識共有サイトQuoraが手がける統合プラットフォーム。モデルごとの利用コストが『ポイント』として明示されており、今日はClaude 3.7、明日はGemini 3.8 Flash、次は画像生成…と自由に乗り換えて活用できます。",
     pros: ["複数サービスの個別課金を一本化してコスト削減できる", "スマホアプリの完成度が高く使いやすい", "自作ボットを公開してクリエイター報酬を得られる"],
     cons: ["各サービスの最新独自機能（Artifactsなど）は公式に劣る"],
     specs: {
-      contextWindow: "各モデルに準拠 (最大200k)",
+      contextWindow: "各モデルに準拠 (最大200k〜1M)",
       multimodal: "テキスト・画像・音声・ファイル",
       company: "Quora",
-      releaseYear: "2023"
+      releaseYear: "2023 (最新版2025-2026)"
     },
     officialUrl: "https://poe.com"
   },

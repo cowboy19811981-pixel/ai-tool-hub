@@ -41,7 +41,7 @@ export const promptsData: PromptSeedItem[] = [
 1. パフォーマンス・セキュリティ・型安全性の観点からの問題点3選
 2. Server ComponentsとClient Componentsの最適な分離設計
 3. リファクタリング後の完全なコードと、変更理由の解説`,
-    bestPracticeTips: "Claude 3.5 Sonnetは設計意図の解説と型安全性のレビューにおいて圧倒的な正確さを発揮します。",
+    bestPracticeTips: "Claude 3.7 Sonnetは設計意図の解説と型安全性のレビューにおいて圧倒的な正確さを発揮します。",
     copiedCount: 521
   },
   {
