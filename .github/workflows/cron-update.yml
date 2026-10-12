@@ -1,0 +1,44 @@
+name: "12-Hour AI Portal Automated Update & Ranking"
+
+on:
+  schedule:
+    # 12時間ごとに自動実行 (UTC 0:00 & 12:00 -> JST 9:00 & 21:00)
+    - cron: "0 */12 * * *"
+  workflow_dispatch: # GitHub画面からの手動実行も可能
+
+jobs:
+  update-news-and-ranking:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Generate Prisma Client
+        run: npx prisma generate
+        env:
+          DATABASE_URL: "file:./dev.db"
+
+      - name: Run 12-Hour Update Script (Fetch news, Gemini summary, recalculate ranking)
+        run: npm run cron:update
+        env:
+          DATABASE_URL: "file:./dev.db"
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GEMINI_MODEL: "gemini-2.0-flash"
+
+      - name: Commit updated database (if changes exist)
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action [AI Compass Bot]"
+          git add prisma/dev.db
+          git diff --staged --quiet || git commit -m "chore(cron): auto-update AI news and recalculate dynamic rankings [skip ci]"
+          git push || echo "No changes or push skipped"
