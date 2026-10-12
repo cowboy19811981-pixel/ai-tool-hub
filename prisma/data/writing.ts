@@ -56,20 +56,20 @@ export const writingTools: ToolSeedItem[] = [
     category: "writing",
     categoryLabel: "文書・リサーチ",
     badge: "完全無料・神ツール",
-    version: "Gemini 3.8 Flash & 3.0 Pro駆動 / Audio Overview",
+    version: "Gemini 1.5 Pro駆動 / Audio Overview",
     versionFeatures: {
-      evolution: "Gemini 3.8 Flashの超高速推論と巨大コンテキストにより、数十冊のPDFやWebサイトを一瞬で読解。さらに2人のパーソナリティによる音声解説（Audio Overview）や対話型ガイドを標準搭載。",
-      strengths: ["ハルシネーション（嘘）が原理的に皆無", "資料の引用元箇所を即座にハイライト表示", "完全無料で制限なし", "音声対話ポッドキャスト自動生成", "Gemini 3.8 Flashによる爆速回答"],
+      evolution: "Google DeepMindのGemini 1.5 Proと長大コンテキストにより、最大50件のPDFやWebサイトを一瞬で読解。さらに2人のパーソナリティによる音声解説（Audio Overview）や対話型ガイドを標準搭載。",
+      strengths: ["ハルシネーション（嘘）が原理的に皆無", "資料の引用元箇所を即座にハイライト表示", "完全無料で制限なし", "音声対話ポッドキャスト自動生成", "Gemini 1.5 Proによる高精度回答"],
       weaknesses: ["投入した資料以外の一般的な雑談・創作には向かない"],
-      architecture: "Google Gemini 3.8 Flash & 3.0 Pro Grounded RAG",
+      architecture: "Google Gemini 1.5 Pro Grounded RAG",
       versionsList: [
         {
-          name: "Gemini 3.8 Flash Engine",
-          speed: "超高速",
+          name: "Gemini 1.5 Pro Engine",
+          speed: "高速",
           intelligence: "最高峰",
           bestFor: "数十冊のPDF・Webサイトからの即時引用回答・要約",
           planAvailability: "完全無料",
-          description: "ミリ秒単位で資料内の根拠ページを特定して回答する最新のメインエンジン。"
+          description: "投入した資料内の根拠ページを正確に特定して回答するGoogle公式のメインエンジン。"
         },
         {
           name: "Audio Overview (会話型音声化)",
@@ -94,7 +94,7 @@ export const writingTools: ToolSeedItem[] = [
       allowedFeatures: ["50冊分のPDF/資料一括読解", "引用元付きQ&A", "Audio Overview（音声番組生成）", "要約ノート自動作成"]
     },
     paidPlanDetails: {
-      planName: "無料提供中 (将来的にWorkspace Enterprise版予定)",
+      planName: "無料提供中 (Google Labs)",
       price: "0円",
       unlockedFeatures: ["全機能が完全開放"],
       recommendedFor: "論文を読む学生、長大な業務マニュアルや契約書を読み解く実務家"
@@ -106,7 +106,7 @@ export const writingTools: ToolSeedItem[] = [
     hasApi: false,
     hasApp: false,
     summary: "Googleが作った奇跡の無料ツール。PDFや本を渡すだけで、絶対に嘘をつかずに完璧に教えてくれる。",
-    description: "Gemini 3.8 Flashの長文理解力と超高速推論をフル活用したリサーチ特化ノート。ユーザーが渡した資料のみに基づいて回答するため、AI特有の『もっともらしい嘘』がありません。資料を2人のラジオパーソナリティが解説する音声化機能も圧巻。",
+    description: "Gemini 1.5 Proの長文理解力と高精度推論をフル活用したリサーチ特化ノート。ユーザーが渡した資料のみに基づいて回答するため、AI特有の『もっともらしい嘘』がありません。資料を2人のラジオパーソナリティが解説する音声化機能も圧巻。",
     pros: ["回答の根拠となった資料のページ・行が瞬時に確認できる", "完全無料で制限なく使える", "長大な論文や決算書が1分で理解できる"],
     cons: ["専用スマホアプリがまだない（ブラウザ利用）"],
     specs: {

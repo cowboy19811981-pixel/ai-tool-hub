@@ -150,6 +150,8 @@ async function main() {
         title: update.title,
         summary3Lines: update.summary3Lines,
         sourceUrl: update.sourceUrl,
+        sourceName: update.sourceName || "公式発表",
+        category: update.category || (update.toolId ? "update" : "news"),
         publishedAt: update.publishedAt,
       },
     });

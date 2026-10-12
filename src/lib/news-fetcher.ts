@@ -1,117 +1,157 @@
 import { PrismaClient } from "@prisma/client";
 import { GoogleGenerativeAI } from "@google/generative-ai";
 
-// ツールID検出マップ（小文字比較）
-const TOOL_DETECTION_RULES: { keywords: string[]; toolId: string }[] = [
-  { keywords: ["chatgpt", "openai", "gpt-4", "gpt-5", "o1", "o3"], toolId: "chatgpt" },
-  { keywords: ["claude", "anthropic", "sonnet", "opus", "haiku"], toolId: "claude" },
-  { keywords: ["gemini", "deepmind", "google ai"], toolId: "gemini" },
-  { keywords: ["copilot", "github copilot", "microsoft copilot"], toolId: "copilot" },
-  { keywords: ["midjourney"], toolId: "midjourney" },
-  { keywords: ["sora", "sora 2"], toolId: "sora" },
-  { keywords: ["cursor"], toolId: "cursor" },
-  { keywords: ["deepseek", "r1", "v3"], toolId: "deepseek" },
-  { keywords: ["grok", "xai"], toolId: "grok" },
-  { keywords: ["perplexity"], toolId: "perplexity" },
-  { keywords: ["suno"], toolId: "suno" },
-  { keywords: ["runway", "gen-3"], toolId: "runway" },
-  { keywords: ["flux", "black forest labs"], toolId: "flux" },
-  { keywords: ["notion ai", "notion"], toolId: "notion-ai" },
-  { keywords: ["canva"], toolId: "canva-ai" },
+export interface OfficialFeedConfig {
+  sourceName: string;
+  url: string;
+  defaultToolId: string | null;
+  officialDomain: string;
+}
+
+// AI開発元の公式一次情報フィード一覧（ゴシップ・二次メディアを完全排除）
+export const OFFICIAL_AI_FEEDS: OfficialFeedConfig[] = [
+  {
+    sourceName: "OpenAI 公式発表",
+    url: "https://openai.com/news/rss.xml",
+    defaultToolId: "chatgpt",
+    officialDomain: "openai.com",
+  },
+  {
+    sourceName: "Google AI & DeepMind 公式",
+    url: "https://blog.google/technology/ai/rss/",
+    defaultToolId: "gemini",
+    officialDomain: "blog.google",
+  },
+  {
+    sourceName: "Hugging Face 公式ブログ",
+    url: "https://huggingface.co/blog/feed.xml",
+    defaultToolId: null,
+    officialDomain: "huggingface.co",
+  },
+  {
+    sourceName: "GitHub Copilot 公式リリース",
+    url: "https://github.blog/changelog/label/copilot/feed/",
+    defaultToolId: "copilot",
+    officialDomain: "github.blog",
+  },
+  {
+    sourceName: "AWS Machine Learning & AI 公式",
+    url: "https://aws.amazon.com/blogs/machine-learning/feed/",
+    defaultToolId: null,
+    officialDomain: "aws.amazon.com",
+  },
 ];
 
-export interface RawRssItem {
+export interface OfficialNewsItem {
   title: string;
-  cleanTitle: string;
   link: string;
   sourceName: string;
   pubDate: Date;
-  detectedToolId: string | null;
+  toolId: string | null;
+  snippet?: string;
 }
 
 /**
- * Google News RSSからリアルタイムの最新AIニュースを取得・解析する
+ * AI各社の公式サイト・公式ブログRSSから直接一次情報を取得する
  */
-export async function fetchLiveAINewsFromRSS(maxCount = 10): Promise<RawRssItem[]> {
-  try {
-    const rssUrl = "https://news.google.com/rss/search?q=AI+OR+%E4%BA%BA%E5%B7%A5%E7%9F%A5%E8%83%BD+OR+%E7%94%9F%E6%88%90AI+OR+ChatGPT+OR+Claude+OR+Gemini&hl=ja&gl=JP&ceid=JP:ja";
-    
-    const res = await fetch(rssUrl, {
-      headers: {
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AI-Compass-Portal/1.0",
-      },
-      next: { revalidate: 0 },
-    });
+export async function fetchOfficialAINews(itemsPerFeed = 2): Promise<OfficialNewsItem[]> {
+  const allItems: OfficialNewsItem[] = [];
 
-    if (!res.ok) {
-      console.warn(`[NewsFetcher] RSS fetch failed with status: ${res.status}`);
-      return [];
-    }
-
-    const xmlText = await res.text();
-    const itemMatches = xmlText.match(/<item>[\s\S]*?<\/item>/g) || [];
-
-    const items: RawRssItem[] = [];
-
-    for (const rawItem of itemMatches.slice(0, maxCount * 2)) {
-      const titleMatch = rawItem.match(/<title>([\s\S]*?)<\/title>/);
-      const linkMatch = rawItem.match(/<link>([\s\S]*?)<\/link>/);
-      const pubDateMatch = rawItem.match(/<pubDate>([\s\S]*?)<\/pubDate>/);
-      const sourceMatch = rawItem.match(/<source[^>]*>([\s\S]*?)<\/source>/);
-
-      if (!titleMatch || !linkMatch) continue;
-
-      let fullTitle = titleMatch[1].replace(/&amp;/g, "&").replace(/&quot;/g, '"').replace(/&#39;/g, "'").trim();
-      let sourceName = sourceMatch ? sourceMatch[1].trim() : "テック速報";
-
-      // タイトル末尾の " - メディア名" を分離してクリーンにする
-      let cleanTitle = fullTitle;
-      const dashIdx = fullTitle.lastIndexOf(" - ");
-      if (dashIdx > 0) {
-        if (!sourceMatch) {
-          sourceName = fullTitle.substring(dashIdx + 3).trim();
-        }
-        cleanTitle = fullTitle.substring(0, dashIdx).trim();
-      }
-
-      let link = linkMatch[1].trim();
-      let pubDate = pubDateMatch ? new Date(pubDateMatch[1]) : new Date();
-      if (isNaN(pubDate.getTime())) pubDate = new Date();
-
-      // 関連ツールの判定
-      const lower = fullTitle.toLowerCase();
-      let detectedToolId: string | null = null;
-      for (const rule of TOOL_DETECTION_RULES) {
-        if (rule.keywords.some((kw) => lower.includes(kw))) {
-          detectedToolId = rule.toolId;
-          break;
-        }
-      }
-
-      items.push({
-        title: fullTitle,
-        cleanTitle,
-        link,
-        sourceName,
-        pubDate,
-        detectedToolId,
+  for (const feed of OFFICIAL_AI_FEEDS) {
+    try {
+      const res = await fetch(feed.url, {
+        headers: {
+          "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AI-Compass-Portal-Official-Sync/1.0",
+        },
+        next: { revalidate: 0 },
       });
 
-      if (items.length >= maxCount) break;
-    }
+      if (!res.ok) {
+        console.warn(`[OfficialNews] ${feed.sourceName} returned status ${res.status}`);
+        continue;
+      }
 
-    return items;
-  } catch (err) {
-    console.error("[NewsFetcher] Error fetching RSS:", err);
-    return [];
+      const text = await res.text();
+      const entries = text.match(/<item>[\s\S]*?<\/item>/g) || text.match(/<entry>[\s\S]*?<\/entry>/g) || [];
+
+      let count = 0;
+      for (const entry of entries) {
+        const titleMatch = entry.match(/<title[^>]*>([\s\S]*?)<\/title>/);
+        const linkMatch = entry.match(/<link[^>]*>([\s\S]*?)<\/link>/) || entry.match(/<link[^>]*href=["']([^"']+)["']/i);
+        const pubDateMatch = entry.match(/<pubDate>([\s\S]*?)<\/pubDate>/) || entry.match(/<published>([\s\S]*?)<\/published>/) || entry.match(/<updated>([\s\S]*?)<\/updated>/);
+        const descMatch = entry.match(/<description>([\s\S]*?)<\/description>/) || entry.match(/<summary[^>]*>([\s\S]*?)<\/summary>/);
+
+        if (!titleMatch) continue;
+
+        let title = titleMatch[1]
+          .replace(/<!\[CDATA\[([\s\S]*?)\]\]>/g, "$1")
+          .replace(/&amp;/g, "&")
+          .replace(/&quot;/g, '"')
+          .replace(/&#39;/g, "'")
+          .replace(/&lt;.*?&gt;/g, "")
+          .trim();
+
+        let link = "";
+        if (linkMatch) {
+          link = (linkMatch[1] || "").replace(/<!\[CDATA\[([\s\S]*?)\]\]>/g, "$1").trim();
+        }
+
+        if (!link || !title) continue;
+
+        let pubDate = pubDateMatch ? new Date(pubDateMatch[1]) : new Date();
+        if (isNaN(pubDate.getTime())) pubDate = new Date();
+
+        let snippet = "";
+        if (descMatch) {
+          snippet = descMatch[1]
+            .replace(/<!\[CDATA\[([\s\S]*?)\]\]>/g, "$1")
+            .replace(/<[^>]+>/g, "")
+            .slice(0, 300)
+            .trim();
+        }
+
+        // ツールID判定（タイトルとフィード設定から自動検出）
+        let toolId = feed.defaultToolId;
+        const lower = title.toLowerCase();
+        if (lower.includes("chatgpt") || lower.includes("gpt-4o") || lower.includes("o1") || lower.includes("o3")) {
+          toolId = "chatgpt";
+        } else if (lower.includes("gemini") || lower.includes("deepmind")) {
+          toolId = "gemini";
+        } else if (lower.includes("claude") || lower.includes("anthropic")) {
+          toolId = "claude";
+        } else if (lower.includes("copilot")) {
+          toolId = "copilot";
+        } else if (lower.includes("cursor")) {
+          toolId = "cursor";
+        }
+
+        allItems.push({
+          title,
+          link,
+          sourceName: feed.sourceName,
+          pubDate,
+          toolId,
+          snippet,
+        });
+
+        count++;
+        if (count >= itemsPerFeed) break;
+      }
+    } catch (err: any) {
+      console.error(`[OfficialNews] Failed to fetch feed ${feed.sourceName}:`, err.message);
+    }
   }
+
+  // 日付の新しい順にソート
+  allItems.sort((a, b) => b.pubDate.getTime() - a.pubDate.getTime());
+  return allItems;
 }
 
 /**
- * Geminiまたはルールベースで初心者向け3行要約を生成する
+ * 公式発表を日本語で初心者向け3行要約する
  */
-export async function generate3LineSummary(
-  item: RawRssItem,
+export async function summarizeOfficialRelease(
+  item: OfficialNewsItem,
   apiKey?: string,
   modelName = "gemini-2.0-flash"
 ): Promise<string> {
@@ -120,14 +160,13 @@ export async function generate3LineSummary(
       const genAI = new GoogleGenerativeAI(apiKey);
       const model = genAI.getGenerativeModel({ model: modelName });
       const prompt = `
-あなたは初心者向けAI総合ポータルの専属解説員です。
-以下の最新AIニュースについて、AI初心者や一般ビジネスパーソンが読んですぐ価値がわかる「3行箇条書き要約（各行全角50文字以内）」を作成してください。
-必ず「・」で各行を始めてください。専門用語は噛み砕いてください。
+あなたは信頼性最優先のAI総合ポータルの公式アナウンス解説員です。
+以下の【一次情報・公式リリース】の内容を、日本のAI初心者・ビジネスパーソンに向けて正確かつ平易に日本語で「3行箇条書き要約（各行全角50文字以内）」にしてください。
+必ず「・」で各行を始めてください。推測や誇張は一切交えず、公式が発表した事実のみを要約してください。
 
-【ニュースタイトル】
-${item.cleanTitle}
-【発信元メディア】
-${item.sourceName}
+【発信元】: ${item.sourceName}
+【公式タイトル】: ${item.title}
+【概要抜粋】: ${item.snippet || "なし"}
 `;
       const res = await model.generateContent(prompt);
       const text = res.response.text().trim();
@@ -135,36 +174,36 @@ ${item.sourceName}
         return text;
       }
     } catch (err) {
-      console.warn("[NewsFetcher] Gemini summary failed, falling back to heuristic:", err);
+      console.warn("[OfficialNews] Gemini summary failed:", err);
     }
   }
 
-  // フォールバック要約（リアルなタイトルから構築）
-  return `・${item.cleanTitle}に関する最新ニュースが${item.sourceName}より報じられました。
-・AI技術の急速な進化や実務・生活への具体的な影響が注目されています。
-・詳細や公式の見解はリンク先（${item.sourceName}）で確認可能です。`;
+  // フォールバック要約（公式発表の事実に基づくクリーンな要約）
+  return `・${item.sourceName}による公式発表「${item.title}」が公開されました。
+・機能改善や新技術の導入について、開発元公式より詳細がアナウンスされています。
+・一次情報の詳細は公式リンク（${item.sourceName}）にて確認できます。`;
 }
 
 /**
- * リアルタイムAIニュースを取得してDBに保存・更新するメイン処理
+ * 公式ニュースを取得してDBに保存・更新するメイン処理
  */
 export async function syncLiveAINews(
   prisma: PrismaClient,
-  limit = 5
+  limit = 6
 ): Promise<{ addedCount: number; newItems: any[] }> {
   const apiKey = process.env.GEMINI_API_KEY;
   const modelName = process.env.GEMINI_MODEL || "gemini-2.0-flash";
 
-  const rawItems = await fetchLiveAINewsFromRSS(limit * 2);
+  const rawItems = await fetchOfficialAINews(2);
   const newItems: any[] = [];
   let addedCount = 0;
 
   for (const item of rawItems) {
-    // 既存チェック（同一タイトルまたは同一リンクがすでにあればスキップ）
+    // 既存チェック
     const existing = await prisma.update.findFirst({
       where: {
         OR: [
-          { title: item.cleanTitle },
+          { title: item.title },
           { sourceUrl: item.link },
         ],
       },
@@ -172,41 +211,37 @@ export async function syncLiveAINews(
 
     if (existing) continue;
 
-    // ツール存在チェック（検出されたtoolIdが実在するか確認）
+    // ツール存在チェック
     let validToolId: string | null = null;
-    if (item.detectedToolId) {
+    if (item.toolId) {
       const toolExists = await prisma.tool.findUnique({
-        where: { id: item.detectedToolId },
+        where: { id: item.toolId },
       });
       if (toolExists) {
-        validToolId = item.detectedToolId;
+        validToolId = item.toolId;
       }
     }
 
     // 3行要約生成
-    const summary3Lines = await generate3LineSummary(item, apiKey, modelName);
-
-    // カテゴリ判定: ツール個別更新か業界全体ニュースか
-    const category = validToolId ? "update" : "news";
+    const summary3Lines = await summarizeOfficialRelease(item, apiKey, modelName);
 
     const saved = await prisma.update.create({
       data: {
         toolId: validToolId,
-        title: item.cleanTitle,
+        title: item.title,
         summary3Lines,
         sourceUrl: item.link,
         sourceName: item.sourceName,
-        category,
+        category: validToolId ? "update" : "news",
         publishedAt: item.pubDate,
       },
     });
 
-    // 関連ツールがあればスコア加算
     if (validToolId) {
       await prisma.tool.update({
         where: { id: validToolId },
         data: {
-          rankScore: { increment: 3.0 },
+          rankScore: { increment: 2.0 },
           lastUpdated: new Date(),
         },
       });
@@ -218,7 +253,6 @@ export async function syncLiveAINews(
     if (addedCount >= limit) break;
   }
 
-  // ランキング再計算
   if (addedCount > 0) {
     await recalculateAllRankings(prisma);
   }
@@ -227,7 +261,7 @@ export async function syncLiveAINews(
 }
 
 /**
- * 全ツールのランキング再計算
+ * 全ツールの動的ランキング再計算
  */
 export async function recalculateAllRankings(prisma: PrismaClient) {
   const categories = ["general", "writing", "image", "video", "audio", "code"];

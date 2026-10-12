@@ -7,28 +7,28 @@ export const generalTools: ToolSeedItem[] = [
     category: "general",
     categoryLabel: "総合（汎用LLM）",
     badge: "絶対王者",
-    version: "GPT-5 / o3 / o3-mini / GPT-4o",
+    version: "o3-mini / o1 / GPT-4o / GPT-4o mini",
     versionFeatures: {
-      evolution: "次世代フロンティアGPT-5および深層推論o3シリーズを統合。自律型エージェント機能（Operator）によりPC作業の完全代行に対応。",
-      strengths: ["超高速マルチモーダル対話", "最高峰の推論力(o3)", "自律型PC操作エージェント", "業界最大のエコシステム"],
-      weaknesses: ["高度機能の利用枠が無料版では制限あり"],
-      architecture: "OpenAI Next-Gen Frontier & o3 Deep Reasoning Engine",
+      evolution: "最新の深層推論モデルo3-miniおよびo1シリーズ、マルチモーダルGPT-4oを統合。数学・コーディング・論理パズルで業界最高峰の正答率を実現。",
+      strengths: ["超高速マルチモーダル対話(GPT-4o)", "最高峰の推論力(o3-mini / o1)", "高度な音声会話モード", "業界最大のエコシステム"],
+      weaknesses: ["高度な推論機能の利用枠が無料版では制限あり"],
+      architecture: "OpenAI o-Series Reasoning Engine & GPT-4o Multimodal Architecture",
       versionsList: [
         {
-          name: "o3 (Deep Reasoning)",
+          name: "o1 (Full Reasoning)",
           speed: "じっくり推論",
           intelligence: "最高峰",
           bestFor: "フロンティア級数学・難関コーディング・科学的ブレイクスルー検証",
           planAvailability: "Plus / Pro限定",
-          description: "従来のo1を大幅に超える深層推論モデル。思考過程の多段階検証により複雑な問題でほぼ誤答なし。"
+          description: "思考プロセスを展開しながら難問を多段階で解き明かすOpenAIの最高峰推論モデル。"
         },
         {
-          name: "o3-mini (High Reasoning)",
+          name: "o3-mini (Fast Reasoning)",
           speed: "高速",
           intelligence: "最高峰",
           bestFor: "競技プログラミング、数学、高難度タスクの高速処理",
           planAvailability: "無料 / Plus / API",
-          description: "o3の卓越した思考力を驚異的なレスポンス速度で提供する最新の主力推論モデル。"
+          description: "最新のo3アーキテクチャを採用し、驚異的なレスポンス速度と高い推論力を両立させた主力モデル。"
         },
         {
           name: "GPT-4o (Omni)",
@@ -156,37 +156,37 @@ export const generalTools: ToolSeedItem[] = [
     name: "Gemini",
     category: "general",
     categoryLabel: "総合（汎用LLM）",
-    badge: "3.8 Flash爆速推論",
-    version: "Gemini 3.8 Flash / Gemini 3.0 Pro",
+    badge: "2.0 Flash爆速推論",
+    version: "Gemini 2.0 Flash / Gemini 1.5 Pro",
     versionFeatures: {
-      evolution: "Gemini 3.8 Flashにより、人間の思考速度を超えるリアルタイム推論と、300万トークンの巨大コンテキスト・自律エージェント実行力を獲得。",
-      strengths: ["超低遅延・高スループット推論", "300万トークンの長大コンテキスト（動画・音声・PDF丸ごと）", "Google Workspace / Android / Searchの深層連携", "無料枠が極めて潤沢"],
+      evolution: "Google DeepMindの次世代Gemini 2.0 Flashにより、思考速度を凌駕する低遅延推論と、最大200万トークンの巨大コンテキスト・ネイティブ音声対話力を獲得。",
+      strengths: ["超低遅延・高スループット推論(2.0 Flash)", "200万トークンの長大コンテキスト（動画・音声・PDF丸ごと）", "Google Workspace / Android / Searchの深層連携", "無料枠が極めて潤沢"],
       weaknesses: ["高度なクリエイティブ文芸表現での語彙の硬さ"],
-      architecture: "Google DeepMind Gemini 3rd Generation Frontier Architecture",
+      architecture: "Google DeepMind Gemini 2.0 Native Multimodal Architecture",
       versionsList: [
         {
-          name: "Gemini 3.8 Flash",
-          speed: "超高速",
-          intelligence: "最高峰",
-          bestFor: "リアルタイム対話、エージェント自動タスク実行、大容量ドキュメント・動画分析",
-          planAvailability: "無料枠で無制限級利用可能",
-          description: "Googleの最新フラッグシップ高速モデル。前世代Flashから知能指数が飛躍し、Pro並みの推論力をミリ秒単位の爆速レスポンスで提供。"
-        },
-        {
-          name: "Gemini 3.0 Pro",
-          speed: "高速",
-          intelligence: "最高峰",
-          bestFor: "超複雑な科学的推論、マルチモーダル深層解析、数百冊の資料同時分析",
-          planAvailability: "Gemini Advanced (有料) / API",
-          description: "Google DeepMindの最高峰知能モデル。300万トークン対応で、長大な映像や数千ページのコードベースを完全に理解して回答。"
-        },
-        {
-          name: "Gemini 2.5 Flash",
+          name: "Gemini 2.0 Flash",
           speed: "超高速",
           intelligence: "高度",
-          bestFor: "日常の短文処理、格安・大量APIバッチ処理",
-          planAvailability: "完全無料",
-          description: "安定した高コスパモデル。日常的な質問や軽量タスクをストレスなく処理。"
+          bestFor: "リアルタイム対話、大容量ドキュメント・動画分析、高速API呼び出し",
+          planAvailability: "無料枠で潤沢に利用可能",
+          description: "Googleの最新主力高速モデル。次世代マルチモーダル処理と低レイテンシ推論を兼ね備える。"
+        },
+        {
+          name: "Gemini 1.5 Pro",
+          speed: "高速",
+          intelligence: "最高峰",
+          bestFor: "超複雑な科学的推論、マルチモーダル深層解析、長編書籍・コードベース分析",
+          planAvailability: "Gemini Advanced (有料) / API",
+          description: "Google DeepMindの最高峰知能モデル。最大200万トークン対応で、長大な映像や膨大なPDFを一括解析。"
+        },
+        {
+          name: "Gemini 2.0 Flash Thinking",
+          speed: "標準",
+          intelligence: "最高峰",
+          bestFor: "数学、プログラミング、複雑な論理パズル",
+          planAvailability: "Google AI Studio / 実験プレビュー",
+          description: "思考プロセスを出力しながら論理的整合性を検証する推論特化型モデル。"
         }
       ]
     },
@@ -199,13 +199,13 @@ export const generalTools: ToolSeedItem[] = [
     pricingType: "フリーミアム",
     pricingMonthly: "無料 / Advanced 月額2,900円 (Google One 2TB付き)",
     freePlanDetails: {
-      limits: "Gemini 3.8 Flashがほぼ無制限に超高速推論で利用可能。",
-      allowedFeatures: ["3.8 Flash使い放題", "YouTube動画やWebのリアルタイム要約", "Imagen 3による高精細画像生成", "Googleアプリ連携"]
+      limits: "Gemini 2.0 Flashがほぼ無制限に超高速推論で利用可能。",
+      allowedFeatures: ["2.0 Flash使い放題", "YouTube動画やWebのリアルタイム要約", "Imagen 3による高精細画像生成", "Googleアプリ連携"]
     },
     paidPlanDetails: {
       planName: "Gemini Advanced",
       price: "月額 2,900円",
-      unlockedFeatures: ["Gemini 3.8 Flash & Gemini 3.0 Pro（300万トークン対応）優先利用", "Google One 2TBクラウドストレージ付属", "Gmail・Docs・Sheets内での直接Gemini利用", "Gems（自律エージェント）の作成"],
+      unlockedFeatures: ["Gemini 1.5 Pro（最大200万トークン）優先利用", "Google One 2TBクラウドストレージ付属", "Gmail・Docs・Sheets内での直接Gemini利用", "Gems（カスタムAI）の作成"],
       recommendedFor: "Googleサービスを日常的に使っている人、長尺動画や巨大PDFを丸ごと分析したい人"
     },
     paidWorthRating: 5,
@@ -214,15 +214,15 @@ export const generalTools: ToolSeedItem[] = [
     commercialUse: true,
     hasApi: true,
     hasApp: true,
-    summary: "Googleの全技術が結集。爆速Gemini 3.8 Flashと本数百冊分・長編動画を一撃で読む300万コンテキスト。",
-    description: "Google DeepMindが開発した最先端マルチモーダルAI。YouTube動画のURLを渡すだけで内容を完全要約したり、巨大なPDFや動画ファイルを丸ごと読み込ませて質問できます。最新Gemini 3.8 Flashによる思考速度を超えるレスポンスと、Google Workspaceとの密接な連携が強み。",
-    pros: ["Gemini 3.8 Flashの無料枠が非常に潤沢で爆速", "YouTubeやGoogleドライブとのシームレス連携", "長編動画や巨大コードベースを直接理解できる唯一無二の能力"],
+    summary: "Googleの全技術が結集。爆速Gemini 2.0 Flashと本数百冊分・長編動画を一撃で読む200万コンテキスト。",
+    description: "Google DeepMindが開発した最先端マルチモーダルAI。YouTube動画のURLを渡すだけで内容を完全要約したり、巨大なPDFや動画ファイルを丸ごと読み込ませて質問できます。最新Gemini 2.0 Flashによる思考速度を超えるレスポンスと、Google Workspaceとの密接な連携が強み。",
+    pros: ["Gemini 2.0 Flashの無料枠が非常に潤沢で爆速", "YouTubeやGoogleドライブとのシームレス連携", "長編動画や巨大コードベースを直接理解できる唯一無二の能力"],
     cons: ["文芸的なクリエイティブ表現ではClaudeに分がある場合がある"],
     specs: {
-      contextWindow: "100万〜300万トークン (本数千ページ・数時間の動画相当)",
+      contextWindow: "100万〜200万トークン (本数千ページ・数時間の動画相当)",
       multimodal: "テキスト・音声・画像・動画・ファイル",
       company: "Google",
-      releaseYear: "2023 (最新版2025-2026)"
+      releaseYear: "2023 (最新版2025)"
     },
     officialUrl: "https://gemini.google.com"
   },
@@ -232,10 +232,10 @@ export const generalTools: ToolSeedItem[] = [
     category: "general",
     categoryLabel: "総合（汎用LLM）",
     badge: "検索の未来",
-    version: "Sonar / Pro Search (Claude 3.7 & o3-mini & 3.8 Flash統合)",
+    version: "Sonar / Pro Search (Claude 3.7 & o3-mini & Gemini 2.0 Flash統合)",
     versionFeatures: {
       evolution: "Web全体を瞬時にスクレイピング・ファクトチェックし、学術論文から最新ニュースまで出典番号付きで回答。",
-      strengths: ["完全な出典リンク明記でハルシネーション抑制", "Pro Searchによる段階的深掘りリサーチ", "Claude 3.7 / o3-mini / Gemini 3.8モデルの自由選択", "Pages機能によるレポート自動作成"],
+      strengths: ["完全な出典リンク明記でハルシネーション抑制", "Pro Searchによる段階的深掘りリサーチ", "Claude 3.7 / o3-mini / Gemini 2.0 Flashモデルの自由選択", "Pages機能によるレポート自動作成"],
       weaknesses: ["創作小説や自由対話には特化していない"],
       architecture: "Perplexity Deep Research Engine & Sonar Model"
     },
@@ -254,7 +254,7 @@ export const generalTools: ToolSeedItem[] = [
     paidPlanDetails: {
       planName: "Perplexity Pro",
       price: "$20 / 月",
-      unlockedFeatures: ["Pro Search1日300回以上", "Claude 3.7 Sonnet / o3-mini / Gemini 3.8 Flashへのモデル自由切り替え", "無制限ファイル分析", "API利用クレジット付与"],
+      unlockedFeatures: ["Pro Search1日300回以上", "Claude 3.7 Sonnet / o3-mini / Gemini 2.0 Flashへのモデル自由切り替え", "無制限ファイル分析", "API利用クレジット付与"],
       recommendedFor: "日常的に調べ物・市場調査・競合分析・論文検索を行うすべてのビジネスパーソン"
     },
     paidWorthRating: 5,
@@ -264,7 +264,7 @@ export const generalTools: ToolSeedItem[] = [
     hasApi: true,
     hasApp: true,
     summary: "Google検索の完全な代替。すべての回答に出典リンクが付き、裏取りの手間をゼロにする神ツール。",
-    description: "質問に対してリアルタイムにWebを検索・照合し、脚注付きで完璧に整理されたレポートを返してくれます。Proプランでは裏側の頭脳をClaude 3.7 Sonnetやo3-mini、Gemini 3.8 Flashに切り替えられるため、最高峰の推論で調査が可能です。",
+    description: "質問に対してリアルタイムにWebを検索・照合し、脚注付きで完璧に整理されたレポートを返してくれます。Proプランでは裏側の頭脳をClaude 3.7 Sonnetやo3-mini、Gemini 2.0 Flashに切り替えられるため、最高峰の推論で調査が可能です。",
     pros: ["情報の根拠が必ず明記されるため裏取りが超容易", "複数の最新モデル（Claude/OpenAI等）を1つのサブスクで利用可能", "スマホアプリの使い勝手が抜群"],
     cons: ["キャラクター対話などのエンタメ用途には不向き"],
     specs: {
@@ -477,7 +477,7 @@ export const generalTools: ToolSeedItem[] = [
     category: "general",
     categoryLabel: "総合（汎用LLM）",
     badge: "マルチAI統合ハブ",
-    version: "Multi-Model Hub (GPT-5, Claude 3.7, Gemini 3.8, Flux 2)",
+    version: "Multi-Model Hub (o3-mini, Claude 3.7, Gemini 2.0, FLUX.1)",
     versionFeatures: {
       evolution: "Quoraが開発。単一のサブスクリプションでChatGPT, Claude, Gemini, FLUX, Stable Diffusionなど数百種類の最新AIを切り替え利用可能。",
       strengths: ["1つのアカウントで各社最新AIを総なめ", "ポイント制で柔軟にモデルを使い分け", "オリジナルボットの作成・収益化", "軽快なUIと優れたスマホアプリ"],
@@ -499,7 +499,7 @@ export const generalTools: ToolSeedItem[] = [
     paidPlanDetails: {
       planName: "Poe Subscription",
       price: "月額約 $20 (年払い推奨)",
-      unlockedFeatures: ["毎月100万ポイント付与", "Claude 3.7 Sonnetやo3-mini、Gemini 3.8 Flashを1つのサブスクで利用", "最新画像生成モデルの利用"],
+      unlockedFeatures: ["毎月100万ポイント付与", "Claude 3.7 Sonnetやo3-mini、Gemini 2.0 Flashを1つのサブスクで利用", "最新画像生成モデルの利用"],
       recommendedFor: "ChatGPTもClaudeも画像生成も全部少しずつ使いたいが、個別に月20ドルずつ払いたくない人"
     },
     paidWorthRating: 4,
@@ -509,7 +509,7 @@ export const generalTools: ToolSeedItem[] = [
     hasApi: true,
     hasApp: true,
     summary: "AIの全部入りバイキング。ChatGPTもClaudeも画像生成も、1つのアプリ・1つのサブスクで完結。",
-    description: "知識共有サイトQuoraが手がける統合プラットフォーム。モデルごとの利用コストが『ポイント』として明示されており、今日はClaude 3.7、明日はGemini 3.8 Flash、次は画像生成…と自由に乗り換えて活用できます。",
+    description: "知識共有サイトQuoraが手がける統合プラットフォーム。モデルごとの利用コストが『ポイント』として明示されており、今日はClaude 3.7、明日はGemini 2.0 Flash、次は画像生成…と自由に乗り換えて活用できます。",
     pros: ["複数サービスの個別課金を一本化してコスト削減できる", "スマホアプリの完成度が高く使いやすい", "自作ボットを公開してクリエイター報酬を得られる"],
     cons: ["各サービスの最新独自機能（Artifactsなど）は公式に劣る"],
     specs: {

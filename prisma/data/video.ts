@@ -82,15 +82,15 @@ export const videoTools: ToolSeedItem[] = [
     category: "video",
     categoryLabel: "映像・動画",
     badge: "物理世界シミュレータ",
-    version: "Sora 2 / Sora Turbo (OpenAI)",
+    version: "Sora / Sora Turbo (OpenAI公式)",
     versionFeatures: {
-      evolution: "最長1分の長尺動画を物理法則（重力、衝突、反射）の破綻なく生成。次世代Sora 2により物語整合性と解像度・カメラ制御が飛躍的に進化。",
+      evolution: "最長1分の長尺動画を物理法則（重力、衝突、反射）の整合性を保ちながら生成。ChatGPT PlusおよびProプラン向けに公式提供開始。",
       strengths: ["最長1分の圧倒的な長尺生成能力", "物理世界の挙動を理解した自然な動き", "複数カメラ視点のシームレスな切り替え", "ChatGPTエコシステムとの連携"],
       weaknesses: ["ChatGPT PlusまたはPro加入が必要で無料枠なし"],
-      architecture: "Sora 2 Spatiotemporal DiT Architecture",
+      architecture: "OpenAI Spatiotemporal Video Diffusion Transformer (DiT)",
       versionsList: [
         {
-          name: "Sora 2 (High-Fidelity)",
+          name: "Sora (High-Fidelity 1080p)",
           speed: "じっくり生成",
           intelligence: "最高峰",
           bestFor: "映画・広告・MV級の最高解像度映像、複雑な複数人アクション",

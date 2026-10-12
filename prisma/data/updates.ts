@@ -1,19 +1,23 @@
 export interface UpdateSeedItem {
-  toolId: string;
+  toolId?: string | null;
   title: string;
   summary3Lines: string;
   sourceUrl: string;
+  sourceName?: string;
+  category?: string;
   publishedAt: Date;
 }
 
 export const updatesData: UpdateSeedItem[] = [
   {
     toolId: "gemini",
-    title: "Googleが「Gemini 3.8 Flash」を正式発表、300万コンテキストと爆速推論を両立",
+    title: "Googleが「Gemini 2.0 Flash」を正式発表、次世代マルチモーダルと低遅延推論を実現",
     summary3Lines: `・思考時間を要さない超低遅延リアルタイムマルチモーダル推論を実現。
-・本数百冊分・長編動画を丸ごと読み込む300万トークンの巨大コンテキストを搭載。
+・本数百冊分・長編動画を丸ごと読み込む最大200万トークンの巨大コンテキストを搭載。
 ・Google AI StudioおよびWeb版で無料枠から即座に利用可能。`,
     sourceUrl: "https://blog.google/technology/ai",
+    sourceName: "Google AI 公式",
+    category: "update",
     publishedAt: new Date(Date.now() - 1000 * 60 * 30) // 30分前
   },
   {

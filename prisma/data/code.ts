@@ -7,10 +7,10 @@ export const codeTools: ToolSeedItem[] = [
     category: "code",
     categoryLabel: "コード・開発",
     badge: "エンジニア界の絶対覇権",
-    version: "Agent 2.0 / Composer (Claude 3.7 Sonnet & Gemini 3.8 Flash)",
+    version: "Agent / Composer (Claude 3.7 Sonnet & Gemini 2.0 Flash)",
     versionFeatures: {
-      evolution: "VS Codeを完全フォークして設計。自律Agent 2.0機能によりプロジェクト全体の複数ファイルを同時に修正・作成し、ターミナルコマンドやテスト実行まで完全自律代行。",
-      strengths: ["リポジトリ全体のコードベースを完全把握（@codebase）", "複数ファイルを跨ぐ一括編集・リファクタリング（Composer）", "Claude 3.7 Sonnet & Gemini 3.8 Flashの超高速推論フル活用", "VS Codeの拡張機能・設定がワンクリックで完全移行"],
+      evolution: "VS Codeを完全フォークして設計。自律Agent機能によりプロジェクト全体の複数ファイルを同時に修正・作成し、ターミナルコマンドやテスト実行まで自律代行。",
+      strengths: ["リポジトリ全体のコードベースを完全把握（@codebase）", "複数ファイルを跨ぐ一括編集・リファクタリング（Composer）", "Claude 3.7 Sonnet & Gemini 2.0 Flashの超高速推論フル活用", "VS Codeの拡張機能・設定がワンクリックで完全移行"],
       weaknesses: ["無料版の高速リクエスト制限がすぐに尽きる（Pro課金ほぼ前提）"],
       architecture: "Anysphere Custom Electron IDE + Fast Context Indexing",
       versionsList: [
@@ -23,9 +23,9 @@ export const codeTools: ToolSeedItem[] = [
           description: "Cursor利用者の大半が常時使用する最高峰モデル。思考モード併用で複雑なリファクタリングもミスゼロ。"
         },
         {
-          name: "Gemini 3.8 Flash (超爆速補完)",
+          name: "Gemini 2.0 Flash (超爆速補完)",
           speed: "超高速",
-          intelligence: "最高峰",
+          intelligence: "高度",
           bestFor: "巨大リポジトリ全域検索、リアルタイムインライン補完、長大ログ解析",
           planAvailability: "Pro / API連携",
           description: "Googleの最新爆速知能。数万行のコードベースを一瞬でスキャンしてミリ秒で最適な提案を返します。"
@@ -55,7 +55,7 @@ export const codeTools: ToolSeedItem[] = [
     paidPlanDetails: {
       planName: "Cursor Pro",
       price: "$20 / 月",
-      unlockedFeatures: ["Claude 3.7 Sonnet / Gemini 3.8 Flashの高速リクエスト月500回", "低速リクエスト無制限", "Composerマルチファイル一括編集無制限", "最新Agent 2.0自律機能"],
+      unlockedFeatures: ["Claude 3.7 Sonnet / Gemini 2.0 Flashの高速リクエスト月500回", "低速リクエスト無制限", "Composerマルチファイル一括編集無制限", "最新Agent自律機能"],
       recommendedFor: "日常的にコードを書くすべてのプログラマー、Web開発者、個人開発者（課金必須の神器）"
     },
     paidWorthRating: 5,
@@ -65,7 +65,7 @@ export const codeTools: ToolSeedItem[] = [
     hasApi: false,
     hasApp: true,
     summary: "プログラミングの常識を覆したAIエディタ。アプリ全体の複数ファイルを一瞬で書き換えるエンジニアの神器。",
-    description: "いま世界のエンジニアがVS Codeから大挙して移行している最注目IDE。チャットで『この画面にダークモード追加して』と言うだけで、CSS、コンポーネント、状態管理の全ファイルをAIが自律探索して同時に正しく書き換えてくれます。Claude 3.7 SonnetやGemini 3.8 Flashを標準統合。",
+    description: "いま世界のエンジニアがVS Codeから大挙して移行している最注目IDE。チャットで『この画面にダークモード追加して』と言うだけで、CSS、コンポーネント、状態管理の全ファイルをAIが自律探索して同時に正しく書き換えてくれます。Claude 3.7 SonnetやGemini 2.0 Flashを標準統合。",
     pros: ["複数ファイルの一括修正が驚異的な精度で決まる", "VS Codeのプラグインやショートカットがそのまま使える", "開発速度が2倍〜3倍に跳ね上がる実感がある"],
     cons: ["Proプラン（月20ドル）に入らないと真価を発揮しにくい"],
     specs: {
