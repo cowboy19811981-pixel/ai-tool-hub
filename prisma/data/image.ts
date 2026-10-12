@@ -12,7 +12,25 @@ export const imageTools: ToolSeedItem[] = [
       evolution: "v6.1によりフォトリアリズム、皮膚の質感、光と影の描写が極限へ到達。アニメ特化Niji v6とWeb版UI生成を完全搭載。",
       strengths: ["現実と見紛う映画クオリティの写実性", "圧倒的な美術的センス・構図力", "アニメ特化Nijiモデルの最高峰の絵柄", "Web版生成エディタでのインペイント・拡張"],
       weaknesses: ["無料プランが現在完全廃止", "DiscordまたはWebでの操作が必要"],
-      architecture: "Proprietary Latent Diffusion Model"
+      architecture: "Proprietary Latent Diffusion Model",
+      versionsList: [
+        {
+          name: "Midjourney v6.1 (実写・アート)",
+          speed: "標準",
+          intelligence: "最高峰",
+          bestFor: "フォトリアリズム、映画的ライティング、皮膚・毛髪の質感、美術絵画",
+          planAvailability: "有料サブスク全プラン ($10〜)",
+          description: "写実性と光の表現において業界頂点。プロンプトの細かなニュアンスを芸術的に昇華。"
+        },
+        {
+          name: "Niji Journey v6 (アニメ特化)",
+          speed: "標準",
+          intelligence: "最高峰",
+          bestFor: "日本のアニメ調、イラスト、キャラクターデザイン、同人誌表紙",
+          planAvailability: "有料サブスク全プラン",
+          description: "日本のイラストレーターの繊細なタッチを完璧に再現するアニメ特化モデル。"
+        }
+      ]
     },
     estimatedUsers: "1,600万人以上 / クリエイター支持率最高峰",
     siteRegisteredCount: 1720,

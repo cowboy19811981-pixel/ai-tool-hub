@@ -1,3 +1,12 @@
+export interface ModelVersionDetail {
+  name: string;
+  speed: "超高速" | "高速" | "標準" | "じっくり推論";
+  intelligence: "最高峰" | "高度" | "標準";
+  bestFor: string;
+  planAvailability: string; // e.g. "無料・有料両方", "Plus/Pro限定", "APIのみ"
+  description: string;
+}
+
 export interface ToolItem {
   id: string;
   name: string;
@@ -10,6 +19,7 @@ export interface ToolItem {
     strengths: string[];
     weaknesses: string[];
     architecture: string;
+    versionsList?: ModelVersionDetail[]; // 各モデル・バージョンごとの詳細
   };
   estimatedUsers: string;
   siteRegisteredCount: number;

@@ -12,7 +12,41 @@ export const generalTools: ToolSeedItem[] = [
       evolution: "GPT-4oによる超高速マルチモーダル対話に加え、推論特化型o1/o3-miniで複雑な数学・論理思考が劇的進化。",
       strengths: ["超高速レスポンス", "高度な音声会話モード", "深い論理的思考(o1)", "プラグイン/GPTsエコシステム"],
       weaknesses: ["無料版の利用上限が混雑時に厳格化", "専門的法務などの極小ハルシネーション"],
-      architecture: "GPT-4o (Omni) & o1 CoT Reasoning Engine"
+      architecture: "GPT-4o (Omni) & o1 CoT Reasoning Engine",
+      versionsList: [
+        {
+          name: "GPT-4o (Omni)",
+          speed: "超高速",
+          intelligence: "高度",
+          bestFor: "日常会話、文章作成、Web検索、音声リアルタイム対話",
+          planAvailability: "無料(制限あり) / Plusで無制限級",
+          description: "テキスト・音声・視覚を統合処理する最新主力モデル。ミリ秒単位の爆速応答と極めて滑らかな会話が特徴。"
+        },
+        {
+          name: "o1 (Reasoning)",
+          speed: "じっくり推論",
+          intelligence: "最高峰",
+          bestFor: "難関コーディング、数学、科学論文、複雑な論理設計",
+          planAvailability: "Plus / Pro限定",
+          description: "回答前に自己思考（思考の連鎖）を行い、途中で間違いを自己修正しながら解く最高峰推論モデル。"
+        },
+        {
+          name: "o3-mini (Reasoning)",
+          speed: "高速",
+          intelligence: "最高峰",
+          bestFor: "競技プログラミング、数学、コストパフォーマンス重視の推論",
+          planAvailability: "無料 / Plus / API",
+          description: "o1の圧倒的な論理思考力を軽量・高速化。数学やアルゴリズム問題でo1を凌駕するスコアを記録。"
+        },
+        {
+          name: "GPT-4o mini",
+          speed: "超高速",
+          intelligence: "標準",
+          bestFor: "短文要約、簡単な質問、大量テキスト処理",
+          planAvailability: "無料版で使い放題",
+          description: "日常的な質問や軽いタスクに特化した超軽量モデル。無料ユーザーでも制限なく高速に利用可能。"
+        }
+      ]
     },
     estimatedUsers: "2億人以上 / 世界No.1",
     siteRegisteredCount: 1845,
@@ -61,7 +95,33 @@ export const generalTools: ToolSeedItem[] = [
       evolution: "Claude 3.5 Sonnetによりコーディングベンチマーク世界1位を獲得。Artifacts機能でコードやWeb画面を右側にリアルタイム表示可能。",
       strengths: ["人間味のある自然で美しい日本語", "最高峰のプログラミング・バグ修正力", "長文ドキュメントの文脈把握", "Artifactsプレビュー"],
       weaknesses: ["無料版の利用上限が数往復で達しやすい", "画像生成機能は非搭載"],
-      architecture: "Anthropic Next-Gen Transformer Architecture"
+      architecture: "Anthropic Next-Gen Transformer Architecture",
+      versionsList: [
+        {
+          name: "Claude 3.5 Sonnet (v2)",
+          speed: "高速",
+          intelligence: "最高峰",
+          bestFor: "プログラミング、美しい日本語執筆、複雑な指示理解、Artifacts",
+          planAvailability: "無料(回数制限) / Proで5倍利用可能",
+          description: "Anthropicの最高傑作。全LLMの中で最も自然な日本語文章力と最高峰のコーディング精度を両立。"
+        },
+        {
+          name: "Claude 3.5 Haiku",
+          speed: "超高速",
+          intelligence: "高度",
+          bestFor: "爆速チャット、API処理、短時間での多量ドキュメント処理",
+          planAvailability: "無料 / Pro / API",
+          description: "従来の最高峰Opusに迫る知能を、まばたきするような超高速スピードと格安コストで提供する新鋭モデル。"
+        },
+        {
+          name: "Claude 3 Opus",
+          speed: "標準",
+          intelligence: "最高峰",
+          bestFor: "深層的な哲学議論、長編小説執筆、極めて複雑なニュアンス分析",
+          planAvailability: "Pro限定",
+          description: "深い洞察力と豊かな情緒表現に特化。クリエイティブな執筆や複雑な学術的議論で威力を発揮。"
+        }
+      ]
     },
     estimatedUsers: "数千万人 / 実務層シェア急拡大",
     siteRegisteredCount: 1620,
@@ -110,7 +170,33 @@ export const generalTools: ToolSeedItem[] = [
       evolution: "2.0 Flashにより応答速度がミリ秒単位へ超高速化。1.5 Proでは業界最大の200万トークン（本数百冊分・1時間動画丸ごと）を即座に読解。",
       strengths: ["超高速な応答速度", "200万トークンの圧倒的長文/動画コンテキスト", "Google Workspace (Docs/Gmail/YouTube) 連携", "無料枠が巨大"],
       weaknesses: ["クリエイティブな小説執筆での語彙の硬さ"],
-      architecture: "Google DeepMind Multimodal Foundation Model"
+      architecture: "Google DeepMind Multimodal Foundation Model",
+      versionsList: [
+        {
+          name: "Gemini 2.0 Flash",
+          speed: "超高速",
+          intelligence: "高度",
+          bestFor: "爆速リアルタイム対話、YouTube動画要約、マルチモーダル視覚分析",
+          planAvailability: "完全無料で使い放題",
+          description: "Google DeepMindの次世代高速モデル。圧倒的レスポンス速度とリアルタイムストリーミングが魅力。"
+        },
+        {
+          name: "Gemini 1.5 Pro",
+          speed: "標準",
+          intelligence: "最高峰",
+          bestFor: "200万トークンの超長大PDF・本数百冊・1時間動画の一撃読解",
+          planAvailability: "Gemini Advanced (有料) / API無料枠",
+          description: "世界最大のコンテキストウィンドウを誇る怪童モデル。膨大な過去資料や長編映像を完全に記憶して回答。"
+        },
+        {
+          name: "Gemini 1.5 Flash",
+          speed: "超高速",
+          intelligence: "標準",
+          bestFor: "日常の短文処理、格安APIでのシステム組み込み",
+          planAvailability: "完全無料",
+          description: "軽量高コスパモデル。100万トークンを安価・高速に扱える万能ワークホース。"
+        }
+      ]
     },
     estimatedUsers: "1億人以上 / Googleエコシステム統合",
     siteRegisteredCount: 1420,

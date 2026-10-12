@@ -126,34 +126,34 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
         {/* Feature Grid / Retention Hooks: Today's Pick & Prompt */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-6 mt-8">
           {/* Card 1: 3大コアバリュー保証 */}
-          <div className="glass-panel p-5 sm:p-6 rounded-2xl relative overflow-hidden card-hover-glow">
-            <div className="w-10 h-10 rounded-xl bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 flex items-center justify-center mb-4">
-              <Cpu className="w-5 h-5" />
+          <div className="glass-panel p-6 rounded-2xl relative overflow-hidden card-hover-glow">
+            <div className="w-12 h-12 rounded-xl bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 flex items-center justify-center mb-4">
+              <Cpu className="w-6 h-6" />
             </div>
-            <h3 className="font-bold text-white text-base sm:text-lg mb-2">
-              全60種・バージョン特性比較
+            <h3 className="font-extrabold text-white text-lg sm:text-xl mb-2">
+              全60種・バージョン別特性比較
             </h3>
-            <p className="text-slate-400 text-xs sm:text-sm leading-relaxed mb-4">
-              「GPT-4o vs o1」「Claude 3.5」「FLUX.1」「Suno v4」など、各ツールの現行最新バージョンと前世代からの進化点を徹底記載。
+            <p className="text-slate-300 text-sm leading-relaxed mb-4 font-normal">
+              「GPT-4o vs o1」「Claude 3.5」「FLUX.1」「Suno v4」など、各ツールの現行最新バージョンとモデル別の使い分けを徹底解説。
             </p>
-            <div className="flex items-center gap-2 text-xs text-cyan-400 font-semibold">
+            <div className="flex items-center gap-2 text-xs sm:text-sm text-cyan-400 font-bold">
               <CheckCircle2 className="w-4 h-4" />
               <span>無料枠 vs 有料版の制限・決定打も網羅</span>
             </div>
           </div>
 
           {/* Card 2: 12時間毎の自動更新＆動的ランキング */}
-          <div className="glass-panel p-5 sm:p-6 rounded-2xl relative overflow-hidden card-hover-glow">
-            <div className="w-10 h-10 rounded-xl bg-violet-500/10 border border-violet-500/20 text-violet-400 flex items-center justify-center mb-4">
-              <TrendingUp className="w-5 h-5" />
+          <div className="glass-panel p-6 rounded-2xl relative overflow-hidden card-hover-glow">
+            <div className="w-12 h-12 rounded-xl bg-violet-500/10 border border-violet-500/20 text-violet-400 flex items-center justify-center mb-4">
+              <TrendingUp className="w-6 h-6" />
             </div>
-            <h3 className="font-bold text-white text-base sm:text-lg mb-2">
+            <h3 className="font-extrabold text-white text-lg sm:text-xl mb-2">
               12H自動更新＆動的ランキング
             </h3>
-            <p className="text-slate-400 text-xs sm:text-sm leading-relaxed mb-4">
+            <p className="text-slate-300 text-sm leading-relaxed mb-4 font-normal">
               公式リリースノートを12時間ごとに自動取得＆Gemini要約。直近で進化したツールが上位に浮上するリアルタイムランキング。
             </p>
-            <div className="flex items-center gap-2 text-xs text-violet-400 font-semibold">
+            <div className="flex items-center gap-2 text-xs sm:text-sm text-violet-400 font-bold">
               <CheckCircle2 className="w-4 h-4" />
               <span>世界のユーザー規模 ＆ 当サイト登録数集計</span>
             </div>
@@ -161,29 +161,29 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
 
           {/* Card 3: Today's 日替わりプロンプト */}
           {dailyPrompt && (
-            <div className="glass-panel p-5 sm:p-6 rounded-2xl relative overflow-hidden card-hover-glow border-amber-500/30">
+            <div className="glass-panel p-6 rounded-2xl relative overflow-hidden card-hover-glow border-amber-500/30">
               <div className="flex items-center justify-between mb-3">
-                <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-amber-500/10 text-amber-400 text-xs font-bold border border-amber-500/20">
+                <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-500/15 text-amber-300 text-xs font-bold border border-amber-500/30">
                   <Flame className="w-3.5 h-3.5" />
                   <span>TODAY'S PROMPT</span>
                 </div>
-                <span className="text-[11px] text-slate-400 font-mono">
+                <span className="text-xs text-slate-300 font-mono font-semibold">
                   推奨: {dailyPrompt.toolName || "汎用"}
                 </span>
               </div>
-              <h4 className="font-bold text-white text-sm sm:text-base mb-1.5 truncate">
+              <h4 className="font-extrabold text-white text-base mb-2 truncate">
                 {dailyPrompt.title}
               </h4>
-              <div className="bg-slate-900/80 rounded-xl p-3 mb-3 border border-slate-800 text-xs text-slate-300 font-mono line-clamp-2">
+              <div className="bg-slate-900/90 rounded-xl p-3.5 mb-3 border border-slate-800 text-xs sm:text-sm text-slate-200 font-mono line-clamp-2 leading-relaxed">
                 {dailyPrompt.promptText}
               </div>
               <div className="flex items-center justify-between">
-                <span className="text-[11px] text-slate-400">
+                <span className="text-xs text-slate-400">
                   コピーしてすぐ使えます
                 </span>
                 <button
                   onClick={() => handleCopyPrompt(dailyPrompt.promptText)}
-                  className="px-3 py-1.5 rounded-lg text-xs font-bold bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 border border-amber-500/30 flex items-center gap-1 transition-all"
+                  className="px-3.5 py-1.5 rounded-lg text-xs font-bold bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 border border-amber-500/30 flex items-center gap-1.5 transition-all"
                 >
                   {copied ? (
                     <>

@@ -12,7 +12,33 @@ export const codeTools: ToolSeedItem[] = [
       evolution: "VS Codeを完全フォークして設計。Composer機能によりプロジェクト全体の複数ファイルを同時に修正・作成し、ターミナルコマンドまで自動実行するAIエディタの頂点。",
       strengths: ["リポジトリ全体のコードベースを完全把握（@codebase）", "複数ファイルを跨ぐ一括編集・リファクタリング（Composer）", "Claude 3.5 Sonnetの性能を120%引き出すエディタ最適化", "VS Codeの拡張機能・設定がワンクリックで完全移行"],
       weaknesses: ["無料版の高速リクエスト制限がすぐに尽きる（Pro課金ほぼ前提）"],
-      architecture: "Anysphere Custom Electron IDE + Fast Context Indexing"
+      architecture: "Anysphere Custom Electron IDE + Fast Context Indexing",
+      versionsList: [
+        {
+          name: "Claude 3.5 Sonnet (Cursor最適化)",
+          speed: "高速",
+          intelligence: "最高峰",
+          bestFor: "複数ファイル一括編集（Composer）、アーキテクチャ設計、バグ修正",
+          planAvailability: "Proで月500回高速 / 超過後低速無制限",
+          description: "Cursor利用者の9割が常時使用するメインモデル。コードの破綻が最も少なくリファクタリングに最強。"
+        },
+        {
+          name: "o3-mini (High Reasoning)",
+          speed: "標準",
+          intelligence: "最高峰",
+          bestFor: "難解なアルゴリズム、競プロ級ロジック、並行処理デバッグ",
+          planAvailability: "Proプラン限定",
+          description: "OpenAIの最新推論モデル。時間をかけて思考し、誰も気づかなかった境界条件のバグを特定。"
+        },
+        {
+          name: "cursor-small (軽量独自モデル)",
+          speed: "超高速",
+          intelligence: "標準",
+          bestFor: "無料枠でのチャット、素早いコード補完、簡単な質問",
+          planAvailability: "無料プランで使い放題",
+          description: "Cursor独自チューニングの軽量モデル。高速リクエストを消費せずに軽快に対話可能。"
+        }
+      ]
     },
     estimatedUsers: "数百万エンジニア / IT業界で乗り換えラッシュ",
     siteRegisteredCount: 1890,

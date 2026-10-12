@@ -1,3 +1,12 @@
+export interface ModelVersionDetail {
+  name: string;
+  speed: "超高速" | "高速" | "標準" | "じっくり推論";
+  intelligence: "最高峰" | "高度" | "標準";
+  bestFor: string;
+  planAvailability: string;
+  description: string;
+}
+
 export interface ToolSeedItem {
   id: string;
   name: string;
@@ -10,6 +19,7 @@ export interface ToolSeedItem {
     strengths: string[];
     weaknesses: string[];
     architecture: string;
+    versionsList?: ModelVersionDetail[];
   };
   estimatedUsers: string;
   siteRegisteredCount: number;

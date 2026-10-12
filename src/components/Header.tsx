@@ -65,8 +65,20 @@ export const Header: React.FC<HeaderProps> = ({
           </a>
         </div>
 
+        {/* Nav Links (Desktop) */}
+        <nav className="hidden lg:flex items-center gap-6 text-sm font-bold text-slate-300">
+          <a href="#news-section" className="hover:text-cyan-400 transition-colors flex items-center gap-1.5">
+            <Clock className="w-4 h-4 text-cyan-400" />
+            <span>最新速報</span>
+          </a>
+          <a href="#catalog-section" className="hover:text-cyan-400 transition-colors flex items-center gap-1.5">
+            <Layers className="w-4 h-4 text-cyan-400" />
+            <span>AIカタログ (60種)</span>
+          </a>
+        </nav>
+
         {/* Search Bar (Center / Desktop) */}
-        <div className="hidden md:flex flex-1 max-w-md mx-4 relative">
+        <div className="hidden md:flex flex-1 max-w-sm mx-2 relative">
           <div className="relative w-full">
             <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
             <input
@@ -74,7 +86,7 @@ export const Header: React.FC<HeaderProps> = ({
               placeholder="AI名、用途、特徴で検索 (例: コード, 画像, 無料)..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full bg-slate-800/50 dark:bg-slate-900/60 border border-slate-700/60 rounded-full pl-10 pr-4 py-2 text-sm text-slate-100 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-cyan-500 transition-all"
+              className="w-full bg-slate-800/80 dark:bg-slate-900/90 border border-slate-700/80 rounded-full pl-10 pr-4 py-2 text-sm text-slate-100 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-cyan-500 transition-all font-medium"
             />
             {searchQuery && (
               <button

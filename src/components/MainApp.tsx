@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import { Header } from "./Header";
 import { HeroSection } from "./HeroSection";
 import { CatalogSection } from "./CatalogSection";
+import { NewsSection } from "./NewsSection";
 import { ComparisonDock } from "./ComparisonDock";
 import { ComparisonModal } from "./ComparisonModal";
 import { ToolDetailModal } from "./ToolDetailModal";
@@ -136,6 +137,12 @@ export const MainApp: React.FC<MainAppProps> = ({
           onOpenQuiz={() => setIsQuizOpen(true)}
           onScrollToCatalog={handleScrollToCatalog}
           onSelectTool={handleSelectToolById}
+        />
+
+        {/* 12-Hour Automated Updates & Timeline Section */}
+        <NewsSection
+          updates={updates}
+          onSelectToolById={handleSelectToolById}
         />
 
         {/* AI Catalog & Directory */}

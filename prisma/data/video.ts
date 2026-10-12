@@ -12,7 +12,33 @@ export const videoTools: ToolSeedItem[] = [
       evolution: "Gen-3 Alphaにより映画基準のカメラワークと物理シミュレーションを実現。Act-One機能でスマホ自撮り動画の表情をAIキャラにリアルタイム転送。",
       strengths: ["超リアルな光の反射と物理演算の整合性", "ミリ単位のカメラコントロール（パン、チルト、ズーム、ドリー）", "モーションブラシによる特定箇所の動画化", "表情演技転送（Act-One）"],
       weaknesses: ["無料クレジットの消費が早い", "長尺ストーリーの破綻防止にはカット割りの工夫が必要"],
-      architecture: "Runway Multimodal World Model (Gen-3)"
+      architecture: "Runway Multimodal World Model (Gen-3)",
+      versionsList: [
+        {
+          name: "Gen-3 Alpha (最高画質)",
+          speed: "標準",
+          intelligence: "最高峰",
+          bestFor: "ハリウッド映画級実写、リアルな光・水・煙の物理シミュレーション",
+          planAvailability: "有料プラン (Standard以上推奨)",
+          description: "業界最高峰の映像密度。カメラワークの細かな指示と現実世界の物理法則を忠実にレンダリング。"
+        },
+        {
+          name: "Gen-3 Alpha Turbo (超高速)",
+          speed: "超高速",
+          intelligence: "高度",
+          bestFor: "アイデア出し、SNSショート動画、素早いプレビュー確認",
+          planAvailability: "無料枠 / 有料プラン (消費クレジット半減)",
+          description: "Gen-3 Alphaの画質を維持しながら生成速度を7倍高速化。消費クレジットも節約できる人気版。"
+        },
+        {
+          name: "Act-One (表情・演技転送)",
+          speed: "高速",
+          intelligence: "最高峰",
+          bestFor: "自撮り動画からのキャラクターアニメーション、声優演技の同期",
+          planAvailability: "有料プラン",
+          description: "スマホのカメラで喋った自分の表情や視線の動きを、そのままAIキャラに完全同期させる革命的ツール。"
+        }
+      ]
     },
     estimatedUsers: "1,000万人以上 / 映画スタジオ標準導入",
     siteRegisteredCount: 1610,
