@@ -170,7 +170,7 @@ ${rawText.slice(0, 4000)}
 
 出力フォーマット（JSONのみ）:
 {
-  "version": "公式に書かれている現行モデル名（例: o3-mini / GPT-4o / Claude 3.7 など）",
+  "version": "公式に書かれている現行モデル名（例: Claude Fable 5.1 / GPT-6 / o3 / Gemini 3.8 など）",
   "pricingMonthly": "公式に書かれている月額料金（例: 無料 / $20/月 など）",
   "hasFreeTier": trueまたはfalse,
   "summary": "公式が謳っている製品概要（全角60文字以内）"

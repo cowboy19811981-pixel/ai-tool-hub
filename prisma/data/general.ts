@@ -81,57 +81,75 @@ export const generalTools: ToolSeedItem[] = [
     name: "Claude",
     category: "general",
     categoryLabel: "総合（汎用LLM）",
-    badge: "日本語・推論最高峰",
-    version: "Claude 3.7 Sonnet / Claude 3.5 Sonnet",
+    badge: "世界最高峰知能・Fable 5.1",
+    version: "Claude Fable 5.1 / Claude Mythos 5",
     versionFeatures: {
-      evolution: "Claude 3.7 Sonnetにより、瞬時の即答と深い思考（Hybrid Reasoning）をシームレスに切り替えるハイブリッド知能を確立。",
-      strengths: ["人間味のある自然で美しい日本語", "最高峰のプログラミング・バグ修正力", "ハイブリッド推論モード", "Computer Use（PC自律操作）"],
+      evolution: "2026年最新の最上位『Mythosクラス』基盤モデル。SWE-bench Proで80%超を記録し、超難関コード生成や長期自律エージェントで世界一を獲得。一般向けの高度セーフガード版『Fable 5.1』と、審査制の最高性能版『Mythos 5』を展開。",
+      strengths: [
+        "SWE-bench Pro 80%超の最高峰コーディング力",
+        "100万トークン(1M)超長大コンテキスト・12.8万出力",
+        "Fable 5.1の高精度セーフガード＆EFSエンタープライズ保護",
+        "人間味溢れる自然な日本語とArtifactsリアルタイム実行"
+      ],
       weaknesses: ["無料版の利用上限が数往復で達しやすい", "画像生成機能は非搭載"],
-      architecture: "Anthropic Hybrid Reasoning Transformer",
+      architecture: "Anthropic Mythos-Class Frontier Architecture",
       versionsList: [
         {
-          name: "Claude 3.7 Sonnet (Hybrid Reasoning)",
+          name: "Claude Fable 5.1 (Flagship Frontier)",
           speed: "可変・高速",
           intelligence: "最高峰",
-          bestFor: "最高峰コーディング、深い思考を要する論理設計、自然な日本語執筆",
-          planAvailability: "無料(回数制限) / Proで5倍利用可能",
-          description: "即座の回答と、思考時間を設けて深層推論を行うモードを1つのモデルで兼ね備えたAnthropicの最新最高傑作。"
+          bestFor: "最高峰コーディング(SWE-bench 80%+)、フルスタック自律エージェント、100万トークン超長大分析",
+          planAvailability: "Pro / Team / Enterprise / API",
+          description: "2026年最新フラグシップ。100万トークンのコンテキスト、12.8万トークンの最大出力、EFSプライバシー保護を標準搭載。"
         },
         {
-          name: "Claude 3.5 Sonnet (v2)",
+          name: "Claude Mythos 5 (Project Glasswing)",
+          speed: "じっくり推論",
+          intelligence: "最高峰",
+          bestFor: "サイバー検証、バイオ・先端科学研究、国家インフラ防衛",
+          planAvailability: "審査制・限定特権アクセス",
+          description: "安全制限が特化調整されたMythosクラスの限定版。Fable 5と同基盤ながら研究・防衛機関専用の極限性能を提供。"
+        },
+        {
+          name: "Claude 3.7 Sonnet (Hybrid Reasoning)",
           speed: "高速",
           intelligence: "最高峰",
-          bestFor: "プログラミング、ドキュメント分析、Artifactsリアルタイム開発",
-          planAvailability: "無料 / Pro",
-          description: "世界中のエンジニアを唸らせた大ヒットモデル。高い信頼性と安定したコード出力を誇る。"
+          bestFor: "日常開発、深い思考モードでの論理設計、自然な日本語執筆",
+          planAvailability: "無料(回数制限) / Pro",
+          description: "即答と深層推論（Thinking Mode）を自在に切り替えるハイブリッド推論モデル。"
         },
         {
           name: "Claude 3.5 Haiku",
           speed: "超高速",
           intelligence: "高度",
-          bestFor: "爆速チャット、API処理、短時間での多量ドキュメント処理",
+          bestFor: "爆速チャット、API大量処理、短時間での多量ドキュメント処理",
           planAvailability: "無料 / Pro / API",
           description: "従来の最高峰Opusに迫る知能を、まばたきするような超高速スピードと格安コストで提供。"
         }
       ]
     },
-    estimatedUsers: "数千万人 / 実務層シェア急拡大",
+    estimatedUsers: "数千万人 / 世界のトップエンジニア標準",
     siteRegisteredCount: 0,
     votesCount: 0,
-    rankScore: 98.7,
-    categoryRank: 2,
-    overallRank: 2,
+    rankScore: 99.4,
+    categoryRank: 1,
+    overallRank: 1,
     pricingType: "フリーミアム",
     pricingMonthly: "無料 / Pro $20 (約3,000円)",
     freePlanDetails: {
       limits: "数時間ごとに数回〜10回程度のメッセージ上限（混雑時はさらに短縮）。",
-      allowedFeatures: ["Claude 3.7 Sonnetの一部利用", "Artifacts機能", "ファイルアップロード分析"]
+      allowedFeatures: ["Claude 3.7 Sonnet / Fable 5の一部試用", "Artifacts機能", "ファイルアップロード分析"]
     },
     paidPlanDetails: {
       planName: "Claude Pro",
       price: "$20 / 月",
-      unlockedFeatures: ["無料版の5倍以上のメッセージ上限", "Projects機能（社内規程・独自プロンプトの読み込み固定）", "混雑時の優先アクセス", "最新機能への先行アクセス"],
-      recommendedFor: "エンジニア、ライター、法律・学術などの厳密な長文を扱うビジネスパーソン"
+      unlockedFeatures: [
+        "最新Fable 5.1への優先アクセス",
+        "無料版の5倍以上のメッセージ上限",
+        "Projects機能（社内規程・独自プロンプトの読み込み固定）",
+        "混雑時の優先アクセス"
+      ],
+      recommendedFor: "エンジニア、アーキテクト、研究者、法律・学術などの厳密な長文を扱うビジネスパーソン"
     },
     paidWorthRating: 5,
     hasFreeTier: true,
@@ -139,15 +157,15 @@ export const generalTools: ToolSeedItem[] = [
     commercialUse: true,
     hasApi: true,
     hasApp: true,
-    summary: "自然すぎる日本語と圧倒的コード力。Artifactsによるリアルタイム開発・執筆が革命的。",
-    description: "Anthropic社が開発した最高峰のLLM。倫理的かつ自然な文章生成に定評があり、特にClaude 3.7 Sonnetのプログラミング・思考推論能力は世界のトップエンジニアから絶賛されています。右側パネルでアプリやWebを直接動かせるArtifactsも大好評。",
-    pros: ["日本語の言い回しが群を抜いて自然", "コードの精度・アーキテクチャ設計力が最強", "Projects機能で大量の前提資料を記憶可能"],
-    cons: ["画像・動画の直接生成はできない", "無料枠の上限到達が早い"],
+    summary: "2026年最新の王者。SWE-bench Pro 80%超のFable 5.1と100万トークン長大知能を搭載。",
+    description: "Anthropicの最新フラグシップ。2026年発表の最上位「Mythosクラス」基盤モデルをベースとし、一般公開版の「Claude Fable 5.1」と研究・特定機関向けの「Claude Mythos 5」を展開。100万トークンの長大な記憶領域、12万8000トークンの大容量出力、SWE-bench Proで80%超を叩き出す世界一のコーディング・エージェント自律性を誇ります。",
+    pros: ["SWE-bench Pro 80%超の世界一のコード開発・バグ修正力", "100万トークンの圧倒的長文・全コードベース一括読み込み", "日本語の言い回しが群を抜いて自然で知的"],
+    cons: ["画像・動画の直接生成は非搭載", "無料枠の上限到達が早い"],
     specs: {
-      contextWindow: "200kトークン (約15万文字)",
-      multimodal: "テキスト・画像・PDF・コード",
+      contextWindow: "1,000,000トークン (約75万文字) / 出力最大128k",
+      multimodal: "テキスト・画像・PDF・コード・音声",
       company: "Anthropic",
-      releaseYear: "2023 (最新版2025-2026)"
+      releaseYear: "2026最新 (Fable 5.1 / Mythos 5)"
     },
     officialUrl: "https://claude.ai"
   },

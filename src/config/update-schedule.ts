@@ -28,7 +28,7 @@ export const UPDATE_SCOPES_CONFIG: Record<UpdateScope, ScopeConfig> = {
   models: {
     scope: "models",
     label: "AIモデル・バージョン情報",
-    description: "各ツールの公式サイトトップ・CHANGELOGを巡回し、提供中モデルやエンジン（Claude 3.7 / GPT-6 / Gemini 3.8 等）を更新",
+    description: "各ツールの公式サイトトップ・CHANGELOGを巡回し、提供中モデルやエンジン（Claude Fable 5.1 / GPT-6 / Gemini 3.8 等）を更新",
     recommendedIntervalHours: 168, // 1週間ごと (24 * 7)
     cronExpression: "0 0 * * 1", // 毎週月曜午前0時UTC
     targetColumns: ["Tool.version", "Tool.versionFeatures", "Tool.specs", "Tool.lastUpdated"],

@@ -11,8 +11,26 @@ export interface OfficialFeedConfig {
 // AI開発元の公式一次情報フィード一覧（公式一次ソース＋高鮮度AI速報）
 export const OFFICIAL_AI_FEEDS: OfficialFeedConfig[] = [
   {
+    sourceName: "Anthropic 公式発表 (Fable / Mythos / Claude)",
+    url: "https://news.google.com/rss/search?q=%22Claude+Fable%22+OR+%22Claude+Mythos%22+OR+%22Anthropic%22+Claude&hl=en-US&gl=US&ceid=US:en",
+    defaultToolId: "claude",
+    officialDomain: "anthropic.com",
+  },
+  {
+    sourceName: "Anthropic Claude 国内速報",
+    url: "https://news.google.com/rss/search?q=Anthropic+Claude+OR+%22Claude+Fable%22+OR+%22Claude+Mythos%22&hl=ja&gl=JP&ceid=JP:ja",
+    defaultToolId: "claude",
+    officialDomain: "anthropic.com",
+  },
+  {
     sourceName: "OpenAI 公式発表",
     url: "https://openai.com/news/rss.xml",
+    defaultToolId: "chatgpt",
+    officialDomain: "openai.com",
+  },
+  {
+    sourceName: "OpenAI 最新リリース・速報",
+    url: "https://news.google.com/rss/search?q=OpenAI+%22o3%22+OR+%22GPT-5%22+OR+%22GPT-6%22+OR+Sora&hl=ja&gl=JP&ceid=JP:ja",
     defaultToolId: "chatgpt",
     officialDomain: "openai.com",
   },
@@ -23,40 +41,22 @@ export const OFFICIAL_AI_FEEDS: OfficialFeedConfig[] = [
     officialDomain: "blog.google",
   },
   {
-    sourceName: "Anthropic 公式ブログ",
-    url: "https://www.anthropic.com/feed.xml",
-    defaultToolId: "claude",
-    officialDomain: "anthropic.com",
-  },
-  {
-    sourceName: "Microsoft AI 公式",
-    url: "https://blogs.microsoft.com/ai/feed/",
-    defaultToolId: "copilot",
-    officialDomain: "microsoft.com",
-  },
-  {
     sourceName: "GitHub Copilot 公式リリース",
     url: "https://github.blog/changelog/label/copilot/feed/",
     defaultToolId: "copilot",
     officialDomain: "github.blog",
   },
   {
+    sourceName: "Cursor / 開発AI速報",
+    url: "https://news.google.com/rss/search?q=Cursor+AI+OR+Windsurf+AI+OR+v0+Vercel&hl=ja&gl=JP&ceid=JP:ja",
+    defaultToolId: "cursor",
+    officialDomain: "cursor.com",
+  },
+  {
     sourceName: "Hugging Face 公式ブログ",
     url: "https://huggingface.co/blog/feed.xml",
     defaultToolId: null,
     officialDomain: "huggingface.co",
-  },
-  {
-    sourceName: "AWS AI 公式",
-    url: "https://aws.amazon.com/blogs/machine-learning/feed/",
-    defaultToolId: null,
-    officialDomain: "aws.amazon.com",
-  },
-  {
-    sourceName: "Google News AI速報",
-    url: "https://news.google.com/rss/search?q=AI+人工知能+OpenAI+Google+Anthropic&hl=ja&gl=JP&ceid=JP:ja",
-    defaultToolId: null,
-    officialDomain: "news.google.com",
   },
 ];
 
@@ -126,24 +126,40 @@ export async function fetchOfficialAINews(itemsPerFeed = 2): Promise<OfficialNew
         if (descMatch) {
           snippet = descMatch[1]
             .replace(/<!\[CDATA\[([\s\S]*?)\]\]>/g, "$1")
-            .replace(/<[^>]+>/g, "")
+            .replace(/&lt;/g, "<")
+            .replace(/&gt;/g, ">")
+            .replace(/&quot;/g, '"')
+            .replace(/&#39;/g, "'")
+            .replace(/&amp;/g, "&")
+            .replace(/<[^>]+>/g, " ")
+            .replace(/\s+/g, " ")
             .slice(0, 300)
             .trim();
         }
 
         // ツールID判定（タイトルとフィード設定から自動検出）
         let toolId = feed.defaultToolId;
-        const lower = title.toLowerCase();
-        if (lower.includes("chatgpt") || lower.includes("gpt-4o") || lower.includes("o1") || lower.includes("o3")) {
+        const lower = title.toLowerCase() + " " + snippet.toLowerCase();
+        if (lower.includes("chatgpt") || lower.includes("gpt-4o") || lower.includes("gpt-5") || lower.includes("gpt-6") || lower.includes("o1") || lower.includes("o3") || lower.includes("openai")) {
           toolId = "chatgpt";
+        } else if (lower.includes("claude") || lower.includes("anthropic") || lower.includes("fable") || lower.includes("mythos")) {
+          toolId = "claude";
         } else if (lower.includes("gemini") || lower.includes("deepmind")) {
           toolId = "gemini";
-        } else if (lower.includes("claude") || lower.includes("anthropic")) {
-          toolId = "claude";
         } else if (lower.includes("copilot")) {
           toolId = "copilot";
         } else if (lower.includes("cursor")) {
           toolId = "cursor";
+        } else if (lower.includes("flux") || lower.includes("black forest")) {
+          toolId = "flux";
+        } else if (lower.includes("suno")) {
+          toolId = "suno";
+        } else if (lower.includes("kling")) {
+          toolId = "kling-ai";
+        } else if (lower.includes("runway")) {
+          toolId = "runway";
+        } else if (lower.includes("v0") || lower.includes("vercel")) {
+          toolId = "v0-vercel";
         }
 
         allItems.push({
@@ -174,7 +190,7 @@ export async function fetchOfficialAINews(itemsPerFeed = 2): Promise<OfficialNew
 export async function summarizeOfficialRelease(
   item: OfficialNewsItem,
   apiKey?: string,
-  modelName = process.env.GEMINI_MODEL || "gemini-3.5-flash"
+  modelName = process.env.GEMINI_MODEL || "gemini-3.8-flash"
 ): Promise<string> {
   if (apiKey && apiKey.trim() !== "") {
     try {
@@ -207,9 +223,23 @@ export async function summarizeOfficialRelease(
   }
 
   // フォールバック要約（公式発表の抜粋を用いた具体的で確実な要約）
-  const cleanSnippet = item.snippet ? item.snippet.replace(/\s+/g, " ").slice(0, 100) : "";
+  let cleanSnippet = item.snippet
+    ? item.snippet
+        .replace(/&lt;/g, "<")
+        .replace(/&gt;/g, ">")
+        .replace(/&quot;/g, '"')
+        .replace(/&#39;/g, "'")
+        .replace(/&amp;/g, "&")
+        .replace(/<[^>]+>/g, " ")
+        .replace(/\s+/g, " ")
+        .trim()
+    : "";
+  if (cleanSnippet.startsWith("http") || cleanSnippet.includes("news.google.com")) {
+    cleanSnippet = "";
+  }
+
   return `・${item.sourceName}より最新の公式アナウンスが公開されました。
-${cleanSnippet ? `・公式概要: ${cleanSnippet}…` : "・最新の機能改善・モデル仕様が公式アップデートされています。"}
+${cleanSnippet ? `・公式概要: ${cleanSnippet.slice(0, 90)}…` : "・最新の機能改善・モデル仕様が公式アップデートされています。"}
 ・公式発表の詳細全文は添付の一次情報リンクよりご確認いただけます。`;
 }
 
