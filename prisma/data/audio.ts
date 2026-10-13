@@ -12,7 +12,29 @@ export const audioTools: ToolSeedItem[] = [
       evolution: "v3.5/v4により最長4分のフル楽曲を一撃作成。J-POP、ロック、EDM、アニソンなど、驚愕のボーカル歌唱力とミックスバランスを実現。",
       strengths: ["歌詞、メロディ、ボーカル、伴奏の完全同時作曲", "日本語の歌唱アクセントが驚くほど自然", "毎日50クレジット（約5曲）無料生成可能", "有料版ならSpotifyやApple Musicで収益化配信OK"],
       weaknesses: ["ボーカルや各楽器の細かいトラック別個別調整はやや限定的"],
-      architecture: "Suno Full-Song Audio Diffusion Model"
+      architecture: "Suno Full-Song Audio Diffusion Model",
+      versionsList: [
+        {
+          name: "Suno v4 (最新フルソング生成)",
+          shortName: "v4",
+          tier: "free",
+          speed: "高速",
+          intelligence: "最高峰",
+          bestFor: "最長4分のフル楽曲一撃作成、クリアなボーカル歌唱",
+          planAvailability: "無料枠(毎日50クレジット) / Pro",
+          description: "音質とボーカルの明瞭度が大幅に進化した最新フラグシップモデル。"
+        },
+        {
+          name: "Suno v3.5 (安定楽曲生成)",
+          shortName: "v3.5",
+          tier: "free",
+          speed: "超高速",
+          intelligence: "高度",
+          bestFor: "多彩なジャンル作曲、スピーディなアイデア出し",
+          planAvailability: "無料枠 / Pro",
+          description: "幅広い音楽ジャンルに対応する実績豊富な標準モデル。"
+        }
+      ]
     },
     estimatedUsers: "1,200万人以上 / 世界的社会現象",
     siteRegisteredCount: 0,
@@ -61,7 +83,29 @@ export const audioTools: ToolSeedItem[] = [
       evolution: "元Google DeepMind研究者らが開発。生演奏のような豊かな空気感、ジャズやクラシックの高度なコード進行、ステム分離（ボーカルと楽器の個別書き出し）に対応。",
       strengths: ["音響クオリティ・空気感が生演奏レベル", "ステム分離機能（ボーカル、ベース、ドラムをバラバラに抽出）", "曲の途中へのパート追加・アレンジ編集", "音楽理論に忠実な展開"],
       weaknesses: ["一発で完成させる手軽さはSunoにやや分がある"],
-      architecture: "DeepMind Ex-Researchers Audio Generative Pipeline"
+      architecture: "DeepMind Ex-Researchers Audio Generative Pipeline",
+      versionsList: [
+        {
+          name: "Udio v2 (Clarity Engine)",
+          shortName: "v2",
+          tier: "paid",
+          speed: "標準",
+          intelligence: "最高峰",
+          bestFor: "最高音質マスタリング、生演奏クオリティ、ステム分離",
+          planAvailability: "Standard ($10) / Pro限定",
+          description: "プロスタジオ級の音響空間と高解像度サウンドを提供する最新世代モデル。"
+        },
+        {
+          name: "Udio v1.5 (高音質生成)",
+          shortName: "v1.5",
+          tier: "free",
+          speed: "高速",
+          intelligence: "高度",
+          bestFor: "ボーカル楽曲、自由なセクション延長・展開",
+          planAvailability: "無料枠(月100クレジット) / 有料プラン",
+          description: "自然なボーカルと豊かなアコースティック表現を誇る安定モデル。"
+        }
+      ]
     },
     estimatedUsers: "600万人以上 / 音楽愛好家に熱烈支持",
     siteRegisteredCount: 0,

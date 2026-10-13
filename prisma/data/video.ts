@@ -16,6 +16,8 @@ export const videoTools: ToolSeedItem[] = [
       versionsList: [
         {
           name: "Gen-3 Alpha (最高画質)",
+          shortName: "Gen-3 Alpha",
+          tier: "paid",
           speed: "標準",
           intelligence: "最高峰",
           bestFor: "ハリウッド映画級実写、リアルな光・水・煙の物理シミュレーション",
@@ -24,6 +26,8 @@ export const videoTools: ToolSeedItem[] = [
         },
         {
           name: "Gen-3 Alpha Turbo (超高速)",
+          shortName: "Turbo",
+          tier: "free",
           speed: "超高速",
           intelligence: "高度",
           bestFor: "アイデア出し、SNSショート動画、素早いプレビュー確認",
@@ -32,6 +36,8 @@ export const videoTools: ToolSeedItem[] = [
         },
         {
           name: "Act-One (表情・演技転送)",
+          shortName: "Act-One",
+          tier: "paid",
           speed: "高速",
           intelligence: "最高峰",
           bestFor: "自撮り動画からのキャラクターアニメーション、声優演技の同期",

@@ -16,6 +16,8 @@ export const imageTools: ToolSeedItem[] = [
       versionsList: [
         {
           name: "Midjourney v7 (最新フラッグシップ)",
+          shortName: "v7",
+          tier: "paid",
           speed: "高速",
           intelligence: "最高峰",
           bestFor: "超精細テクスチャ、光と物理現象の忠実描写、プロ向け広告美術",
@@ -24,6 +26,8 @@ export const imageTools: ToolSeedItem[] = [
         },
         {
           name: "Midjourney v6.1 (実写・アート)",
+          shortName: "v6.1",
+          tier: "paid",
           speed: "高速",
           intelligence: "最高峰",
           bestFor: "映画的ライティング、皮膚・毛髪の質感、美術絵画",
@@ -32,6 +36,8 @@ export const imageTools: ToolSeedItem[] = [
         },
         {
           name: "Niji Journey v6 (アニメ特化)",
+          shortName: "Niji v6",
+          tier: "paid",
           speed: "標準",
           intelligence: "最高峰",
           bestFor: "日本のアニメ調、イラスト、キャラクターデザイン、同人誌表紙",
@@ -91,6 +97,8 @@ export const imageTools: ToolSeedItem[] = [
       versionsList: [
         {
           name: "FLUX.1.1 [pro] (Ultra Fast API)",
+          shortName: "[pro]",
+          tier: "paid",
           speed: "超高速",
           intelligence: "最高峰",
           bestFor: "商用サービス、高精細プロダクションレンダリング",
@@ -99,6 +107,8 @@ export const imageTools: ToolSeedItem[] = [
         },
         {
           name: "FLUX.1 [dev] (オープンウェイト)",
+          shortName: "[dev]",
+          tier: "free",
           speed: "標準",
           intelligence: "最高峰",
           bestFor: "ローカルPC生成、LoRA学習、個人研究",
@@ -107,6 +117,8 @@ export const imageTools: ToolSeedItem[] = [
         },
         {
           name: "FLUX.1 [schnell] (4ステップ爆速)",
+          shortName: "[schnell]",
+          tier: "free",
           speed: "超高速",
           intelligence: "高度",
           bestFor: "リアルタイムプレビュー、低スペックGPU、商用オープン利用",

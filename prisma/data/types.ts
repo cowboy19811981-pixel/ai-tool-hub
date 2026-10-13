@@ -1,5 +1,7 @@
 export interface ModelVersionDetail {
   name: string;
+  shortName?: string;
+  tier?: "free" | "paid" | "preview";
   speed: "超高速" | "高速" | "標準" | "じっくり推論" | "じっくり生成" | "可変・高速";
   intelligence: "最高峰" | "高度" | "標準";
   bestFor: string;

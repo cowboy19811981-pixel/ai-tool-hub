@@ -16,6 +16,8 @@ export const generalTools: ToolSeedItem[] = [
       versionsList: [
         {
           name: "GPT-6.1 Sol (Next-Gen Frontier)",
+          shortName: "GPT-6.1 Sol",
+          tier: "paid",
           speed: "超高速",
           intelligence: "最高峰",
           bestFor: "自律ブラウザエージェント遂行、超高度な複合課題解決、全感覚マルチモーダル対話",
@@ -24,6 +26,8 @@ export const generalTools: ToolSeedItem[] = [
         },
         {
           name: "OpenAI Daybreak (Security & Complex Agents)",
+          shortName: "Daybreak",
+          tier: "paid",
           speed: "高速",
           intelligence: "最高峰",
           bestFor: "システム脅威調査、大規模コード・インフラ自律分析、難関自動化タスク",
@@ -32,11 +36,23 @@ export const generalTools: ToolSeedItem[] = [
         },
         {
           name: "o3 (Full Reasoning)",
+          shortName: "o3",
+          tier: "paid",
           speed: "じっくり推論",
           intelligence: "最高峰",
           bestFor: "フロンティア級数学・難関システム設計・科学的仮説検証",
           planAvailability: "Plus / Pro限定",
           description: "思考プロセスを展開しながら難問を多段階で解き明かす最高峰推論モデル。"
+        },
+        {
+          name: "o3-mini (High Reasoning / Free Tier)",
+          shortName: "o3-mini",
+          tier: "free",
+          speed: "高速",
+          intelligence: "高度",
+          bestFor: "プログラミング、数学的推論、日常の論理分析",
+          planAvailability: "無料枠で利用可能 / Plus",
+          description: "無料枠でも利用可能なOpenAIの高速推論モデル。論理的思考力に優れる。"
         }
       ]
     },
@@ -96,6 +112,8 @@ export const generalTools: ToolSeedItem[] = [
       versionsList: [
         {
           name: "Claude Fable 5.1 (Flagship Frontier)",
+          shortName: "Fable 5.1",
+          tier: "paid",
           speed: "可変・高速",
           intelligence: "最高峰",
           bestFor: "最高峰コーディング(SWE-bench 80%+)、フルスタック自律エージェント、100万トークン超長大分析",
@@ -104,6 +122,8 @@ export const generalTools: ToolSeedItem[] = [
         },
         {
           name: "Claude Mythos 5 (Project Glasswing)",
+          shortName: "Mythos 5",
+          tier: "preview",
           speed: "じっくり推論",
           intelligence: "最高峰",
           bestFor: "サイバー検証、バイオ・先端科学研究、国家インフラ防衛",
@@ -112,18 +132,22 @@ export const generalTools: ToolSeedItem[] = [
         },
         {
           name: "Claude 3.7 Sonnet (Hybrid Reasoning)",
+          shortName: "Sonnet 3.7",
+          tier: "free",
           speed: "高速",
           intelligence: "最高峰",
           bestFor: "日常開発、深い思考モードでの論理設計、自然な日本語執筆",
-          planAvailability: "無料(回数制限) / Pro",
-          description: "即答と深層推論（Thinking Mode）を自在に切り替えるハイブリッド推論モデル。"
+          planAvailability: "無料(回数制限) / Proで上限大幅拡大",
+          description: "即答と深層推論（Thinking Mode）を自在に切り替えるハイブリッド推論モデル。無料枠でも一定回数試用可能。"
         },
         {
           name: "Claude 3.5 Haiku",
+          shortName: "Haiku 3.5",
+          tier: "free",
           speed: "超高速",
           intelligence: "高度",
           bestFor: "爆速チャット、API大量処理、短時間での多量ドキュメント処理",
-          planAvailability: "無料 / Pro / API",
+          planAvailability: "無料枠で潤沢に利用可能 / Pro",
           description: "従来の最高峰Opusに迫る知能を、まばたきするような超高速スピードと格安コストで提供。"
         }
       ]
@@ -189,6 +213,8 @@ export const generalTools: ToolSeedItem[] = [
       versionsList: [
         {
           name: "Gemini 3.1 Pro (Flagship Reasoning)",
+          shortName: "3.1 Pro",
+          tier: "paid",
           speed: "高速",
           intelligence: "最高峰",
           bestFor: "複雑な問題解決、洗練されたコーディング、自律マルチステップエージェント遂行",
@@ -197,6 +223,8 @@ export const generalTools: ToolSeedItem[] = [
         },
         {
           name: "Gemini 3.8 Flash (Ultra Fast)",
+          shortName: "3.8 Flash",
+          tier: "free",
           speed: "超高速",
           intelligence: "高度",
           bestFor: "リアルタイム対話、大容量ドキュメント・動画分析、高速API呼び出し",
@@ -205,6 +233,8 @@ export const generalTools: ToolSeedItem[] = [
         },
         {
           name: "Gemini 3.8 Live (Audio & Thinking)",
+          shortName: "3.8 Live",
+          tier: "paid",
           speed: "超高速",
           intelligence: "高度",
           bestFor: "リアルタイム自然音声会話、思考モード連動対話",
@@ -265,7 +295,29 @@ export const generalTools: ToolSeedItem[] = [
       evolution: "Web全体を瞬時にスクレイピング・ファクトチェックし、学術論文から最新ニュースまで出典番号付きで回答。裏側の頭脳にClaude Fable 5.1やGPT-6.1、DeepSeek-V4.1を選択可能。",
       strengths: ["完全な出典リンク明記でハルシネーション抑制", "Pro Searchによる段階的深掘りリサーチ", "Claude Fable 5.1 / GPT-6.1 / o3 / DeepSeekモデルの自由選択", "Pages機能によるレポート自動作成"],
       weaknesses: ["創作小説や自由対話には特化していない"],
-      architecture: "Perplexity Deep Research Engine & Sonar Model"
+      architecture: "Perplexity Deep Research Engine & Sonar Model",
+      versionsList: [
+        {
+          name: "Sonar (Fast Web Search)",
+          shortName: "Sonar",
+          tier: "free",
+          speed: "超高速",
+          intelligence: "高度",
+          bestFor: "日常のWeb調査、ニュース要約、出典リンク確認",
+          planAvailability: "無料枠で無制限",
+          description: "リアルタイムWeb検索と高速要約を両立したPerplexityの標準モデル。"
+        },
+        {
+          name: "Pro Search (Multi-Model Reasoning)",
+          shortName: "Pro Search",
+          tier: "paid",
+          speed: "じっくり推論",
+          intelligence: "最高峰",
+          bestFor: "学術論文分析、市場調査、Claude Fable/GPT-6.1での深掘り",
+          planAvailability: "無料1日5回 / Proで1日300回",
+          description: "Claude Fable 5.1やGPT-6.1、o3等の最高峰頭脳に切り替えて段階的リサーチを実行。"
+        }
+      ]
     },
     estimatedUsers: "2,000万人以上 / 急成長AI検索",
     siteRegisteredCount: 0,
@@ -314,7 +366,29 @@ export const generalTools: ToolSeedItem[] = [
       evolution: "DeepSeek公式発表の最新モデル「DeepSeek-V4.1-Flash」を搭載。テキスト処理および自律Agent性能が全面向上し、原生マルチモーダル視覚理解を標準統合。思考モデル「DeepSeek-R1」の超難関数学・論理推論も完全網羅。",
       strengths: ["公式最新『DeepSeek-V4.1-Flash』による爆速Agent遂行", "原生マルチモーダル視覚理解をネイティブ統合", "数学・競技プログラミング最高峰のR1深層思考", "Web・アプリ版は全機能完全無料"],
       weaknesses: ["混雑時のサーバー負荷による待機時間"],
-      architecture: "DeepSeek V4.1 MoE & Multi-head Latent Attention (MLA) Architecture"
+      architecture: "DeepSeek V4.1 MoE & Multi-head Latent Attention (MLA) Architecture",
+      versionsList: [
+        {
+          name: "DeepSeek-V4.1-Flash (Agent & Vision)",
+          shortName: "V4.1-Flash",
+          tier: "free",
+          speed: "超高速",
+          intelligence: "高度",
+          bestFor: "爆速チャット、Web/画像マルチモーダル分析、自律Agent遂行",
+          planAvailability: "Web・アプリ完全無料",
+          description: "2026年最新の主力モデル。テキスト・視覚理解・ツール実行を高速かつ完全無料で提供。"
+        },
+        {
+          name: "DeepSeek-R1 (Deep Reasoning)",
+          shortName: "R1 (推論)",
+          tier: "free",
+          speed: "じっくり推論",
+          intelligence: "最高峰",
+          bestFor: "競プロ・難関数学・論理パズル・緻密なコード設計",
+          planAvailability: "Web・アプリ完全無料",
+          description: "OpenAI o1/o3に匹敵する超難問解決力を誇るオープンウェイト思考モデル。"
+        }
+      ]
     },
     estimatedUsers: "数千万人急増 / 世界アプリランキング1位獲得",
     siteRegisteredCount: 0,
@@ -363,7 +437,29 @@ export const generalTools: ToolSeedItem[] = [
       evolution: "Windows 11およびMicrosoft 365アプリに完全統合。Think Deeperによる思考型リサーチとDesigner画像生成を搭載。",
       strengths: ["Word, Excel, PowerPointとの直接連携", "Windows OS内蔵で即時呼び出し", "企業向け商用データ保護が万全", "DALL-E 3画像生成が手軽"],
       weaknesses: ["単体チャット画面のUIがやや煩雑", "長文コード生成で途切れることがある"],
-      architecture: "OpenAI GPT-4o on Azure AI Infrastructure"
+      architecture: "OpenAI GPT-4o on Azure AI Infrastructure",
+      versionsList: [
+        {
+          name: "Microsoft Copilot (GPT-4o)",
+          shortName: "GPT-4o",
+          tier: "free",
+          speed: "高速",
+          intelligence: "高度",
+          bestFor: "日常のOffice作業、Web検索、文書要約、画像生成",
+          planAvailability: "無料枠で利用可能",
+          description: "Microsoft EdgeやWindows 11で手軽に利用できる標準AIアシスタント。"
+        },
+        {
+          name: "Think Deeper (Reasoning Mode)",
+          shortName: "Think Deeper",
+          tier: "paid",
+          speed: "じっくり推論",
+          intelligence: "最高峰",
+          bestFor: "複雑な課題解決、詳細な比較レポート、論理的推論",
+          planAvailability: "Copilot Pro限定",
+          description: "より深く論理的に思考してから回答を出力するPro向け思考モード。"
+        }
+      ]
     },
     estimatedUsers: "数千万人以上 / 法人導入シェア最大",
     siteRegisteredCount: 0,
@@ -412,7 +508,39 @@ export const generalTools: ToolSeedItem[] = [
       evolution: "xAI公式の最先端フラグシップモデル「Grok 4.6 / 4.7」を展開。Colossusスーパーコンピュータクラスタによる巨大計算力と、X(旧Twitter)リアルタイムデータ直結の超高速リサーチエンジンを搭載。",
       strengths: ["公式最新Grok 4.7による超高度なリアルタイム推論", "X上の最新トレンドや世界情勢の即時把握", "過度な政治的フィルターや検閲のない自由な回答", "FLUX画像生成エンジンのネイティブ統合"],
       weaknesses: ["X利用登録が前提", "公的・堅いビジネス文章にはトーン調整が必要"],
-      architecture: "xAI Colossus Cluster & Grok 4-Series Frontier Engine"
+      architecture: "xAI Colossus Cluster & Grok 4-Series Frontier Engine",
+      versionsList: [
+        {
+          name: "Grok 4.7 (Flagship Realtime)",
+          shortName: "Grok 4.7",
+          tier: "paid",
+          speed: "超高速",
+          intelligence: "最高峰",
+          bestFor: "Xリアルタイム情勢分析、深層論理推論、プログラミング",
+          planAvailability: "X Premium / Premium+限定",
+          description: "xAIの最新フロンティアモデル。世界中のリアルタイム情報と連携した最高峰知能。"
+        },
+        {
+          name: "Grok 4.6 (Fast Reasoning)",
+          shortName: "Grok 4.6",
+          tier: "paid",
+          speed: "高速",
+          intelligence: "高度",
+          bestFor: "日常対話、リサーチ、FLUX画像生成",
+          planAvailability: "X Premium限定",
+          description: "バランスの取れた高速推論と画像生成を提供するxAIの主力モデル。"
+        },
+        {
+          name: "Grok Mini (Web Preview)",
+          shortName: "Grok Mini",
+          tier: "free",
+          speed: "超高速",
+          intelligence: "標準",
+          bestFor: "基本チャット、リアルタイムトレンド質問",
+          planAvailability: "X一般ユーザー向け順次無料開放",
+          description: "手軽にX上で試せる軽量版Grok。"
+        }
+      ]
     },
     estimatedUsers: "数千万人 (Xプレミアムユーザー層)",
     siteRegisteredCount: 0,

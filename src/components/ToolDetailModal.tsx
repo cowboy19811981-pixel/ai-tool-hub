@@ -231,9 +231,20 @@ export const ToolDetailModal: React.FC<ToolDetailModalProps> = ({
                           <Cpu className="w-4 h-4 text-cyan-400" />
                           <h4 className="font-extrabold text-base text-white">{ver.name}</h4>
                         </div>
-                        <span className="px-2 py-0.5 rounded text-xs font-bold bg-indigo-500/20 text-indigo-300 border border-indigo-500/30">
-                          {ver.planAvailability}
-                        </span>
+                        <div className="flex items-center gap-1.5 flex-wrap">
+                          {ver.tier === "free" ? (
+                            <span className="px-2 py-0.5 rounded text-xs font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+                              {isEn ? "Free Tier" : "無料枠対応"}
+                            </span>
+                          ) : (
+                            <span className="px-2 py-0.5 rounded text-xs font-bold bg-cyan-500/20 text-cyan-300 border border-cyan-500/30">
+                              {isEn ? "Paid Plan" : "有料プラン"}
+                            </span>
+                          )}
+                          <span className="px-2 py-0.5 rounded text-xs font-bold bg-indigo-500/20 text-indigo-300 border border-indigo-500/30">
+                            {ver.planAvailability}
+                          </span>
+                        </div>
                       </div>
                       <p className="text-slate-300 text-xs sm:text-sm leading-relaxed">
                         {ver.description}

@@ -424,26 +424,106 @@ export const CatalogSection: React.FC<CatalogSectionProps> = ({
                     {tool.summary}
                   </p>
 
-                  {/* Version Breakdown (バージョン別モデル一覧) */}
-                  {versionsList.length > 0 && (
-                    <div className="bg-slate-900/90 rounded-xl p-3.5 mb-3 border border-cyan-500/30 text-xs sm:text-sm space-y-1.5">
-                      <div className="flex items-center gap-1.5 text-cyan-300 font-bold text-xs uppercase tracking-wider">
-                        <Cpu className="w-4 h-4 text-cyan-400" />
-                        <span>{isEn ? `Available Engines (${versionsList.length}):` : `選べるモデル・バージョン (${versionsList.length}種):`}</span>
-                      </div>
-                      <div className="flex flex-wrap gap-1.5 pt-1">
-                        {versionsList.map((v, i) => (
-                          <span
-                            key={i}
-                            className="px-2 py-0.5 rounded bg-slate-800 text-slate-200 border border-slate-700 text-xs font-semibold"
-                            title={v.description}
-                          >
-                            {v.name.split(" ")[0]}
+                  {/* Version Breakdown (バージョン別モデル一覧：無料・有料プランを明確化) */}
+                  {versionsList.length > 0 && (() => {
+                    const getModelBadgeName = (v: typeof versionsList[0]) => {
+                      if (v.shortName) return v.shortName;
+                      const clean = v.name
+                        .replace(new RegExp(`^(${tool.name}|Claude|Gemini|ChatGPT|OpenAI|Midjourney|Runway|Suno|Udio|GitHub|DeepSeek|Microsoft)\\s*`, "i"), "")
+                        .replace(/\s*\([^)]*\)$/, "")
+                        .trim();
+                      return clean || v.name;
+                    };
+
+                    const freeModels = versionsList.filter((v) => 
+                      v.tier === "free" || 
+                      v.planAvailability?.toLowerCase().includes("無料") ||
+                      v.planAvailability?.toLowerCase().includes("free")
+                    );
+                    const paidModels = versionsList.filter((v) => 
+                      v.tier === "paid" || 
+                      v.tier === "preview" || 
+                      (!freeModels.includes(v) && (
+                        v.planAvailability?.toLowerCase().includes("pro") || 
+                        v.planAvailability?.toLowerCase().includes("有料") || 
+                        v.planAvailability?.toLowerCase().includes("plus") ||
+                        v.planAvailability?.toLowerCase().includes("advanced") ||
+                        v.planAvailability?.toLowerCase().includes("individual")
+                      ))
+                    );
+                    const hasSplit = freeModels.length > 0 && paidModels.length > 0;
+
+                    return (
+                      <div className="bg-slate-900/90 rounded-xl p-3 mb-3 border border-slate-800 text-xs space-y-2">
+                        <div className="flex items-center justify-between text-cyan-300 font-bold text-xs uppercase tracking-wider">
+                          <div className="flex items-center gap-1.5">
+                            <Cpu className="w-3.5 h-3.5 text-cyan-400" />
+                            <span>{isEn ? "Available Models / Plans" : "選べるモデル・プラン対応"}</span>
+                          </div>
+                          <span className="text-[10px] font-normal text-slate-400 font-mono">
+                            {versionsList.length} {isEn ? "models" : "種"}
                           </span>
-                        ))}
+                        </div>
+
+                        {hasSplit ? (
+                          <div className="space-y-1.5 pt-0.5">
+                            {/* 無料枠で使えるモデル */}
+                            <div className="flex items-center gap-1.5 flex-wrap">
+                              <span className="px-1.5 py-0.5 rounded text-[10px] font-extrabold bg-emerald-500/15 text-emerald-300 border border-emerald-500/25 shrink-0">
+                                {isEn ? "Free" : "無料枠"}
+                              </span>
+                              <div className="flex flex-wrap gap-1">
+                                {freeModels.map((v, i) => (
+                                  <span
+                                    key={`free-${i}`}
+                                    className="px-2 py-0.5 rounded bg-slate-800/90 text-emerald-200 border border-emerald-500/20 text-xs font-semibold hover:border-emerald-400 transition-colors"
+                                    title={`${v.name} - ${v.planAvailability || ""}: ${v.description || ""}`}
+                                  >
+                                    {getModelBadgeName(v)}
+                                  </span>
+                                ))}
+                              </div>
+                            </div>
+
+                            {/* 有料プランで解放されるモデル */}
+                            <div className="flex items-center gap-1.5 flex-wrap">
+                              <span className="px-1.5 py-0.5 rounded text-[10px] font-extrabold bg-cyan-500/15 text-cyan-300 border border-cyan-500/25 shrink-0">
+                                {isEn ? "Paid" : "有料枠"}
+                              </span>
+                              <div className="flex flex-wrap gap-1">
+                                {paidModels.map((v, i) => (
+                                  <span
+                                    key={`paid-${i}`}
+                                    className="px-2 py-0.5 rounded bg-slate-800/90 text-cyan-200 border border-cyan-500/20 text-xs font-semibold hover:border-cyan-400 transition-colors"
+                                    title={`${v.name} - ${v.planAvailability || ""}: ${v.description || ""}`}
+                                  >
+                                    {getModelBadgeName(v)}
+                                  </span>
+                                ))}
+                              </div>
+                            </div>
+                          </div>
+                        ) : (
+                          /* 分割なし（全有料または全無料ツール） */
+                          <div className="flex flex-wrap gap-1.5 pt-0.5">
+                            {versionsList.map((v, i) => (
+                              <span
+                                key={i}
+                                className={`px-2 py-0.5 rounded text-xs font-semibold border ${
+                                  v.tier === "paid" || tool.pricingType === "完全有料"
+                                    ? "bg-slate-800 text-cyan-300 border-cyan-500/30"
+                                    : "bg-slate-800 text-slate-200 border-slate-700"
+                                }`}
+                                title={`${v.name} - ${v.planAvailability || ""}: ${v.description || ""}`}
+                              >
+                                {getModelBadgeName(v)}
+                              </span>
+                            ))}
+                          </div>
+                        )}
                       </div>
-                    </div>
-                  )}
+                    );
+                  })()}
 
                   {/* Pricing Badge & Details */}
                   <div className="bg-slate-950/70 rounded-xl p-3 mb-4 border border-slate-800 text-xs sm:text-sm space-y-1.5">

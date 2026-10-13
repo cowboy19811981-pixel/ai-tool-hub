@@ -16,6 +16,8 @@ export const codeTools: ToolSeedItem[] = [
       versionsList: [
         {
           name: "Claude Fable 5.1 (SWE-bench 80%+)",
+          shortName: "Fable 5.1",
+          tier: "paid",
           speed: "可変・高速",
           intelligence: "最高峰",
           bestFor: "複数ファイル一括編集（Composer）、アーキテクチャ設計、難関バグ修正",
@@ -24,6 +26,8 @@ export const codeTools: ToolSeedItem[] = [
         },
         {
           name: "Gemini 3.8 Flash (超爆速補完)",
+          shortName: "3.8 Flash",
+          tier: "paid",
           speed: "超高速",
           intelligence: "高度",
           bestFor: "巨大リポジトリ全域検索、リアルタイムインライン補完、長大ログ解析",
@@ -32,11 +36,23 @@ export const codeTools: ToolSeedItem[] = [
         },
         {
           name: "o3-mini (High Reasoning)",
+          shortName: "o3-mini",
+          tier: "paid",
           speed: "標準",
           intelligence: "最高峰",
           bestFor: "難解なアルゴリズム、競プロ級ロジック、並行処理デバッグ",
           planAvailability: "Proプラン限定",
           description: "OpenAIの最新推論モデル。時間をかけて深く思考し、境界条件の潜在的バグを完全特定。"
+        },
+        {
+          name: "Cursor Tab (Basic Autocomplete)",
+          shortName: "Tab補完",
+          tier: "free",
+          speed: "超高速",
+          intelligence: "標準",
+          bestFor: "日々のエディタ内補完、関数名自動提案",
+          planAvailability: "無料枠で月200回利用可能",
+          description: "日常のコーディングを支える基本入力補完モデル。"
         }
       ]
     },
@@ -87,7 +103,39 @@ export const codeTools: ToolSeedItem[] = [
       evolution: "GitHubリポジトリの全IssueやPRと直結。モデル選択機能によりClaude 3.7 Sonnet、o3-mini、GPT-4oなどを自由に切り替えて補完・チャットが可能に。",
       strengths: ["VS Code, JetBrains, Visual Studio等あらゆるエディタに対応", "GitHub上のIssueから直接仕様書・コードを自動起草", "個人向け無料プランが新設され手軽に利用可能", "企業のセキュリティ基準（コード非学習保証）"],
       weaknesses: ["Composerのような複数ファイルの一括自律書き換え速度はCursorに一歩及ばない"],
-      architecture: "GitHub Multi-Model Cloud Agent"
+      architecture: "GitHub Multi-Model Cloud Agent",
+      versionsList: [
+        {
+          name: "Claude 3.7 Sonnet (Reasoning)",
+          shortName: "Sonnet 3.7",
+          tier: "paid",
+          speed: "高速",
+          intelligence: "最高峰",
+          bestFor: "複雑なロジック設計、コードレビュー、リファクタリング",
+          planAvailability: "Individual ($10) / Business限定",
+          description: "Anthropicの最新モデルによる高精度コード支援。"
+        },
+        {
+          name: "o3-mini (Logic & Algorithms)",
+          shortName: "o3-mini",
+          tier: "paid",
+          speed: "高速",
+          intelligence: "最高峰",
+          bestFor: "アルゴリズム設計、並行処理デバッグ、競プロ級課題",
+          planAvailability: "Individual ($10) / Business限定",
+          description: "OpenAIの思考モデルによる論理的コード生成。"
+        },
+        {
+          name: "GitHub Copilot (GPT-4o)",
+          shortName: "GPT-4o",
+          tier: "free",
+          speed: "高速",
+          intelligence: "高度",
+          bestFor: "日々のコード補完、手軽な質問、関数補完",
+          planAvailability: "無料枠(月2,000補完) / 有料無制限",
+          description: "基本補完とChatを支える安定した主力モデル。"
+        }
+      ]
     },
     estimatedUsers: "1,500万人以上 / 企業導入実績世界No.1",
     siteRegisteredCount: 0,
