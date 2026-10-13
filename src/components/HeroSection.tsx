@@ -68,7 +68,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
               <Clock className="w-3 h-3 text-cyan-400" />
               <span>{currentUpdate.sourceName || (isEn ? "Live Feed" : "公式速報")}</span>
             </span>
-            <span className="truncate font-medium text-slate-100">
+            <span className="truncate min-w-0 font-medium text-slate-100">
               {currentUpdate.title}
             </span>
             {currentUpdate.toolId ? (

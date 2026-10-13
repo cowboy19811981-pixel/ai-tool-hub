@@ -14,17 +14,6 @@
   --accent: #f43f5e;
 }
 
-.light {
-  --background: #f8fafc;
-  --foreground: #090d16;
-  --card-bg: rgba(255, 255, 255, 0.85);
-  --card-border: rgba(0, 0, 0, 0.08);
-  --border: rgba(0, 0, 0, 0.1);
-  --primary: #0284c7;
-  --primary-glow: rgba(2, 132, 199, 0.2);
-  --secondary: #7c3aed;
-  --accent: #e11d48;
-}
 
 body {
   background-color: var(--background);
@@ -49,9 +38,6 @@ body {
   border-bottom: 1px solid var(--card-border);
 }
 
-.light .glass-nav {
-  background: rgba(248, 250, 252, 0.85);
-}
 
 /* Aurora Gradient Glow */
 .aurora-glow {

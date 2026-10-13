@@ -314,6 +314,45 @@ export const NewsSection: React.FC<NewsSectionProps> = ({
                         {item.title}
                       </h3>
 
+                      {/* Inline Summary for Active Card (Responsive: Visible across mobile, tablet & desktop) */}
+                      {isSelected && (
+                        <div className="p-3.5 rounded-xl bg-slate-950/80 border border-cyan-500/30 text-xs text-slate-200 space-y-2.5 animate-in fade-in duration-200">
+                          <div className="flex items-center gap-1.5 text-cyan-400 font-bold text-[11px]">
+                            <Sparkles className="w-3.5 h-3.5 text-cyan-400" />
+                            <span>{t.newsSmartSummaryBadge}</span>
+                          </div>
+                          <p className="text-slate-300 leading-relaxed font-normal whitespace-pre-wrap">
+                            {item.summary3Lines}
+                          </p>
+                          {item.sourceUrl && (
+                            <div className="pt-2 flex flex-wrap items-center gap-2">
+                              <a
+                                href={item.sourceUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                onClick={(e) => e.stopPropagation()}
+                                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold bg-gradient-to-r from-cyan-400 to-blue-500 hover:from-cyan-300 hover:to-blue-400 text-slate-950 shadow-md shadow-cyan-500/20 transition-all cursor-pointer"
+                              >
+                                <span>{t.newsSourceButton}</span>
+                                <ExternalLink className="w-3.5 h-3.5" />
+                              </a>
+                              {item.toolId && (
+                                <button
+                                  onClick={(e) => {
+                                    e.stopPropagation();
+                                    onSelectToolById(item.toolId!);
+                                  }}
+                                  className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg text-xs font-semibold bg-slate-800 hover:bg-slate-700 text-cyan-300 border border-cyan-500/30 transition-colors cursor-pointer"
+                                >
+                                  <span>{t.newsToToolButton}</span>
+                                  <ArrowRight className="w-3 h-3" />
+                                </button>
+                              )}
+                            </div>
+                          )}
+                        </div>
+                      )}
+
                       {/* Footer Row in Card */}
                       <div className="flex items-center justify-between text-[11px] text-slate-400 pt-1 border-t border-slate-800/60">
                         {domain && (
@@ -322,9 +361,11 @@ export const NewsSection: React.FC<NewsSectionProps> = ({
                             <span>{domain}</span>
                           </span>
                         )}
-                        <span className="text-cyan-400 group-hover:underline text-[11px] font-semibold flex items-center gap-1 ml-auto">
-                          <span>{isEn ? "Read Smart Summary" : "要約を読む"}</span>
-                          <ArrowRight className="w-3 h-3" />
+                        <span className={`text-[11px] font-semibold flex items-center gap-1 ml-auto transition-colors ${
+                          isSelected ? "text-cyan-300" : "text-cyan-400 group-hover:underline"
+                        }`}>
+                          <span>{isSelected ? (isEn ? "Summary Active ✓" : "要約表示中 ✓") : (isEn ? "Read Smart Summary" : "要約を読む")}</span>
+                          {!isSelected && <ArrowRight className="w-3 h-3" />}
                         </span>
                       </div>
                     </div>

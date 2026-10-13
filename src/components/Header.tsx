@@ -5,8 +5,6 @@ import {
   Compass, 
   Search, 
   Bookmark, 
-  Sun, 
-  Moon, 
   Sparkles, 
   Menu, 
   X, 
@@ -34,19 +32,13 @@ export const Header: React.FC<HeaderProps> = ({
   onOpenQuiz,
   onOpenFreeInput,
 }) => {
-  const [isDark, setIsDark] = useState(true);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { lang, toggleLang, t, isEn } = useLanguage();
 
   useEffect(() => {
-    if (isDark) {
-      document.documentElement.classList.add("dark");
-      document.documentElement.classList.remove("light");
-    } else {
-      document.documentElement.classList.remove("dark");
-      document.documentElement.classList.add("light");
-    }
-  }, [isDark]);
+    document.documentElement.classList.add("dark");
+    document.documentElement.classList.remove("light");
+  }, []);
 
   return (
     <header className="sticky top-0 z-40 glass-nav transition-colors duration-200 border-b border-slate-800/80">
@@ -147,14 +139,6 @@ export const Header: React.FC<HeaderProps> = ({
             )}
           </button>
 
-          {/* Theme Toggle */}
-          <button
-            onClick={() => setIsDark(!isDark)}
-            className="p-2 rounded-xl bg-slate-800/80 hover:bg-slate-700 text-slate-300 hover:text-white border border-slate-700/60 transition-colors"
-            title={isDark ? "Light Mode" : "Dark Mode"}
-          >
-            {isDark ? <Sun className="w-4 h-4 text-amber-300" /> : <Moon className="w-4 h-4 text-indigo-400" />}
-          </button>
 
           {/* Mobile Menu Toggle */}
           <button
