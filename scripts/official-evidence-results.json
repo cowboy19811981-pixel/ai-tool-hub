@@ -1,0 +1,255 @@
+[
+  {
+    "id": "chatgpt",
+    "name": "OpenAI / ChatGPT",
+    "evidence": {
+      "sourceType": "Official RSS / Release Feed",
+      "verifiedUrl": "https://openai.com/news/rss.xml",
+      "items": [
+        {
+          "title": "Sophos cuts threat investigation time by 96% with OpenAI Daybreak",
+          "url": "https://openai.com/index/sophos"
+        },
+        {
+          "title": "Asana cuts model costs 76x in browser tests with GPT-6.1 Sol",
+          "url": "https://openai.com/index/asana-browser-agent"
+        },
+        {
+          "title": "How Oracle turns days of work into minutes with ChatGPT and Codex",
+          "url": "https://openai.com/index/oracle"
+        }
+      ],
+      "webHeadings": [
+        "OpenAI | Research &amp; Deployment",
+        "Introducing Dots",
+        "Recent news"
+      ]
+    }
+  },
+  {
+    "id": "claude",
+    "name": "Anthropic / Claude",
+    "evidence": {
+      "sourceType": "Official RSS / Release Feed",
+      "verifiedUrl": "https://news.google.com/rss/search?q=%22Claude+Fable%22+OR+%22Claude+Mythos%22+OR+%22Anthropic%22+Claude&hl=en-US&gl=US&ceid=US:en",
+      "items": [
+        {
+          "title": "Anthropic’s Claude AI submitted false murder tip to Philadelphia police - Ars Technica",
+          "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxPSER5ZlJwUTROcmZEaU9pY3l3TVh6ZHpCUFcwTElGR0g2dnBicDItUDdrVTBmZnhKTVdiZGYzUmZrUG1GdEstVi1HNmlQN2Q0RHRtWkNhZFlJb3VuNHVwWUNPQk5QYUsySGdGXzJUQlltTDVhNmF2YU5XUjJuQ0g4QzBSYjdyMnhtSlVFYzM5OGJLbkZuX2Zkd19zVThHMFdMVGtZTk5mV0JsN0VPSFg1OXp3OXczdw?oc=5"
+        },
+        {
+          "title": "Strengthening our defenses against distillation attacks - Anthropic",
+          "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE9OcHNZdWYyUWdnYV9lY1lrOGw0MEhIY2dhY0dFbmxXUWd3QjYtanptamV5cEl1TVRXdGhsZnFtRUFUVzlNZXJGNWhnU1g2cDBEMDhEVXVDWUZkZmFPY1BZVEhucjBDY1U?oc=5"
+        },
+        {
+          "title": "Anthropic Has Bigger Problems Than Claude's Feelings - Bloomberg.com",
+          "url": "https://news.google.com/rss/articles/CBMivgFBVV95cUxPQUNzWFVPeTBFYUlOem4zVTRhXzdNSmV4aEx3WDZQZWtiLWlFb09DM1JqT3RqQXhVVjQ2N2U5eWdVbWJvbVZacDdHWG5pZjdteFAzOVRtRkdtSWQxUlBWbkdYRGw3Y1ZaQWdKTmlad1c3Nk1VdUZ1RHRVTzA5SkdBRS03amhzY1VaNW5yN0VWSWNzdWZ2ZC1pNzAyU0pRYTZyVzJvU1Y1YjdsUlJuNnREdGh4WmlpZWRFV1B0U1hR?oc=5"
+        }
+      ],
+      "webHeadings": [
+        "Newsroom \\ Anthropic",
+        "Newsroom",
+        "Expanding the Cyber Verification Program"
+      ]
+    }
+  },
+  {
+    "id": "deepseek",
+    "name": "DeepSeek",
+    "evidence": {
+      "sourceType": "Official Webpage HTML",
+      "verifiedUrl": "https://www.deepseek.com",
+      "items": [
+        {
+          "title": "DeepSeek | 深度求索",
+          "url": "https://www.deepseek.com"
+        },
+        {
+          "title": "探索未至之境",
+          "url": "https://www.deepseek.com"
+        }
+      ]
+    }
+  },
+  {
+    "id": "gemini",
+    "name": "Google / Gemini",
+    "evidence": {
+      "sourceType": "Official RSS / Release Feed",
+      "verifiedUrl": "https://blog.google/technology/ai/rss/",
+      "items": [
+        {
+          "title": "Introducing Playground: Create and play custom games",
+          "url": "https://blog.google/innovation-and-ai/technology/ai/playground-experimental-gaming-platform/"
+        },
+        {
+          "title": "The latest AI news we announced in September 2026",
+          "url": "https://blog.google/innovation-and-ai/technology/ai/google-ai-updates-september-2026/"
+        },
+        {
+          "title": "Watch the winning trailer from the Future Vision XPRIZE, The Gifted.",
+          "url": "https://blog.google/innovation-and-ai/technology/ai/winner-future-vision-xprize/"
+        }
+      ]
+    }
+  },
+  {
+    "id": "grok",
+    "name": "xAI / Grok",
+    "evidence": {
+      "error": "Could not fetch direct evidence (access restricted or pending)"
+    }
+  },
+  {
+    "id": "cursor",
+    "name": "Cursor",
+    "evidence": {
+      "sourceType": "Official Webpage HTML",
+      "verifiedUrl": "https://www.cursor.com/",
+      "items": [
+        {
+          "title": "AI Coding Agent for Building Ambitious Software | Cursor",
+          "url": "https://www.cursor.com/"
+        },
+        {
+          "title": "Cursor is your coding agent for building ambitious software.",
+          "url": "https://www.cursor.com/"
+        },
+        {
+          "title": "Trusted every day by teams that build world-class software",
+          "url": "https://www.cursor.com/"
+        },
+        {
+          "title": "Agents turn ideas into code",
+          "url": "https://www.cursor.com/"
+        }
+      ]
+    }
+  },
+  {
+    "id": "github-copilot",
+    "name": "GitHub Copilot",
+    "evidence": {
+      "sourceType": "Official RSS / Release Feed",
+      "verifiedUrl": "https://github.blog/changelog/label/copilot/feed/",
+      "items": [
+        {
+          "title": "Client telemetry user attribution and configurable capture",
+          "url": "https://github.blog/changelog/2026-10-12-client-telemetry-user-attribution-and-configurable-capture"
+        },
+        {
+          "title": "New controls and chat improvements in Copilot for JetBrains",
+          "url": "https://github.blog/changelog/2026-10-10-new-controls-and-chat-improvements-in-copilot-for-jetbrains"
+        },
+        {
+          "title": "GitHub Copilot weekly releases — October 5",
+          "url": "https://github.blog/changelog/2026-10-09-github-copilot-weekly-releases-october-5"
+        }
+      ],
+      "webHeadings": [
+        "GitHub Copilot · Your AI coding agent · GitHub · GitHub",
+        "Navigation Menu",
+        "Command your craft"
+      ]
+    }
+  },
+  {
+    "id": "windsurf",
+    "name": "Windsurf",
+    "evidence": {
+      "sourceType": "Official Webpage HTML",
+      "verifiedUrl": "https://codeium.com/windsurf",
+      "items": [
+        {
+          "title": "Devin Desktop | Devin",
+          "url": "https://codeium.com/windsurf"
+        },
+        {
+          "title": "Devin Desktop",
+          "url": "https://codeium.com/windsurf"
+        },
+        {
+          "title": "A team of agents for every engineer.",
+          "url": "https://codeium.com/windsurf"
+        },
+        {
+          "title": "The power of an IDE, exactly when you need it.",
+          "url": "https://codeium.com/windsurf"
+        }
+      ]
+    }
+  },
+  {
+    "id": "midjourney",
+    "name": "Midjourney",
+    "evidence": {
+      "error": "Could not fetch direct evidence (access restricted or pending)"
+    }
+  },
+  {
+    "id": "runway",
+    "name": "Runway",
+    "evidence": {
+      "sourceType": "Official Webpage HTML",
+      "verifiedUrl": "https://runwayml.com/",
+      "items": [
+        {
+          "title": "Runway | Building Real-World Intelligence",
+          "url": "https://runwayml.com/"
+        },
+        {
+          "title": "Building Real-World Intelligence",
+          "url": "https://runwayml.com/"
+        },
+        {
+          "title": "Three platforms built on-top of the same Real-World Intelligence models",
+          "url": "https://runwayml.com/"
+        },
+        {
+          "title": "Runway Creative",
+          "url": "https://runwayml.com/"
+        }
+      ]
+    }
+  },
+  {
+    "id": "suno",
+    "name": "Suno",
+    "evidence": {
+      "sourceType": "Official Webpage HTML",
+      "verifiedUrl": "https://suno.com/",
+      "items": [
+        {
+          "title": "Suno | AI Music Generator",
+          "url": "https://suno.com/"
+        },
+        {
+          "title": "Make any song you can imagine",
+          "url": "https://suno.com/"
+        },
+        {
+          "title": "Start with a simple prompt or dive into our pro editing tools, your next track is just a step away.",
+          "url": "https://suno.com/"
+        },
+        {
+          "title": "Mind blowing song quality",
+          "url": "https://suno.com/"
+        }
+      ]
+    }
+  },
+  {
+    "id": "perplexity",
+    "name": "Perplexity",
+    "evidence": {
+      "sourceType": "Official Webpage HTML",
+      "verifiedUrl": "https://www.perplexity.ai/",
+      "items": [
+        {
+          "title": "Perplexity",
+          "url": "https://www.perplexity.ai/"
+        }
+      ]
+    }
+  }
+]

@@ -6,21 +6,29 @@ export const generalTools: ToolSeedItem[] = [
     name: "ChatGPT",
     category: "general",
     categoryLabel: "総合（汎用LLM）",
-    badge: "GPT-6 Astra推論",
-    version: "GPT-6 Astra / o3 / GPT-4o",
+    badge: "GPT-6.1 Sol & Daybreak",
+    version: "GPT-6.1 Sol / OpenAI Daybreak / o3",
     versionFeatures: {
-      evolution: "次世代フロンティア知能「GPT-6 Astra」および深層推論モデル「o3」シリーズ、マルチモーダルGPT-4oを統合。複雑なタスクの自律遂行と最高峰の論理推論を実現。",
-      strengths: ["次世代フロンティア自律知能(GPT-6 Astra)", "最高峰の推論力(o3 / o1)", "超低遅延リアルタイム音声会話", "業界最大のエコシステム"],
+      evolution: "OpenAI公式発表の次世代基盤「GPT-6.1 Sol」およびセキュリティ・エージェント推論「OpenAI Daybreak」、深層推論「o3」シリーズを統合。圧倒的なブラウザ自動化・自律エージェント遂行能力を実現。",
+      strengths: ["公式最新次世代基盤(GPT-6.1 Sol)", "次世代自律エージェント(OpenAI Daybreak)", "最高峰の多段階推論(o3)", "超低遅延リアルタイム音声会話"],
       weaknesses: ["高度な推論機能の利用枠が無料版では制限あり"],
-      architecture: "OpenAI GPT-6 Astra Architecture & o-Series Reasoning Engine",
+      architecture: "OpenAI GPT-6.1 Sol Architecture & Daybreak Agent Engine",
       versionsList: [
         {
-          name: "GPT-6 Astra",
+          name: "GPT-6.1 Sol (Next-Gen Frontier)",
           speed: "超高速",
           intelligence: "最高峰",
-          bestFor: "自律エージェント遂行、超高度な複合課題解決、全感覚マルチモーダル対話",
+          bestFor: "自律ブラウザエージェント遂行、超高度な複合課題解決、全感覚マルチモーダル対話",
           planAvailability: "Plus / Pro限定",
-          description: "OpenAIが発表した次世代基盤モデル。深い世界理解と自律的な計画遂行能力を備える。"
+          description: "OpenAIが発表した次世代基盤モデル。コストを抑えながら高度な自律エージェント能力を発揮。"
+        },
+        {
+          name: "OpenAI Daybreak (Security & Complex Agents)",
+          speed: "高速",
+          intelligence: "最高峰",
+          bestFor: "システム脅威調査、大規模コード・インフラ自律分析、難関自動化タスク",
+          planAvailability: "Enterprise / Pro限定",
+          description: "高度な自律判断を要する実務現場のために設計されたOpenAIの最新エージェント推論モデル。"
         },
         {
           name: "o3 (Full Reasoning)",
@@ -29,14 +37,6 @@ export const generalTools: ToolSeedItem[] = [
           bestFor: "フロンティア級数学・難関システム設計・科学的仮説検証",
           planAvailability: "Plus / Pro限定",
           description: "思考プロセスを展開しながら難問を多段階で解き明かす最高峰推論モデル。"
-        },
-        {
-          name: "GPT-4o (Omni)",
-          speed: "超高速",
-          intelligence: "高度",
-          bestFor: "日常会話、リアルタイム音声感情対話、画像・動画の即時理解",
-          planAvailability: "無料 / Plus",
-          description: "音声・視覚・テキストがネイティブ統合された高速マルチモーダルモデル。"
         }
       ]
     },
@@ -250,10 +250,10 @@ export const generalTools: ToolSeedItem[] = [
     category: "general",
     categoryLabel: "総合（汎用LLM）",
     badge: "次世代検索",
-    version: "Sonar / Pro Search (GPT-6 & Claude 3.7 & Gemini 3.8統合)",
+    version: "Sonar / Pro Search (Claude Fable 5.1 & GPT-6.1 & DeepSeek統合)",
     versionFeatures: {
-      evolution: "Web全体を瞬時にスクレイピング・ファクトチェックし、学術論文から最新ニュースまで出典番号付きで回答。",
-      strengths: ["完全な出典リンク明記でハルシネーション抑制", "Pro Searchによる段階的深掘りリサーチ", "GPT-6 / Claude 3.7 / Gemini 3.8モデルの自由選択", "Pages機能によるレポート自動作成"],
+      evolution: "Web全体を瞬時にスクレイピング・ファクトチェックし、学術論文から最新ニュースまで出典番号付きで回答。裏側の頭脳にClaude Fable 5.1やGPT-6.1、DeepSeek-V4.1を選択可能。",
+      strengths: ["完全な出典リンク明記でハルシネーション抑制", "Pro Searchによる段階的深掘りリサーチ", "Claude Fable 5.1 / GPT-6.1 / o3 / DeepSeekモデルの自由選択", "Pages機能によるレポート自動作成"],
       weaknesses: ["創作小説や自由対話には特化していない"],
       architecture: "Perplexity Deep Research Engine & Sonar Model"
     },
@@ -298,13 +298,13 @@ export const generalTools: ToolSeedItem[] = [
     name: "DeepSeek",
     category: "general",
     categoryLabel: "総合（汎用LLM）",
-    badge: "コスパ破壊の神",
-    version: "DeepSeek-V3 / DeepSeek-R1",
+    badge: "V4.1-Flash進化・神コスパ",
+    version: "DeepSeek-V4.1-Flash / DeepSeek-R1",
     versionFeatures: {
-      evolution: "独自のMoE技術と強化学習により、OpenAI o1匹敵の推論力(R1)を従来の1/10以下の学習コストで実現し世界を震撼させたモデル。",
-      strengths: ["数学・競技プログラミング・論理思考が世界最高峰", "思考プロセス（Thinking Chain）の全開示", "Web・アプリ版は全機能完全無料", "API利用料が業界最安"],
-      weaknesses: ["混雑時のサーバー負荷による待機時間", "中国発のため地政学的懸念を持つ組織がある"],
-      architecture: "DeepSeek Multi-head Latent Attention (MLA) & MoE"
+      evolution: "DeepSeek公式発表の最新モデル「DeepSeek-V4.1-Flash」を搭載。テキスト処理および自律Agent性能が全面向上し、原生マルチモーダル視覚理解を標準統合。思考モデル「DeepSeek-R1」の超難関数学・論理推論も完全網羅。",
+      strengths: ["公式最新『DeepSeek-V4.1-Flash』による爆速Agent遂行", "原生マルチモーダル視覚理解をネイティブ統合", "数学・競技プログラミング最高峰のR1深層思考", "Web・アプリ版は全機能完全無料"],
+      weaknesses: ["混雑時のサーバー負荷による待機時間"],
+      architecture: "DeepSeek V4.1 MoE & Multi-head Latent Attention (MLA) Architecture"
     },
     estimatedUsers: "数千万人急増 / 世界アプリランキング1位獲得",
     siteRegisteredCount: 0,
@@ -315,12 +315,12 @@ export const generalTools: ToolSeedItem[] = [
     pricingType: "完全無料 / 超格安API",
     pricingMonthly: "Web・アプリ完全無料 / API 1Mトークン数セント",
     freePlanDetails: {
-      limits: "Webおよびスマホアプリで、推論モデルR1も含めて現在完全無料で提供。",
-      allowedFeatures: ["DeepSeek-R1思考モード", "DeepSeek-V3高速チャット", "Web検索連動", "ファイル読み込み"]
+      limits: "Webおよびスマホアプリで、最新V4.1-Flashおよび推論モデルR1を完全無料で提供。",
+      allowedFeatures: ["DeepSeek-V4.1-Flash高速Agent", "DeepSeek-R1思考モード", "マルチモーダル画像解析", "Web検索連動"]
     },
     paidPlanDetails: {
       planName: "API従量課金",
-      price: "100万トークンあたり数円〜数十円（他社の1/10以下）",
+      price: "100万トークンあたり数円〜数十円（業界最安基準）",
       unlockedFeatures: ["自作アプリやCursor/Clineへの組み込み", "専用クォータ保証"],
       recommendedFor: "プログラマー、AI開発者、とにかく無料で最強の推論AIを使いたいすべての人"
     },
@@ -330,17 +330,17 @@ export const generalTools: ToolSeedItem[] = [
     commercialUse: true,
     hasApi: true,
     hasApp: true,
-    summary: "世界のAI業界を揺るがした推論特化AI。思考プロセスを可視化しながら超難問を無料・一撃で解く。",
-    description: "数学、アルゴリズム、コーディングにおいてOpenAI o1に迫る脅威的なスコアを記録。思考プロセスがすべて日本語でリアルタイムに画面に流れるため、「なぜその答えになったか」を完璧に理解できます。",
-    pros: ["Web・スマホ版が完全無料でo1並みの推論が使える", "思考の過程が見えるので納得感・学習効果が高い", "APIが爆安で開発者にとって神コスパ"],
+    summary: "公式最新DeepSeek-V4.1-Flash発表。進化したAgent性能と視覚理解を完全無料で提供。",
+    description: "DeepSeek公式が発表した最新旗艦「DeepSeek-V4.1-Flash」。テキスト生成および自律Agent遂行能力が飛躍的に進化し、原生マルチモーダル視覚理解も統合。思考モデルDeepSeek-R1の圧倒的な論理思考力と合わせて、世界をリードする性能を誇ります。",
+    pros: ["最新V4.1-FlashがWeb・スマホアプリで完全無料", "視覚理解・画像解析がネイティブ統合", "思考プロセス（Thinking Chain）の全開示"],
     cons: ["アクセス殺到時にサーバー接続エラーが発生することがある"],
     specs: {
-      contextWindow: "64k〜128kトークン",
-      multimodal: "テキスト・コード・数式",
+      contextWindow: "128kトークン",
+      multimodal: "テキスト・画像・コード・数式",
       company: "DeepSeek",
-      releaseYear: "2024 (最新版2025)"
+      releaseYear: "2026 (公式最新 DeepSeek-V4.1-Flash)"
     },
-    officialUrl: "https://chat.deepseek.com"
+    officialUrl: "https://www.deepseek.com"
   },
   {
     id: "copilot",
@@ -396,20 +396,20 @@ export const generalTools: ToolSeedItem[] = [
     name: "Grok",
     category: "general",
     categoryLabel: "総合（汎用LLM）",
-    badge: "Xリアルタイム＆ユーモア",
-    version: "Grok 2 / Grok 3",
+    badge: "xAIフラグシップ・Grok 4.7",
+    version: "Grok 4.6 / Grok 4.7",
     versionFeatures: {
-      evolution: "X(旧Twitter)のリアルタイムポストを直接インデックス。FLUX.1ベースの超高速画像生成エンジンを内蔵。",
-      strengths: ["X上の最新トレンドや炎上・事件の即時把握", "過度な政治的フィルターや検閲のない自由な回答", "ユーモアモード・辛口ツッコミモード", "FLUX画像生成の制限の緩さ"],
-      weaknesses: ["X利用登録が前提", "公的・堅いビジネス文章には調整が必要"],
-      architecture: "xAI Frontier Cluster Architecture"
+      evolution: "xAI公式の最先端フラグシップモデル「Grok 4.6 / 4.7」を展開。Colossusスーパーコンピュータクラスタによる巨大計算力と、X(旧Twitter)リアルタイムデータ直結の超高速リサーチエンジンを搭載。",
+      strengths: ["公式最新Grok 4.7による超高度なリアルタイム推論", "X上の最新トレンドや世界情勢の即時把握", "過度な政治的フィルターや検閲のない自由な回答", "FLUX画像生成エンジンのネイティブ統合"],
+      weaknesses: ["X利用登録が前提", "公的・堅いビジネス文章にはトーン調整が必要"],
+      architecture: "xAI Colossus Cluster & Grok 4-Series Frontier Engine"
     },
     estimatedUsers: "数千万人 (Xプレミアムユーザー層)",
     siteRegisteredCount: 0,
     votesCount: 0,
-    rankScore: 90.2,
+    rankScore: 92.5,
     categoryRank: 7,
-    overallRank: 10,
+    overallRank: 7,
     pricingType: "有料主軸 (X連携)",
     pricingMonthly: "X無料枠一部あり / X Premium 月額980円〜",
     freePlanDetails: {
@@ -419,7 +419,7 @@ export const generalTools: ToolSeedItem[] = [
     paidPlanDetails: {
       planName: "X Premium / Premium+",
       price: "月額 980円〜1,960円",
-      unlockedFeatures: ["Grok 2/3無制限利用", "FLUXベースの画像生成無制限", "Xリアルタイムポスト深層分析", "広告非表示・収益化権限"],
+      unlockedFeatures: ["最新Grok 4.6/4.7無制限利用", "FLUXベースの画像生成無制限", "Xリアルタイムポスト深層分析", "広告非表示・収益化権限"],
       recommendedFor: "X（Twitter）を日常の情報収集や発信の拠点にしているユーザー"
     },
     paidWorthRating: 4,
@@ -428,15 +428,15 @@ export const generalTools: ToolSeedItem[] = [
     commercialUse: true,
     hasApi: true,
     hasApp: true,
-    summary: "イーロン・マスク率いるxAIの旗艦モデル。Xの今この瞬間のポストを全世界で最も早く分析できるAI。",
-    description: "X（旧Twitter）のリアルタイムデータと直結している唯一無二のAI。世間のリアルタイムな世論や最新速報を即座に要約できるほか、FLUX.1連携による画像生成では有名人や風刺などの描写制限が他社より柔軟です。",
-    pros: ["最新ニュースやトレンドのキャッチアップ速度が最速", "忖度のない率直でウィットに富んだ回答", "FLUX搭載で画像生成のクオリティが非常に高い"],
-    cons: ["Xのアカウントが必要", "フォーマルな社内稟議書などにはややトーンが砕けがち"],
+    summary: "イーロン・マスク率いるxAIの最先端旗艦。Grok 4.7とXリアルタイムデータが直結。",
+    description: "xAIが誇る最先端モデルGrok 4.7。X（旧Twitter）のリアルタイムデータと直結している唯一無二のAIであり、今この瞬間の世界の出来事を最も早く分析・回答できます。",
+    pros: ["最新ニュースやトレンドのキャッチアップ速度が世界最速", "忖度のない率直でウィットに富んだ回答", "FLUX搭載で画像生成のクオリティが非常に高い"],
+    cons: ["Xのアカウントが必要"],
     specs: {
-      contextWindow: "128kトークン",
+      contextWindow: "128k〜256kトークン",
       multimodal: "テキスト・画像・Xポスト",
       company: "xAI",
-      releaseYear: "2023 (最新版2025-2026)"
+      releaseYear: "2026 (公式最新 Grok 4.7)"
     },
     officialUrl: "https://x.ai"
   },

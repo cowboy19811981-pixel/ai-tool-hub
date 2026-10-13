@@ -7,20 +7,20 @@ export const codeTools: ToolSeedItem[] = [
     category: "code",
     categoryLabel: "コード・開発",
     badge: "エンジニア界の絶対覇権",
-    version: "Agent / Composer (Claude 3.7 Sonnet & Gemini 3.8 Flash & GPT-6)",
+    version: "Agent / Composer (Claude Fable 5.1 & GPT-6.1 Sol & Gemini 3.8)",
     versionFeatures: {
-      evolution: "VS Codeを完全フォークして設計。自律Agent機能によりプロジェクト全体の複数ファイルを同時に修正・作成し、ターミナルコマンドやテスト実行まで自律代行。",
-      strengths: ["リポジトリ全体のコードベースを完全把握（@codebase）", "複数ファイルを跨ぐ一括編集・リファクタリング（Composer）", "Claude 3.7 Sonnet & Gemini 3.8 Flashの超高速推論フル活用", "VS Codeの拡張機能・設定がワンクリックで完全移行"],
+      evolution: "VS Codeを完全フォークして設計。自律Agent機能によりプロジェクト全体の複数ファイルを同時に修正・作成し、ターミナルコマンドやテスト実行まで自律代行。最高峰頭脳「Claude Fable 5.1」および「GPT-6.1 Sol」を統合。",
+      strengths: ["リポジトリ全体のコードベースを完全把握（@codebase）", "自律Agentによる複数ファイル一括編集・リファクタリング", "Claude Fable 5.1のSWE-bench 80%超の最高峰コーディング力", "VS Codeの拡張機能・設定がワンクリックで完全移行"],
       weaknesses: ["無料版の高速リクエスト制限がすぐに尽きる（Pro課金ほぼ前提）"],
       architecture: "Anysphere Custom Electron IDE + Fast Context Indexing",
       versionsList: [
         {
-          name: "Claude 3.7 Sonnet (Hybrid Reasoning)",
+          name: "Claude Fable 5.1 (SWE-bench 80%+)",
           speed: "可変・高速",
           intelligence: "最高峰",
           bestFor: "複数ファイル一括編集（Composer）、アーキテクチャ設計、難関バグ修正",
           planAvailability: "Proで月500回高速 / 超過後低速無制限",
-          description: "Cursor利用者の大半が常時使用する最高峰モデル。思考モード併用で複雑なリファクタリングもミスゼロ。"
+          description: "Cursor利用者の大半が常時使用する世界最高峰モデル。圧倒的な論理精度でミスゼロの実装を実現。"
         },
         {
           name: "Gemini 3.8 Flash (超爆速補完)",

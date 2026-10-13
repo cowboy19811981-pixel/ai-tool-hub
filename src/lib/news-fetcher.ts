@@ -53,6 +53,18 @@ export const OFFICIAL_AI_FEEDS: OfficialFeedConfig[] = [
     officialDomain: "cursor.com",
   },
   {
+    sourceName: "DeepSeek 公式発表・速報",
+    url: "https://news.google.com/rss/search?q=DeepSeek+%22V4%22+OR+%22R1%22+OR+%22Flash%22+official&hl=ja&gl=JP&ceid=JP:ja",
+    defaultToolId: "deepseek",
+    officialDomain: "deepseek.com",
+  },
+  {
+    sourceName: "xAI / Grok 公式発表・速報",
+    url: "https://news.google.com/rss/search?q=xAI+Grok+%224.6%22+OR+%224.7%22+OR+%22Grok+4%22&hl=ja&gl=JP&ceid=JP:ja",
+    defaultToolId: "grok",
+    officialDomain: "x.ai",
+  },
+  {
     sourceName: "Hugging Face 公式ブログ",
     url: "https://huggingface.co/blog/feed.xml",
     defaultToolId: null,
@@ -150,6 +162,10 @@ export async function fetchOfficialAINews(itemsPerFeed = 2): Promise<OfficialNew
           toolId = "copilot";
         } else if (lower.includes("cursor")) {
           toolId = "cursor";
+        } else if (lower.includes("deepseek") || lower.includes("r1") || lower.includes("v4.1")) {
+          toolId = "deepseek";
+        } else if (lower.includes("grok") || lower.includes("xai")) {
+          toolId = "grok";
         } else if (lower.includes("flux") || lower.includes("black forest")) {
           toolId = "flux";
         } else if (lower.includes("suno")) {
@@ -195,11 +211,14 @@ export async function summarizeOfficialRelease(
   if (apiKey && apiKey.trim() !== "") {
     try {
       const genAI = new GoogleGenerativeAI(apiKey);
-      const model = genAI.getGenerativeModel({ model: modelName });
+      const model = genAI.getGenerativeModel({
+        model: modelName,
+        generationConfig: { temperature: 0 },
+      });
       const prompt = `
 あなたは信頼性最優先のAI総合ポータルの公式アナウンス解説員です。
 以下の【一次情報・公式リリース】の内容を、日本のAI初心者・ビジネスパーソンに向けて正確かつ平易に日本語で「3行箇条書き要約（各行全角50文字以内）」にしてください。
-必ず「・」で各行を始めてください。推測や誇張は一切交えず、公式が発表した事実のみを要約してください。
+必ず「・」で各行を始めてください。推測や誇張は一切交えず、公式が発表した事実のみを要約してください。外部の未確認情報や存在しないモデル名を捏造することは厳禁です。
 
 【発信元】: ${item.sourceName}
 【公式タイトル】: ${item.title}
