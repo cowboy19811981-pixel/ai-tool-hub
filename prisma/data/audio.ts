@@ -56,7 +56,7 @@ export const audioTools: ToolSeedItem[] = [
     category: "audio",
     categoryLabel: "音楽・音声",
     badge: "音質・音楽性No.1",
-    version: "Udio v1.5",
+    version: "Udio v1.5 / v2 (Clarity Engine)",
     versionFeatures: {
       evolution: "元Google DeepMind研究者らが開発。生演奏のような豊かな空気感、ジャズやクラシックの高度なコード進行、ステム分離（ボーカルと楽器の個別書き出し）に対応。",
       strengths: ["音響クオリティ・空気感が生演奏レベル", "ステム分離機能（ボーカル、ベース、ドラムをバラバラに抽出）", "曲の途中へのパート追加・アレンジ編集", "音楽理論に忠実な展開"],

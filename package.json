@@ -10,6 +10,10 @@
     "db:push": "prisma db push",
     "db:seed": "tsx prisma/seed.ts",
     "cron:update": "tsx scripts/fetch-updates.ts",
+    "cron:update:news": "tsx scripts/fetch-updates.ts --scope=news",
+    "cron:update:models": "tsx scripts/fetch-updates.ts --scope=models",
+    "cron:update:pricing": "tsx scripts/fetch-updates.ts --scope=pricing",
+    "cron:update:all": "tsx scripts/fetch-updates.ts --scope=all",
     "sync:official": "tsx scripts/sync-official-specs.ts"
   },
   "prisma": {

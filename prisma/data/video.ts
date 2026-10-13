@@ -510,12 +510,12 @@ export const videoTools: ToolSeedItem[] = [
     category: "video",
     categoryLabel: "映像・動画",
     badge: "プロ用4K/8K高画質化・補間",
-    version: "Topaz Video AI 5",
+    version: "Topaz Video AI 5 / 6 (Neural Restoration)",
     versionFeatures: {
-      evolution: "昔のSD画質（VHSや古いデジカメ）動画をAIがディテール復元して4K/8K化。さらにフレームをAI補間して60fps/120fpsの超滑らかスローに。",
+      evolution: "昔のSD画質（VHSや古いデジカメ）動画をAIがディテール復元して4K/8K化。Nyx / Iris ニューラルエンジンによる手ブレ補正、ノイズ除去、フレーム補間（60fps/120fps）を搭載。",
       strengths: ["昔の古いホームビデオやアニメが新品のように蘇る", "手ブレ補正（スタビライザー）とブロックノイズ除去", "買い切り型ライセンス（一度買えば一生使える）", "完全ローカルPC処理でクラウドへのアップロード不要"],
       weaknesses: ["ゼロから新しい動画を生み出す生成AIではない", "グラフィックボードのパワーが必要"],
-      architecture: "Deep Temporal Super-Resolution Network"
+      architecture: "Deep Temporal Super-Resolution Network (Nyx/Iris)"
     },
     estimatedUsers: "100万人以上 (映画修復家・YouTuber・制作プロ)",
     siteRegisteredCount: 0,

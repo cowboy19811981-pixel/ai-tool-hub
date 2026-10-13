@@ -1,13 +1,31 @@
-name: "12-Hour AI Portal Automated Update & Ranking"
+name: "AI Portal Automated Tiered Updates & Ranking"
 
 on:
   schedule:
-    # 12時間ごとに自動実行 (UTC 0:00 & 12:00 -> JST 9:00 & 21:00)
+    # 1. ニュース速報 & 動的ランキング: 12時間ごと (UTC 0:00 & 12:00 -> JST 9:00 & 21:00)
     - cron: "0 */12 * * *"
-  workflow_dispatch: # GitHub画面からの手動実行も可能
+    # 2. モデル & バージョン情報: 毎週月曜午前0時UTC (JST 9:00)
+    - cron: "0 0 * * 1"
+    # 3. 料金プラン & 無料枠: 毎月1日午前0時UTC (JST 9:00)
+    - cron: "0 0 1 * *"
+
+  # GitHub Actions画面からの手動実行（スコープ選択可能）
+  workflow_dispatch:
+    inputs:
+      scope:
+        description: "更新対象スコープを選択"
+        required: true
+        default: "news"
+        type: choice
+        options:
+          - news
+          - models
+          - pricing
+          - static
+          - all
 
 jobs:
-  update-news-and-ranking:
+  tiered-update:
     runs-on: ubuntu-latest
 
     steps:
@@ -28,17 +46,37 @@ jobs:
         env:
           DATABASE_URL: "file:./dev.db"
 
-      - name: Run 12-Hour Update Script (Fetch news, Gemini summary, recalculate ranking)
-        run: npm run cron:update
+      - name: Determine Update Scope
+        id: select-scope
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "SCOPE=${{ github.event.inputs.scope }}" >> $GITHUB_ENV
+          else
+            # 定期実行時のスケジュール判定
+            DAY=$(date -u +%d)
+            DOW=$(date -u +%u)
+            HOUR=$(date -u +%H)
+            
+            if [ "$DAY" = "01" ] && [ "$HOUR" = "00" ]; then
+              echo "SCOPE=pricing" >> $GITHUB_ENV
+            elif [ "$DOW" = "1" ] && [ "$HOUR" = "00" ]; then
+              echo "SCOPE=models" >> $GITHUB_ENV
+            else
+              echo "SCOPE=news" >> $GITHUB_ENV
+            fi
+          fi
+
+      - name: Run Tiered AI Update Script
+        run: npm run cron:update -- --scope=${{ env.SCOPE }}
         env:
           DATABASE_URL: "file:./dev.db"
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-          GEMINI_MODEL: "gemini-2.0-flash"
+          GEMINI_MODEL: "gemini-3.8-flash"
 
       - name: Commit updated database (if changes exist)
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action [AI Compass Bot]"
           git add prisma/dev.db
-          git diff --staged --quiet || git commit -m "chore(cron): auto-update AI news and recalculate dynamic rankings [skip ci]"
+          git diff --staged --quiet || git commit -m "chore(cron): auto-update AI portal data [scope: ${{ env.SCOPE }}] [skip ci]"
           git push || echo "No changes or push skipped"

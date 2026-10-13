@@ -7,13 +7,21 @@ export const imageTools: ToolSeedItem[] = [
     category: "image",
     categoryLabel: "画像生成・編集",
     badge: "芸術・画質No.1",
-    version: "v6.1 / Niji v6",
+    version: "v7 / v6.1 / Niji v6",
     versionFeatures: {
-      evolution: "v6.1によりフォトリアリズム、光と影の物理描写、精密な手足描画が向上。アニメ特化Niji v6とWeb版生成エディタ（外部画像インペイント対応）を完備。",
+      evolution: "最新v7による極限のフォトリアリズムと超高精細テクスチャ描写、v6.1およびアニメ特化Niji v6、Web版生成エディタ（外部画像インペイント・拡張対応）を完備。",
       strengths: ["現実と見紛う映画クオリティの写実性", "圧倒的な美術的センス・構図力", "アニメ特化Nijiモデルの最高峰の絵柄", "Web版生成エディタでのインペイント・拡張"],
       weaknesses: ["無料プランが現在完全廃止", "DiscordまたはWebでの操作が必要"],
-      architecture: "Proprietary Latent Diffusion Transformer",
+      architecture: "Proprietary Latent Diffusion Transformer (v7)",
       versionsList: [
+        {
+          name: "Midjourney v7 (最新フラッグシップ)",
+          speed: "高速",
+          intelligence: "最高峰",
+          bestFor: "超精細テクスチャ、光と物理現象の忠実描写、プロ向け広告美術",
+          planAvailability: "有料サブスク全プラン ($10〜)",
+          description: "解像度と光線追跡レベルの写実性を誇るMidjourneyの最新世代モデル。"
+        },
         {
           name: "Midjourney v6.1 (実写・アート)",
           speed: "高速",

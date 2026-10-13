@@ -56,20 +56,20 @@ export const writingTools: ToolSeedItem[] = [
     category: "writing",
     categoryLabel: "文書・リサーチ",
     badge: "完全無料・神ツール",
-    version: "Gemini 1.5 Pro駆動 / Audio Overview",
+    version: "Gemini 2.5 Flash & 2.0 Pro駆動 / Audio Overview 2.0",
     versionFeatures: {
-      evolution: "Google DeepMindのGemini 1.5 Proと長大コンテキストにより、最大50件のPDFやWebサイトを一瞬で読解。さらに2人のパーソナリティによる音声解説（Audio Overview）や対話型ガイドを標準搭載。",
-      strengths: ["ハルシネーション（嘘）が原理的に皆無", "資料の引用元箇所を即座にハイライト表示", "完全無料で制限なし", "音声対話ポッドキャスト自動生成", "Gemini 1.5 Proによる高精度回答"],
+      evolution: "Google DeepMindのGemini 2.5 / 2.0 Proと超長大コンテキストにより、最大50件のPDFやWebサイト・YouTubeを一瞬で読解。2人のパーソナリティによる音声解説（Audio Overview 2.0）や対話型ガイド、マインドマップ生成を標準搭載。",
+      strengths: ["ハルシネーション（嘘）が原理的に皆無", "資料の引用元箇所を即座にハイライト表示", "完全無料で制限なし", "音声対話ポッドキャスト自動生成", "Gemini 2.5による高精度回答"],
       weaknesses: ["投入した資料以外の一般的な雑談・創作には向かない"],
-      architecture: "Google Gemini 1.5 Pro Grounded RAG",
+      architecture: "Google Gemini 2.5 Flash / 2.0 Pro Grounded RAG",
       versionsList: [
         {
-          name: "Gemini 1.5 Pro Engine",
-          speed: "高速",
+          name: "Gemini 2.5 / 2.0 Engine",
+          speed: "超高速",
           intelligence: "最高峰",
-          bestFor: "数十冊のPDF・Webサイトからの即時引用回答・要約",
+          bestFor: "数十冊のPDF・Webサイト・YouTubeからの即時引用回答・要約",
           planAvailability: "完全無料",
-          description: "投入した資料内の根拠ページを正確に特定して回答するGoogle公式のメインエンジン。"
+          description: "投入した資料内の根拠ページを正確に特定して回答するGoogle公式の最新エンジン。"
         },
         {
           name: "Audio Overview (会話型音声化)",

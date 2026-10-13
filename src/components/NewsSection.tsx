@@ -46,24 +46,28 @@ export const NewsSection: React.FC<NewsSectionProps> = ({
     }
   }, [updates]);
 
+  const [selectedScope, setSelectedScope] = useState<"news" | "models" | "pricing" | "all">("news");
+
   const handleManualUpdate = async () => {
     setIsUpdating(true);
     setMessage(null);
     try {
-      const res = await fetch("/api/cron/update");
+      const res = await fetch(`/api/cron/update?scope=${selectedScope}`);
       const data = await res.json();
-      if (res.ok && data.updates && data.updates.length > 0) {
-        setCurrentUpdates(data.updates);
-        setSelectedId(data.updates[0].id);
-        setMessage(data.message || "最新の公式AIニュースを取得・要約しました！");
+      if (res.ok) {
+        if (data.updates && data.updates.length > 0) {
+          setCurrentUpdates(data.updates);
+          setSelectedId(data.updates[0].id);
+        }
+        setMessage(data.message || `[${selectedScope}] の同期が完了しました！`);
       } else {
-        setMessage(data.message || "最新のニュース状態です。");
+        setMessage(data.message || "同期処理中にエラーが発生しました。");
       }
     } catch (e) {
       setMessage("通信エラーが発生しました。");
     } finally {
       setIsUpdating(false);
-      setTimeout(() => setMessage(null), 5000);
+      setTimeout(() => setMessage(null), 6000);
     }
   };
 
@@ -136,15 +140,29 @@ export const NewsSection: React.FC<NewsSectionProps> = ({
             </p>
           </div>
 
-          {/* Manual Refresh Button */}
-          <button
-            onClick={handleManualUpdate}
-            disabled={isUpdating}
-            className="self-start md:self-auto px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold bg-cyan-600/20 hover:bg-cyan-600/30 text-cyan-200 hover:text-white border border-cyan-500/40 flex items-center gap-2 transition-all shadow-md disabled:opacity-50 active:scale-95 shrink-0"
-          >
-            <RefreshCw className={`w-4 h-4 text-cyan-400 ${isUpdating ? "animate-spin" : ""}`} />
-            <span>{isUpdating ? "最新速報を取得中..." : "最新速報を即時取得・要約"}</span>
-          </button>
+          {/* Manual Refresh & Scope Controls */}
+          <div className="flex flex-wrap items-center gap-2 self-start md:self-auto">
+            <select
+              value={selectedScope}
+              onChange={(e) => setSelectedScope(e.target.value as any)}
+              disabled={isUpdating}
+              aria-label="更新スコープを選択"
+              className="bg-slate-900 border border-slate-700 text-xs sm:text-sm text-cyan-200 rounded-xl px-3 py-2.5 font-semibold focus:outline-none focus:border-cyan-400 cursor-pointer shadow-sm"
+            >
+              <option value="news">📰 ニュース速報 (12H間隔)</option>
+              <option value="models">🤖 モデル情報 (週1間隔)</option>
+              <option value="pricing">💰 料金・プラン (月1間隔)</option>
+              <option value="all">🌐 全範囲一括同期</option>
+            </select>
+            <button
+              onClick={handleManualUpdate}
+              disabled={isUpdating}
+              className="px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold bg-cyan-600/25 hover:bg-cyan-600/40 text-cyan-200 hover:text-white border border-cyan-500/50 flex items-center gap-2 transition-all shadow-md disabled:opacity-50 active:scale-95 shrink-0"
+            >
+              <RefreshCw className={`w-4 h-4 text-cyan-400 ${isUpdating ? "animate-spin" : ""}`} />
+              <span>{isUpdating ? "同期中..." : "即時同期を実行"}</span>
+            </button>
+          </div>
         </div>
 
         {/* Status Message */}
