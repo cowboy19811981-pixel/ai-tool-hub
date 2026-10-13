@@ -49,6 +49,7 @@ export default async function HomePage() {
     pricingMonthly: t.pricingMonthly,
     freePlanDetails: JSON.parse(t.freePlanDetails),
     paidPlanDetails: JSON.parse(t.paidPlanDetails),
+    plansList: t.plansList ? JSON.parse(t.plansList) : undefined,
     paidWorthRating: t.paidWorthRating,
     hasFreeTier: t.hasFreeTier,
     supportsJapanese: t.supportsJapanese,

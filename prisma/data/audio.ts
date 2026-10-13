@@ -55,6 +55,56 @@ export const audioTools: ToolSeedItem[] = [
       recommendedFor: "動画制作者、同人音楽・VTuber楽曲を作りたい人、自分の歌詞を本物の曲にしたいすべての人"
     },
     paidWorthRating: 5,
+    plansList: [
+      {
+        id: "free",
+        name: "Basic Plan (無料枠)",
+        priceMonthly: "無料 ($0)",
+        targetAudience: "趣味で作曲を楽しみたい人、お気に入りの歌詞を曲にしてみたい初学者",
+        isFree: true,
+        availableModels: ["Suno v3.5", "Suno v4"],
+        contextWindow: "最長4分",
+        messageLimits: "毎日50クレジット付与 (約5回生成＝10曲)",
+        unlockedFeatures: ["v3.5 / v4モデルでのフル楽曲生成", "歌詞自動生成", "Web上での再生・共有"],
+        limitations: ["非商用利用のみ（収益化不可）", "クレジット繰り越し不可", "並列生成数制限"],
+        officialUrl: "https://suno.com"
+      },
+      {
+        id: "pro",
+        name: "Pro Plan (★クリエイター標準)",
+        priceMonthly: "$10 / 月 (年払い $96・月あたり $8)",
+        priceYearly: "年払い $96 (月あたり $8)",
+        targetAudience: "YouTube動画のBGM、SNSショート、Spotify/Apple Music配信で収益化したい人",
+        isPopular: true,
+        availableModels: ["Suno v4", "Suno v3.5"],
+        contextWindow: "最長4分フルコーラス",
+        messageLimits: "毎月2,500クレジット付与 (250回生成＝500曲分)",
+        unlockedFeatures: [
+          "商用利用ライセンス（YouTube収益化、Spotify/Apple Music配信OK）",
+          "優先生成キュー（待ち時間なし）",
+          "最大10ジョブの同時並列生成",
+          "追加クレジット購入権利"
+        ],
+        officialUrl: "https://suno.com"
+      },
+      {
+        id: "premier",
+        name: "Premier Plan (大量制作・スタジオ)",
+        priceMonthly: "$30 / 月 (年払い $288・月あたり $24)",
+        priceYearly: "年払い $288 (月あたり $24)",
+        targetAudience: "ゲーム開発会社、劇伴制作、毎日大量の楽曲を作りたいヘビープロデューサー",
+        availableModels: ["Suno v4 (最優先帯域)", "Suno v3.5"],
+        contextWindow: "最長4分フルコーラス",
+        messageLimits: "毎月10,000クレジット付与 (1,000回生成＝2,000曲分)",
+        unlockedFeatures: [
+          "毎月10,000クレジットの超大容量枠",
+          "商用利用ライセンス",
+          "最優先高帯域生成キュー",
+          "最大10ジョブの同時並列生成"
+        ],
+        officialUrl: "https://suno.com"
+      }
+    ],
     hasFreeTier: true,
     supportsJapanese: true,
     commercialUse: true,

@@ -64,6 +64,73 @@ export const imageTools: ToolSeedItem[] = [
       unlockedFeatures: ["Relaxモード（生成回数実質無制限）", "15時間のFast生成時間", "商用利用ライセンス", "Web版エディタの全機能利用"],
       recommendedFor: "デザイナー、イラストレーター、広告クリエイター、最高品質の画像を求めるすべての人"
     },
+    plansList: [
+      {
+        id: "basic",
+        name: "Basic Plan",
+        priceMonthly: "$10 / 月 (約1,500円)",
+        priceYearly: "年払い $96 (月あたり $8)",
+        targetAudience: "月に数十枚〜200枚程度、ブログやSNSの挿絵・趣味で最高画質を試したいライト層",
+        availableModels: ["Midjourney v7", "Midjourney v6.1", "Niji Journey v6 (アニメ)"],
+        contextWindow: "最大解像度 2048x2048",
+        messageLimits: "月3.3時間 (約200枚分) のFast生成時間",
+        unlockedFeatures: ["商用利用ライセンス", "Web版生成エディタ利用", "最大3ジョブの同時並列実行", "コミュニティギャラリーへのアクセス"],
+        limitations: ["Relax無制限モードは非対応 (Fast時間超過後は追加購入が必要)"],
+        officialUrl: "https://docs.midjourney.com/docs/plans"
+      },
+      {
+        id: "standard",
+        name: "Standard Plan (★一番人気・コスパ最強)",
+        priceMonthly: "$30 / 月 (約4,500円)",
+        priceYearly: "年払い $288 (月あたり $24)",
+        targetAudience: "デザイナー、広告クリエイター、枚数を気にせず納得いくまで何百枚も作り込みたいプロ",
+        isPopular: true,
+        availableModels: ["Midjourney v7", "Midjourney v6.1", "Niji Journey v6"],
+        contextWindow: "最大解像度 2048x2048",
+        messageLimits: "月15時間のFast生成 ＋ 【Relaxモードで生成枚数完全無制限！】",
+        unlockedFeatures: [
+          "Relaxモード（追加料金なしで実質無制限に生成し放題！）",
+          "15時間のFast高速生成時間",
+          "Web版エディタのインペイント・アウトペイント全機能",
+          "商用利用ライセンス"
+        ],
+        officialUrl: "https://docs.midjourney.com/docs/plans"
+      },
+      {
+        id: "pro",
+        name: "Pro Plan (クリエイター・スタジオ)",
+        priceMonthly: "$60 / 月 (約9,000円)",
+        priceYearly: "年払い $576 (月あたり $48)",
+        targetAudience: "未発表プロジェクトのため生成画像を他人に非公開（ステルス）にしたいプロ、大量同時並列生成したい人",
+        availableModels: ["全Midjourneyモデル"],
+        contextWindow: "最大解像度 2048x2048",
+        messageLimits: "月30時間のFast生成 ＋ Relax無制限 ＋ 最大12ジョブ同時並列",
+        unlockedFeatures: [
+          "Stealthモード（Webギャラリーから画像を完全に隠し非公開化）",
+          "最大12ジョブの超高速同時並列実行",
+          "30時間のFast生成時間",
+          "Relaxモード無制限生成"
+        ],
+        officialUrl: "https://docs.midjourney.com/docs/plans"
+      },
+      {
+        id: "mega",
+        name: "Mega Plan (制作プロダクション・ヘビーユーザー)",
+        priceMonthly: "$120 / 月 (約18,000円)",
+        priceYearly: "年払い $1,152 (月あたり $96)",
+        targetAudience: "ゲーム会社、広告代理店、24時間常時Fast生成をフル回転させたい制作スタジオ",
+        availableModels: ["全Midjourneyモデル最優先"],
+        contextWindow: "最大解像度 2048x2048",
+        messageLimits: "月60時間のFast生成 ＋ Relax無制限 ＋ Stealthモード",
+        unlockedFeatures: [
+          "最長60時間のFast生成時間",
+          "Stealthモード標準装備",
+          "最大12ジョブ同時並列実行",
+          "最高優先度サポート"
+        ],
+        officialUrl: "https://docs.midjourney.com/docs/plans"
+      }
+    ],
     paidWorthRating: 5,
     hasFreeTier: false,
     supportsJapanese: false,

@@ -74,6 +74,66 @@ export const generalTools: ToolSeedItem[] = [
       unlockedFeatures: ["o3深層推論モデルの利用", "高度な音声モード無制限級", "Operator自律エージェント機能", "Canvas共同編集"],
       recommendedFor: "AIを日常業務・学習でフル活用したいすべての人（課金第一候補）"
     },
+    plansList: [
+      {
+        id: "free",
+        name: "ChatGPT Free (無料版)",
+        priceMonthly: "無料 ($0)",
+        targetAudience: "日常的なチャットや簡単な調べ物・文章作成を手軽に行いたい一般ユーザー",
+        isFree: true,
+        availableModels: ["o3-mini (論理推論・一定回数)", "GPT-4o (基本モード)", "Canvas"],
+        contextWindow: "128kトークン",
+        messageLimits: "混雑時にレート制限あり。画像生成は1日2回程度",
+        unlockedFeatures: ["Webリアルタイム検索", "o3-mini推論チャット一定回数", "高度な音声モードお試し", "Canvasでの文書・コード共同編集"],
+        limitations: ["ピーク時のアクセス制限", "o3深層モデル利用不可", "画像生成枚数が極小"],
+        officialUrl: "https://chatgpt.com"
+      },
+      {
+        id: "plus",
+        name: "ChatGPT Plus (個人スタンダード)",
+        priceMonthly: "$20 / 月 (約3,000円)",
+        targetAudience: "仕事・学習でAIをフル活用し、生産性を最大化したい個人（課金第一候補）",
+        isPopular: true,
+        availableModels: ["GPT-6.1 Sol (最新フロンティア)", "o3 (深層推論)", "o3-mini", "Operator自律エージェント"],
+        contextWindow: "128k〜200kトークン",
+        messageLimits: "無料版の5倍以上のメッセージ枠、ピーク時優先",
+        unlockedFeatures: ["最新GPT-6.1 Sol優先利用", "o3深層推論モデルの利用", "高度な音声モード無制限級", "Operator自律ブラウザエージェント機能", "DALL-E 3画像生成無制限", "カスタムGPT作成・公開"],
+        officialUrl: "https://chatgpt.com"
+      },
+      {
+        id: "pro",
+        name: "ChatGPT Pro (最上位パワーユーザー)",
+        priceMonthly: "$200 / 月 (約30,000円)",
+        targetAudience: "研究者、クオンツ、超難問数学・科学研究・先端コードを日常的に回すトッププロ",
+        availableModels: ["o3 (フル推論コンピュート無制限)", "GPT-6.1 Sol", "OpenAI Daybreak"],
+        contextWindow: "200kトークン",
+        messageLimits: "o3フル思考モデルを含め無制限アクセス",
+        unlockedFeatures: ["o3最高推論コンピュートの無制限利用", "最優先サーバーリソース割り当て", "Operatorエージェントの無制限実行枠", "専任サポート優先キュー"],
+        officialUrl: "https://openai.com/chatgpt/pricing"
+      },
+      {
+        id: "team",
+        name: "ChatGPT Team",
+        priceMonthly: "$25 / ユーザー / 月 (年払い) / $30 (月払い)",
+        targetAudience: "チーム内でGPTを共有し、社内データを学習させずに安全運用したい中小企業・部署",
+        availableModels: ["GPT-6.1 Sol", "o3", "GPT-4o"],
+        contextWindow: "128k〜200kトークン",
+        messageLimits: "Plusより大幅に高いメッセージ上限",
+        unlockedFeatures: ["入力データのモデル学習除外（データ保護保証）", "ワークスペース管理コンソール・メンバー招待", "社内専用カスタムGPTの共有", "一括請求"],
+        officialUrl: "https://openai.com/chatgpt/team"
+      },
+      {
+        id: "enterprise",
+        name: "ChatGPT Enterprise",
+        priceMonthly: "カスタム見積もり (大規模法人向け)",
+        targetAudience: "全社規模で導入し、最高レベルのセキュリティと無制限速度を求める大企業",
+        availableModels: ["全モデル最高優先度アクセス"],
+        contextWindow: "最大コンテキスト・最長出力",
+        messageLimits: "完全無制限・最高速度",
+        unlockedFeatures: ["SOC 2 Type 2認証・エンタープライズ暗号化", "SSO/SAML、SCIMユーザープロビジョニング", "専任アカウントマネージャー", "社内システム連携APIクレジット"],
+        officialUrl: "https://openai.com/enterprise"
+      }
+    ],
     paidWorthRating: 5,
     hasFreeTier: true,
     supportsJapanese: true,
@@ -175,6 +235,55 @@ export const generalTools: ToolSeedItem[] = [
       ],
       recommendedFor: "エンジニア、アーキテクト、研究者、法律・学術などの厳密な長文を扱うビジネスパーソン"
     },
+    plansList: [
+      {
+        id: "free",
+        name: "Claude Free (無料版)",
+        priceMonthly: "無料 ($0)",
+        targetAudience: "極めて自然な日本語文章力やArtifactsの直感的動作を試してみたい人",
+        isFree: true,
+        availableModels: ["Claude 3.7 Sonnet (ハイブリッド推論・回数制限)", "Claude 3.5 Haiku (爆速)"],
+        contextWindow: "20万トークン",
+        messageLimits: "数時間ごとに数回〜10回程度（混雑時はさらに短縮）",
+        unlockedFeatures: ["Claude 3.7 Sonnetの一部試用", "Artifacts（WebアプリやSVGのリアルタイムプレビュー）", "PDF・画像ファイルのアップロード解析"],
+        limitations: ["利用枠の上限到達が早い", "Projects機能は利用不可", "Fable 5.1最上位モデルは不可"],
+        officialUrl: "https://claude.ai"
+      },
+      {
+        id: "pro",
+        name: "Claude Pro (プロエンジニア・研究者向け)",
+        priceMonthly: "$20 / 月 (約3,000円)",
+        targetAudience: "エンジニア、研究者、難関バグ修正や長大コード・学術論文を日常的に扱う人",
+        isPopular: true,
+        availableModels: ["Claude Fable 5.1 (SWE-bench 80%+)", "Claude 3.7 Sonnet (Thinking Mode)", "Claude 3.5 Haiku"],
+        contextWindow: "100万トークン (1M長大コンテキスト) / 最大12.8万出力",
+        messageLimits: "無料版の5倍以上のメッセージ上限、混雑時優先アクセス",
+        unlockedFeatures: ["最新フラグシップFable 5.1への最優先アクセス", "Thinking Mode（深層推論・思考深度調整）の大幅枠拡大", "Projects機能（社内文書・独自プロンプト・コードの固定参照）", "ピーク時でも途切れない安定接続"],
+        officialUrl: "https://claude.ai/pricing"
+      },
+      {
+        id: "team",
+        name: "Claude Team (開発チーム・中小企業)",
+        priceMonthly: "$25 / ユーザー / 月 (5人〜)",
+        targetAudience: "チーム内で開発ナレッジやプロジェクト規程を共有し、高い上限で共同作業したい組織",
+        availableModels: ["Claude Fable 5.1", "Claude 3.7 Sonnet"],
+        contextWindow: "100万トークン",
+        messageLimits: "Proプラン以上のさらに手厚いクォータ",
+        unlockedFeatures: ["チーム内Projects共有（全社・部署ごとの共有ナレッジベース）", "メンバー管理コンソール・一括請求", "データ非学習（入力データの保護）"],
+        officialUrl: "https://claude.ai/team"
+      },
+      {
+        id: "enterprise",
+        name: "Claude Enterprise (大企業・最高セキュリティ)",
+        priceMonthly: "カスタム見積もり",
+        targetAudience: "全社規模で長大コードベースや最高セキュリティ基準（HIPAA/SOC2）を求める大企業",
+        availableModels: ["Claude Mythos 5 / Fable 5.1"],
+        contextWindow: "100万トークン (超大容量)",
+        messageLimits: "最高優先度の専用リソース割り当て",
+        unlockedFeatures: ["GitHub直接統合（リポジトリまるごと読み込み・自律レビュー）", "EFSエンタープライズ・プライバシー保護", "監査ログ・SSO/SCIMプロビジョニング", "専任カスタマーサクセス"],
+        officialUrl: "https://www.anthropic.com/claude/enterprise"
+      }
+    ],
     paidWorthRating: 5,
     hasFreeTier: true,
     supportsJapanese: true,
@@ -266,6 +375,73 @@ export const generalTools: ToolSeedItem[] = [
       ],
       recommendedFor: "Googleサービスを日常的に使っている人、最先端3.1 Proの推論力とコード能力をビジネスで駆使したい人"
     },
+    plansList: [
+      {
+        id: "free",
+        name: "Gemini Free (無料版)",
+        priceMonthly: "無料 (¥0)",
+        targetAudience: "日常の調べ物・要約・画像生成を手軽に制限を気にせず使いたい人",
+        isFree: true,
+        availableModels: ["Gemini 3.8 Flash (最新主力・超高速)", "Imagen 3 (高精細画像生成)"],
+        contextWindow: "100万トークン (巨大コンテキスト)",
+        messageLimits: "ほぼ無制限に高速利用可能（Google随一の潤沢さ）",
+        unlockedFeatures: ["Gemini 3.8 Flash使い放題", "YouTube動画やWebのリアルタイム要約", "Imagen 3高画質画像生成", "Google Workspace（Gmail・Docs）基本連携"],
+        limitations: ["最上位Gemini 3.1 Proは利用不可", "音声思考モード（3.8 Live）は制限あり", "クラウドストレージ特典なし"],
+        officialUrl: "https://gemini.google.com"
+      },
+      {
+        id: "advanced",
+        name: "Gemini Advanced (Google One AI Premium)",
+        priceMonthly: "月額 2,900円",
+        priceYearly: "年割プランあり (Google One 2TB付)",
+        targetAudience: "最先端3.1 Proの推論力・コーディングを駆使したいビジネス・エンジニア・Googleヘビーユーザー",
+        isPopular: true,
+        availableModels: ["Gemini 3.1 Pro (最先端フラグシップ知能)", "Gemini 3.8 Flash", "Gemini 3.8 Live (音声思考対話)"],
+        contextWindow: "100万〜200万トークン (本数千ページ・数時間の動画相当)",
+        messageLimits: "最優先高クォータ利用",
+        unlockedFeatures: [
+          "Gemini 3.1 Pro（最先端フラグシップ知能）優先利用",
+          "Gemini 3.8 Live Extended Thinking思考音声対話モード",
+          "Google One 2TB大容量クラウドストレージ付属（これだけで月1,300円相当）",
+          "Gmail・Googleドキュメント・スプレッドシート・スライド内での直接AI利用",
+          "Googleエコシステムとの完全統合"
+        ],
+        officialUrl: "https://gemini.google.com/advanced"
+      },
+      {
+        id: "workspace",
+        name: "Gemini for Google Workspace (Business / Enterprise)",
+        priceMonthly: "$20〜$30 / ユーザー / 月",
+        targetAudience: "社内データを保護しながら組織全体でAIを導入し、業務効率を劇的に向上させたい法人・チーム",
+        availableModels: ["Gemini 3.1 Pro", "Gemini 3.8 Flash"],
+        contextWindow: "100万トークン",
+        messageLimits: "エンタープライズ業務に最適化された高クォータ",
+        unlockedFeatures: [
+          "企業データ非学習保証（入力データの機密保持・モデル学習完全除外）",
+          "SOC 1/2/3, ISO/IEC 27001等のエンタープライズセキュリティ準拠",
+          "Google Workspace管理コンソールでの全社一括権限管理",
+          "社内Docs/スライド/Sheets内での共同作業AI支援"
+        ],
+        officialUrl: "https://workspace.google.com/solutions/ai/"
+      },
+      {
+        id: "ai-studio",
+        name: "Google AI Studio / Vertex AI (開発者・API従量制)",
+        priceMonthly: "従量課金 / 無料枠あり",
+        targetAudience: "自社システムへの組み込み、プロンプト検証、大量バッチ処理を行うエンジニア・開発者",
+        availableModels: ["Gemini 3.1 Pro", "Gemini 3.8 Flash", "Gemini 3.8 Live API"],
+        contextWindow: "最大200万トークン",
+        messageLimits: "分あたり数百リクエスト（Tier別拡大）",
+        unlockedFeatures: [
+          "APIキーによる自由なシステム統合・アプリ開発",
+          "システム指示（System Instructions）や温度（Temperature）の精密制御",
+          "構造化JSON出力モード（Strict Schema対応）",
+          "Function Calling（外部API自律呼び出し）",
+          "バッチAPI割引（50%OFF）"
+        ],
+        officialUrl: "https://aistudio.google.com"
+      }
+    ],
     paidWorthRating: 5,
     hasFreeTier: true,
     supportsJapanese: true,
@@ -337,6 +513,55 @@ export const generalTools: ToolSeedItem[] = [
       unlockedFeatures: ["Pro Search1日300回以上", "Claude 3.7 Sonnet / o3-mini / Gemini 2.0 Flashへのモデル自由切り替え", "無制限ファイル分析", "API利用クレジット付与"],
       recommendedFor: "日常的に調べ物・市場調査・競合分析・論文検索を行うすべてのビジネスパーソン"
     },
+    plansList: [
+      {
+        id: "free",
+        name: "Perplexity Free (無料版)",
+        priceMonthly: "無料 ($0)",
+        targetAudience: "Google検索の代わりに出典付きの正確な回答を即座に得たい人",
+        isFree: true,
+        availableModels: ["Sonar (標準高速検索モデル)"],
+        contextWindow: "128kトークン",
+        messageLimits: "通常検索は完全無制限、Pro Search（深掘り推論）は4時間に5回まで",
+        unlockedFeatures: ["出典番号・一次Webリンク付き回答", "リアルタイムWeb検索", "コレクション保存"],
+        limitations: ["裏側モデルの選択は不可", "長大PDFの深層分析回数に制限"],
+        officialUrl: "https://www.perplexity.ai"
+      },
+      {
+        id: "pro",
+        name: "Perplexity Pro (リサーチャー必携)",
+        priceMonthly: "$20 / 月 (年払い $200)",
+        priceYearly: "年額 $200 (約2ヶ月分無料)",
+        targetAudience: "市場調査・論文検索・競合分析・長文レポート作成を日常的に行うすべてのビジネスパーソン",
+        isPopular: true,
+        availableModels: ["Claude Fable 5.1", "GPT-6.1 Sol", "o3-mini", "Gemini 3.8 Flash", "Sonar Pro"],
+        contextWindow: "200kトークン (マルチソース統合)",
+        messageLimits: "Pro Search 1日300回以上、ファイル分析無制限",
+        unlockedFeatures: [
+          "裏側の頭脳（Claude/GPT/Gemini）の自由切り替え",
+          "Pro Search（多段階自律Webリサーチ＆ファクトチェック）",
+          "無制限のPDF・ドキュメントアップロード分析",
+          "毎月$5分のAPIクレジット付与",
+          "AI画像生成（FLUX / DALL-E 3）"
+        ],
+        officialUrl: "https://www.perplexity.ai/pro"
+      },
+      {
+        id: "enterprise",
+        name: "Perplexity Enterprise Pro (法人向け)",
+        priceMonthly: "$40 / ユーザー / 月",
+        targetAudience: "社内ドキュメントも横断検索し、全社でナレッジ共有したい組織・企業",
+        availableModels: ["全Proモデル"],
+        contextWindow: "200kトークン",
+        messageLimits: "組織無制限リサーチ",
+        unlockedFeatures: [
+          "社内ファイル（SharePoint/Google Drive等）の安全な横断検索",
+          "SOC 2 Type II準拠・入力データ非学習",
+          "SSO/SAML、ユーザー権限管理コンソール"
+        ],
+        officialUrl: "https://www.perplexity.ai/enterprise"
+      }
+    ],
     paidWorthRating: 5,
     hasFreeTier: true,
     supportsJapanese: true,

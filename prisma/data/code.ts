@@ -74,6 +74,54 @@ export const codeTools: ToolSeedItem[] = [
       unlockedFeatures: ["Claude 3.7 Sonnet / Gemini 3.8 Flashの高速リクエスト月500回", "低速リクエスト無制限", "Composerマルチファイル一括編集無制限", "最新Agent自律機能"],
       recommendedFor: "日常的にコードを書くすべてのプログラマー、Web開発者、個人開発者（課金必須の神器）"
     },
+    plansList: [
+      {
+        id: "free",
+        name: "Cursor Hobby (無料版)",
+        priceMonthly: "無料 ($0)",
+        targetAudience: "Cursorの驚異的なタブ補完やIDEの操作感を体験してみたい開発者",
+        isFree: true,
+        availableModels: ["Cursor Tab補完", "低速キューモデル"],
+        contextWindow: "リポジトリ基本インデックス",
+        messageLimits: "初回2週間のPro無料試用。以降は月200回の基本補完と低速チャット",
+        unlockedFeatures: ["VS Code拡張・設定のワンクリック完全移行", "Cursor Tabインライン予測補完", "エディタ内基本チャット"],
+        limitations: ["Composerマルチファイル一括編集の利用枠が限定的", "高速モデルリクエストなし"],
+        officialUrl: "https://www.cursor.com"
+      },
+      {
+        id: "pro",
+        name: "Cursor Pro (プロエンジニア標準)",
+        priceMonthly: "$20 / 月 (約3,000円)",
+        priceYearly: "年払い $192 (月あたり $16)",
+        targetAudience: "日常的にコードを書くプログラマー・Web開発者（開発速度が3倍になる課金必須の神器）",
+        isPopular: true,
+        availableModels: ["Claude Fable 5.1 (SWE-bench 80%+)", "Claude 3.7 Sonnet", "Gemini 3.8 Flash (超爆速)", "o3-mini"],
+        contextWindow: "リポジトリ全体セマンティックインデックス",
+        messageLimits: "月500回高速リクエスト、超過後も低速キューで無制限！",
+        unlockedFeatures: [
+          "Composerマルチファイル一括自律編集（無制限）",
+          "リポジトリ全体コードベース検索（@codebase）",
+          "自律Agentターミナル実行＆自動テスト・デバッグ",
+          "最新知能Claude Fable 5.1 / Gemini 3.8 Flashの最優先アクセス"
+        ],
+        officialUrl: "https://www.cursor.com/pricing"
+      },
+      {
+        id: "business",
+        name: "Cursor Business (企業・チーム向け)",
+        priceMonthly: "$40 / ユーザー / 月",
+        targetAudience: "社内コードの学習除外を厳格に義務付けたい企業・受託開発チーム",
+        availableModels: ["全Proモデル (Fable 5.1 / 3.7 Sonnet / Gemini 3.8)"],
+        contextWindow: "リポジトリ全体",
+        messageLimits: "Proと同等の高速枠＋チーム優先キュー",
+        unlockedFeatures: [
+          "プライバシーモード強制（コード非学習・セキュリティ設定を全社一括強制）",
+          "中央集権請求・シートライセンス管理コンソール",
+          "SAML / シングルサインオン（SSO）"
+        ],
+        officialUrl: "https://www.cursor.com/pricing"
+      }
+    ],
     paidWorthRating: 5,
     hasFreeTier: true,
     supportsJapanese: true,
@@ -156,6 +204,70 @@ export const codeTools: ToolSeedItem[] = [
       recommendedFor: "VS CodeやIntelliJを愛用するプログラマー、月10ドルでコスパ良く無制限補完を使いたい人"
     },
     paidWorthRating: 5,
+    plansList: [
+      {
+        id: "free",
+        name: "Copilot Free (2024年末新設・完全無料)",
+        priceMonthly: "無料 ($0)",
+        targetAudience: "学習中の学生、個人趣味で月数千行程度のコーディングをする初学者",
+        isFree: true,
+        availableModels: ["GPT-4o mini", "標準コード補完エンジン"],
+        contextWindow: "現在の編集ファイル",
+        messageLimits: "月2,000回のコード補完 ＋ 月50回のCopilot Chat",
+        unlockedFeatures: ["VS Code / JetBrainsでのインラインコード補完", "基本コード説明チャット"],
+        limitations: ["上位モデル(Claude 3.7 / o3-mini)の切替不可", "月2,000回超過後は補完停止"],
+        officialUrl: "https://github.com/features/copilot"
+      },
+      {
+        id: "pro",
+        name: "Copilot Individual (プロエンジニア標準)",
+        priceMonthly: "$10 / 月 (約1,500円)",
+        priceYearly: "年払い $100 (月あたり $8.33)",
+        targetAudience: "日常的にコードを書く全開発者・フリーランス（月10ドルの業界最高コスパ）",
+        isPopular: true,
+        availableModels: ["Claude 3.7 Sonnet (思考モード)", "OpenAI o3-mini", "GPT-4o"],
+        contextWindow: "リポジトリ関連ファイル＋GitHubリポジトリ全体",
+        messageLimits: "コード補完・Copilot Chatともに【完全無制限】",
+        unlockedFeatures: [
+          "最先端モデル自由切替（Claude 3.7 Sonnet / o3-mini / GPT-4o）",
+          "無制限のインラインコード補完＆チャット",
+          "GitHub CLIでのターミナルAIコマンド支援",
+          "VS Code, Visual Studio, JetBrains, Neovim対応"
+        ],
+        officialUrl: "https://github.com/features/copilot"
+      },
+      {
+        id: "business",
+        name: "Copilot Business (組織・企業標準)",
+        priceMonthly: "$19 / ユーザー / 月",
+        targetAudience: "自社コードのセキュリティ・学習除外・知財保護を義務付けたい企業開発チーム",
+        availableModels: ["Claude 3.7 Sonnet", "o3-mini", "GPT-4o"],
+        contextWindow: "組織リポジトリ全体",
+        messageLimits: "無制限コード補完＆チャット",
+        unlockedFeatures: [
+          "企業向けプライバシー保証（コード・プロンプトをAI学習に絶対使用しない）",
+          "公開コードとの一致検出・ブロックフィルター（知財侵害防止）",
+          "組織全体の一括シートライセンス管理・ポリシー統制",
+          "IP知財損害賠償保護（インデムニフィケーション）"
+        ],
+        officialUrl: "https://github.com/features/copilot"
+      },
+      {
+        id: "enterprise",
+        name: "Copilot Enterprise (エンタープライズ特化)",
+        priceMonthly: "$39 / ユーザー / 月",
+        targetAudience: "GitHub Enterprise Cloudを契約している大企業・数千人規模の組織",
+        availableModels: ["Claude 3.7 Sonnet", "o3-mini", "GPT-4o", "組織内カスタムファインチューン"],
+        contextWindow: "全社リポジトリ・Issue・PR・ドキュメント横断セマンティック検索",
+        messageLimits: "全社優先キュー・無制限",
+        unlockedFeatures: [
+          "github.com Web画面統合（リポジトリ・PR・ドキュメントを横断する社内Q&A）",
+          "プルリクエストの自動差分要約・レビュー提案",
+          "組織固有の社内ナレッジ・社内独自コーディング規約の学習・反映"
+        ],
+        officialUrl: "https://github.com/features/copilot"
+      }
+    ],
     hasFreeTier: true,
     supportsJapanese: true,
     commercialUse: true,

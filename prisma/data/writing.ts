@@ -33,6 +33,39 @@ export const writingTools: ToolSeedItem[] = [
       recommendedFor: "会社や個人でNotionをノート・情報集約ハブとして常用している全ユーザー"
     },
     paidWorthRating: 5,
+    plansList: [
+      {
+        id: "free-trial",
+        name: "Notion AI 無料トライアル",
+        priceMonthly: "無料 ($0)",
+        targetAudience: "Notion AIの操作感や文章生成を試してみたい方",
+        isFree: true,
+        availableModels: ["Notion AI 基本エンジン"],
+        contextWindow: "現在のページコンテキスト",
+        messageLimits: "ワークスペースあたり約20回のお試し実行",
+        unlockedFeatures: ["文章の推敲・誤字脱字修正", "トーン変更", "基本要約"],
+        limitations: ["20回超過後は有料アドオン契約が必要"],
+        officialUrl: "https://www.notion.so/product/ai"
+      },
+      {
+        id: "addon",
+        name: "Notion AI Add-on (標準課金)",
+        priceMonthly: "$10 / ユーザー / 月 (年払い $96/年)",
+        priceYearly: "年払い $96 (月あたり $8)",
+        targetAudience: "Notionを日常的に仕事・個人メモ・プロジェクト管理の拠点としているすべての人",
+        isPopular: true,
+        availableModels: ["Notion Enterprise Knowledge Graph", "Claude & GPT統合エンジン"],
+        contextWindow: "ワークスペース全体（全ページ・DB・連携Slack等）",
+        messageLimits: "無制限AIアシスタント利用（フェアユース）",
+        unlockedFeatures: [
+          "Notion Q&A（ワークスペース全体の議事録・仕様書・ナレッジを横断した即答検索）",
+          "オートフィルプロパティ（DB内の要約・タグ付け・抽出を自動化）",
+          "無制限のドラフト起草・リライト・アクションアイテム抽出",
+          "SlackやGoogle Driveとのコネクター連携"
+        ],
+        officialUrl: "https://www.notion.so/product/ai"
+      }
+    ],
     hasFreeTier: true,
     supportsJapanese: true,
     commercialUse: true,
@@ -100,6 +133,26 @@ export const writingTools: ToolSeedItem[] = [
       recommendedFor: "論文を読む学生、長大な業務マニュアルや契約書を読み解く実務家"
     },
     paidWorthRating: 5,
+    plansList: [
+      {
+        id: "free",
+        name: "NotebookLM (Google Labs提供・完全無料)",
+        priceMonthly: "完全無料 ($0 / ¥0)",
+        targetAudience: "学生、研究者、論文読解、難解な技術文書や契約書を精読するビジネスパーソン",
+        isPopular: true,
+        isFree: true,
+        availableModels: ["Gemini 2.5 Flash & 2.0 Pro Grounded RAG"],
+        contextWindow: "ノートあたり最大50ソース（PDF/Google Docs/ウェブ/YouTube）合計数百万トークン",
+        messageLimits: "利用制限なし（Google Labs提供中）",
+        unlockedFeatures: [
+          "投入した資料のみに基づく厳密な回答（ハルシネーション完全防止）",
+          "回答内の引用番号クリックによる該当PDFページハイライト",
+          "Audio Overview 2.0（2人のAI司会者による日本語対話ポッドキャスト自動生成）",
+          "ブリーフィングドキュメント・FAQ・スタディガイド自動生成"
+        ],
+        officialUrl: "https://notebooklm.google.com"
+      }
+    ],
     hasFreeTier: true,
     supportsJapanese: true,
     commercialUse: true,

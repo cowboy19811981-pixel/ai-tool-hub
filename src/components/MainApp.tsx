@@ -2,7 +2,6 @@
 
 import React, { useState, useEffect } from "react";
 import { Header } from "./Header";
-import { QuickNavBar } from "./QuickNavBar";
 import { HeroSection } from "./HeroSection";
 import { CatalogSection } from "./CatalogSection";
 import { NewsSection } from "./NewsSection";
@@ -135,15 +134,9 @@ const MainAppInner: React.FC<MainAppProps> = ({
         onOpenFreeInput={() => setIsFreeInputOpen(true)}
       />
 
-      {/* Sticky Quick Anchor Bar */}
-      <QuickNavBar
-        onOpenQuiz={() => setIsQuizOpen(true)}
-        newsCount={updates.length}
-        toolsCount={tools.length}
-      />
 
       <main className="flex-1">
-        {/* Hero Section */}
+        {/* Slim Status & Quick Utility Bar */}
         <HeroSection
           updates={updates}
           dailyPrompt={dailyPrompt}
@@ -153,13 +146,7 @@ const MainAppInner: React.FC<MainAppProps> = ({
           onSelectTool={handleSelectToolById}
         />
 
-        {/* 12-Hour Automated Updates & Timeline Section */}
-        <NewsSection
-          updates={updates}
-          onSelectToolById={handleSelectToolById}
-        />
-
-        {/* AI Catalog & Directory */}
+        {/* ─── PRIMARY WORKSPACE: AI Plans & Spec Studio ─── */}
         <CatalogSection
           tools={tools}
           savedToolIds={savedToolIds}
@@ -170,6 +157,12 @@ const MainAppInner: React.FC<MainAppProps> = ({
           onSelectTool={(tool) => setSelectedTool(tool)}
           searchQuery={searchQuery}
           onSyncTools={(newTools) => setTools(newTools)}
+        />
+
+        {/* ─── AUXILIARY SECTION: Official Updates & Timeline ─── */}
+        <NewsSection
+          updates={updates}
+          onSelectToolById={handleSelectToolById}
         />
 
         {/* Output Comparison Benchmark Showcase */}

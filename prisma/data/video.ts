@@ -64,6 +64,72 @@ export const videoTools: ToolSeedItem[] = [
       unlockedFeatures: ["毎月625クレジット付与", "透かし（ウォーターマーク）削除", "4Kアップスケール出力", "無制限の低速生成（Relaxモード）"],
       recommendedFor: "映像クリエイター、MV制作者、YouTubeショートやTikTokで圧倒的な実写クオリティを出したい人"
     },
+    plansList: [
+      {
+        id: "free",
+        name: "Runway Free Plan (初回お試し)",
+        priceMonthly: "無料 (¥0)",
+        targetAudience: "Gen-3の映画的映像密度やカメラワークを手軽にテストしてみたい人",
+        isFree: true,
+        availableModels: ["Gen-3 Alpha Turbo (超高速)"],
+        contextWindow: "720p出力 / 最長5秒",
+        messageLimits: "初回登録時に約125クレジット付与（数本分の生成）",
+        unlockedFeatures: ["Gen-3 Alpha Turbo生成", "ブラウザ基本エディタの試用"],
+        limitations: ["動画に透かし（ウォーターマーク）が付く", "クレジット追加購入不可", "商用利用不可"],
+        officialUrl: "https://runwayml.com/pricing"
+      },
+      {
+        id: "standard",
+        name: "Runway Standard Plan",
+        priceMonthly: "$12 / 月 (年払い $144)",
+        priceYearly: "年払い $144 (月あたり $12)",
+        targetAudience: "SNSショート動画やYouTube向けに毎月コンスタントに動画を作りたいクリエイター",
+        isPopular: true,
+        availableModels: ["Gen-3 Alpha (最高画質)", "Gen-3 Alpha Turbo", "Act-One (表情演技転送)"],
+        contextWindow: "4Kアップスケール対応 / 1080p出力",
+        messageLimits: "毎月625クレジット付与 ＋ 追加クレジット購入可",
+        unlockedFeatures: [
+          "動画の透かし（ウォーターマーク）完全削除",
+          "4Kアップスケール高精細出力",
+          "Act-One（スマホ自撮りからキャラの表情演技同期）",
+          "商用利用ライセンス"
+        ],
+        officialUrl: "https://runwayml.com/pricing"
+      },
+      {
+        id: "pro",
+        name: "Runway Pro Plan",
+        priceMonthly: "$28 / 月 (年払い $336)",
+        priceYearly: "年払い $336 (月あたり $28)",
+        targetAudience: "映像プロダクション、MV制作、映画・広告のカット作成を頻繁に行うプロ",
+        availableModels: ["Gen-3 Alpha", "Turbo", "Act-One"],
+        contextWindow: "4Kアップスケール対応",
+        messageLimits: "毎月2,250クレジット付与 ＋ Turbo Relax無制限生成！",
+        unlockedFeatures: [
+          "Gen-3 Alpha TurboのRelax無制限生成（クレジット消費なしで生成し放題）",
+          "カスタム音声クローニング＆リップシンク",
+          "高優先度生成キュー（待ち時間短縮）",
+          "全高度エディタツール利用権"
+        ],
+        officialUrl: "https://runwayml.com/pricing"
+      },
+      {
+        id: "unlimited",
+        name: "Runway Unlimited Plan (最高峰無制限)",
+        priceMonthly: "$76 / 月 (年払い $912)",
+        priceYearly: "年払い $912 (月あたり $76)",
+        targetAudience: "生成回数を一切気にせず、映画級の高品質カットを無制限に作り続けたい映像クリエイター",
+        availableModels: ["全Gen-3モデル最優先"],
+        contextWindow: "4K最高画質",
+        messageLimits: "最高画質Gen-3 AlphaがRelaxモードで完全無制限！",
+        unlockedFeatures: [
+          "最高画質Gen-3 Alphaの完全無制限Relax生成（待ち時間のみで無限に生成可能）",
+          "毎月2,250Fastクレジット付与",
+          "最優先レンダリングキュー"
+        ],
+        officialUrl: "https://runwayml.com/pricing"
+      }
+    ],
     paidWorthRating: 5,
     hasFreeTier: true,
     supportsJapanese: true,

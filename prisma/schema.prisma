@@ -25,6 +25,7 @@ model Tool {
   pricingMonthly      String   // e.g. "無料 / 月$20 (約3,000円)"
   freePlanDetails     String   // JSON string
   paidPlanDetails     String   // JSON string
+  plansList           String?  // JSON string array of PlanTierDetail
   paidWorthRating     Int      @default(4) // 1 - 5
   hasFreeTier         Boolean  @default(true)
   supportsJapanese    Boolean  @default(true)

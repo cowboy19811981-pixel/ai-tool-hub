@@ -9,6 +9,22 @@ export interface ModelVersionDetail {
   description: string;
 }
 
+export interface PlanTierDetail {
+  id: string; // "free" | "plus" | "pro" | "max" | "team" | "enterprise" | "api"
+  name: string;
+  priceMonthly: string;
+  priceYearly?: string;
+  targetAudience: string;
+  isPopular?: boolean;
+  isFree?: boolean;
+  availableModels: string[];
+  contextWindow: string;
+  messageLimits: string;
+  unlockedFeatures: string[];
+  limitations?: string[];
+  officialUrl?: string;
+}
+
 export interface ToolItem {
   id: string;
   name: string;
@@ -41,6 +57,7 @@ export interface ToolItem {
     unlockedFeatures: string[];
     recommendedFor: string;
   };
+  plansList?: PlanTierDetail[];
   paidWorthRating: number;
   hasFreeTier: boolean;
   supportsJapanese: boolean;

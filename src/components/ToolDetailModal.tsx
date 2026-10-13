@@ -345,6 +345,109 @@ export const ToolDetailModal: React.FC<ToolDetailModalProps> = ({
                   </div>
                 </div>
               </div>
+
+              {/* Full Multi-Tier Plans Breakdown if available */}
+              {tool.plansList && tool.plansList.length > 0 && (
+                <div className="space-y-3 pt-2">
+                  <div className="flex items-center justify-between">
+                    <span className="text-xs font-extrabold text-slate-300 uppercase tracking-wider flex items-center gap-1.5">
+                      <Sparkles className="w-4 h-4 text-cyan-400" />
+                      <span>{isEn ? "Official Plans & Pricing Matrix" : "公式プラン一覧・料金比較マトリックス"}</span>
+                    </span>
+                    <span className="text-[11px] text-cyan-400 font-mono">
+                      {tool.plansList.length} {isEn ? "Tiers Available" : "種類のプラン"}
+                    </span>
+                  </div>
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3.5">
+                    {tool.plansList.map((plan) => (
+                      <div
+                        key={plan.id}
+                        className={`p-4 rounded-xl border transition-all flex flex-col justify-between ${
+                          plan.isPopular
+                            ? "bg-cyan-950/20 border-cyan-500/40 shadow-md shadow-cyan-500/10"
+                            : "bg-slate-900/80 border-slate-800"
+                        }`}
+                      >
+                        <div>
+                          <div className="flex items-center justify-between gap-2 mb-2">
+                            <h5 className="font-extrabold text-sm sm:text-base text-white">
+                              {plan.name}
+                            </h5>
+                            {plan.isPopular && (
+                              <span className="px-2 py-0.5 rounded text-[10px] font-black bg-cyan-400 text-slate-950 uppercase">
+                                POPULAR
+                              </span>
+                            )}
+                            {plan.isFree && (
+                              <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+                                FREE
+                              </span>
+                            )}
+                          </div>
+
+                          <div className="font-mono text-cyan-300 text-sm font-extrabold mb-1">
+                            {plan.priceMonthly}
+                          </div>
+                          {plan.priceYearly && (
+                            <div className="text-[11px] text-slate-400 font-mono mb-2">
+                              {plan.priceYearly}
+                            </div>
+                          )}
+
+                          <p className="text-xs text-slate-300 leading-relaxed mb-3">
+                            <strong className="text-slate-400 block mb-0.5">{isEn ? "Target:" : "対象・推奨:"}</strong>
+                            {plan.targetAudience}
+                          </p>
+
+                          {/* Available Models */}
+                          <div className="mb-2.5">
+                            <span className="text-[11px] font-bold text-slate-400 block mb-1">
+                              {isEn ? "Available Models:" : "利用可能モデル:"}
+                            </span>
+                            <div className="flex flex-wrap gap-1">
+                              {plan.availableModels.map((m, idx) => (
+                                <span
+                                  key={idx}
+                                  className="px-2 py-0.5 rounded bg-slate-800 text-[10px] text-slate-200 border border-slate-700"
+                                >
+                                  {m}
+                                </span>
+                              ))}
+                            </div>
+                          </div>
+
+                          {/* Unlocked Features */}
+                          <div className="space-y-1 pt-1">
+                            <span className="text-[11px] font-bold text-slate-400 block">
+                              {isEn ? "Key Features:" : "主な機能・特典:"}
+                            </span>
+                            {plan.unlockedFeatures.slice(0, 3).map((feat, idx) => (
+                              <div key={idx} className="flex items-start gap-1.5 text-xs text-slate-300">
+                                <Check className="w-3.5 h-3.5 text-cyan-400 shrink-0 mt-0.5" />
+                                <span>{feat}</span>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+
+                        {plan.officialUrl && (
+                          <div className="pt-3 mt-3 border-t border-slate-800 text-right">
+                            <a
+                              href={plan.officialUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="text-[11px] text-cyan-400 hover:underline inline-flex items-center gap-1 font-semibold"
+                            >
+                              <span>{isEn ? "Plan Specs ↗" : "公式プラン詳細 ↗"}</span>
+                            </a>
+                          </div>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
             </div>
           )}
         </div>
