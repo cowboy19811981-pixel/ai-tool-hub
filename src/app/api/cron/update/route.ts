@@ -4,6 +4,8 @@ import { syncLiveAINews } from "@/lib/news-fetcher";
 import { syncOfficialToolsByScope } from "@/lib/official-scraper";
 import { UpdateScope, UPDATE_SCOPES_CONFIG } from "@/config/update-schedule";
 
+export const dynamic = "force-dynamic";
+
 export async function GET(req: NextRequest) {
   try {
     const { searchParams } = new URL(req.url);

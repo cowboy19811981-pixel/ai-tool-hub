@@ -8,12 +8,11 @@ import {
   Star, 
   ExternalLink, 
   Zap, 
-  ShieldCheck, 
-  Cpu, 
-  Users, 
   Layers
 } from "lucide-react";
 import { ToolItem } from "@/types";
+import { useLanguage } from "@/context/LanguageContext";
+import { getCategoryLabel } from "@/lib/i18n";
 
 interface ComparisonModalProps {
   tools: ToolItem[];
@@ -26,6 +25,8 @@ export const ComparisonModal: React.FC<ComparisonModalProps> = ({
   isOpen,
   onClose,
 }) => {
+  const { t, isEn, lang } = useLanguage();
+
   if (!isOpen || tools.length === 0) return null;
 
   return (
@@ -36,12 +37,12 @@ export const ComparisonModal: React.FC<ComparisonModalProps> = ({
           <div className="flex items-center gap-2">
             <Layers className="w-5 h-5 text-cyan-400" />
             <h3 className="font-extrabold text-lg sm:text-xl text-white">
-              AIスペック横並び徹底比較 ({tools.length}ツール)
+              {isEn ? `Side-by-Side Spec Comparison (${tools.length} Tools)` : `AIスペック横並び徹底比較 (${tools.length}ツール)`}
             </h3>
           </div>
           <button
             onClick={onClose}
-            className="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-colors"
+            className="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-colors cursor-pointer"
           >
             <X className="w-5 h-5" />
           </button>
@@ -54,7 +55,7 @@ export const ComparisonModal: React.FC<ComparisonModalProps> = ({
             <thead>
               <tr className="border-b border-slate-800">
                 <th className="py-4 px-3 w-1/4 text-xs font-semibold text-slate-400 uppercase tracking-wider">
-                  比較項目
+                  {t.modalSpecItem}
                 </th>
                 {tools.map((tool) => (
                   <th key={tool.id} className="py-4 px-3 w-1/4 align-top">
@@ -73,9 +74,9 @@ export const ComparisonModal: React.FC<ComparisonModalProps> = ({
                       href={tool.officialUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1 text-xs font-bold text-cyan-400 hover:text-cyan-300"
+                      className="inline-flex items-center gap-1 text-xs font-bold text-cyan-400 hover:text-cyan-300 cursor-pointer"
                     >
-                      <span>公式サイト</span>
+                      <span>{t.visitOfficial} ↗</span>
                       <ExternalLink className="w-3 h-3" />
                     </a>
                   </th>
@@ -84,10 +85,22 @@ export const ComparisonModal: React.FC<ComparisonModalProps> = ({
             </thead>
 
             <tbody className="divide-y divide-slate-800/80 text-xs sm:text-sm">
+              {/* カテゴリ */}
+              <tr>
+                <td className="py-3.5 px-3 font-bold text-slate-400 bg-slate-800/20">
+                  {t.category}
+                </td>
+                {tools.map((tool) => (
+                  <td key={tool.id} className="py-3.5 px-3 font-semibold text-slate-200">
+                    {getCategoryLabel(tool.category, lang)}
+                  </td>
+                ))}
+              </tr>
+
               {/* 料金・プラン */}
               <tr>
                 <td className="py-3.5 px-3 font-bold text-slate-400 bg-slate-800/20">
-                  料金目安
+                  {t.pricing}
                 </td>
                 {tools.map((tool) => (
                   <td key={tool.id} className="py-3.5 px-3 font-semibold text-white">
@@ -99,29 +112,24 @@ export const ComparisonModal: React.FC<ComparisonModalProps> = ({
               {/* 課金推奨度 */}
               <tr>
                 <td className="py-3.5 px-3 font-bold text-slate-400 bg-slate-800/20">
-                  有料版課金の価値
+                  {isEn ? "Paid ROI Rating" : "有料版コスパ推奨度"}
                 </td>
                 {tools.map((tool) => (
                   <td key={tool.id} className="py-3.5 px-3">
-                    <div className="flex items-center gap-1 text-amber-400 font-bold mb-1">
+                    <div className="flex items-center gap-1 text-amber-400">
                       {Array.from({ length: tool.paidWorthRating }).map((_, i) => (
                         <Star key={i} className="w-3.5 h-3.5 fill-amber-400" />
                       ))}
-                      <span className="text-xs text-slate-300 ml-1">
-                        ({tool.paidWorthRating}/5)
-                      </span>
+                      <span className="text-xs text-slate-400 ml-1">({tool.paidWorthRating}/5)</span>
                     </div>
-                    <p className="text-xs text-slate-400">
-                      推奨: {tool.paidPlanDetails.recommendedFor}
-                    </p>
                   </td>
                 ))}
               </tr>
 
-              {/* 無料版でできること */}
+              {/* 無料枠の制限 */}
               <tr>
                 <td className="py-3.5 px-3 font-bold text-slate-400 bg-slate-800/20">
-                  無料版の制限・範囲
+                  {t.freeTier}
                 </td>
                 {tools.map((tool) => (
                   <td key={tool.id} className="py-3.5 px-3 text-slate-300 leading-relaxed text-xs">
@@ -130,83 +138,108 @@ export const ComparisonModal: React.FC<ComparisonModalProps> = ({
                 ))}
               </tr>
 
-              {/* 有料版で解放されること */}
+              {/* 有料版で解放される決定打 */}
               <tr>
                 <td className="py-3.5 px-3 font-bold text-slate-400 bg-slate-800/20">
-                  有料版の決定打
+                  {isEn ? "Unlocked in Paid Plan" : "有料版の決定打"}
                 </td>
                 {tools.map((tool) => (
-                  <td key={tool.id} className="py-3.5 px-3 text-emerald-300 text-xs space-y-1">
-                    {tool.paidPlanDetails.unlockedFeatures.slice(0, 3).map((feat, i) => (
-                      <div key={i} className="flex items-start gap-1.5">
-                        <Check className="w-3.5 h-3.5 text-emerald-400 shrink-0 mt-0.5" />
-                        <span>{feat}</span>
-                      </div>
-                    ))}
+                  <td key={tool.id} className="py-3.5 px-3 text-emerald-300 text-xs">
+                    <ul className="space-y-1">
+                      {tool.paidPlanDetails.unlockedFeatures.slice(0, 3).map((f, i) => (
+                        <li key={i} className="flex items-start gap-1">
+                          <Check className="w-3.5 h-3.5 text-emerald-400 shrink-0 mt-0.5" />
+                          <span>{f}</span>
+                        </li>
+                      ))}
+                    </ul>
                   </td>
                 ))}
               </tr>
 
-              {/* バージョン特性・進化点 */}
+              {/* 日本語対応 */}
               <tr>
                 <td className="py-3.5 px-3 font-bold text-slate-400 bg-slate-800/20">
-                  最新バージョンの進化
+                  {isEn ? "Japanese UI" : "日本語対応"}
                 </td>
                 {tools.map((tool) => (
-                  <td key={tool.id} className="py-3.5 px-3 text-slate-300 text-xs leading-relaxed">
-                    {tool.versionFeatures.evolution}
+                  <td key={tool.id} className="py-3.5 px-3">
+                    {tool.supportsJapanese ? (
+                      <span className="text-cyan-400 font-bold flex items-center gap-1">
+                        <Check className="w-4 h-4" /> {isEn ? "Supported" : "対応"}
+                      </span>
+                    ) : (
+                      <span className="text-slate-500 flex items-center gap-1">
+                        <XCircle className="w-4 h-4" /> {isEn ? "English Only" : "非対応"}
+                      </span>
+                    )}
                   </td>
                 ))}
               </tr>
 
-              {/* 得意なこと (Pros) */}
+              {/* 商用利用 */}
               <tr>
                 <td className="py-3.5 px-3 font-bold text-slate-400 bg-slate-800/20">
-                  最大の強み (Pros)
+                  {isEn ? "Commercial Use" : "商用利用"}
                 </td>
                 {tools.map((tool) => (
-                  <td key={tool.id} className="py-3.5 px-3 text-xs space-y-1">
-                    {tool.pros.map((pro, i) => (
-                      <div key={i} className="flex items-start gap-1 text-slate-200">
-                        <span className="text-cyan-400 font-bold">•</span>
-                        <span>{pro}</span>
-                      </div>
-                    ))}
+                  <td key={tool.id} className="py-3.5 px-3">
+                    {tool.commercialUse ? (
+                      <span className="text-emerald-400 font-bold flex items-center gap-1">
+                        <Check className="w-4 h-4" /> {isEn ? "Allowed" : "可能"}
+                      </span>
+                    ) : (
+                      <span className="text-rose-400 flex items-center gap-1">
+                        <XCircle className="w-4 h-4" /> {isEn ? "Restricted" : "制限あり"}
+                      </span>
+                    )}
                   </td>
                 ))}
               </tr>
 
-              {/* 苦手なこと・注意点 (Cons) */}
+              {/* 主な強み */}
               <tr>
                 <td className="py-3.5 px-3 font-bold text-slate-400 bg-slate-800/20">
-                  苦手・注意点 (Cons)
+                  {t.strengths}
                 </td>
                 {tools.map((tool) => (
-                  <td key={tool.id} className="py-3.5 px-3 text-xs space-y-1">
-                    {tool.cons.map((con, i) => (
-                      <div key={i} className="flex items-start gap-1 text-slate-400">
-                        <span className="text-rose-400 font-bold">•</span>
-                        <span>{con}</span>
-                      </div>
-                    ))}
+                  <td key={tool.id} className="py-3.5 px-3 text-slate-300 text-xs">
+                    <ul className="space-y-1">
+                      {tool.pros.slice(0, 3).map((p, i) => (
+                        <li key={i}>・{p}</li>
+                      ))}
+                    </ul>
                   </td>
                 ))}
               </tr>
 
-              {/* 技術仕様 */}
+              {/* 注意点・制限 */}
               <tr>
                 <td className="py-3.5 px-3 font-bold text-slate-400 bg-slate-800/20">
-                  コンテキスト長・開発元
+                  {t.weaknesses}
                 </td>
                 {tools.map((tool) => (
-                  <td key={tool.id} className="py-3.5 px-3 text-xs space-y-1 text-slate-300">
-                    <div>枠: <strong className="text-cyan-300">{tool.specs.contextWindow}</strong></div>
-                    <div>開発: {tool.specs.company}</div>
+                  <td key={tool.id} className="py-3.5 px-3 text-rose-300/90 text-xs">
+                    <ul className="space-y-1">
+                      {tool.cons.slice(0, 2).map((c, i) => (
+                        <li key={i}>・{c}</li>
+                      ))}
+                    </ul>
                   </td>
                 ))}
               </tr>
             </tbody>
           </table>
+        </div>
+
+        {/* Modal Footer */}
+        <div className="p-4 border-t border-slate-800 flex justify-end bg-slate-950/50">
+          <button
+            onClick={onClose}
+            className="px-6 py-2.5 rounded-xl text-xs sm:text-sm font-bold bg-slate-800 hover:bg-slate-700 text-white transition-colors cursor-pointer"
+          >
+            {t.close}
+          </button>
         </div>
       </div>
     </div>

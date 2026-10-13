@@ -14,6 +14,7 @@ import {
   Cpu
 } from "lucide-react";
 import { UpdateItem, PromptItem } from "@/types";
+import { useLanguage } from "@/context/LanguageContext";
 
 interface HeroSectionProps {
   updates: UpdateItem[];
@@ -34,6 +35,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
 }) => {
   const [currentUpdateIdx, setCurrentUpdateIdx] = useState(0);
   const [copied, setCopied] = useState(false);
+  const { t, isEn } = useLanguage();
 
   // ニュースティッカー自動スライド
   useEffect(() => {
@@ -59,12 +61,12 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
       <div className="aurora-glow top-12 right-1/4 w-96 h-96 bg-violet-600 rounded-full animate-pulse-slow pointer-events-none delay-1000" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* News Flash Ticker (公式発表直結) */}
+        {/* News Flash Ticker */}
         {currentUpdate && (
           <div className="mb-8 inline-flex items-center gap-2 px-3 sm:px-4 py-2 rounded-full glass-panel border border-cyan-500/30 text-xs sm:text-sm text-slate-200 max-w-full overflow-hidden shadow-lg shadow-cyan-500/10">
             <span className="flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-cyan-500/20 text-cyan-400 font-bold text-[11px] shrink-0 uppercase tracking-wider border border-cyan-500/30">
               <Clock className="w-3 h-3 text-cyan-400" />
-              <span>{currentUpdate.sourceName || "公式速報"}</span>
+              <span>{currentUpdate.sourceName || (isEn ? "Live Feed" : "公式速報")}</span>
             </span>
             <span className="truncate font-medium text-slate-100">
               {currentUpdate.title}
@@ -74,14 +76,14 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                 onClick={() => onSelectTool(currentUpdate.toolId!)}
                 className="text-cyan-400 hover:text-cyan-300 font-semibold underline shrink-0 ml-1 inline-flex items-center gap-0.5 text-xs"
               >
-                詳細 <ArrowRight className="w-3 h-3" />
+                {isEn ? "Specs" : "詳細"} <ArrowRight className="w-3 h-3" />
               </button>
             ) : (
               <a
                 href="#news-section"
                 className="text-cyan-400 hover:text-cyan-300 font-semibold underline shrink-0 ml-1 inline-flex items-center gap-0.5 text-xs"
               >
-                ニュース一覧 <ArrowRight className="w-3 h-3" />
+                {isEn ? "Feed" : "ニュース一覧"} <ArrowRight className="w-3 h-3" />
               </a>
             )}
           </div>
@@ -89,95 +91,93 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
 
         {/* Main Hero Header */}
         <div className="text-center max-w-3xl mx-auto mb-10">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 text-xs font-semibold mb-4">
-            <Sparkles className="w-3.5 h-3.5" />
-            <span>主要6分野 × 各10種 ＝ 計60ツール完全データベース搭載</span>
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-indigo-500/15 border border-indigo-500/30 text-indigo-300 text-xs font-bold mb-4 shadow-sm">
+            <Sparkles className="w-3.5 h-3.5 text-cyan-400" />
+            <span>{t.heroBadge}</span>
           </div>
           <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight text-white mb-6 leading-tight sm:leading-tight">
-            迷えるすべての人のための、
+            {t.heroTitle1}
             <br />
             <span className="bg-gradient-to-r from-cyan-400 via-sky-300 to-indigo-400 bg-clip-text text-transparent">
-              次世代AI総合羅針盤。
+              {t.heroTitle2}
             </span>
           </h1>
-          <p className="text-slate-300 text-sm sm:text-base lg:text-lg leading-relaxed max-w-2xl mx-auto mb-8">
-            「結局どれを使えばいい？」「有料版は何が違う？」
-            <br className="hidden sm:inline" />
-            最新バージョン特性、無料vs有料の決定打、分野別ランキング、実践プロンプトまでを徹底網羅。
+          <p className="text-slate-300 text-sm sm:text-base lg:text-lg leading-relaxed max-w-2xl mx-auto mb-8 font-normal">
+            {t.heroDesc}
           </p>
 
           {/* CTA Buttons */}
           <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4">
             <button
               onClick={onOpenFreeInput}
-              className="px-6 py-3.5 rounded-xl font-bold text-sm sm:text-base text-white bg-gradient-to-r from-cyan-500 via-blue-600 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 shadow-xl shadow-cyan-500/25 hover:shadow-cyan-500/40 transform hover:-translate-y-0.5 transition-all duration-200 flex items-center gap-2"
+              className="px-6 py-3.5 rounded-xl font-bold text-sm sm:text-base text-white bg-gradient-to-r from-cyan-500 via-blue-600 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 shadow-xl shadow-cyan-500/25 hover:shadow-cyan-500/40 transform hover:-translate-y-0.5 transition-all duration-200 flex items-center gap-2 cursor-pointer"
             >
               <Sparkles className="w-4 h-4" />
-              <span>やりたいことAI自由診断</span>
+              <span>{t.heroBtnDiagnose}</span>
             </button>
             <button
               onClick={onOpenQuiz}
-              className="px-6 py-3.5 rounded-xl font-bold text-sm sm:text-base text-slate-200 bg-slate-800/90 hover:bg-slate-700/90 border border-slate-700/80 shadow-md hover:border-cyan-500/40 transition-all duration-200 flex items-center gap-2"
+              className="px-6 py-3.5 rounded-xl font-bold text-sm sm:text-base text-slate-200 bg-slate-800/90 hover:bg-slate-700/90 border border-slate-700/80 shadow-md hover:border-cyan-500/40 transition-all duration-200 flex items-center gap-2 cursor-pointer"
             >
               <Zap className="w-4 h-4 text-cyan-400" />
-              <span>30秒適性診断（4問）</span>
+              <span>{t.heroBtnQuiz}</span>
             </button>
             <button
               onClick={onScrollToCatalog}
-              className="px-5 py-3.5 rounded-xl font-semibold text-sm sm:text-base text-slate-400 hover:text-white transition-colors flex items-center gap-1.5"
+              className="px-5 py-3.5 rounded-xl font-semibold text-sm sm:text-base text-slate-400 hover:text-white transition-colors flex items-center gap-1.5 cursor-pointer"
             >
-              <span>60種AI一覧を見る</span>
+              <span>{t.heroBtnExplore}</span>
               <ArrowRight className="w-4 h-4" />
             </button>
           </div>
         </div>
 
-        {/* Feature Grid / Retention Hooks: Today's Pick & Prompt */}
+        {/* Feature Grid / Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-6 mt-8">
-          {/* Card 1: 3大コアバリュー保証 */}
-          <div className="glass-panel p-6 rounded-2xl relative overflow-hidden card-hover-glow">
+          {/* Card 1 */}
+          <div className="glass-panel p-6 rounded-2xl relative overflow-hidden card-hover-glow border border-slate-800">
             <div className="w-12 h-12 rounded-xl bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 flex items-center justify-center mb-4">
               <Cpu className="w-6 h-6" />
             </div>
             <h3 className="font-extrabold text-white text-lg sm:text-xl mb-2">
-              全60種・バージョン別特性比較
+              {t.heroFeature1Title}
             </h3>
             <p className="text-slate-300 text-sm leading-relaxed mb-4 font-normal">
-              「GPT-4o vs o1」「Claude 3.5」「FLUX.1」「Suno v4」など、各ツールの現行最新バージョンとモデル別の使い分けを徹底解説。
+              {t.heroFeature1Desc}
             </p>
             <div className="flex items-center gap-2 text-xs sm:text-sm text-cyan-400 font-bold">
               <CheckCircle2 className="w-4 h-4" />
-              <span>無料枠 vs 有料版の制限・決定打も網羅</span>
+              <span>{isEn ? "Verified Limits & Cost Comparisons" : "無料枠 vs 有料版の制限・決定打も網羅"}</span>
             </div>
           </div>
 
-          {/* Card 2: 12時間毎の自動更新＆動的ランキング */}
-          <div className="glass-panel p-6 rounded-2xl relative overflow-hidden card-hover-glow">
+          {/* Card 2 */}
+          <div className="glass-panel p-6 rounded-2xl relative overflow-hidden card-hover-glow border border-slate-800">
             <div className="w-12 h-12 rounded-xl bg-violet-500/10 border border-violet-500/20 text-violet-400 flex items-center justify-center mb-4">
               <TrendingUp className="w-6 h-6" />
             </div>
             <h3 className="font-extrabold text-white text-lg sm:text-xl mb-2">
-              12H自動更新＆動的ランキング
+              {t.heroFeature2Title}
             </h3>
             <p className="text-slate-300 text-sm leading-relaxed mb-4 font-normal">
-              公式リリースノートを12時間ごとに自動取得＆Gemini要約。直近で進化したツールが上位に浮上するリアルタイムランキング。
+              {t.heroFeature2Desc}
             </p>
             <div className="flex items-center gap-2 text-xs sm:text-sm text-violet-400 font-bold">
               <CheckCircle2 className="w-4 h-4" />
-              <span>世界のユーザー規模 ＆ 当サイト登録数集計</span>
+              <span>{isEn ? "Global User Base & In-App Activity Stats" : "世界のユーザー規模 ＆ 当サイト登録数集計"}</span>
             </div>
           </div>
 
-          {/* Card 3: Today's 日替わりプロンプト */}
+          {/* Card 3: Today's Prompt */}
           {dailyPrompt && (
             <div className="glass-panel p-6 rounded-2xl relative overflow-hidden card-hover-glow border-amber-500/30">
               <div className="flex items-center justify-between mb-3">
                 <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-500/15 text-amber-300 text-xs font-bold border border-amber-500/30">
                   <Flame className="w-3.5 h-3.5" />
-                  <span>TODAY'S PROMPT</span>
+                  <span>{t.heroFeature3Badge}</span>
                 </div>
                 <span className="text-xs text-slate-300 font-mono font-semibold">
-                  推奨: {dailyPrompt.toolName || "汎用"}
+                  {t.heroFeature3Rec}: {dailyPrompt.toolName || "All"}
                 </span>
               </div>
               <h4 className="font-extrabold text-white text-base mb-2 truncate">
@@ -188,21 +188,21 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
               </div>
               <div className="flex items-center justify-between">
                 <span className="text-xs text-slate-400">
-                  コピーしてすぐ使えます
+                  {isEn ? "Instant production prompt" : "コピーしてすぐ使えます"}
                 </span>
                 <button
                   onClick={() => handleCopyPrompt(dailyPrompt.promptText)}
-                  className="px-3.5 py-1.5 rounded-lg text-xs font-bold bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 border border-amber-500/30 flex items-center gap-1.5 transition-all"
+                  className="px-3.5 py-1.5 rounded-lg text-xs font-bold bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 border border-amber-500/30 flex items-center gap-1.5 transition-all cursor-pointer"
                 >
                   {copied ? (
                     <>
                       <Check className="w-3.5 h-3.5 text-emerald-400" />
-                      <span>コピー完了!</span>
+                      <span>{t.copied}</span>
                     </>
                   ) : (
                     <>
                       <Copy className="w-3.5 h-3.5" />
-                      <span>ワンクリックコピー</span>
+                      <span>{t.copyPrompt}</span>
                     </>
                   )}
                 </button>

@@ -5,20 +5,21 @@ import {
   X, 
   ExternalLink, 
   Check, 
-  XCircle, 
   Star, 
   ThumbsUp, 
   Bookmark, 
   Zap, 
   Users, 
-  Building2, 
   Layers, 
-  CheckCircle2,
-  Cpu,
-  Gauge,
-  Sparkles
+  CheckCircle2, 
+  Cpu, 
+  Sparkles,
+  BadgeCheck,
+  Globe
 } from "lucide-react";
 import { ToolItem } from "@/types";
+import { useLanguage } from "@/context/LanguageContext";
+import { getCategoryLabel, getBadgeLabel, getPricingTypeLabel } from "@/lib/i18n";
 
 interface ToolDetailModalProps {
   tool: ToolItem | null;
@@ -38,10 +39,14 @@ export const ToolDetailModal: React.FC<ToolDetailModalProps> = ({
   onVote,
 }) => {
   const [activeTab, setActiveTab] = useState<"overview" | "versions" | "pricing">("overview");
+  const { t, isEn, lang } = useLanguage();
 
   if (!isOpen || !tool) return null;
 
   const versionsList = tool.versionFeatures.versionsList || [];
+  const categoryLabel = getCategoryLabel(tool.category, lang);
+  const badgeLabel = getBadgeLabel(tool.badge, lang);
+  const pricingLabel = getPricingTypeLabel(tool.pricingType, lang);
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-slate-950/85 backdrop-blur-md animate-in fade-in duration-200">
@@ -51,11 +56,11 @@ export const ToolDetailModal: React.FC<ToolDetailModalProps> = ({
           <div>
             <div className="flex flex-wrap items-center gap-2 mb-2">
               <span className="px-3 py-1 rounded-lg text-xs sm:text-sm font-extrabold bg-cyan-500/20 text-cyan-300 border border-cyan-500/30">
-                {tool.categoryLabel} #{tool.categoryRank}位
+                {categoryLabel} #{tool.categoryRank}
               </span>
-              {tool.badge && (
+              {badgeLabel && (
                 <span className="px-2.5 py-1 rounded-lg text-xs font-bold bg-amber-500/15 text-amber-300 border border-amber-500/30">
-                  {tool.badge}
+                  {badgeLabel}
                 </span>
               )}
               <span className="text-xs text-slate-400 flex items-center gap-1 font-medium">
@@ -66,24 +71,28 @@ export const ToolDetailModal: React.FC<ToolDetailModalProps> = ({
             <h2 className="text-2xl sm:text-4xl font-black text-white tracking-tight">
               {tool.name}
             </h2>
-            <div className="text-xs sm:text-sm text-cyan-400 font-mono mt-1 font-semibold">
-              現行バージョン: {tool.version}
+            <div className="text-xs sm:text-sm text-cyan-400 font-mono mt-1 font-semibold flex items-center gap-2">
+              <span>{isEn ? "Active Model:" : "現行バージョン:"} {tool.version}</span>
+              <span className="inline-flex items-center gap-1 text-[11px] font-bold text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded-full border border-emerald-500/20">
+                <BadgeCheck className="w-3 h-3" />
+                <span>{isEn ? "Verified Primary Source" : "公式一次情報確認済"}</span>
+              </span>
             </div>
           </div>
 
           <div className="flex items-center gap-2">
             <button
               onClick={() => onToggleSave(tool.id)}
-              className={`p-2.5 rounded-xl transition-colors ${
+              className={`p-2.5 rounded-xl transition-colors cursor-pointer ${
                 isSaved ? "bg-amber-500/20 text-amber-400" : "bg-slate-800 text-slate-400 hover:text-white"
               }`}
-              title={isSaved ? "My AI Stackから削除" : "My AI Stackに追加"}
+              title={isSaved ? (isEn ? "Remove from Stack" : "My AI Stackから削除") : (isEn ? "Add to Stack" : "My AI Stackに追加")}
             >
               <Bookmark className="w-5 h-5" fill={isSaved ? "currentColor" : "none"} />
             </button>
             <button
               onClick={onClose}
-              className="p-2.5 rounded-xl bg-slate-800 text-slate-400 hover:text-white"
+              className="p-2.5 rounded-xl bg-slate-800 text-slate-400 hover:text-white cursor-pointer"
             >
               <X className="w-5 h-5" />
             </button>
@@ -94,163 +103,153 @@ export const ToolDetailModal: React.FC<ToolDetailModalProps> = ({
         <div className="flex border-b border-slate-800 bg-slate-950/30 px-6 gap-4 text-sm font-bold">
           <button
             onClick={() => setActiveTab("overview")}
-            className={`py-3 border-b-2 transition-colors ${
+            className={`py-3 border-b-2 transition-colors cursor-pointer ${
               activeTab === "overview"
                 ? "border-cyan-400 text-cyan-300"
                 : "border-transparent text-slate-400 hover:text-slate-200"
             }`}
           >
-            📋 概要・スペック
+            {isEn ? "Overview & Strengths" : "概要・強み・適性"}
           </button>
           <button
             onClick={() => setActiveTab("versions")}
-            className={`py-3 border-b-2 transition-colors flex items-center gap-1.5 ${
+            className={`py-3 border-b-2 transition-colors cursor-pointer ${
               activeTab === "versions"
                 ? "border-cyan-400 text-cyan-300"
                 : "border-transparent text-slate-400 hover:text-slate-200"
             }`}
           >
-            <Cpu className="w-4 h-4" />
-            <span>バージョン・モデル別の特徴</span>
-            {versionsList.length > 0 && (
-              <span className="px-1.5 py-0.2 rounded-full text-[11px] bg-cyan-500/20 text-cyan-300">
-                {versionsList.length}種
-              </span>
-            )}
+            {isEn ? `Available Engines (${versionsList.length || 1})` : `選べるモデル・バージョン (${versionsList.length || 1})`}
           </button>
           <button
             onClick={() => setActiveTab("pricing")}
-            className={`py-3 border-b-2 transition-colors ${
+            className={`py-3 border-b-2 transition-colors cursor-pointer ${
               activeTab === "pricing"
                 ? "border-cyan-400 text-cyan-300"
                 : "border-transparent text-slate-400 hover:text-slate-200"
             }`}
           >
-            💰 料金・無料vs有料の違い
+            {isEn ? "Pricing & Free vs Paid" : "料金・無料vs有料の違い"}
           </button>
         </div>
 
-        {/* Scrollable Body */}
-        <div className="p-6 overflow-y-auto space-y-6 text-sm sm:text-base">
-          {/* TAB 1: 概要・スペック */}
+        {/* Modal Body */}
+        <div className="p-5 sm:p-6 overflow-y-auto space-y-6 flex-1 custom-scrollbar">
+          {/* TAB 1: 概要 */}
           {activeTab === "overview" && (
             <div className="space-y-6">
-              {/* 解説文 */}
-              <div>
-                <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">
-                  サービス概要
-                </h4>
-                <p className="text-slate-200 leading-relaxed text-sm sm:text-base">
+              {/* Primary Source Summary Card */}
+              <div className="rounded-xl p-4 bg-slate-950 border border-cyan-500/30 shadow-inner">
+                <div className="flex items-center justify-between text-xs font-bold text-cyan-400 mb-2">
+                  <div className="flex items-center gap-1.5">
+                    <Sparkles className="w-4 h-4 text-cyan-400" />
+                    <span>{isEn ? "Official Primary Source Summary" : "公式一次ソース要約"}</span>
+                  </div>
+                  <a
+                    href={tool.officialUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-xs text-blue-400 hover:underline flex items-center gap-1"
+                  >
+                    <span>{isEn ? "Open Source Site ↗" : "一次情報サイトへ移動 ↗"}</span>
+                  </a>
+                </div>
+                <p className="text-slate-200 text-sm leading-relaxed">
                   {tool.description}
                 </p>
               </div>
 
-              {/* 進化点ハイライト */}
-              <div className="bg-slate-950/70 rounded-xl p-4 sm:p-5 border border-cyan-500/30 space-y-2.5">
-                <div className="flex items-center gap-2 text-cyan-300 font-bold text-sm uppercase tracking-wider">
-                  <Zap className="w-4 h-4 text-cyan-400" />
-                  <span>最新バージョンの進化点・特筆ポイント</span>
-                </div>
-                <p className="text-slate-200 text-sm sm:text-base leading-relaxed">
-                  {tool.versionFeatures.evolution}
-                </p>
-                <div className="pt-3 border-t border-slate-800 text-xs sm:text-sm text-slate-400 flex flex-wrap gap-4">
-                  <div>アーキテクチャ: <strong className="text-slate-200 font-mono">{tool.versionFeatures.architecture}</strong></div>
-                  <div>コンテキスト長: <strong className="text-cyan-300">{tool.specs.contextWindow}</strong></div>
-                </div>
-              </div>
-
-              {/* 長所 vs 短所 */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
-                <div className="p-4 rounded-xl bg-slate-950/50 border border-slate-800">
-                  <h5 className="font-bold text-cyan-300 mb-2.5 flex items-center gap-1.5">
-                    <CheckCircle2 className="w-4 h-4 text-cyan-400" />
-                    <span>得意なこと・最大のメリット</span>
-                  </h5>
-                  <ul className="space-y-2 text-slate-200">
-                    {tool.pros.map((p, i) => (
-                      <li key={i} className="flex items-start gap-2">
-                        <span className="text-cyan-400 font-bold">•</span>
-                        <span>{p}</span>
+              {/* Strengths & Weaknesses Grid */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="bg-emerald-950/20 border border-emerald-500/30 p-4 rounded-xl space-y-2">
+                  <span className="font-extrabold text-sm text-emerald-400 flex items-center gap-1.5">
+                    <CheckCircle2 className="w-4 h-4" />
+                    <span>{t.strengths}</span>
+                  </span>
+                  <ul className="space-y-1.5 text-xs sm:text-sm text-slate-200">
+                    {tool.pros.map((pro, i) => (
+                      <li key={i} className="flex items-start gap-1.5">
+                        <span className="text-emerald-400">・</span>
+                        <span>{pro}</span>
                       </li>
                     ))}
                   </ul>
                 </div>
 
-                <div className="p-4 rounded-xl bg-slate-950/50 border border-slate-800">
-                  <h5 className="font-bold text-rose-300 mb-2.5 flex items-center gap-1.5">
-                    <XCircle className="w-4 h-4 text-rose-400" />
-                    <span>苦手なこと・利用時の注意点</span>
-                  </h5>
-                  <ul className="space-y-2 text-slate-300">
-                    {tool.cons.map((c, i) => (
-                      <li key={i} className="flex items-start gap-2">
-                        <span className="text-rose-400 font-bold">•</span>
-                        <span>{c}</span>
+                <div className="bg-rose-950/20 border border-rose-500/30 p-4 rounded-xl space-y-2">
+                  <span className="font-extrabold text-sm text-rose-400 flex items-center gap-1.5">
+                    <Zap className="w-4 h-4" />
+                    <span>{t.weaknesses}</span>
+                  </span>
+                  <ul className="space-y-1.5 text-xs sm:text-sm text-slate-200">
+                    {tool.cons.map((con, i) => (
+                      <li key={i} className="flex items-start gap-1.5">
+                        <span className="text-rose-400">・</span>
+                        <span>{con}</span>
                       </li>
                     ))}
                   </ul>
                 </div>
               </div>
 
-              {/* 技術スペック */}
-              <div className="text-xs sm:text-sm text-slate-300 bg-slate-800/40 p-4 rounded-xl border border-slate-700/60 flex flex-wrap gap-6 justify-between">
-                <div>マルチモーダル: <strong className="text-white">{tool.specs.multimodal}</strong></div>
-                <div>開発元: <strong className="text-white">{tool.specs.company}</strong></div>
-                <div>リリース年: <strong className="text-white">{tool.specs.releaseYear}</strong></div>
+              {/* Specs Matrix */}
+              <div className="glass-panel p-4 rounded-xl border border-slate-800 space-y-3">
+                <span className="text-xs font-bold text-slate-400 uppercase tracking-wider block">
+                  {isEn ? "Technical Specifications" : "技術仕様・提供形態"}
+                </span>
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs">
+                  <div className="bg-slate-900 p-2.5 rounded-lg border border-slate-800">
+                    <span className="text-slate-400 block">{isEn ? "Vendor" : "開発元"}</span>
+                    <span className="font-bold text-white text-sm truncate block">{tool.specs.company}</span>
+                  </div>
+                  <div className="bg-slate-900 p-2.5 rounded-lg border border-slate-800">
+                    <span className="text-slate-400 block">{isEn ? "Context / Capacity" : "コンテキスト長"}</span>
+                    <span className="font-bold text-cyan-300 text-sm truncate block">{tool.specs.contextWindow}</span>
+                  </div>
+                  <div className="bg-slate-900 p-2.5 rounded-lg border border-slate-800">
+                    <span className="text-slate-400 block">{isEn ? "Multimodal" : "入出力形式"}</span>
+                    <span className="font-bold text-white text-sm truncate block">{tool.specs.multimodal}</span>
+                  </div>
+                  <div className="bg-slate-900 p-2.5 rounded-lg border border-slate-800">
+                    <span className="text-slate-400 block">{isEn ? "Launch" : "ローンチ"}</span>
+                    <span className="font-bold text-white text-sm truncate block">{tool.specs.releaseYear}</span>
+                  </div>
+                </div>
               </div>
             </div>
           )}
 
-          {/* TAB 2: バージョン・モデル別の特徴 */}
+          {/* TAB 2: モデル一覧 */}
           {activeTab === "versions" && (
-            <div className="space-y-5">
-              <div>
-                <h4 className="text-sm font-bold text-white mb-1">
-                  選択可能なAIバージョン・モデルの一覧と使い分け
-                </h4>
-                <p className="text-xs sm:text-sm text-slate-400">
-                  {tool.name}内で提供されている各モデルの処理速度、知能、最適な使い道を整理しました。
-                </p>
-              </div>
-
+            <div className="space-y-4">
               {versionsList.length > 0 ? (
-                <div className="space-y-4">
-                  {versionsList.map((ver, idx) => (
-                    <div
-                      key={idx}
-                      className="glass-panel p-4 sm:p-5 rounded-xl border border-slate-700/80 bg-slate-950/60 space-y-3"
-                    >
+                <div className="space-y-3">
+                  {versionsList.map((ver, i) => (
+                    <div key={i} className="glass-panel p-4 sm:p-5 rounded-xl border border-slate-800 space-y-2.5">
                       <div className="flex flex-wrap items-center justify-between gap-2">
                         <div className="flex items-center gap-2">
-                          <span className="px-2.5 py-0.5 rounded-lg text-xs font-bold bg-cyan-500/20 text-cyan-300 border border-cyan-500/30">
-                            モデル {idx + 1}
-                          </span>
-                          <h5 className="font-extrabold text-base sm:text-lg text-white">
-                            {ver.name}
-                          </h5>
+                          <Cpu className="w-4 h-4 text-cyan-400" />
+                          <h4 className="font-extrabold text-base text-white">{ver.name}</h4>
                         </div>
-                        <span className="text-xs font-semibold px-2.5 py-1 rounded bg-slate-800 text-slate-300 border border-slate-700">
+                        <span className="px-2 py-0.5 rounded text-xs font-bold bg-indigo-500/20 text-indigo-300 border border-indigo-500/30">
                           {ver.planAvailability}
                         </span>
                       </div>
-
-                      <p className="text-xs sm:text-sm text-slate-200 leading-relaxed">
+                      <p className="text-slate-300 text-xs sm:text-sm leading-relaxed">
                         {ver.description}
                       </p>
-
-                      <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 pt-3 border-t border-slate-800 text-xs">
-                        <div className="bg-slate-900 p-2.5 rounded-lg border border-slate-800">
-                          <span className="text-slate-400 block font-medium">応答速度:</span>
-                          <span className="font-bold text-cyan-300">{ver.speed}</span>
+                      <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 text-xs pt-2">
+                        <div className="bg-slate-900 p-2 rounded border border-slate-800">
+                          <span className="text-slate-400 block">{isEn ? "Speed:" : "速度:"}</span>
+                          <span className="font-bold text-white">{ver.speed}</span>
                         </div>
-                        <div className="bg-slate-900 p-2.5 rounded-lg border border-slate-800">
-                          <span className="text-slate-400 block font-medium">論理・知能:</span>
-                          <span className="font-bold text-amber-300">{ver.intelligence}</span>
+                        <div className="bg-slate-900 p-2 rounded border border-slate-800">
+                          <span className="text-slate-400 block">{isEn ? "Reasoning:" : "知能・推論:"}</span>
+                          <span className="font-bold text-cyan-300">{ver.intelligence}</span>
                         </div>
-                        <div className="bg-slate-900 p-2.5 rounded-lg border border-slate-800 sm:col-span-1">
-                          <span className="text-slate-400 block font-medium">こんな用途に最適:</span>
-                          <span className="font-semibold text-slate-200 line-clamp-1">{ver.bestFor}</span>
+                        <div className="bg-slate-900 p-2 rounded border border-slate-800 col-span-2 sm:col-span-1">
+                          <span className="text-slate-400 block">{isEn ? "Best for:" : "最適用途:"}</span>
+                          <span className="font-bold text-slate-200 truncate block">{ver.bestFor}</span>
                         </div>
                       </div>
                     </div>
@@ -259,14 +258,11 @@ export const ToolDetailModal: React.FC<ToolDetailModalProps> = ({
               ) : (
                 <div className="glass-panel p-5 rounded-xl border border-slate-800 space-y-3">
                   <div className="font-bold text-white text-base">
-                    現行メインモデル: {tool.version}
+                    {tool.name} {tool.version}
                   </div>
                   <p className="text-slate-300 text-sm leading-relaxed">
                     {tool.versionFeatures.evolution}
                   </p>
-                  <div className="text-xs text-slate-400 pt-2 border-t border-slate-800">
-                    主な得意分野: {tool.pros.join(" / ")}
-                  </div>
                 </div>
               )}
             </div>
@@ -278,13 +274,13 @@ export const ToolDetailModal: React.FC<ToolDetailModalProps> = ({
               <div className="glass-panel p-5 rounded-xl border border-slate-700 space-y-4">
                 <div className="flex flex-wrap items-center justify-between gap-2">
                   <div>
-                    <span className="text-xs text-slate-400 uppercase font-bold tracking-wider">月額の目安</span>
+                    <span className="text-xs text-slate-400 uppercase font-bold tracking-wider">{t.pricing}</span>
                     <div className="text-xl sm:text-2xl font-black text-white mt-0.5">
                       {tool.pricingMonthly}
                     </div>
                   </div>
                   <div className="text-right">
-                    <span className="text-xs text-slate-400 font-bold block mb-1">有料版の課金推奨度</span>
+                    <span className="text-xs text-slate-400 font-bold block mb-1">{isEn ? "ROI Rating" : "有料版の課金推奨度"}</span>
                     <div className="flex items-center gap-1 text-amber-400 font-bold text-sm justify-end">
                       {Array.from({ length: tool.paidWorthRating }).map((_, i) => (
                         <Star key={i} className="w-4 h-4 fill-amber-400" />
@@ -295,7 +291,7 @@ export const ToolDetailModal: React.FC<ToolDetailModalProps> = ({
                 </div>
 
                 <div className="p-3.5 rounded-xl bg-amber-500/10 border border-amber-500/20 text-xs sm:text-sm text-amber-200">
-                  <strong className="text-amber-300 block mb-0.5">🎯 誰が課金すべきか？</strong>
+                  <strong className="text-amber-300 block mb-0.5">{isEn ? "🎯 Who should upgrade?" : "🎯 誰が課金すべきか？"}</strong>
                   {tool.paidPlanDetails.recommendedFor}
                 </div>
               </div>
@@ -304,13 +300,13 @@ export const ToolDetailModal: React.FC<ToolDetailModalProps> = ({
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="bg-slate-950/60 p-4 sm:p-5 rounded-xl border border-slate-800 space-y-3">
                   <span className="font-extrabold text-base text-slate-200 block border-b border-slate-800 pb-2">
-                    【無料版】でできること・制限
+                    {isEn ? "Free Tier Limits" : "【無料版】でできること・制限"}
                   </span>
                   <p className="text-slate-300 text-xs sm:text-sm leading-relaxed">
                     {tool.freePlanDetails.limits}
                   </p>
                   <div className="space-y-2 pt-2">
-                    <span className="text-xs font-bold text-slate-400 uppercase tracking-wider block">利用可能機能:</span>
+                    <span className="text-xs font-bold text-slate-400 uppercase tracking-wider block">{isEn ? "Included Features:" : "利用可能機能:"}</span>
                     {tool.freePlanDetails.allowedFeatures.map((f, i) => (
                       <div key={i} className="flex items-center gap-2 text-xs sm:text-sm text-slate-300">
                         <Check className="w-4 h-4 text-cyan-400 shrink-0" />
@@ -322,13 +318,13 @@ export const ToolDetailModal: React.FC<ToolDetailModalProps> = ({
 
                 <div className="bg-slate-950/60 p-4 sm:p-5 rounded-xl border border-emerald-500/30 space-y-3">
                   <span className="font-extrabold text-base text-emerald-300 block border-b border-slate-800 pb-2">
-                    【有料版】で解放される機能
+                    {isEn ? "Paid Plan Upgrades" : "【有料版】で解放される機能"}
                   </span>
                   <div className="text-xs sm:text-sm text-emerald-400 font-semibold">
-                    プラン名: {tool.paidPlanDetails.planName} ({tool.paidPlanDetails.price})
+                    {tool.paidPlanDetails.planName} ({tool.paidPlanDetails.price})
                   </div>
                   <div className="space-y-2 pt-2">
-                    <span className="text-xs font-bold text-slate-400 uppercase tracking-wider block">解放される決定打:</span>
+                    <span className="text-xs font-bold text-slate-400 uppercase tracking-wider block">{isEn ? "Unlocked Superpowers:" : "解放される決定打:"}</span>
                     {tool.paidPlanDetails.unlockedFeatures.map((f, i) => (
                       <div key={i} className="flex items-center gap-2 text-xs sm:text-sm text-emerald-200">
                         <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
@@ -346,19 +342,19 @@ export const ToolDetailModal: React.FC<ToolDetailModalProps> = ({
         <div className="p-4 sm:p-5 border-t border-slate-800 flex items-center justify-between shrink-0 bg-slate-950/50">
           <button
             onClick={() => onVote(tool.id)}
-            className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 text-xs sm:text-sm font-bold transition-colors"
+            className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 text-xs sm:text-sm font-bold transition-colors cursor-pointer"
           >
             <ThumbsUp className="w-4 h-4 text-cyan-400" />
-            <span>使ってよかった ({tool.votesCount})</span>
+            <span>{isEn ? `Helpful (${tool.votesCount})` : `使ってよかった (${tool.votesCount})`}</span>
           </button>
 
           <a
             href={tool.officialUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="px-6 py-2.5 rounded-xl text-xs sm:text-sm font-bold bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white shadow-lg shadow-cyan-500/25 flex items-center gap-2 transition-all"
+            className="px-6 py-2.5 rounded-xl text-xs sm:text-sm font-bold bg-gradient-to-r from-cyan-400 to-blue-500 hover:from-cyan-300 hover:to-blue-400 text-slate-950 shadow-lg shadow-cyan-500/25 flex items-center gap-2 transition-all cursor-pointer"
           >
-            <span>公式サイトへアクセス</span>
+            <span>{isEn ? "Visit Official Website ↗" : "公式サイトへアクセス ↗"}</span>
             <ExternalLink className="w-4 h-4" />
           </a>
         </div>

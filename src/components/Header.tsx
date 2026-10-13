@@ -9,12 +9,13 @@ import {
   Moon, 
   Sparkles, 
   Menu, 
-  X,
-  TrendingUp,
+  X, 
   SlidersHorizontal,
   Layers,
-  Clock
+  Clock,
+  Languages
 } from "lucide-react";
+import { useLanguage } from "@/context/LanguageContext";
 
 interface HeaderProps {
   searchQuery: string;
@@ -35,6 +36,7 @@ export const Header: React.FC<HeaderProps> = ({
 }) => {
   const [isDark, setIsDark] = useState(true);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { lang, toggleLang, t, isEn } = useLanguage();
 
   useEffect(() => {
     if (isDark) {
@@ -47,7 +49,7 @@ export const Header: React.FC<HeaderProps> = ({
   }, [isDark]);
 
   return (
-    <header className="sticky top-0 z-40 glass-nav transition-colors duration-200">
+    <header className="sticky top-0 z-40 glass-nav transition-colors duration-200 border-b border-slate-800/80">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
         {/* Brand Logo */}
         <div className="flex items-center gap-3">
@@ -56,12 +58,14 @@ export const Header: React.FC<HeaderProps> = ({
               <Compass className="w-6 h-6 text-white" />
             </div>
             <div>
-              <span className="font-extrabold text-xl tracking-tight bg-gradient-to-r from-cyan-400 via-sky-300 to-indigo-400 bg-clip-text text-transparent">
-                AI COMPASS
-              </span>
-              <span className="hidden sm:inline-block ml-2 text-[10px] font-semibold tracking-wider uppercase px-1.5 py-0.5 rounded bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">
-                PRO PORTAL
-              </span>
+              <div className="flex items-center gap-2">
+                <span className="font-extrabold text-xl tracking-tight bg-gradient-to-r from-cyan-400 via-sky-300 to-indigo-400 bg-clip-text text-transparent">
+                  {t.siteTitle}
+                </span>
+                <span className="hidden sm:inline-block text-[10px] font-bold tracking-wider uppercase px-2 py-0.5 rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">
+                  {isEn ? "GLOBAL HUB" : "羅針盤ポータル"}
+                </span>
+              </div>
             </div>
           </a>
         </div>
@@ -70,11 +74,11 @@ export const Header: React.FC<HeaderProps> = ({
         <nav className="hidden lg:flex items-center gap-6 text-sm font-bold text-slate-300">
           <a href="#news-section" className="hover:text-cyan-400 transition-colors flex items-center gap-1.5">
             <Clock className="w-4 h-4 text-cyan-400" />
-            <span>最新速報</span>
+            <span>{t.navNews}</span>
           </a>
           <a href="#catalog-section" className="hover:text-cyan-400 transition-colors flex items-center gap-1.5">
             <Layers className="w-4 h-4 text-cyan-400" />
-            <span>AIカタログ (60種)</span>
+            <span>{t.navCatalog}</span>
           </a>
         </nav>
 
@@ -84,7 +88,7 @@ export const Header: React.FC<HeaderProps> = ({
             <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
             <input
               type="text"
-              placeholder="AI名、用途、特徴で検索 (例: コード, 画像, 無料)..."
+              placeholder={t.searchPlaceholder}
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               className="w-full bg-slate-800/80 dark:bg-slate-900/90 border border-slate-700/80 rounded-full pl-10 pr-4 py-2 text-sm text-slate-100 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-cyan-500 transition-all font-medium"
@@ -102,13 +106,23 @@ export const Header: React.FC<HeaderProps> = ({
 
         {/* Right Action Icons */}
         <div className="flex items-center gap-2 sm:gap-3">
+          {/* Language Switcher (JP / EN Toggle) */}
+          <button
+            onClick={toggleLang}
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl font-bold text-xs bg-slate-800/90 hover:bg-slate-700 border border-cyan-500/40 text-cyan-300 hover:text-cyan-100 shadow-md transition-all active:scale-95 cursor-pointer"
+            title={isEn ? "日本語に切り替える" : "Switch to English"}
+          >
+            <Languages className="w-4 h-4 text-cyan-400" />
+            <span className="font-mono">{isEn ? "🇺🇸 EN" : "🇯🇵 JP"}</span>
+          </button>
+
           {/* AI診断ボタン */}
           <button
             onClick={onOpenFreeInput}
             className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white shadow-md shadow-cyan-500/20 transition-all duration-200"
           >
             <Sparkles className="w-3.5 h-3.5" />
-            <span>AI自由診断</span>
+            <span>{t.freeConsult}</span>
           </button>
 
           <button
@@ -116,14 +130,14 @@ export const Header: React.FC<HeaderProps> = ({
             className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 transition-all"
           >
             <SlidersHorizontal className="w-3.5 h-3.5 text-cyan-400" />
-            <span>4問診断</span>
+            <span>{t.startQuiz}</span>
           </button>
 
           {/* My AI Stack (お気に入り) */}
           <button
             onClick={onOpenMyStack}
             className="relative p-2 rounded-xl bg-slate-800/80 hover:bg-slate-700 text-slate-300 hover:text-white border border-slate-700/60 transition-colors"
-            title="My AI Stack (お気に入り)"
+            title={t.myStack}
           >
             <Bookmark className="w-4 h-4 text-amber-400" />
             {savedToolIds.length > 0 && (
@@ -137,7 +151,7 @@ export const Header: React.FC<HeaderProps> = ({
           <button
             onClick={() => setIsDark(!isDark)}
             className="p-2 rounded-xl bg-slate-800/80 hover:bg-slate-700 text-slate-300 hover:text-white border border-slate-700/60 transition-colors"
-            title={isDark ? "ライトモードに切替" : "ダークモードに切替"}
+            title={isDark ? "Light Mode" : "Dark Mode"}
           >
             {isDark ? <Sun className="w-4 h-4 text-amber-300" /> : <Moon className="w-4 h-4 text-indigo-400" />}
           </button>
@@ -159,7 +173,7 @@ export const Header: React.FC<HeaderProps> = ({
             <Search className="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
             <input
               type="text"
-              placeholder="AI名、用途で検索..."
+              placeholder={t.searchPlaceholder}
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               className="w-full bg-slate-800 border border-slate-700 rounded-lg pl-9 pr-3 py-2 text-sm text-white"
@@ -174,7 +188,7 @@ export const Header: React.FC<HeaderProps> = ({
               className="flex items-center justify-center gap-1.5 py-2 px-3 rounded-lg text-xs font-semibold bg-cyan-600 text-white"
             >
               <Sparkles className="w-3.5 h-3.5" />
-              <span>AI自由入力診断</span>
+              <span>{t.freeConsult}</span>
             </button>
             <button
               onClick={() => {
@@ -184,7 +198,7 @@ export const Header: React.FC<HeaderProps> = ({
               className="flex items-center justify-center gap-1.5 py-2 px-3 rounded-lg text-xs font-semibold bg-slate-800 text-slate-200 border border-slate-700"
             >
               <SlidersHorizontal className="w-3.5 h-3.5 text-cyan-400" />
-              <span>4問適性診断</span>
+              <span>{t.startQuiz}</span>
             </button>
           </div>
         </div>

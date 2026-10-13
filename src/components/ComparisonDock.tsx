@@ -3,6 +3,7 @@
 import React from "react";
 import { Layers, X, ArrowRight } from "lucide-react";
 import { ToolItem } from "@/types";
+import { useLanguage } from "@/context/LanguageContext";
 
 interface ComparisonDockProps {
   compareTools: ToolItem[];
@@ -17,6 +18,8 @@ export const ComparisonDock: React.FC<ComparisonDockProps> = ({
   onClear,
   onOpenModal,
 }) => {
+  const { t, isEn } = useLanguage();
+
   if (compareTools.length === 0) return null;
 
   return (
@@ -26,7 +29,7 @@ export const ComparisonDock: React.FC<ComparisonDockProps> = ({
           <div className="flex items-center gap-1.5 pl-1 pr-2 border-r border-slate-700/80">
             <Layers className="w-4 h-4 text-cyan-400" />
             <span className="text-xs font-bold text-white whitespace-nowrap">
-              比較 ({compareTools.length}/3)
+              {isEn ? `Compare (${compareTools.length}/3)` : `比較 (${compareTools.length}/3)`}
             </span>
           </div>
 
@@ -39,8 +42,8 @@ export const ComparisonDock: React.FC<ComparisonDockProps> = ({
               <span className="font-semibold truncate max-w-[90px]">{tool.name}</span>
               <button
                 onClick={() => onRemove(tool.id)}
-                className="text-slate-400 hover:text-rose-400 ml-1"
-                title="比較から除外"
+                className="text-slate-400 hover:text-rose-400 ml-1 cursor-pointer"
+                title={isEn ? "Remove from comparison" : "比較から除外"}
               >
                 <X className="w-3.5 h-3.5" />
               </button>
@@ -51,15 +54,15 @@ export const ComparisonDock: React.FC<ComparisonDockProps> = ({
         <div className="flex items-center gap-2 shrink-0">
           <button
             onClick={onClear}
-            className="text-[11px] text-slate-400 hover:text-white px-2 py-1"
+            className="text-[11px] text-slate-400 hover:text-white px-2 py-1 cursor-pointer"
           >
-            クリア
+            {t.dockClear}
           </button>
           <button
             onClick={onOpenModal}
-            className="px-4 py-2 rounded-xl text-xs font-bold bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white shadow-lg shadow-cyan-500/30 flex items-center gap-1 transition-all"
+            className="px-4 py-2 rounded-xl text-xs font-bold bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white shadow-lg shadow-cyan-500/30 flex items-center gap-1 transition-all cursor-pointer"
           >
-            <span>スペック比較</span>
+            <span>{t.dockCompareNow}</span>
             <ArrowRight className="w-3.5 h-3.5" />
           </button>
         </div>

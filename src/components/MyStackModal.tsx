@@ -3,6 +3,8 @@
 import React from "react";
 import { X, Bookmark, ExternalLink, Trash2, ArrowRight, Layers } from "lucide-react";
 import { ToolItem } from "@/types";
+import { useLanguage } from "@/context/LanguageContext";
+import { getCategoryLabel } from "@/lib/i18n";
 
 interface MyStackModalProps {
   savedTools: ToolItem[];
@@ -21,6 +23,8 @@ export const MyStackModal: React.FC<MyStackModalProps> = ({
   onSelectTool,
   onCompareAll,
 }) => {
+  const { t, isEn, lang } = useLanguage();
+
   if (!isOpen) return null;
 
   return (
@@ -31,24 +35,26 @@ export const MyStackModal: React.FC<MyStackModalProps> = ({
           <div className="flex items-center gap-2">
             <Bookmark className="w-5 h-5 text-amber-400" />
             <h3 className="font-extrabold text-lg text-white">
-              My AI Stack ({savedTools.length}ツール保存中)
+              {isEn ? `My AI Stack (${savedTools.length} Saved)` : `My AI Stack (${savedTools.length}ツール保存中)`}
             </h3>
           </div>
           <button
             onClick={onClose}
-            className="p-1.5 rounded-lg text-slate-400 hover:text-white"
+            className="p-1.5 rounded-lg text-slate-400 hover:text-white cursor-pointer"
           >
             <X className="w-5 h-5" />
           </button>
         </div>
 
         {/* Content */}
-        <div className="p-5 overflow-y-auto space-y-3">
+        <div className="p-5 overflow-y-auto space-y-3 custom-scrollbar">
           {savedTools.length === 0 ? (
             <div className="text-center py-12 text-slate-400 text-xs">
               <Bookmark className="w-8 h-8 mx-auto mb-2 opacity-40 text-amber-400" />
-              <p>まだ保存されたAIツールはありません。</p>
-              <p className="mt-1 text-slate-500">カタログのブックマークアイコンをクリックして、愛用ツールを登録してください。</p>
+              <p>{isEn ? "No tools saved to your stack yet." : "まだ保存されたAIツールはありません。"}</p>
+              <p className="mt-1 text-slate-500">
+                {isEn ? "Click the bookmark icon on any tool card in the catalog to add it here." : "カタログのブックマークアイコンをクリックして、愛用ツールを登録してください。"}
+              </p>
             </div>
           ) : (
             savedTools.map((tool) => (
@@ -59,37 +65,28 @@ export const MyStackModal: React.FC<MyStackModalProps> = ({
                 <div
                   className="flex-1 cursor-pointer"
                   onClick={() => {
-                    onSelectTool(tool);
                     onClose();
+                    onSelectTool(tool);
                   }}
                 >
-                  <div className="flex items-center gap-2 mb-1">
-                    <span className="font-bold text-white text-sm hover:text-cyan-400">
+                  <div className="flex items-center gap-2">
+                    <span className="font-bold text-white hover:text-cyan-400 transition-colors">
                       {tool.name}
                     </span>
-                    <span className="text-[10px] px-1.5 py-0.5 rounded bg-slate-800 text-slate-400">
-                      {tool.categoryLabel}
+                    <span className="text-[11px] px-2 py-0.5 rounded bg-slate-800 text-slate-300 font-mono">
+                      {getCategoryLabel(tool.category, lang)}
                     </span>
                   </div>
-                  <div className="text-xs text-slate-400">
-                    {tool.pricingMonthly}
-                  </div>
+                  <p className="text-xs text-slate-400 line-clamp-1 mt-0.5">
+                    {tool.summary}
+                  </p>
                 </div>
 
-                <div className="flex items-center gap-2 shrink-0">
-                  <a
-                    href={tool.officialUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="p-1.5 text-slate-400 hover:text-cyan-400"
-                    title="公式リンク"
-                  >
-                    <ExternalLink className="w-4 h-4" />
-                  </a>
+                <div className="flex items-center gap-1.5">
                   <button
                     onClick={() => onRemove(tool.id)}
-                    className="p-1.5 text-slate-400 hover:text-rose-400"
-                    title="スタックから削除"
+                    className="p-1.5 rounded-lg text-slate-400 hover:text-rose-400 hover:bg-slate-800 transition-colors cursor-pointer"
+                    title={isEn ? "Remove from stack" : "スタックから削除"}
                   >
                     <Trash2 className="w-4 h-4" />
                   </button>
@@ -101,19 +98,19 @@ export const MyStackModal: React.FC<MyStackModalProps> = ({
 
         {/* Footer */}
         {savedTools.length > 0 && (
-          <div className="p-4 border-t border-slate-800 flex items-center justify-between shrink-0 bg-slate-950/40 text-xs">
-            <span className="text-slate-400">
-              合計 {savedTools.length} ツール
+          <div className="p-4 border-t border-slate-800 flex items-center justify-between bg-slate-950/40">
+            <span className="text-xs text-slate-400">
+              {isEn ? `${savedTools.length} tools in stack` : `計 ${savedTools.length} ツール`}
             </span>
             <button
               onClick={() => {
-                onCompareAll();
                 onClose();
+                onCompareAll();
               }}
-              className="px-4 py-2 rounded-xl font-bold bg-gradient-to-r from-cyan-500 to-blue-600 text-white flex items-center gap-1.5"
+              className="px-4 py-2 rounded-xl text-xs font-bold bg-cyan-600/30 hover:bg-cyan-600/50 text-cyan-300 border border-cyan-500/40 flex items-center gap-1.5 transition-all cursor-pointer"
             >
-              <Layers className="w-4 h-4" />
-              <span>まとめてスペック比較</span>
+              <Layers className="w-3.5 h-3.5" />
+              <span>{isEn ? "Compare Selected" : "まとめて比較する"}</span>
             </button>
           </div>
         )}

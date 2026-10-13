@@ -3,6 +3,8 @@
 import React, { useState } from "react";
 import { Copy, Check, Sparkles, BookOpen, Tag } from "lucide-react";
 import { PromptItem } from "@/types";
+import { useLanguage } from "@/context/LanguageContext";
+import { getPromptCategoryLabel } from "@/lib/i18n";
 
 interface PromptGallerySectionProps {
   prompts: PromptItem[];
@@ -13,6 +15,7 @@ export const PromptGallerySection: React.FC<PromptGallerySectionProps> = ({
 }) => {
   const [copiedId, setCopiedId] = useState<string | null>(null);
   const [selectedCategory, setSelectedCategory] = useState<string>("all");
+  const { t, isEn, lang } = useLanguage();
 
   const categories = ["all", "ビジネス・企画", "コーディング・設計", "画像生成", "音楽生成", "動画生成", "開発・エディタ"];
 
@@ -33,13 +36,13 @@ export const PromptGallerySection: React.FC<PromptGallerySectionProps> = ({
           <div>
             <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-500/10 text-amber-400 text-xs font-bold mb-2 border border-amber-500/20">
               <BookOpen className="w-3.5 h-3.5" />
-              <span>PROMPT MASTER DIRECTORY</span>
+              <span>{t.promptGalleryBadge}</span>
             </div>
             <h2 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
-              実践プロンプト図鑑
+              {t.promptGalleryTitle}
             </h2>
             <p className="text-slate-400 text-xs sm:text-sm mt-1">
-              各AIツールの性能を120%引き出す、ワンクリックコピー対応の厳選プロンプト集。
+              {t.promptGalleryDesc}
             </p>
           </div>
         </div>
@@ -50,13 +53,13 @@ export const PromptGallerySection: React.FC<PromptGallerySectionProps> = ({
             <button
               key={cat}
               onClick={() => setSelectedCategory(cat)}
-              className={`px-3 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap transition-all ${
+              className={`px-3 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap transition-all cursor-pointer ${
                 selectedCategory === cat
                   ? "bg-amber-500/20 text-amber-300 border border-amber-500/40"
                   : "bg-slate-800/60 text-slate-400 hover:text-white border border-slate-700/60"
               }`}
             >
-              {cat === "all" ? "すべて" : cat}
+              {getPromptCategoryLabel(cat, lang)}
             </button>
           ))}
         </div>
@@ -72,10 +75,10 @@ export const PromptGallerySection: React.FC<PromptGallerySectionProps> = ({
                 <div className="flex items-center justify-between gap-2 mb-2">
                   <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[11px] font-bold bg-slate-800 text-cyan-400 border border-slate-700">
                     <Tag className="w-3 h-3" />
-                    <span>{prompt.category}</span>
+                    <span>{getPromptCategoryLabel(prompt.category, lang)}</span>
                   </span>
                   <span className="text-xs text-slate-400 font-mono">
-                    推奨: <strong className="text-slate-200">{prompt.toolName || prompt.toolId}</strong>
+                    {t.promptGalleryRecommended} <strong className="text-slate-200">{prompt.toolName || prompt.toolId}</strong>
                   </span>
                 </div>
 
@@ -99,11 +102,13 @@ export const PromptGallerySection: React.FC<PromptGallerySectionProps> = ({
               {/* Copy Action */}
               <div className="pt-3 border-t border-slate-800 flex items-center justify-between">
                 <span className="text-[11px] text-slate-400">
-                  コピーされた回数: {prompt.copiedCount}回
+                  {isEn
+                    ? `Copied: ${prompt.copiedCount} times`
+                    : `コピーされた回数: ${prompt.copiedCount}回`}
                 </span>
                 <button
                   onClick={() => handleCopy(prompt.id, prompt.promptText)}
-                  className={`px-4 py-2 rounded-xl text-xs font-bold flex items-center gap-1.5 transition-all ${
+                  className={`px-4 py-2 rounded-xl text-xs font-bold flex items-center gap-1.5 transition-all cursor-pointer ${
                     copiedId === prompt.id
                       ? "bg-emerald-500/20 text-emerald-300 border border-emerald-500/40"
                       : "bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-400 hover:to-orange-500 text-white shadow-md shadow-amber-500/20"
@@ -112,12 +117,12 @@ export const PromptGallerySection: React.FC<PromptGallerySectionProps> = ({
                   {copiedId === prompt.id ? (
                     <>
                       <Check className="w-3.5 h-3.5 text-emerald-400" />
-                      <span>コピー完了!</span>
+                      <span>{t.promptGalleryCopySuccess}</span>
                     </>
                   ) : (
                     <>
                       <Copy className="w-3.5 h-3.5" />
-                      <span>プロンプトをコピー</span>
+                      <span>{t.promptGalleryCopyBtn}</span>
                     </>
                   )}
                 </button>
@@ -129,3 +134,4 @@ export const PromptGallerySection: React.FC<PromptGallerySectionProps> = ({
     </section>
   );
 };
+

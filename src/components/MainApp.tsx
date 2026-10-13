@@ -16,6 +16,7 @@ import { FreeInputModal } from "./FreeInputModal";
 import { QuizModal } from "./QuizModal";
 import { Footer } from "./Footer";
 import { ToolItem, UpdateItem, PromptItem, GalleryItemType } from "@/types";
+import { LanguageProvider, useLanguage } from "@/context/LanguageContext";
 
 interface MainAppProps {
   initialTools: ToolItem[];
@@ -24,12 +25,13 @@ interface MainAppProps {
   galleries: GalleryItemType[];
 }
 
-export const MainApp: React.FC<MainAppProps> = ({
+const MainAppInner: React.FC<MainAppProps> = ({
   initialTools,
   updates,
   prompts,
   galleries,
 }) => {
+  const { isEn } = useLanguage();
   const [tools, setTools] = useState<ToolItem[]>(initialTools);
   const [searchQuery, setSearchQuery] = useState("");
   
@@ -77,7 +79,11 @@ export const MainApp: React.FC<MainAppProps> = ({
         return prev.filter((id) => id !== toolId);
       }
       if (prev.length >= 3) {
-        alert("比較できるツールは最大3件までです。1件削除してから選択してください。");
+        alert(
+          isEn
+            ? "You can compare up to 3 tools at a time. Please remove one first."
+            : "比較できるツールは最大3件までです。1件削除してから選択してください。"
+        );
         return prev;
       }
       return [...prev, toolId];
@@ -231,3 +237,12 @@ export const MainApp: React.FC<MainAppProps> = ({
     </div>
   );
 };
+
+export const MainApp: React.FC<MainAppProps> = (props) => {
+  return (
+    <LanguageProvider>
+      <MainAppInner {...props} />
+    </LanguageProvider>
+  );
+};
+
