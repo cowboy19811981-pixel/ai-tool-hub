@@ -481,6 +481,7 @@ export function getBadgeLabel(badge: string | null | undefined, lang: Language):
     "プロ用4K/8K高画質化・補間": "Pro 4K/8K Upscaler",
     "人物の動き＆無料枠◎": "Realistic Motion & Free Tier",
     "世界最高峰知能・Fable 5.1": "World Leading AI · Fable 5.1",
+    "Gemini 3.1 Pro / 3.8": "Gemini 3.1 Pro / 3.8",
     "GPT-6.1 Sol & Daybreak": "GPT-6.1 Sol & Daybreak",
     "V4.1-Flash進化・神コスパ": "V4.1-Flash Native · Unbeatable Value",
     "xAIフラグシップ・Grok 4.7": "xAI Flagship · Grok 4.7",

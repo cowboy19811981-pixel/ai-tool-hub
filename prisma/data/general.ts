@@ -174,37 +174,42 @@ export const generalTools: ToolSeedItem[] = [
     name: "Gemini",
     category: "general",
     categoryLabel: "総合（汎用LLM）",
-    badge: "Gemini 3.8 / Pro 4",
-    version: "Gemini 3.8 Flash / Gemini Pro 4",
+    badge: "Gemini 3.1 Pro / 3.8",
+    version: "Gemini 3.1 Pro / Gemini 3.8 Flash",
     versionFeatures: {
-      evolution: "Google DeepMindの最新主力「Gemini 3.8 Flash」と、エンタープライズ実務で導入が進む「Gemini Pro 4」を統合。数百万トークンの長大コンテキストとGoogleエコシステム連携を両立。",
-      strengths: ["最新3.8世代の低遅延爆速推論", "企業導入が進むGemini Pro 4の圧倒的論理力", "巨大コンテキストによる書籍・長尺動画の一括処理", "無料枠が極めて潤沢"],
+      evolution: "Google DeepMind公式の最新フラグシップ「Gemini 3.1 Pro」と超高速主力「Gemini 3.8 Flash」を統合。複雑な問題解決や洗練されたコーディング・自律エージェント遂行能力、低遅延音声対話（Gemini 3.8 Live）を実現。",
+      strengths: [
+        "公式最新フラグシップ推論・コード(Gemini 3.1 Pro)",
+        "超低遅延爆速主力推論(Gemini 3.8 Flash)",
+        "リアルタイム音声思考対話(Gemini 3.8 Live)",
+        "無料枠が極めて潤沢でGoogleエコシステムと完全統合"
+      ],
       weaknesses: ["文芸的なクリエイティブ表現での語彙の硬さ"],
-      architecture: "Google DeepMind Gemini 3.8 / Pro 4 Native Multimodal Architecture",
+      architecture: "Google DeepMind Gemini 3 Series Frontier Native Multimodal Architecture",
       versionsList: [
         {
-          name: "Gemini 3.8 Flash",
+          name: "Gemini 3.1 Pro (Flagship Reasoning)",
+          speed: "高速",
+          intelligence: "最高峰",
+          bestFor: "複雑な問題解決、洗練されたコーディング、自律マルチステップエージェント遂行",
+          planAvailability: "Gemini Advanced (有料) / Enterprise API",
+          description: "Google DeepMindの最先端フラグシップモデル。複雑な科学・論理推論とコーディングにおいて最高峰の精度を発揮。"
+        },
+        {
+          name: "Gemini 3.8 Flash (Ultra Fast)",
           speed: "超高速",
           intelligence: "高度",
           bestFor: "リアルタイム対話、大容量ドキュメント・動画分析、高速API呼び出し",
           planAvailability: "無料枠で潤沢に利用可能",
-          description: "Googleの最新主力高速モデル。次世代マルチモーダル処理と低レイテンシ推論を兼ね備える。"
+          description: "Googleの最新主力高速モデル。次世代マルチモーダル処理と低レイテンシ推論を両立。"
         },
         {
-          name: "Gemini Pro 4",
-          speed: "高速",
-          intelligence: "最高峰",
-          bestFor: "企業エンタープライズ業務、超複雑な科学的推論、マルチモーダル深層解析",
-          planAvailability: "Gemini Advanced (有料) / Enterprise API",
-          description: "Google DeepMindの次世代最高峰知能モデル。ビジネス実務や企業システムで活用が急拡大中。"
-        },
-        {
-          name: "Gemini 3.5 Flash",
+          name: "Gemini 3.8 Live (Audio & Thinking)",
           speed: "超高速",
           intelligence: "高度",
-          bestFor: "日常チャット、高速ドキュメント要約、安定稼働API",
-          planAvailability: "無料 / API",
-          description: "安定した高スループットと低コストを両立した実力派モデル。"
+          bestFor: "リアルタイム自然音声会話、思考モード連動対話",
+          planAvailability: "Gemini Advanced / API",
+          description: "思考プロセスを展開しながら遅延なしで自然な声で会話できるリアルタイム音声モデル。"
         }
       ]
     },
@@ -218,13 +223,18 @@ export const generalTools: ToolSeedItem[] = [
     pricingMonthly: "無料 / Advanced 月額2,900円 (Google One 2TB付き)",
     freePlanDetails: {
       limits: "Gemini 3.8 Flashがほぼ無制限に超高速推論で利用可能。",
-      allowedFeatures: ["3.8 Flash使い放題", "YouTube動画やWebのリアルタイム要約", "Imagen 3による高精細画像生成", "Googleアプリ連携"]
+      allowedFeatures: ["Gemini 3.8 Flash使い放題", "YouTube動画やWebのリアルタイム要約", "Imagen 3高精細画像生成", "Googleアプリ連携"]
     },
     paidPlanDetails: {
       planName: "Gemini Advanced",
       price: "月額 2,900円",
-      unlockedFeatures: ["Gemini Pro 4（企業級最高峰知能）優先利用", "Google One 2TBクラウドストレージ付属", "Gmail・Docs・Sheets内での直接Gemini利用", "Gems（カスタムAI）の作成"],
-      recommendedFor: "Googleサービスを日常的に使っている人、最先端Pro 4の推論力をビジネスで駆使したい人"
+      unlockedFeatures: [
+        "Gemini 3.1 Pro（最先端フラグシップ知能）優先利用",
+        "Gemini 3.8 Live Extended Thinking音声思考モード",
+        "Google One 2TBクラウドストレージ付属",
+        "Gmail・Docs・Sheets内での直接Gemini利用"
+      ],
+      recommendedFor: "Googleサービスを日常的に使っている人、最先端3.1 Proの推論力とコード能力をビジネスで駆使したい人"
     },
     paidWorthRating: 5,
     hasFreeTier: true,
@@ -232,15 +242,15 @@ export const generalTools: ToolSeedItem[] = [
     commercialUse: true,
     hasApi: true,
     hasApp: true,
-    summary: "Googleの最新技術が集結。爆速Gemini 3.8 Flashと企業導入が進むGemini Pro 4を搭載。",
-    description: "Google DeepMindが開発した最先端マルチモーダルAI。主力高速モデルGemini 3.8 Flashによる思考速度を超えるレスポンスと、企業向けに導入が進むGemini Pro 4による圧倒的な論理推論を提供します。YouTube動画の要約や長尺ドキュメントの一括解析、Google Workspace連携が強み。",
-    pros: ["Gemini 3.8 Flashの無料枠が非常に潤沢で爆速", "エンタープライズ対応のGemini Pro 4による高精度推論", "長編動画や巨大コードベースを直接理解できる唯一無二の能力"],
+    summary: "Googleの最新技術が集結。フラグシップGemini 3.1 Proと爆速Gemini 3.8 Flashを搭載。",
+    description: "Google DeepMindが開発した最先端マルチモーダルAI。最上位モデルGemini 3.1 Proによる最高峰の論理推論・コーディングと、主力高速モデルGemini 3.8 Flashによる爆速対話を提供します。長尺ドキュメントの一括解析やリアルタイム音声対話、Google Workspace連携が強み。",
+    pros: ["Gemini 3.8 Flashの無料枠が非常に潤沢で爆速", "最上位Gemini 3.1 Proによる高精度推論・コーディング", "長編動画や巨大コードベースを直接理解できる唯一無二の能力"],
     cons: ["文芸的なクリエイティブ表現ではClaudeに分がある場合がある"],
     specs: {
       contextWindow: "100万〜200万トークン (本数千ページ・数時間の動画相当)",
       multimodal: "テキスト・音声・画像・動画・ファイル",
       company: "Google",
-      releaseYear: "2026 (最新版 Gemini 3.8 / Pro 4)"
+      releaseYear: "2026 (公式最新 Gemini 3.1 Pro / 3.8 Flash)"
     },
     officialUrl: "https://gemini.google.com"
   },
